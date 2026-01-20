@@ -35,7 +35,9 @@ class MedicalAssistance:
         execution time, we will load one model with few parameters.
         """
         # Use GPU if available
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        # self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        # Use CPU for Docker
+        self.device = "cpu"
         
         # Defined the model to use
         # In this case, we use Qwen (SLM)
@@ -144,56 +146,3 @@ class MedicalAssistance:
                 skip_special_tokens=True)
 
             return response.strip()
-
-# Quick test
-if __name__ == "__main__":
-    print("Testing the code:")
-    
-    try:
-        print("Loading the bot...")
-        bot = MedicalAssistance()
-
-        # Define a test context
-        contexto_prueba = """
-        FIEBRE: Si la temperatura es mayor a 38°C, indicar Paracetamol 500mg cada 8 horas 
-        y reposo absoluto. Si no baja en 48hs, ir a guardia.
-        """
-
-        # Simulate a chat history
-        historial_falso = [
-            {"role": "user", "content": "Hola, esto es una prueba."}
-        ]
-
-        print(f"\n User: {historial_falso[0]['content']}")
-
-        # Test the generate_response function
-        respuesta = bot.generate_response(historial_falso, contexto_prueba)
-
-        print(f"\n BOT:\n{respuesta}")
-
-        # Simulate a chat history
-        historial_falso_2 = [
-            {"role": "user", "content": "Tengo fiebre."}
-        ]
-
-        print(f"\n User: {historial_falso_2[0]['content']}")
-
-        # Test the generate_response function
-        respuesta_2 = bot.generate_response(historial_falso_2, contexto_prueba)
-
-        print(f"\n BOT:\n{respuesta_2}")
-
-        # Simulate a chat history
-        historial_falso_3 = [
-            {"role": "user", "content": "Me duele la cabeza."}
-        ]
-
-        print(f"\n User: {historial_falso_3[0]['content']}")
-
-        # Test the generate_response function
-        respuesta_3 = bot.generate_response(historial_falso_3, contexto_prueba)
-
-        print(f"\n BOT:\n{respuesta_3}")
-
-    except Exception as e:
-        print(f"\n Error:\n{e}")

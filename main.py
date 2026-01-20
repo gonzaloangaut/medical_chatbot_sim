@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Dict
 
 from logic import MedicalAssistance 
@@ -10,9 +10,13 @@ app = FastAPI()
 # Load the chatbot
 bot = MedicalAssistance() 
 
-# Accept only lists of dictionaries
+# Give structure to the API
+class Message(BaseModel):
+    role: str = Field(default="user", description="Quién envía el mensaje")
+    content: str = Field(..., examples=["Tengo fiebre."])
+
 class ChatRequest(BaseModel):
-    messages: List[Dict[str, str]] 
+    messages: List[Message]
 
 # Post petition
 @app.post("/predict")
