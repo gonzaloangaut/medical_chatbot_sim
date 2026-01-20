@@ -17,11 +17,15 @@ class ChatRequest(BaseModel):
 # Post petition
 @app.post("/predict")
 def predict(request: ChatRequest):
-    # Read the context (RAG)
-    with open("context.txt", "r", encoding="utf-8") as f:
-        contexto = f.read()
+    # Read the context file
+    try:
+        with open("context.txt", "r", encoding="utf-8") as f:
+            context = f.read()
+    except FileNotFoundError:
+        context = "No context available."
+
     
     # Get the answer from the bot
-    response = bot.generate_response(request.messages, contexto)
+    response = bot.generate_response(request.messages, context)
     
     return {"response": response}

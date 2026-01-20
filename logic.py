@@ -43,10 +43,17 @@ class MedicalAssistance:
 
         # Load the tokenizer and the model
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        # self.model = AutoModelForCausalLM.from_pretrained(
+        #     model_name,
+        #     dtype="auto",
+        #     device_map="auto"
+        # )
+        # Forced Float32 and cpu for Docker
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
-            dtype="auto",
-            device_map="auto"
+            dtype=torch.float32,
+            device_map="cpu",
+            low_cpu_mem_usage=True
         )
         self.model.eval()
 
