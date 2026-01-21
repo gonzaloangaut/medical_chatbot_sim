@@ -1,16 +1,80 @@
-PROTOCOLO MÉDICO:
-
-1. FIEBRE (Síntomas: "Tengo fiebre", "Tengo temperatura", "Me siento caliente", "Calentura"):
-Si la temperatura es mayor a 38°C, indicar Paracetamol 500mg cada 8 horas y reposo absoluto. Si no baja en 48hs o supera los 40°C, ir a guardia.
-
-2. DOLOR DE CABEZA (Síntomas: "Me duele la cabeza", "Tengo dolor de cabeza", "Cefalea", "Jaqueca", "Me estalla la cabeza"):
-Si es leve (tensional), recomendar descanso en oscuridad. Si es súbito y muy intenso ("el peor dolor de mi vida"), considerar urgencia por posible ACV.
-
-3. DOLOR DE GARGANTA (Síntomas: "Me duele la garganta", "Tengo dolor de garganta", "Me pica la garganta", "Me cuesta tragar"):
-Sugerir té con miel y gárgaras de agua con sal. Advertir: No tomar antibióticos sin receta médica.
-
-4. DIFICULTAD RESPIRATORIA (Síntomas: "Me falta el aire", "No puedo respirar", "Me ahogo", "Me cuesta respirar"):
-ESTO ES EMERGENCIA ROJA. Indicar al paciente que llame a la ambulancia inmediatamente.
-
-5. GENERAL:
-Si el paciente menciona un síntoma que NO está en la lista anterior (ej: "Me duele el hombro", "Me duele la rodilla", "Tengo náuseas"), responder: "No tengo información sobre ese síntoma en mi base de datos".
+Fiebre, temperatura alta, 38 grados, cuerpo caliente, chuchos de frío, escalofríos, malestar general, afiebrado, termómetro.
+@@@
+PROTOCOLO FIEBRE Y MALESTAR GENERAL:
+Si la temperatura corporal es mayor a 38°C, se considera fiebre.
+Tratamiento recomendado:
+1. Tomar Paracetamol 500mg o 1g cada 8 horas.
+2. Reposo físico relativo y buena hidratación.
+3. No abrigarse en exceso.
+ALERTA: Si supera los 40°C acudir a la Guardia.
+###
+Dolor de cabeza, jaqueca, migraña, cefalea, explota la cabeza, dolor en la nuca, sienes, puntadas en la cabeza, mareos.
+@@@
+PROTOCOLO DOLOR DE CABEZA (CEFALEA):
+Para dolores de cabeza leves o tensionales:
+1. Descansar en un ambiente oscuro y silencioso.
+2. Puede tomar Ibuprofeno 400mg o Paracetamol.
+3. Evitar pantallas.
+ALERTA: Si el dolor es súbito y explosivo, llame al 107.
+###
+Tos, dolor de garganta, resfrío, mocos, congestión nasal, gripe, tragar, picazón garganta, flema, estornudos.
+@@@
+PROTOCOLO SÍNTOMAS RESPIRATORIOS:
+Para cuadros de vía aérea superior:
+1. Miel con limón.
+2. Vahos de vapor.
+3. Ibuprofeno si hay dolor.
+ALERTA: Si siente falta de aire, es una URGENCIA.
+###
+Dolor de panza, vómitos, dolor estomacal, estómago, diarrea, gastroenteritis, náuseas, mala digestión, acidez, hígado, comida.
+@@@
+PROTOCOLO DOLOR ABDOMINAL Y VÓMITOS:
+1. Dieta astringente (arroz, polenta).
+2. Hidratación con sales o agua de a sorbos.
+3. Evitar lácteos.
+ALERTA: Si hay sangre o dolor intenso a la derecha, ir a guardia.
+###
+Golpe, caída, chichón, torcedura tobillo, rodilla, traumatismo, moretón, esguince, corte, lastimadura, accidente.
+@@@
+PROTOCOLO GOLPES Y TRAUMATISMOS LEVES:
+1. Aplicar hielo indirecto 15 minutos.
+2. Mantener zona elevada.
+3. Analgésicos comunes.
+ALERTA: Si hay deformidad, requiere radiografía.
+###
+Turno, Agendar, Sacar turno, pedir turno, reservar cita, ver especialista, agendar, turno clínico, turno cardiólogo, teléfono turnos, contacto.
+@@@
+ADMINISTRACIÓN - SOLICITUD DE TURNOS:
+Para programar una cita:
+1. Online: www.entelai-salud.com/turnos
+2. Teléfono: 0810-999-DOC (362).
+Lleve DNI y credencial.
+###
+Hora, Horarios, Lugar, Horarios atención, hora apertura, dirección clínica, dónde queda, ubicación.
+@@@
+ADMINISTRACIÓN - HORARIOS Y UBICACIÓN:
+Centro Médico Central: Av. Libertador 1234.
+- Lunes a Viernes: 08:00 a 20:00 hs.
+- Sábados: 09:00 a 13:00 hs.
+- GUARDIA: 24 horas.
+###
+Obra social, Obras sociales, aceptan OSDE, Swiss Medical, Galeno, precio consulta particular, costo, pagar, tarjetas, facturación.
+@@@
+ADMINISTRACIÓN - OBRAS SOCIALES Y PAGOS:
+Atendemos OSDE, Swiss Medical, Galeno y particulares.
+Se puede abonar con efectivo, débito o crédito.
+###
+Hola, Hola ¿Como estas?, buen día, buenas tardes, buenas noches, saludos.
+@@@
+SALUDO Y BIENVENIDA:
+Hola, soy el Asistente Virtual de EntelAI.
+Puedo ayudarte con:
+1. Síntomas comunes.
+2. Turnos y administración.
+Por favor, dime qué sientes o qué necesitas.
+###
+Auto, rueda, mecánica, fútbol, deportes, messi, pelota, cocina, receta, pizza, comida, política, presidente, clima, lluvia, sol, chiste, broma, música, canción, película, serie, netflix, juego, videojuego, programar, python, código, docker.
+@@@
+TEMA FUERA DE DOMINIO:
+El usuario está preguntando sobre temas generales (deportes, cocina, mecánica, ocio) que NO están relacionados con la salud.
+Respuesta obligatoria: "Lo siento, soy un asistente médico y no tengo información sobre ese tema. ¿Puedo ayudarte con algún síntoma o turno?"

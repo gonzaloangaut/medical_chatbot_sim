@@ -28,8 +28,9 @@ def predict(request: ChatRequest):
     except FileNotFoundError:
         context = "No context available."
 
-    
+    chat_history_dicts = [m.model_dump() for m in request.messages]
     # Get the answer from the bot
-    response = bot.generate_response(request.messages, context)
-    
+    # response = bot.generate_response(request.messages, context)
+    response = bot.generate_response(chat_history_dicts, context)
+
     return {"response": response}
