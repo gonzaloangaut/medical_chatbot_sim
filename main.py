@@ -2,21 +2,24 @@ from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from typing import List, Dict
 
-from logic import MedicalAssistance 
+from logic import MedicalAssistance
 
 # Create the APP
 app = FastAPI()
 
 # Load the chatbot
-bot = MedicalAssistance() 
+bot = MedicalAssistance()
+
 
 # Give structure to the API
 class Message(BaseModel):
     role: str = Field(default="user", description="Quién envía el mensaje")
     content: str = Field(..., examples=["Tengo fiebre."])
 
+
 class ChatRequest(BaseModel):
     messages: List[Message]
+
 
 # Read the context file
 try:
@@ -24,7 +27,8 @@ try:
         context = f.read()
 except FileNotFoundError:
     context = "No context available."
-    
+
+
 # Post petition
 @app.post("/predict")
 def predict(request: ChatRequest):
