@@ -8,7 +8,7 @@ Tratamiento recomendado:
 3. No abrigarse en exceso.
 ALERTA: Si supera los 40°C acudir a la Guardia.
 ###
-Dolor de cabeza, jaqueca, migraña, cefalea, explota la cabeza, dolor en la nuca, sienes, puntadas en la cabeza, mareos.
+Jaqueca, migraña, cefalea, dolor de cabeza, explota la cabeza, dolor en la nuca, sienes, puntadas en la cabeza, mareos.
 @@@
 PROTOCOLO DOLOR DE CABEZA (CEFALEA):
 Para dolores de cabeza leves o tensionales:
@@ -26,7 +26,7 @@ Para cuadros de vía aérea superior:
 3. Ibuprofeno si hay dolor.
 ALERTA: Si siente falta de aire, es una URGENCIA.
 ###
-Dolor de panza, vómitos, dolor estomacal, estómago, diarrea, gastroenteritis, náuseas, mala digestión, acidez, hígado, comida.
+Dolor de panza, vómitos, dolor estomacal, estómago, panza, diarrea, gastroenteritis, náuseas, mala digestión, acidez.
 @@@
 PROTOCOLO DOLOR ABDOMINAL Y VÓMITOS:
 1. Dieta astringente (arroz, polenta).
@@ -67,11 +67,12 @@ Se puede abonar con efectivo, débito o crédito.
 Hola, Hola ¿Como estas?, buen día, buenas tardes, buenas noches, saludos.
 @@@
 SALUDO Y BIENVENIDA:
-Hola, soy el Asistente Virtual de EntelAI.
+El usuario está saludando.
+Respuesta obligatoria exacta:"Hola, soy el Asistente Virtual de EntelAI.
 Puedo ayudarte con:
 1. Síntomas comunes.
 2. Turnos y administración.
-Por favor, dime qué sientes o qué necesitas.
+Por favor, dime qué sientes o qué necesitas."
 ###
 Auto, rueda, mecánica, fútbol, deportes, messi, pelota, cocina, receta, pizza, comida, política, presidente, clima, lluvia, sol, chiste, broma, música, canción, película, serie, netflix, juego, videojuego, programar, python, código, docker.
 @@@

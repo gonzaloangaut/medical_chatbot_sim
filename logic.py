@@ -29,6 +29,14 @@ class MedicalAssistance:
             The tokenizer used by the bot.
         model : obj
             The model of LLM (or SLM) used.
+        embedder : obj
+            The embedder used.
+        chunks : list
+            List to store the chunks of the context.
+        embeddings : torch.Tensor
+            Vector representations of the indexed search keys.
+        is_indexed : bool
+            Boolean to detect if the context is indexed or not.
         
         Notes
         -----
@@ -47,6 +55,7 @@ class MedicalAssistance:
 
         # Load the tokenizer and the model
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        # If GPU:
         # self.model = AutoModelForCausalLM.from_pretrained(
         #     model_name,
         #     dtype="auto",
@@ -76,51 +85,48 @@ class MedicalAssistance:
         
         Parameters
         ----------
-        context_tex : str
+        context_text : str
             The text to be analized.
+
+        Notes
+        -----
+        The context text must follow this structure:
+
+        - Blocks separated by '###'
+        - Optional separation inside each block using '@@@':
+            <search keys> @@@ <official protocol text>
+
+        Only the search keys are embedded, while the full protocol
+        text is passed to the LLM.
         """
-        # Split the text by ###
-        raw_chunks = context_text.split("###")
-        
-        # Clean empty spaces
-        self.chunks = [c.strip() for c in raw_chunks if c.strip()]
-        
-        # Embeddings
-        self.embeddings = self.embedder.encode(self.chunks, convert_to_tensor=True)
-        # Say that it is already indexed
+        # Separate the text
+        raw_blocks = context_text.split("###")
+
+        # Vectorize the symptoms            
+        self.search_keys = []
+        # Protocols given to the LLM
+        self.chunks = []
+
+        for block in raw_blocks:
+            block = block.strip()
+            if not block:
+                continue
+
+            # Search for the separation by @@@
+            if "@@@" in block:
+                # We look for the separation and add the chunk
+                keys, content = block.split("@@@", 1)
+                self.search_keys.append(keys.strip())
+                self.chunks.append(content.strip())
+            else:
+                # Id there is not separation, use everything
+                self.search_keys.append(block)
+                self.chunks.append(block)
+
+        # Vectorize only the symptoms
+        self.embeddings = self.embedder.encode(self.search_keys, convert_to_tensor=True)
         self.is_indexed = True
-        try:
-            # Separate the text
-            raw_blocks = context_text.split("###")
 
-            # Vectorize the symptoms            
-            self.search_keys = []
-            # Protocols given to the LLM
-            self.chunks = []
-
-            for block in raw_blocks:
-                block = block.strip()
-                if not block: continue
-
-                # Search for the separation by @@@
-                if "@@@" in block:
-                    # We look for the separation and add the chunk
-                    keys, content = block.split("@@@", 1)
-                    self.search_keys.append(keys.strip())
-                    self.chunks.append(content.strip())
-                else:
-                    # Id there is not separation, use everything
-                    self.search_keys.append(block)
-                    self.chunks.append(block)
-
-            # Vectorize only the symptoms
-            self.embeddings = self.embedder.encode(self.search_keys, convert_to_tensor=True)
-            self.is_indexed = True
-            
-        except Exception as e:
-            self.chunks = ["Error cargando base de datos."]
-            self.embeddings = self.embedder.encode(["Error"], convert_to_tensor=True)
-            self.is_indexed = True
     def _retrieve(self, query: str):
         """
         Search the piece of text more similar to the query.
@@ -134,6 +140,11 @@ class MedicalAssistance:
         ----------
         text : str
             The text found.
+        
+        Notes
+        -----
+        A minimum cosine similarity threshold of 0.3 is applied to avoid
+        hallucinated responses when no relevant context is found.
         """
         # Convert the query to numbers
         query_embedding = self.embedder.encode(query, convert_to_tensor=True)
@@ -154,30 +165,37 @@ class MedicalAssistance:
 
     def generate_response(self, chat_history: List[Dict[str, str]], context: str):
         """
-        Generate a response given the chat history and context.
+        Generate a response given the chat history and the medical context.
 
-        The history has the following structure:
-        [{"role": "user", "content": "Hola"}, 
-        {"role": "assistant", "content": "Hola..."}]
-        
+        This method performs:
+        1. Context indexing (if needed)
+        2. Semantic retrieval using a RAG approach
+        3. Prompt construction based on retrieved context
+        4. LLM generative inference
+
         Parameters
         ----------
         chat_history : List[Dict[str, str]]
-            The chat's history. It contains every user's query and the given answer.
+            Conversation history containing user and assistant messages.
         context : str
-            The medical context to be used.
+            Medical knowledge base used for retrieval and grounding.
 
         Returns
-        ----------
+        -------
         response : str
-            The response generated by the bot.
+            The response generated by the assistant.
 
         Notes
         -----
-        In this simple model we are only using context by RAG and a simple .txt.
-        In real-world problems, we should use a big quantity of data, and because
-        of that, embeddings would be important to manage this data.
+        The chat history is expected to follow this structure:
+        [{"role": "user", "content": "Hola"},
+        {"role": "assistant", "content": "Hola..."}]
+
+        In this model we use a lightweight RAG pipeline over a plain text knowledge
+        base. It is intentionally kept simple to allow fast iteration, and can be
+        extended later if needed.
         """
+
         # Check if the context is indexed or we index it now
         if not self.is_indexed:
             self._ingest_context(context)
@@ -193,11 +211,12 @@ class MedicalAssistance:
         else:
             context_to_use = "No hay información específica en la base de datos." \
             "Respuesta obligatoria: Lo siento, no hay información al respecto."
-
+        # print("CONTEXTO: ", context_to_use)
         full_prompt = f"""
         Instrucciones: Eres un asistente médico.
         Responde DIRECTAMENTE al paciente (usa "usted") basándote SOLO en el TEXTO OFICIAL.
         Usa oraciones completas.
+        Sé empático con el paciente.
 
         TEXTO OFICIAL:
         {context_to_use}

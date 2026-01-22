@@ -18,19 +18,18 @@ class Message(BaseModel):
 class ChatRequest(BaseModel):
     messages: List[Message]
 
+# Read the context file
+try:
+    with open("context.txt", "r", encoding="utf-8") as f:
+        context = f.read()
+except FileNotFoundError:
+    context = "No context available."
+    
 # Post petition
 @app.post("/predict")
 def predict(request: ChatRequest):
-    # Read the context file
-    try:
-        with open("context.txt", "r", encoding="utf-8") as f:
-            context = f.read()
-    except FileNotFoundError:
-        context = "No context available."
-
     chat_history_dicts = [m.model_dump() for m in request.messages]
     # Get the answer from the bot
-    # response = bot.generate_response(request.messages, context)
     response = bot.generate_response(chat_history_dicts, context)
 
     return {"response": response}

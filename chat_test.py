@@ -1,14 +1,14 @@
 import requests
 import json
 
-# URL local donde va a estar escuchando Uvicorn
+# URL for Uvicorn
 URL = "http://127.0.0.1:8000/predict"
 
 def main():
     print("\n Asistente Médico")
     print("Escribir 'salir' para terminar.\n")
     
-    # Historial local para mantener la memoria de la charla
+    # Load chat history for memory
     history = []
 
     while True:
@@ -17,26 +17,27 @@ def main():
             if user_input.lower() in ["salir", "exit"]:
                 break
             
-            # Agregamos tu mensaje
+            # Add message to the history
             history.append({"role": "user", "content": user_input})
             
-            # Preparamos el paquete
+            # Prepare it
             payload = {"messages": history}
 
-            # Enviamos a la API
+            # Send it to the API
             response = requests.post(URL, json=payload)
             
+            # Get the answer
             if response.status_code == 200:
                 bot_reply = response.json()["response"]
                 print(f"BOT: {bot_reply}\n")
                 
-                # Guardamos la respuesta del bot en el historial
+                # Save the answer in the history
                 history.append({"role": "assistant", "content": bot_reply})
             else:
                 print(f"Error {response.status_code}: {response.text}")
 
         except requests.exceptions.ConnectionError:
-            print("ERROR: No se puede conectar a la API. ¿Corriste uvicorn?")
+            print("ERROR: No se puede conectar a la API")
             break
 
 if __name__ == "__main__":
