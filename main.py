@@ -28,6 +28,10 @@ try:
 except FileNotFoundError:
     context = "No context available."
 
+# Get to check the status of the service
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 # Post petition
 @app.post("/predict")
