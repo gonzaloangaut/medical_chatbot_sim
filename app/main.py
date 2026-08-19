@@ -2,12 +2,16 @@ from fastapi import FastAPI
 
 from logic import MedicalAssistance
 from app.schemas import ChatRequest
+from app.chatbot.llm import QwenLLM
 
 # Create the APP
 app = FastAPI()
 
+# Load the LLM
+llm = QwenLLM()
+
 # Load the chatbot
-bot = MedicalAssistance()
+bot = MedicalAssistance(llm=llm)
 
 # Read the context file
 try:

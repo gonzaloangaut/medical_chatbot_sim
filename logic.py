@@ -5,11 +5,8 @@ Classes:
     - MedicalAssistance: Class that represents a chatbot for medical assistance.
 """
 
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
 from typing import List, Dict
 from sentence_transformers import SentenceTransformer, util
-
 
 class MedicalAssistance:
     """
@@ -18,7 +15,10 @@ class MedicalAssistance:
     This class handles the chatbot to generate responses.
     """
 
-    def __init__(self):
+    def __init__(
+            self,
+            llm,
+            ):
         """
         Initialize a new bot.
 
@@ -26,10 +26,8 @@ class MedicalAssistance:
         ----------
         device : str
             The device that is being used to run the program.
-        tokenizer : obj
-            The tokenizer used by the bot.
-        model : obj
-            The model of LLM (or SLM) used.
+        llm : obj
+            The llm we use to generate responses given the messages.
         embedder : obj
             The embedder used.
         chunks : list
@@ -44,30 +42,8 @@ class MedicalAssistance:
         In this project we will use Qwen, which is a family of LLMs. Because of the
         execution time, we will load one model with few parameters.
         """
-        # Use GPU if available
-        # self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        # Use CPU for Docker
         self.device = "cpu"
-        # torch.set_num_threads(4)
-
-        # Defined the model to use
-        # In this case, we use Qwen (SLM)
-        model_name = "Qwen/Qwen2.5-0.5B-Instruct"
-
-        # Load the tokenizer and the model
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        # If GPU:
-        # self.model = AutoModelForCausalLM.from_pretrained(
-        #     model_name,
-        #     dtype="auto",
-        #     device_map="auto"
-        # )
-        # Forced Float32 and cpu for Docker
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_name, dtype=torch.float32, device_map="cpu", low_cpu_mem_usage=True
-        )
-        self.model.eval()
-
+        self.llm = llm
         # Load Embeddings Model
         # self.embedder = SentenceTransformer('all-MiniLM-L6-v2', device=self.device)
         self.embedder = SentenceTransformer(
@@ -236,26 +212,6 @@ class MedicalAssistance:
             {"role": "user", "content": full_prompt},
         ]
 
-        # Apply chat template
-        text = self.tokenizer.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=True
-        )
+        response = self.llm.generate(messages)
 
-        # Tokenize
-        inputs = self.tokenizer([text], return_tensors="pt").to(self.device)
-
-        # Generate the output
-        outputs = self.model.generate(
-            **inputs,
-            max_new_tokens=256,
-            do_sample=True,
-            temperature=0.1,
-            top_p=0.9,
-        )
-
-        # Decode the new response
-        response = self.tokenizer.decode(
-            outputs[0][inputs.input_ids.shape[1] :], skip_special_tokens=True
-        )
-
-        return response.strip()
+        return response
