@@ -6,7 +6,6 @@ Classes:
 """
 
 from typing import List, Dict
-from sentence_transformers import SentenceTransformer, util
 
 class MedicalAssistance:
     """
@@ -18,144 +17,33 @@ class MedicalAssistance:
     def __init__(
             self,
             llm,
+            retriever,
             ):
         """
         Initialize a new bot.
 
         Attributes
         ----------
-        device : str
-            The device that is being used to run the program.
         llm : obj
             The llm we use to generate responses given the messages.
-        embedder : obj
-            The embedder used.
-        chunks : list
-            List to store the chunks of the context.
-        embeddings : torch.Tensor
-            Vector representations of the indexed search keys.
-        is_indexed : bool
-            Boolean to detect if the context is indexed or not.
-
-        Notes
-        -----
-        In this project we will use Qwen, which is a family of LLMs. Because of the
-        execution time, we will load one model with few parameters.
+        retriever : obj
+            The retriever used to manage the messages.
         """
-        self.device = "cpu"
         self.llm = llm
-        # Load Embeddings Model
-        # self.embedder = SentenceTransformer('all-MiniLM-L6-v2', device=self.device)
-        self.embedder = SentenceTransformer(
-            "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-            device=self.device,
-        )
+        self.retriever = retriever
 
-        # Variables to save the vectorial database
-        self.chunks = []
-        self.embeddings = None
-        self.is_indexed = False
-
-    def _ingest_context(self, context_text: str):
-        """
-        Split the text and vectorize it. This is done only once.
-
-        Parameters
-        ----------
-        context_text : str
-            The text to be analized.
-
-        Notes
-        -----
-        The context text must follow this structure:
-
-        - Blocks separated by '###'
-        - Optional separation inside each block using '@@@':
-            <search keys> @@@ <official protocol text>
-
-        Only the search keys are embedded, while the full protocol
-        text is passed to the LLM.
-        """
-        # Separate the text
-        raw_blocks = context_text.split("###")
-
-        # Vectorize the symptoms
-        self.search_keys = []
-        # Protocols given to the LLM
-        self.chunks = []
-
-        for block in raw_blocks:
-            block = block.strip()
-            if not block:
-                continue
-
-            # Search for the separation by @@@
-            if "@@@" in block:
-                # We look for the separation and add the chunk
-                keys, content = block.split("@@@", 1)
-                self.search_keys.append(keys.strip())
-                self.chunks.append(content.strip())
-            else:
-                # Id there is not separation, use everything
-                self.search_keys.append(block)
-                self.chunks.append(block)
-
-        # Vectorize only the symptoms
-        self.embeddings = self.embedder.encode(self.search_keys, convert_to_tensor=True)
-        self.is_indexed = True
-
-    def _retrieve(self, query: str):
-        """
-        Search the piece of text more similar to the query.
-
-        Parameters
-        ----------
-        query : str
-            The user's query.
-
-        Returns
-        ----------
-        text : str
-            The text found.
-
-        Notes
-        -----
-        A minimum cosine similarity threshold of 0.3 is applied to avoid
-        hallucinated responses when no relevant context is found.
-        """
-        # Convert the query to numbers
-        query_embedding = self.embedder.encode(query, convert_to_tensor=True)
-
-        # Search for cosine simililarity and gives the best result
-        hits = util.semantic_search(query_embedding, self.embeddings, top_k=1)
-
-        # Extract the result
-        best_hit = hits[0][0]
-        score = best_hit["score"]
-        doc_id = best_hit["corpus_id"]
-
-        # Security filter
-        if score < 0.3:
-            return None
-
-        return self.chunks[doc_id]
-
-    def generate_response(self, chat_history: List[Dict[str, str]], context: str):
+    def generate_response(self, chat_history: List[Dict[str, str]]):
         """
         Generate a response given the chat history and the medical context.
 
         This method performs:
-        1. Context indexing (if needed)
-        2. Semantic retrieval using a RAG approach
-        3. Prompt construction based on retrieved context
-        4. LLM generative inference
-
+        1. Semantic retrieval using the injected retriever
+        2. Prompt construction
+        3. LLM generative inference
         Parameters
         ----------
         chat_history : List[Dict[str, str]]
             Conversation history containing user and assistant messages.
-        context : str
-            Medical knowledge base used for retrieval and grounding.
 
         Returns
         -------
@@ -173,15 +61,11 @@ class MedicalAssistance:
         extended later if needed.
         """
 
-        # Check if the context is indexed or we index it now
-        if not self.is_indexed:
-            self._ingest_context(context)
-
         # Get the last query
         last_user_message = chat_history[-1]["content"]
 
         # RAG: Search only the relevant information
-        relevant_info = self._retrieve(last_user_message)
+        relevant_info = self.retriever.retrieve(last_user_message)
 
         if relevant_info:
             context_to_use = relevant_info
