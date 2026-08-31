@@ -1,9 +1,10 @@
 from fastapi import FastAPI
 
-from logic import MedicalAssistance
+from app.chatbot.service import MedicalAssistance
 from app.schemas import ChatRequest
 from app.chatbot.llm import QwenLLM
 from app.chatbot.retrieval import SemanticRetriever
+from app.chatbot.knowledge import load_knowledge
 
 # Create the APP
 app = FastAPI()
@@ -12,15 +13,11 @@ app = FastAPI()
 llm = QwenLLM()
 
 # Read the context file
-try:
-    with open("context.txt", "r", encoding="utf-8") as f:
-        context = f.read()
-except FileNotFoundError:
-    context = "No context available."
+knowledge = load_knowledge()
 
 # Load retriever and ingest context
 retriever = SemanticRetriever()
-retriever.ingest_context(context)
+retriever.ingest_context(knowledge)
 
 # Load the chatbot
 bot = MedicalAssistance(
