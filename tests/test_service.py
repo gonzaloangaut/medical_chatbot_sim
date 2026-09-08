@@ -4,7 +4,12 @@ class FakeLLM:
     """
     Fake LLM class to simulate the behavior of the LLM for testing purposes.
     """
+
+    def __init__(self):
+        self.received_messages = None
+
     def generate(self, messages):
+        self.received_messages = messages
         return "RESPUESTA_FAKE"
 
 
@@ -39,3 +44,21 @@ def test_service_returns_llm_response():
 
     # Check that the response is the expected one (Assert)
     assert response == "RESPUESTA_FAKE"
+
+def test_service_uses_retrieved_context():
+    """
+    Check that the service uses the retrieved context.
+    """
+    llm = FakeLLM()
+    retriever = FakeRetriever()
+
+    bot = MedicalAssistance(
+        llm=llm,
+        retriever=retriever,
+    )
+
+    bot.generate_response(
+        [{"role": "user", "content": "Tengo fiebre"}]
+    )
+
+    assert "CONTEXTO_FAKE" in llm.received_messages[1]["content"]
