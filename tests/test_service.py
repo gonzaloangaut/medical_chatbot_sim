@@ -16,7 +16,11 @@ class FakeRetriever:
     """
     Fake Retriever class to simulate the behavior of the Retriever for testing purposes.
     """
+    def __init__(self):
+        self.received_query = None
+
     def retrieve(self, query):
+        self.received_query = query
         return "CONTEXTO_FAKE"
 
 class FakeEmptyRetriever:
@@ -91,3 +95,21 @@ def test_service_uses_fallback_when_no_context_is_found():
     assert "Lo siento, no hay información al respecto" in llm.received_messages[1]["content"]
     # Check that the original user message is included in the messages sent to the LLM
     assert "Tengo un síntoma desconocido" in llm.received_messages[1]["content"]
+
+def test_service_sends_user_query_to_retriever():
+    """
+    Check that the service sends the user's query to the retriever.
+    """
+    llm = FakeLLM()
+    retriever = FakeRetriever()
+
+    bot = MedicalAssistance(
+        llm=llm,
+        retriever=retriever,
+    )
+
+    bot.generate_response(
+        [{"role": "user", "content": "Tengo fiebre"}]
+    )
+    # Check that the retriever received the correct user query
+    assert retriever.received_query == "Tengo fiebre"
