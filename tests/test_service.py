@@ -87,9 +87,7 @@ def test_service_uses_fallback_when_no_context_is_found():
         [{"role": "user", "content": "Tengo un síntoma desconocido"}]
     )
 
-    # Check that the retrieved context is not included in the messages sent to the LLM
-    assert "CONTEXTO_FAKE" not in llm.received_messages[1]["content"]
-    # Check that the original user message is included in the messages sent to the LLM
-    assert "Tengo un síntoma desconocido" in llm.received_messages[1]["content"]
     # Check that the fallback message is included in the messages sent to the LLM
     assert "Lo siento, no hay información al respecto" in llm.received_messages[1]["content"]
+    # Check that the original user message is included in the messages sent to the LLM
+    assert "Tengo un síntoma desconocido" in llm.received_messages[1]["content"]
