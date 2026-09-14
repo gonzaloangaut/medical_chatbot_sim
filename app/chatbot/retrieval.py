@@ -7,6 +7,7 @@ class SemanticRetriever:
     def __init__(
         self,
         model_name: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        embedder=None,
     ):
         """
         Initialize a new retriever.
@@ -23,18 +24,18 @@ class SemanticRetriever:
             List to store the chunks of the context.
         embeddings : torch.Tensor
             Vector representations of the indexed search keys.
-        is_indexed : bool
-            Boolean to detect if the context is indexed or not.
         """
         self.device = "cpu"
         self.model_name = model_name
 
         # Load Embeddings Model
-        # self.embedder = SentenceTransformer('all-MiniLM-L6-v2', device=self.device)
-        self.embedder = SentenceTransformer(
-            model_name,
-            device=self.device,
-        )
+        if embedder is None:
+            self.embedder = SentenceTransformer(
+                model_name,
+                device=self.device,
+            )
+        else:
+            self.embedder = embedder
 
         # Variables to save the vectorial database
         self.search_keys = []
@@ -81,7 +82,7 @@ class SemanticRetriever:
                 self.search_keys.append(keys.strip())
                 self.chunks.append(content.strip())
             else:
-                # Id there is not separation, use everything
+                # If there is not separation, use everything
                 self.search_keys.append(block)
                 self.chunks.append(block)
 
