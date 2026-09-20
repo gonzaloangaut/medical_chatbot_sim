@@ -1,5 +1,6 @@
 import pytest
 from app.chatbot.service import MedicalAssistance
+from app.chatbot.exceptions import GenerationError
 
 class FakeLLM:
     """
@@ -123,9 +124,9 @@ def test_service_sends_user_query_to_retriever():
     # Check that the retriever received the correct user query
     assert retriever.received_query == "Tengo fiebre"
 
-def test_service_propagates_llm_error():
+def test_service_translates_llm_error():
     """
-    Test that the service propagates errors from the LLM.
+    Test that the service translates errors from the LLM.
     """
     llm = FailingLLM()
     retriever = FakeRetriever()
@@ -135,8 +136,8 @@ def test_service_propagates_llm_error():
         retriever=retriever,
     )
 
-    # Check that the service raises a RuntimeError when the LLM fails
-    with pytest.raises(RuntimeError):
+    # Check that the service raises a GenerationError when the LLM fails
+    with pytest.raises(GenerationError):
         bot.generate_response(
             [{"role": "user", "content": "Tengo fiebre"}]
         )

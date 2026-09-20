@@ -6,6 +6,7 @@ Classes:
 """
 
 from typing import List, Dict
+from app.chatbot.exceptions import GenerationError
 
 class MedicalAssistance:
     """
@@ -96,6 +97,9 @@ class MedicalAssistance:
             {"role": "user", "content": full_prompt},
         ]
 
-        response = self.llm.generate(messages)
+        try:
+            response = self.llm.generate(messages)
+        except Exception as error:
+            raise GenerationError("Failed to generate LLM response.") from error
 
         return response
