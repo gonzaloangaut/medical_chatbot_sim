@@ -1,16 +1,18 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+
 class QwenLLM:
     """
     Class that manage the llm.
 
     It receives a message and gives the response.
     """
+
     def __init__(
-            self,
-            model_name: str = "Qwen/Qwen2.5-0.5B-Instruct",
-            ):
+        self,
+        model_name: str = "Qwen/Qwen2.5-0.5B-Instruct",
+    ):
         """
         Initialize a new llm.
 
@@ -31,7 +33,7 @@ class QwenLLM:
 
         # Load the tokenizer and the model
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        
+
         # If GPU:
         # self.model = AutoModelForCausalLM.from_pretrained(
         #     model_name,
@@ -55,7 +57,7 @@ class QwenLLM:
         ----------
         messages : List[Dict[str, str]]
             Conversation history containing user and assistant messages.
-        
+
         Returns
         -------
         response : str
@@ -86,8 +88,7 @@ class QwenLLM:
 
         # Decode the new response
         response = self.tokenizer.decode(
-            outputs[0][inputs.input_ids.shape[1] :], 
+            outputs[0][inputs.input_ids.shape[1] :],
             skip_special_tokens=True,
         )
         return response.strip()
-    

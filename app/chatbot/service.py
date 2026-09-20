@@ -8,6 +8,7 @@ Classes:
 from typing import List, Dict
 from app.chatbot.exceptions import GenerationError
 
+
 class MedicalAssistance:
     """
     Class that represents a chatbot for medical assistance.
@@ -16,10 +17,10 @@ class MedicalAssistance:
     """
 
     def __init__(
-            self,
-            llm,
-            retriever,
-            ):
+        self,
+        llm,
+        retriever,
+    ):
         """
         Initialize a new bot.
 

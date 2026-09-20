@@ -2,11 +2,13 @@ from app.chatbot.retrieval import SemanticRetriever
 from app.chatbot import retrieval as retrieval_module
 from app.chatbot.retrieval import SemanticRetriever
 
+
 class FakeEmbedder:
     """
-    Fake Embedder class to simulate the behavior of the SentenceTransformer 
+    Fake Embedder class to simulate the behavior of the SentenceTransformer
     for testing purposes.
     """
+
     def encode(self, texts, convert_to_tensor=True):
         """
         Simulate the embedding process by returning a fixed string.
@@ -16,7 +18,7 @@ class FakeEmbedder:
 
 def test_ingest_context_splits_keys_and_chunks():
     """
-    Test that the ingest_context method correctly splits the context into 
+    Test that the ingest_context method correctly splits the context into
     search keys and chunks.
     """
     embedder = FakeEmbedder()
@@ -60,13 +62,10 @@ def test_ingest_context_uses_full_block_when_no_separator():
 
     retriever.ingest_context(context)
 
-    assert retriever.search_keys == [
-        "fiebre temperatura alta"
-    ]
+    assert retriever.search_keys == ["fiebre temperatura alta"]
 
-    assert retriever.chunks == [
-        "fiebre temperatura alta"
-    ]
+    assert retriever.chunks == ["fiebre temperatura alta"]
+
 
 def test_retrieve_returns_best_chunk(monkeypatch):
     """
@@ -87,12 +86,14 @@ def test_retrieve_returns_best_chunk(monkeypatch):
     retriever.ingest_context(context)
 
     def fake_semantic_search(query_embedding, embeddings, top_k=1):
-        return [[
-            {
-                "score": 0.8,
-                "corpus_id": 1,
-            }
-        ]]
+        return [
+            [
+                {
+                    "score": 0.8,
+                    "corpus_id": 1,
+                }
+            ]
+        ]
 
     monkeypatch.setattr(
         retrieval_module.util,
@@ -125,12 +126,14 @@ def test_retrieve_returns_none_when_score_is_below_threshold(monkeypatch):
     retriever.ingest_context(context)
 
     def fake_semantic_search(query_embedding, embeddings, top_k=1):
-        return [[
-            {
-                "score": 0.2,
-                "corpus_id": 1,
-            }
-        ]]
+        return [
+            [
+                {
+                    "score": 0.2,
+                    "corpus_id": 1,
+                }
+            ]
+        ]
 
     monkeypatch.setattr(
         retrieval_module.util,

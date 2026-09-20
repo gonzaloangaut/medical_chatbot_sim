@@ -1,5 +1,6 @@
 from pathlib import Path
 
+
 def load_knowledge() -> str:
     """
     Load the knowledge base from a text file.

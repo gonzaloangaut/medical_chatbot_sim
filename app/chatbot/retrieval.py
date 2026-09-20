@@ -1,9 +1,11 @@
 from sentence_transformers import SentenceTransformer, util
 
+
 class SemanticRetriever:
     """
     Class that handles the retriever.
     """
+
     def __init__(
         self,
         model_name: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",

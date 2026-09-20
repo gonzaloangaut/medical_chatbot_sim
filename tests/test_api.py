@@ -10,12 +10,14 @@ class FakeBot:
     """
     Fake Bot class to simulate the behavior of the MedicalAssistance bot for testing purposes.
     """
+
     def __init__(self):
         self.received_history = None
 
     def generate_response(self, chat_history):
         self.received_history = chat_history
         return "RESPUESTA_FAKE"
+
 
 class FailingBot:
     """
@@ -24,7 +26,7 @@ class FailingBot:
 
     def generate_response(self, chat_history):
         raise GenerationError("Generation failed.")
-    
+
 
 @pytest.fixture
 def api_setup():
@@ -56,20 +58,11 @@ def test_predict_returns_bot_response(api_setup):
     client, _ = api_setup
     response = client.post(
         "/predict",
-        json={
-            "messages": [
-                {
-                    "role": "user",
-                    "content": "Tengo fiebre"
-                }
-            ]
-        },
+        json={"messages": [{"role": "user", "content": "Tengo fiebre"}]},
     )
 
     assert response.status_code == 200
-    assert response.json() == {
-        "response": "RESPUESTA_FAKE"
-    }
+    assert response.json() == {"response": "RESPUESTA_FAKE"}
 
 
 def test_predict_rejects_message_without_content(api_setup):
@@ -79,13 +72,7 @@ def test_predict_rejects_message_without_content(api_setup):
     client, _ = api_setup
     response = client.post(
         "/predict",
-        json={
-            "messages": [
-                {
-                    "role": "user"
-                }
-            ]
-        },
+        json={"messages": [{"role": "user"}]},
     )
 
     assert response.status_code == 422
@@ -98,13 +85,7 @@ def test_predict_uses_default_user_role(api_setup):
     client, bot = api_setup
     response = client.post(
         "/predict",
-        json={
-            "messages": [
-                {
-                    "content": "Tengo fiebre"
-                }
-            ]
-        },
+        json={"messages": [{"content": "Tengo fiebre"}]},
     )
 
     assert response.status_code == 200
@@ -120,12 +101,11 @@ def test_predict_rejects_empty_messages(api_setup):
 
     response = client.post(
         "/predict",
-        json={
-            "messages": []
-        },
+        json={"messages": []},
     )
 
     assert response.status_code == 422
+
 
 def test_predict_returns_503_when_generation_fails():
     """
