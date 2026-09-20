@@ -1,5 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
+from app.chatbot.exceptions import GenerationError
 from app.schemas import ChatRequest
 
 
@@ -26,7 +27,13 @@ def create_app(bot):
             for message in request.messages
         ]
 
-        response = bot.generate_response(chat_history_dicts)
+        try:
+            response = bot.generate_response(chat_history_dicts)
+        except GenerationError as error:
+            raise HTTPException(
+                status_code=503,
+                detail="Response generation is temporarily unavailable.",
+            ) from error
 
         return {"response": response}
 

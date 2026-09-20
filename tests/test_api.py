@@ -3,6 +3,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api import create_app
+from app.chatbot.exceptions import GenerationError
 
 
 class FakeBot:
@@ -16,6 +17,14 @@ class FakeBot:
         self.received_history = chat_history
         return "RESPUESTA_FAKE"
 
+class FailingBot:
+    """
+    Fake bot that simulates a generation failure.
+    """
+
+    def generate_response(self, chat_history):
+        raise GenerationError("Generation failed.")
+    
 
 @pytest.fixture
 def api_setup():
@@ -117,3 +126,28 @@ def test_predict_rejects_empty_messages(api_setup):
     )
 
     assert response.status_code == 422
+
+def test_predict_returns_503_when_generation_fails():
+    """
+    Test that the /predict endpoint returns a 503 status code when the bot fails to generate a response.
+    """
+    bot = FailingBot()
+    app = create_app(bot)
+    client = TestClient(app)
+
+    response = client.post(
+        "/predict",
+        json={
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "Tengo fiebre",
+                }
+            ]
+        },
+    )
+
+    assert response.status_code == 503
+    assert response.json() == {
+        "detail": "Response generation is temporarily unavailable."
+    }
