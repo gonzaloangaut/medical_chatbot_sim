@@ -7,6 +7,8 @@ class Message(BaseModel):
     role: str = Field(default="user", description="Quién envía el mensaje")
     content: str = Field(..., examples=["Tengo fiebre."])
 
-
 class ChatRequest(BaseModel):
-    messages: List[Message]
+    messages: List[Message] = Field(
+        ...,
+        min_length=1,
+    )

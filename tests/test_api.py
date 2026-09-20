@@ -11,7 +11,7 @@ class FakeBot:
     """
     def __init__(self):
         self.received_history = None
-        
+
     def generate_response(self, chat_history):
         self.received_history = chat_history
         return "RESPUESTA_FAKE"
@@ -101,3 +101,19 @@ def test_predict_uses_default_user_role(api_setup):
     assert response.status_code == 200
     assert bot.received_history[0]["role"] == "user"
     assert bot.received_history[0]["content"] == "Tengo fiebre"
+
+
+def test_predict_rejects_empty_messages(api_setup):
+    """
+    Test that /predict rejects a request with an empty messages list.
+    """
+    client, _ = api_setup
+
+    response = client.post(
+        "/predict",
+        json={
+            "messages": []
+        },
+    )
+
+    assert response.status_code == 422
