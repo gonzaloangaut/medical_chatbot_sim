@@ -1,4 +1,3 @@
-from app.chatbot.retrieval import SemanticRetriever
 from app.chatbot import retrieval as retrieval_module
 from app.chatbot.retrieval import SemanticRetriever
 

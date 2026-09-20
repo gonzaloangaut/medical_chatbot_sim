@@ -1,4 +1,5 @@
 import pytest
+import logging
 
 from fastapi.testclient import TestClient
 
@@ -107,7 +108,7 @@ def test_predict_rejects_empty_messages(api_setup):
     assert response.status_code == 422
 
 
-def test_predict_returns_503_when_generation_fails():
+def test_predict_returns_503_when_generation_fails(caplog):
     """
     Test that the /predict endpoint returns a 503 status code when the bot fails to generate a response.
     """
@@ -115,19 +116,21 @@ def test_predict_returns_503_when_generation_fails():
     app = create_app(bot)
     client = TestClient(app)
 
-    response = client.post(
-        "/predict",
-        json={
-            "messages": [
-                {
-                    "role": "user",
-                    "content": "Tengo fiebre",
-                }
-            ]
-        },
-    )
+    with caplog.at_level(logging.ERROR):
+        response = client.post(
+            "/predict",
+            json={
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "Tengo fiebre",
+                    }
+                ]
+            },
+        )
 
     assert response.status_code == 503
     assert response.json() == {
         "detail": "Response generation is temporarily unavailable."
     }
+    assert "Response generation failed." in caplog.text
