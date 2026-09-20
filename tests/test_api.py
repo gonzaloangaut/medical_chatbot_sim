@@ -1,6 +1,6 @@
-import pytest
 import logging
 
+import pytest
 from fastapi.testclient import TestClient
 
 from app.api import create_app
@@ -9,7 +9,8 @@ from app.chatbot.exceptions import GenerationError
 
 class FakeBot:
     """
-    Fake Bot class to simulate the behavior of the MedicalAssistance bot for testing purposes.
+    Fake Bot class to simulate the behavior of the MedicalAssistance bot
+    for testing purposes.
     """
 
     def __init__(self):
@@ -32,7 +33,8 @@ class FailingBot:
 @pytest.fixture
 def api_setup():
     """
-    Fixture to set up the FastAPI test client and the fake bot for testing the API endpoints.
+    Fixture to set up the FastAPI test client and the fake bot for testing
+    the API endpoints.
     """
     bot = FakeBot()
     app = create_app(bot)
@@ -43,7 +45,8 @@ def api_setup():
 
 def test_health_returns_ok(api_setup):
     """
-    Test that the /health endpoint returns a 200 status code and the expected JSON response.
+    Test that the /health endpoint returns a 200 status code and the expected
+    JSON response.
     """
     client, _ = api_setup
     response = client.get("/health")
@@ -54,7 +57,8 @@ def test_health_returns_ok(api_setup):
 
 def test_predict_returns_bot_response(api_setup):
     """
-    Test that the /predict endpoint returns a 200 status code and the expected JSON response.
+    Test that the /predict endpoint returns a 200 status code and the expected
+    JSON response.
     """
     client, _ = api_setup
     response = client.post(
@@ -68,7 +72,8 @@ def test_predict_returns_bot_response(api_setup):
 
 def test_predict_rejects_message_without_content(api_setup):
     """
-    Test that the /predict endpoint returns a 422 status code when a message is missing the 'content' field.
+    Test that the /predict endpoint returns a 422 status code when a message
+    is missing the 'content' field.
     """
     client, _ = api_setup
     response = client.post(
@@ -81,7 +86,8 @@ def test_predict_rejects_message_without_content(api_setup):
 
 def test_predict_uses_default_user_role(api_setup):
     """
-    Test that the /predict endpoint uses the default role 'user' when the role is not provided in the message.
+    Test that the /predict endpoint uses the default role 'user' when the role
+    is not provided in the message.
     """
     client, bot = api_setup
     response = client.post(
@@ -110,7 +116,8 @@ def test_predict_rejects_empty_messages(api_setup):
 
 def test_predict_returns_503_when_generation_fails(caplog):
     """
-    Test that the /predict endpoint returns a 503 status code when the bot fails to generate a response.
+    Test that the /predict endpoint returns a 503 status code when the bot fails
+    to generate a response.
     """
     bot = FailingBot()
     app = create_app(bot)

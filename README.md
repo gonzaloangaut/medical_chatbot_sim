@@ -31,13 +31,25 @@ Este proyecto es una simulación de un Asistente Médico, cuya tarea es responde
 
 ## Estructura del repositorio
 
-- `context.txt` es la base de conocimiento con las enfermedades, protocolos e información administrativa;
-- `logic.py` contiene la clase que define al asistente médico;
-- `main.py` contiene el servidor de API;
-- `chat_test.py` es un ejemplo de un cliente. Al correrlo, se puede tener una conversación con el bot;
-- `requirements.txt` contiene las dependencias del entorno virtual;
-- `Dockerfile` contiene la configuración para construir la imagen del Docker.
+```text
+app/
+├── main.py              # Ensambla los componentes de la aplicación
+├── api.py               # Define la API FastAPI
+├── schemas.py           # Modelos y validación de requests
+└── chatbot/
+    ├── service.py       # Coordina retrieval, prompt y generación
+    ├── llm.py           # Implementación del modelo Qwen
+    ├── retrieval.py     # Retrieval semántico
+    ├── knowledge.py     # Carga de la base de conocimiento
+    └── exceptions.py    # Excepciones propias de la aplicación
 
+data/
+└── context.txt          # Base de conocimiento
+
+tests/
+├── test_api.py
+├── test_retrieval.py
+└── test_service.py
 ---
 
 ## Instrucciones para la ejecución
@@ -56,7 +68,7 @@ Luego, hay 2 opciones: con o sin Docker.
 Tener instalado Docker.
 
 **2. Construir la imagen**
-En este paso se descargan los modelos a través del Docker, por lo que puede tardar unos minutos.
+La construcción puede tardar algunos minutos debido a la instalación de PyTorch y las dependencias del proyecto. La primera ejecución puede tardar más mientras se descargan los modelos necesarios.
 Para esto, correr en la terminal:
 
 ```bash
@@ -102,7 +114,7 @@ pip install -r requirements.txt
 **3. Iniciar la API**
 
 ```bash
-uvicorn main:app --host 0.0.0.0 --port 8000
+uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
 **4. Probar el Chatbot**

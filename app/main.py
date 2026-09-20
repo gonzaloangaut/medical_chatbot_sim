@@ -1,8 +1,8 @@
 from app.api import create_app
-from app.chatbot.service import MedicalAssistance
+from app.chatbot.knowledge import load_knowledge
 from app.chatbot.llm import QwenLLM
 from app.chatbot.retrieval import SemanticRetriever
-from app.chatbot.knowledge import load_knowledge
+from app.chatbot.service import MedicalAssistance
 
 # Read the context file
 knowledge = load_knowledge()

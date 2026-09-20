@@ -1,5 +1,4 @@
 from pydantic import BaseModel, Field
-from typing import List
 
 
 # Give structure to the API
@@ -9,7 +8,7 @@ class Message(BaseModel):
 
 
 class ChatRequest(BaseModel):
-    messages: List[Message] = Field(
+    messages: list[Message] = Field(
         ...,
         min_length=1,
     )

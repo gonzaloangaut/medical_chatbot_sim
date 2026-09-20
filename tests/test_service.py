@@ -1,6 +1,7 @@
 import pytest
-from app.chatbot.service import MedicalAssistance
+
 from app.chatbot.exceptions import GenerationError
+from app.chatbot.service import MedicalAssistance
 
 
 class FakeLLM:
@@ -18,7 +19,8 @@ class FakeLLM:
 
 class FakeRetriever:
     """
-    Fake Retriever class to simulate the behavior of the Retriever for testing purposes.
+    Fake Retriever class to simulate the behavior of the Retriever for
+    testing purposes.
     """
 
     def __init__(self):

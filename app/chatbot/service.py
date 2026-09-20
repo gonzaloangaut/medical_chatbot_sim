@@ -5,7 +5,6 @@ Classes:
     - MedicalAssistance: Class that represents a chatbot for medical assistance.
 """
 
-from typing import List, Dict
 from app.chatbot.exceptions import GenerationError
 
 
@@ -34,7 +33,7 @@ class MedicalAssistance:
         self.llm = llm
         self.retriever = retriever
 
-    def generate_response(self, chat_history: List[Dict[str, str]]):
+    def generate_response(self, chat_history: list[dict[str, str]]):
         """
         Generate a response given the chat history and the medical context.
 
@@ -79,7 +78,8 @@ class MedicalAssistance:
         # print("CONTEXTO: ", context_to_use)
         full_prompt = f"""
         Instrucciones: Eres un asistente médico.
-        Responde DIRECTAMENTE al paciente (usa "usted") basándote SOLO en el TEXTO OFICIAL.
+        Responde DIRECTAMENTE al paciente (usa "usted") basándote SOLO en el 
+        TEXTO OFICIAL.
         Usa oraciones completas.
         Sé empático con el paciente.
 
