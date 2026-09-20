@@ -1,3 +1,4 @@
+import pytest
 from app.chatbot.service import MedicalAssistance
 
 class FakeLLM:
@@ -29,6 +30,14 @@ class FakeEmptyRetriever:
     """
     def retrieve(self, query):
         return None
+
+class FailingLLM:
+    """
+    Fake LLM that simulates a generation failure.
+    """
+    def generate(self, messages):
+        raise RuntimeError("LLM failure")
+
     
 def test_service_returns_llm_response():
     """
@@ -113,3 +122,21 @@ def test_service_sends_user_query_to_retriever():
     )
     # Check that the retriever received the correct user query
     assert retriever.received_query == "Tengo fiebre"
+
+def test_service_propagates_llm_error():
+    """
+    Test that the service propagates errors from the LLM.
+    """
+    llm = FailingLLM()
+    retriever = FakeRetriever()
+
+    bot = MedicalAssistance(
+        llm=llm,
+        retriever=retriever,
+    )
+
+    # Check that the service raises a RuntimeError when the LLM fails
+    with pytest.raises(RuntimeError):
+        bot.generate_response(
+            [{"role": "user", "content": "Tengo fiebre"}]
+        )
