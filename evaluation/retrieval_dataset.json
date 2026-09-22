@@ -1,0 +1,802 @@
+[
+  {
+    "case_id": "fever_001",
+    "query": "Tengo fiebre",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "fever_002",
+    "query": "Tengo 38.5 de temperatura",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "fever_003",
+    "query": "El termómetro me marca 38.7 desde anoche",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "fever_004",
+    "query": "Estoy con escalofríos y siento el cuerpo muy caliente",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "fever_005",
+    "query": "Creo que levanté temperatura y estoy bastante decaído",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "fever_006",
+    "query": "Desde ayer estoy hecho bolsa, con chuchos y mucho calor",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "fever_007",
+    "query": "Me desperté temblando y después sentía que me hervía el cuerpo",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "fever_008",
+    "query": "Estoy cansado, con frío por momentos y después mucho calor",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "headache_001",
+    "query": "Tengo dolor de cabeza",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "headache_002",
+    "query": "Tengo migraña",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "headache_003",
+    "query": "Me duele mucho la cabeza desde esta mañana",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "headache_004",
+    "query": "Tengo puntadas cerca de la sien",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "headache_005",
+    "query": "Me duele la nuca y estoy un poco mareado",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "headache_006",
+    "query": "Siento que me explota la cabeza",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "headache_007",
+    "query": "Desde hace unas horas tengo una presión muy molesta a los costados de la cabeza",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "headache_008",
+    "query": "Estoy tratando de trabajar pero tengo puntadas y no puedo concentrarme",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "respiratory_001",
+    "query": "Tengo tos y dolor de garganta",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "respiratory_002",
+    "query": "Estoy resfriado y congestionado",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "respiratory_003",
+    "query": "Me pica mucho la garganta y estoy estornudando",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "respiratory_004",
+    "query": "Tengo la nariz tapada y bastante moco desde ayer",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "respiratory_005",
+    "query": "Me molesta al tragar y tengo tos con flema",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "respiratory_006",
+    "query": "Estoy hecho un trapo, no paro de estornudar y tengo la nariz completamente tapada",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "respiratory_007",
+    "query": "Desde ayer tengo una molestia constante cuando trago y estoy largando mucha secreción",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "respiratory_008",
+    "query": "Dormí mal, estoy cansado y además tengo la nariz cerrada y la garganta irritada",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "abdominal_001",
+    "query": "Me duele la panza",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "abdominal_002",
+    "query": "Tengo vómitos y diarrea",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "abdominal_003",
+    "query": "Desde anoche tengo náuseas y dolor de estómago",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "abdominal_004",
+    "query": "Estoy con mucha acidez y me cayó mal la comida",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "abdominal_005",
+    "query": "Me siento descompuesto y tengo ganas de vomitar",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "abdominal_006",
+    "query": "Tengo el estómago dado vuelta desde hace varias horas",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "abdominal_007",
+    "query": "No puedo comer tranquilo porque todo me cae pesado y estoy con ganas de devolver",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "abdominal_008",
+    "query": "Desde ayer estoy medio descompuesto, fui varias veces al baño y me molesta el estómago",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "trauma_001",
+    "query": "Me golpeé la rodilla",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "trauma_002",
+    "query": "Me torcí el tobillo",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "trauma_003",
+    "query": "Me caí y me quedó un moretón grande",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "trauma_004",
+    "query": "Me di un golpe fuerte y tengo un chichón",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "trauma_005",
+    "query": "Pisando mal me doblé el tobillo y ahora me duele",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "trauma_006",
+    "query": "Ayer me fui al piso y hoy tengo toda la zona morada",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "trauma_007",
+    "query": "Me lastimé haciendo ejercicio y desde entonces tengo la articulación dolorida",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "trauma_008",
+    "query": "Tuve un accidente leve y ahora tengo una zona hinchada y con un moretón",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "appointments_001",
+    "query": "Quiero sacar un turno",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "appointments_002",
+    "query": "Necesito pedir una cita con un médico",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "appointments_003",
+    "query": "¿Cómo hago para reservar una consulta?",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "appointments_004",
+    "query": "Quisiera agendar una visita con un especialista",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "appointments_005",
+    "query": "¿Hay algún teléfono para pedir una consulta?",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "intent_description",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "appointments_006",
+    "query": "Necesito que me vea un médico, ¿cómo coordino para ir?",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "appointments_007",
+    "query": "Quiero organizar una consulta para la semana que viene pero no sé por dónde empezar",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "appointments_008",
+    "query": "¿Qué tengo que hacer para que me atienda un especialista?",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "intent_description",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "hours_location_001",
+    "query": "¿Cuál es la dirección de la clínica?",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "hours_location_002",
+    "query": "¿En qué horario atienden?",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "hours_location_003",
+    "query": "¿Dónde queda el centro médico?",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "hours_location_004",
+    "query": "¿Hasta qué hora puedo ir durante la semana?",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "hours_location_005",
+    "query": "¿La guardia está abierta todo el día?",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "intent_description",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "hours_location_006",
+    "query": "Necesito ir personalmente pero no sé dónde están",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "hours_location_007",
+    "query": "Si salgo tarde del trabajo, ¿todavía llego a que me atiendan?",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "indirect",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "hours_location_008",
+    "query": "Quería acercarme el sábado y no sé si estará abierto",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "indirect",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "insurance_payments_001",
+    "query": "¿Atienden OSDE?",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "insurance_payments_002",
+    "query": "¿Puedo pagar con tarjeta?",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "insurance_payments_003",
+    "query": "Quería saber qué obras sociales reciben",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "insurance_payments_004",
+    "query": "Tengo Swiss Medical, ¿me puedo atender ahí?",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "intent_description",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "insurance_payments_005",
+    "query": "Si voy particular, ¿qué medios de pago aceptan?",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "insurance_payments_006",
+    "query": "No sé si mi cobertura médica sirve para atenderme con ustedes",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "indirect",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "insurance_payments_007",
+    "query": "¿Puedo ir sin obra social y pagar la consulta por mi cuenta?",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "insurance_payments_008",
+    "query": "Quiero atenderme pero antes necesito saber cómo se abona y si aceptan mi cobertura",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "greeting_001",
+    "query": "Hola",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "greeting_002",
+    "query": "Buenas tardes",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "greeting_003",
+    "query": "Hola, ¿cómo estás?",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "greeting_004",
+    "query": "Buen día, quería hacer una consulta",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "greeting_with_noise",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "greeting_005",
+    "query": "Buenas noches, necesito hacerte una pregunta",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "greeting_with_noise",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "greeting_006",
+    "query": "Qué tal, ¿todo bien?",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "greeting_007",
+    "query": "Hola che, quería hablar con el asistente",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "greeting_008",
+    "query": "Buenas, ¿hay alguien por acá?",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "out_of_domain_001",
+    "query": "¿Cómo hago una pizza casera?",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "out_of_domain_002",
+    "query": "¿Quién es mejor, Messi o Maradona?",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "out_of_domain_003",
+    "query": "¿Va a llover mañana?",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "out_of_domain_004",
+    "query": "Recomendame una película para ver esta noche",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "out_of_domain_005",
+    "query": "¿Cómo puedo aprender Python desde cero?",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "out_of_domain_006",
+    "query": "Tengo ganas de cocinar algo rico pero no sé qué preparar",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "out_of_domain_007",
+    "query": "Estoy aburrido, contame algo gracioso",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "out_of_domain_008",
+    "query": "Quiero escuchar algo tranquilo mientras trabajo, ¿qué me recomendás?",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "unknown_ood_001",
+    "query": "¿Cuál es la capital de Mongolia?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "unknown_ood_002",
+    "query": "¿Cuántas lunas tiene Júpiter?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "unknown_ood_003",
+    "query": "¿Quién pintó el Guernica?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "unknown_ood_004",
+    "query": "¿Qué significa la palabra entropía?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "unknown_ood_005",
+    "query": "¿Cómo cuido una orquídea para que no se seque?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "unknown_ood_006",
+    "query": "¿Cómo puedo mejorar mi pronunciación en inglés?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "unknown_ood_007",
+    "query": "Necesito organizar mejor mis gastos mensuales",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "unknown_ood_008",
+    "query": "Estoy pensando en aprender un idioma nuevo pero no sé cuál elegir",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "unknown_ood_009",
+    "query": "¿Cómo hago para concentrarme mejor cuando estudio?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "unknown_ood_010",
+    "query": "Quiero saber qué necesito para viajar a otro país",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "unsupported_medical_001",
+    "query": "Me salió un sarpullido rojo en los brazos",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "unsupported_medical_002",
+    "query": "Me arde cuando orino",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "easy"
+  },
+  {
+    "case_id": "unsupported_medical_003",
+    "query": "Me duele mucho una muela",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "unsupported_medical_004",
+    "query": "Tengo el ojo rojo y me pica",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "unsupported_medical_005",
+    "query": "Me duele el oído desde ayer",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "medium"
+  },
+  {
+    "case_id": "unsupported_medical_006",
+    "query": "A veces siento que el corazón me late muy rápido",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "unsupported_medical_007",
+    "query": "Me salió una mancha en la piel que me da mucha picazón",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "unsupported_medical_008",
+    "query": "Últimamente me cuesta mucho dormir y me despierto varias veces",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "unsupported_medical_009",
+    "query": "Estoy muy ansioso y siento que no puedo relajarme",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "hard"
+  },
+  {
+    "case_id": "unsupported_medical_010",
+    "query": "Tengo un dolor fuerte en el pecho cuando hago esfuerzo",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "hard"
+  }
+]
