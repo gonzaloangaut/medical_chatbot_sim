@@ -1,0 +1,6602 @@
+[
+  {
+    "case_id": "fever_001",
+    "query": "Tengo fiebre",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "fever",
+    "best_score": 0.6667430400848389,
+    "retrieved_id": "fever",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "fever",
+        "score": 0.6667430400848389
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.6096863746643066
+      },
+      {
+        "rank": 3,
+        "id": "headache",
+        "score": 0.5492120385169983
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.4260847568511963
+      },
+      {
+        "rank": 5,
+        "id": "greeting",
+        "score": 0.24636825919151306
+      },
+      {
+        "rank": 6,
+        "id": "hours_location",
+        "score": 0.18111678957939148
+      },
+      {
+        "rank": 7,
+        "id": "trauma",
+        "score": 0.1654168963432312
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.0965028926730156
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.011328473687171936
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.027254842221736908
+      }
+    ]
+  },
+  {
+    "case_id": "fever_002",
+    "query": "Tengo 38.5 de temperatura",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "fever",
+    "best_score": 0.6099554300308228,
+    "retrieved_id": "fever",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "fever",
+        "score": 0.6099554300308228
+      },
+      {
+        "rank": 2,
+        "id": "greeting",
+        "score": 0.2471703290939331
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.22831949591636658
+      },
+      {
+        "rank": 4,
+        "id": "headache",
+        "score": 0.1267346292734146
+      },
+      {
+        "rank": 5,
+        "id": "hours_location",
+        "score": 0.08957846462726593
+      },
+      {
+        "rank": 6,
+        "id": "abdominal",
+        "score": 0.08939553797245026
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.03339794650673866
+      },
+      {
+        "rank": 8,
+        "id": "out_of_domain",
+        "score": -0.041776031255722046
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": -0.043776653707027435
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.07885554432868958
+      }
+    ]
+  },
+  {
+    "case_id": "fever_003",
+    "query": "El termómetro me marca 38.7 desde anoche",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "fever",
+    "best_score": 0.5209861993789673,
+    "retrieved_id": "fever",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "fever",
+        "score": 0.5209861993789673
+      },
+      {
+        "rank": 2,
+        "id": "greeting",
+        "score": 0.20501825213432312
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.13540932536125183
+      },
+      {
+        "rank": 4,
+        "id": "hours_location",
+        "score": 0.11296366900205612
+      },
+      {
+        "rank": 5,
+        "id": "headache",
+        "score": 0.11209525167942047
+      },
+      {
+        "rank": 6,
+        "id": "appointments",
+        "score": 0.027682606130838394
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": 0.025188103318214417
+      },
+      {
+        "rank": 8,
+        "id": "out_of_domain",
+        "score": -0.06468662619590759
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": -0.09300104528665543
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.09356573224067688
+      }
+    ]
+  },
+  {
+    "case_id": "fever_004",
+    "query": "Estoy con escalofríos y siento el cuerpo muy caliente",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium",
+    "predicted_id": "fever",
+    "best_score": 0.7113145589828491,
+    "retrieved_id": "fever",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "fever",
+        "score": 0.7113145589828491
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.3644236922264099
+      },
+      {
+        "rank": 3,
+        "id": "headache",
+        "score": 0.3309144079685211
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.2756618857383728
+      },
+      {
+        "rank": 5,
+        "id": "greeting",
+        "score": 0.23488782346248627
+      },
+      {
+        "rank": 6,
+        "id": "hours_location",
+        "score": 0.09113088250160217
+      },
+      {
+        "rank": 7,
+        "id": "trauma",
+        "score": 0.04536658897995949
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.04519389569759369
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.027394749224185944
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.02508814074099064
+      }
+    ]
+  },
+  {
+    "case_id": "fever_005",
+    "query": "Creo que levanté temperatura y estoy bastante decaído",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "fever",
+    "best_score": 0.5846052765846252,
+    "retrieved_id": "fever",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "fever",
+        "score": 0.5846052765846252
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.29680174589157104
+      },
+      {
+        "rank": 3,
+        "id": "headache",
+        "score": 0.2886657118797302
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.2075149118900299
+      },
+      {
+        "rank": 5,
+        "id": "greeting",
+        "score": 0.17878131568431854
+      },
+      {
+        "rank": 6,
+        "id": "hours_location",
+        "score": 0.08573073148727417
+      },
+      {
+        "rank": 7,
+        "id": "trauma",
+        "score": 0.07110125571489334
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.037909530103206635
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": -0.04264424741268158
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.10339956730604172
+      }
+    ]
+  },
+  {
+    "case_id": "fever_006",
+    "query": "Desde ayer estoy hecho bolsa, con chuchos y mucho calor",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard",
+    "predicted_id": "fever",
+    "best_score": 0.32691192626953125,
+    "retrieved_id": "fever",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "fever",
+        "score": 0.32691192626953125
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.26495492458343506
+      },
+      {
+        "rank": 3,
+        "id": "greeting",
+        "score": 0.26293492317199707
+      },
+      {
+        "rank": 4,
+        "id": "headache",
+        "score": 0.21935395896434784
+      },
+      {
+        "rank": 5,
+        "id": "abdominal",
+        "score": 0.1615774929523468
+      },
+      {
+        "rank": 6,
+        "id": "out_of_domain",
+        "score": 0.11471207439899445
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.07931926846504211
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.04773943871259689
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": 0.04228661581873894
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.06828484684228897
+      }
+    ]
+  },
+  {
+    "case_id": "fever_007",
+    "query": "Me desperté temblando y después sentía que me hervía el cuerpo",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "hard",
+    "predicted_id": "headache",
+    "best_score": 0.4813171327114105,
+    "retrieved_id": "headache",
+    "expected_rank": 2,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.4813171327114105
+      },
+      {
+        "rank": 2,
+        "id": "fever",
+        "score": 0.38550865650177
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.34162604808807373
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.3036532402038574
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.21984849870204926
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.1861826479434967
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.021896082907915115
+      },
+      {
+        "rank": 8,
+        "id": "out_of_domain",
+        "score": 0.0088972682133317
+      },
+      {
+        "rank": 9,
+        "id": "appointments",
+        "score": -0.0175887793302536
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.08760710805654526
+      }
+    ]
+  },
+  {
+    "case_id": "fever_008",
+    "query": "Estoy cansado, con frío por momentos y después mucho calor",
+    "expected_id": "fever",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard",
+    "predicted_id": "fever",
+    "best_score": 0.6138017773628235,
+    "retrieved_id": "fever",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "fever",
+        "score": 0.6138017773628235
+      },
+      {
+        "rank": 2,
+        "id": "greeting",
+        "score": 0.3524152338504791
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.34126755595207214
+      },
+      {
+        "rank": 4,
+        "id": "headache",
+        "score": 0.32904940843582153
+      },
+      {
+        "rank": 5,
+        "id": "abdominal",
+        "score": 0.26175209879875183
+      },
+      {
+        "rank": 6,
+        "id": "hours_location",
+        "score": 0.1655709445476532
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.1089504063129425
+      },
+      {
+        "rank": 8,
+        "id": "out_of_domain",
+        "score": 0.10817623138427734
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": 0.09474792331457138
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": 0.017101772129535675
+      }
+    ]
+  },
+  {
+    "case_id": "headache_001",
+    "query": "Tengo dolor de cabeza",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "headache",
+    "best_score": 0.7746689915657043,
+    "retrieved_id": "headache",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.7746689915657043
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.47370967268943787
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.3779488503932953
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.3704749047756195
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.24036195874214172
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.2233903855085373
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.15286806225776672
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.13581515848636627
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.05612249672412872
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": 0.02967575378715992
+      }
+    ]
+  },
+  {
+    "case_id": "headache_002",
+    "query": "Tengo migraña",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "headache",
+    "best_score": 0.730157732963562,
+    "retrieved_id": "headache",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.730157732963562
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.4332490563392639
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.3677450716495514
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.35543763637542725
+      },
+      {
+        "rank": 5,
+        "id": "greeting",
+        "score": 0.22189491987228394
+      },
+      {
+        "rank": 6,
+        "id": "trauma",
+        "score": 0.18421967327594757
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.12057708948850632
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.09312678128480911
+      },
+      {
+        "rank": 9,
+        "id": "insurance_payments",
+        "score": 0.023592110723257065
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": 0.020405691117048264
+      }
+    ]
+  },
+  {
+    "case_id": "headache_003",
+    "query": "Me duele mucho la cabeza desde esta mañana",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "headache",
+    "best_score": 0.7511014342308044,
+    "retrieved_id": "headache",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.7511014342308044
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.45832160115242004
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.34356844425201416
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.3332952857017517
+      },
+      {
+        "rank": 5,
+        "id": "greeting",
+        "score": 0.24269044399261475
+      },
+      {
+        "rank": 6,
+        "id": "trauma",
+        "score": 0.21786125004291534
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.14281943440437317
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.11354877799749374
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.017850439995527267
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.041318975389003754
+      }
+    ]
+  },
+  {
+    "case_id": "headache_004",
+    "query": "Tengo puntadas cerca de la sien",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium",
+    "predicted_id": "greeting",
+    "best_score": 0.3756418824195862,
+    "retrieved_id": "greeting",
+    "expected_rank": 5,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.3756418824195862
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.2918217182159424
+      },
+      {
+        "rank": 3,
+        "id": "appointments",
+        "score": 0.2320500761270523
+      },
+      {
+        "rank": 4,
+        "id": "trauma",
+        "score": 0.21078842878341675
+      },
+      {
+        "rank": 5,
+        "id": "headache",
+        "score": 0.19635364413261414
+      },
+      {
+        "rank": 6,
+        "id": "out_of_domain",
+        "score": 0.15370433032512665
+      },
+      {
+        "rank": 7,
+        "id": "fever",
+        "score": 0.1353612244129181
+      },
+      {
+        "rank": 8,
+        "id": "respiratory",
+        "score": 0.08670586347579956
+      },
+      {
+        "rank": 9,
+        "id": "abdominal",
+        "score": 0.0063494667410850525
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.013519339263439178
+      }
+    ]
+  },
+  {
+    "case_id": "headache_005",
+    "query": "Me duele la nuca y estoy un poco mareado",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium",
+    "predicted_id": "headache",
+    "best_score": 0.6352386474609375,
+    "retrieved_id": "headache",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.6352386474609375
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.4862162470817566
+      },
+      {
+        "rank": 3,
+        "id": "abdominal",
+        "score": 0.47350838780403137
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.3582981824874878
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.3257395625114441
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.17765873670578003
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.10080321878194809
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.05325435847043991
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": -0.02480761520564556
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.0973849669098854
+      }
+    ]
+  },
+  {
+    "case_id": "headache_006",
+    "query": "Siento que me explota la cabeza",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard",
+    "predicted_id": "headache",
+    "best_score": 0.4541127681732178,
+    "retrieved_id": "headache",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.4541127681732178
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.260222464799881
+      },
+      {
+        "rank": 3,
+        "id": "greeting",
+        "score": 0.22498685121536255
+      },
+      {
+        "rank": 4,
+        "id": "trauma",
+        "score": 0.19209906458854675
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.18057438731193542
+      },
+      {
+        "rank": 6,
+        "id": "abdominal",
+        "score": 0.16940739750862122
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.06347355246543884
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.0614846795797348
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.05146345496177673
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.13688556849956512
+      }
+    ]
+  },
+  {
+    "case_id": "headache_007",
+    "query": "Desde hace unas horas tengo una presión muy molesta a los costados de la cabeza",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "hard",
+    "predicted_id": "headache",
+    "best_score": 0.5928220152854919,
+    "retrieved_id": "headache",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.5928220152854919
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.41180577874183655
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.3272983431816101
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.2877989709377289
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.27285581827163696
+      },
+      {
+        "rank": 6,
+        "id": "appointments",
+        "score": 0.16132710874080658
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.15318889915943146
+      },
+      {
+        "rank": 8,
+        "id": "greeting",
+        "score": 0.11565203219652176
+      },
+      {
+        "rank": 9,
+        "id": "insurance_payments",
+        "score": -0.018753115087747574
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": -0.0640142410993576
+      }
+    ]
+  },
+  {
+    "case_id": "headache_008",
+    "query": "Estoy tratando de trabajar pero tengo puntadas y no puedo concentrarme",
+    "expected_id": "headache",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard",
+    "predicted_id": "appointments",
+    "best_score": 0.264085054397583,
+    "retrieved_id": null,
+    "expected_rank": 4,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "appointments",
+        "score": 0.264085054397583
+      },
+      {
+        "rank": 2,
+        "id": "greeting",
+        "score": 0.25417813658714294
+      },
+      {
+        "rank": 3,
+        "id": "hours_location",
+        "score": 0.2479594647884369
+      },
+      {
+        "rank": 4,
+        "id": "headache",
+        "score": 0.21688146889209747
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.1315009593963623
+      },
+      {
+        "rank": 6,
+        "id": "out_of_domain",
+        "score": 0.12203481793403625
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": 0.10944958031177521
+      },
+      {
+        "rank": 8,
+        "id": "trauma",
+        "score": 0.0930047258734703
+      },
+      {
+        "rank": 9,
+        "id": "respiratory",
+        "score": 0.09197913855314255
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": 0.025197163224220276
+      }
+    ]
+  },
+  {
+    "case_id": "respiratory_001",
+    "query": "Tengo tos y dolor de garganta",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "respiratory",
+    "best_score": 0.7836582660675049,
+    "retrieved_id": "respiratory",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "respiratory",
+        "score": 0.7836582660675049
+      },
+      {
+        "rank": 2,
+        "id": "headache",
+        "score": 0.6580455303192139
+      },
+      {
+        "rank": 3,
+        "id": "abdominal",
+        "score": 0.488341748714447
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.4551082253456116
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.2554926872253418
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.18897901475429535
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.1882222294807434
+      },
+      {
+        "rank": 8,
+        "id": "hours_location",
+        "score": 0.1701541692018509
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.0702376738190651
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.014943376183509827
+      }
+    ]
+  },
+  {
+    "case_id": "respiratory_002",
+    "query": "Estoy resfriado y congestionado",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "fever",
+    "best_score": 0.5077817440032959,
+    "retrieved_id": "fever",
+    "expected_rank": 2,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "fever",
+        "score": 0.5077817440032959
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.42046666145324707
+      },
+      {
+        "rank": 3,
+        "id": "headache",
+        "score": 0.27341610193252563
+      },
+      {
+        "rank": 4,
+        "id": "greeting",
+        "score": 0.25334882736206055
+      },
+      {
+        "rank": 5,
+        "id": "abdominal",
+        "score": 0.2096918225288391
+      },
+      {
+        "rank": 6,
+        "id": "appointments",
+        "score": 0.20226305723190308
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.17846821248531342
+      },
+      {
+        "rank": 8,
+        "id": "out_of_domain",
+        "score": 0.15094506740570068
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": 0.1385883092880249
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": 0.1123698428273201
+      }
+    ]
+  },
+  {
+    "case_id": "respiratory_003",
+    "query": "Me pica mucho la garganta y estoy estornudando",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium",
+    "predicted_id": "respiratory",
+    "best_score": 0.612118661403656,
+    "retrieved_id": "respiratory",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "respiratory",
+        "score": 0.612118661403656
+      },
+      {
+        "rank": 2,
+        "id": "headache",
+        "score": 0.5799485445022583
+      },
+      {
+        "rank": 3,
+        "id": "abdominal",
+        "score": 0.4117182493209839
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.3732072114944458
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.25636452436447144
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.2050464153289795
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.13699127733707428
+      },
+      {
+        "rank": 8,
+        "id": "hours_location",
+        "score": 0.1158636212348938
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.04558467119932175
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.09451461583375931
+      }
+    ]
+  },
+  {
+    "case_id": "respiratory_004",
+    "query": "Tengo la nariz tapada y bastante moco desde ayer",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "headache",
+    "best_score": 0.5071514844894409,
+    "retrieved_id": "headache",
+    "expected_rank": 2,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.5071514844894409
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.4970773458480835
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.3667932152748108
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.25851380825042725
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.20365206897258759
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.15796688199043274
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.10339763015508652
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.04900728911161423
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": -0.04522877559065819
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.06440971791744232
+      }
+    ]
+  },
+  {
+    "case_id": "respiratory_005",
+    "query": "Me molesta al tragar y tengo tos con flema",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium",
+    "predicted_id": "respiratory",
+    "best_score": 0.6681559085845947,
+    "retrieved_id": "respiratory",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "respiratory",
+        "score": 0.6681559085845947
+      },
+      {
+        "rank": 2,
+        "id": "headache",
+        "score": 0.5602116584777832
+      },
+      {
+        "rank": 3,
+        "id": "abdominal",
+        "score": 0.43604177236557007
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.4335271120071411
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.2546577751636505
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.17887723445892334
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.1664324402809143
+      },
+      {
+        "rank": 8,
+        "id": "hours_location",
+        "score": 0.12752003967761993
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.08018103241920471
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.008822683244943619
+      }
+    ]
+  },
+  {
+    "case_id": "respiratory_006",
+    "query": "Estoy hecho un trapo, no paro de estornudar y tengo la nariz completamente tapada",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard",
+    "predicted_id": "respiratory",
+    "best_score": 0.41499999165534973,
+    "retrieved_id": "respiratory",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "respiratory",
+        "score": 0.41499999165534973
+      },
+      {
+        "rank": 2,
+        "id": "headache",
+        "score": 0.41383638978004456
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.32817205786705017
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.22378325462341309
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.22055527567863464
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.17620497941970825
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.10789074748754501
+      },
+      {
+        "rank": 8,
+        "id": "hours_location",
+        "score": 0.08223526179790497
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.026510337367653847
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.07753974199295044
+      }
+    ]
+  },
+  {
+    "case_id": "respiratory_007",
+    "query": "Desde ayer tengo una molestia constante cuando trago y estoy largando mucha secreción",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "hard",
+    "predicted_id": "headache",
+    "best_score": 0.2881380319595337,
+    "retrieved_id": null,
+    "expected_rank": 2,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.2881380319595337
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.22150829434394836
+      },
+      {
+        "rank": 3,
+        "id": "abdominal",
+        "score": 0.18854212760925293
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.13380591571331024
+      },
+      {
+        "rank": 5,
+        "id": "appointments",
+        "score": 0.08448508381843567
+      },
+      {
+        "rank": 6,
+        "id": "trauma",
+        "score": 0.08434788882732391
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.07986898720264435
+      },
+      {
+        "rank": 8,
+        "id": "greeting",
+        "score": 0.06147398054599762
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": -0.018896333873271942
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.02981502190232277
+      }
+    ]
+  },
+  {
+    "case_id": "respiratory_008",
+    "query": "Dormí mal, estoy cansado y además tengo la nariz cerrada y la garganta irritada",
+    "expected_id": "respiratory",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard",
+    "predicted_id": "respiratory",
+    "best_score": 0.5780928134918213,
+    "retrieved_id": "respiratory",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "respiratory",
+        "score": 0.5780928134918213
+      },
+      {
+        "rank": 2,
+        "id": "headache",
+        "score": 0.5575376152992249
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.4426948130130768
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.4296567738056183
+      },
+      {
+        "rank": 5,
+        "id": "greeting",
+        "score": 0.2918192744255066
+      },
+      {
+        "rank": 6,
+        "id": "trauma",
+        "score": 0.21497951447963715
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.16193100810050964
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.13172578811645508
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.07999034225940704
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.009245587512850761
+      }
+    ]
+  },
+  {
+    "case_id": "abdominal_001",
+    "query": "Me duele la panza",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "headache",
+    "best_score": 0.6375014781951904,
+    "retrieved_id": "headache",
+    "expected_rank": 2,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.6375014781951904
+      },
+      {
+        "rank": 2,
+        "id": "abdominal",
+        "score": 0.5026382207870483
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.4724268913269043
+      },
+      {
+        "rank": 4,
+        "id": "trauma",
+        "score": 0.37615519762039185
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.3761044144630432
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.19850483536720276
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.10890375822782516
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.046656399965286255
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.008168628439307213
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.04830896854400635
+      }
+    ]
+  },
+  {
+    "case_id": "abdominal_002",
+    "query": "Tengo vómitos y diarrea",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "abdominal",
+    "best_score": 0.6790932416915894,
+    "retrieved_id": "abdominal",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "abdominal",
+        "score": 0.6790932416915894
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.585895836353302
+      },
+      {
+        "rank": 3,
+        "id": "headache",
+        "score": 0.4553755521774292
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.4267880916595459
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.25344324111938477
+      },
+      {
+        "rank": 6,
+        "id": "appointments",
+        "score": 0.14632868766784668
+      },
+      {
+        "rank": 7,
+        "id": "greeting",
+        "score": 0.14367260038852692
+      },
+      {
+        "rank": 8,
+        "id": "hours_location",
+        "score": 0.1103307455778122
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.09759521484375
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.010496816597878933
+      }
+    ]
+  },
+  {
+    "case_id": "abdominal_003",
+    "query": "Desde anoche tengo náuseas y dolor de estómago",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium",
+    "predicted_id": "abdominal",
+    "best_score": 0.6990011930465698,
+    "retrieved_id": "abdominal",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "abdominal",
+        "score": 0.6990011930465698
+      },
+      {
+        "rank": 2,
+        "id": "headache",
+        "score": 0.5934598445892334
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.5440098643302917
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.381328821182251
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.2004307508468628
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.15841087698936462
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.05080791190266609
+      },
+      {
+        "rank": 8,
+        "id": "hours_location",
+        "score": 0.046221327036619186
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.0008161589503288269
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.08263954520225525
+      }
+    ]
+  },
+  {
+    "case_id": "abdominal_004",
+    "query": "Estoy con mucha acidez y me cayó mal la comida",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "abdominal",
+    "best_score": 0.48021548986434937,
+    "retrieved_id": "abdominal",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "abdominal",
+        "score": 0.48021548986434937
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.37926334142684937
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.3704010844230652
+      },
+      {
+        "rank": 4,
+        "id": "headache",
+        "score": 0.3403947949409485
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.17637509107589722
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.08882996439933777
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.041579071432352066
+      },
+      {
+        "rank": 8,
+        "id": "out_of_domain",
+        "score": 0.037212446331977844
+      },
+      {
+        "rank": 9,
+        "id": "hours_location",
+        "score": 0.031920477747917175
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": 0.009553754702210426
+      }
+    ]
+  },
+  {
+    "case_id": "abdominal_005",
+    "query": "Me siento descompuesto y tengo ganas de vomitar",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "abdominal",
+    "best_score": 0.5549289584159851,
+    "retrieved_id": "abdominal",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "abdominal",
+        "score": 0.5549289584159851
+      },
+      {
+        "rank": 2,
+        "id": "headache",
+        "score": 0.4796826243400574
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.4232219159603119
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.410206139087677
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.2798985540866852
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.19518432021141052
+      },
+      {
+        "rank": 7,
+        "id": "out_of_domain",
+        "score": 0.055414438247680664
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.05353992432355881
+      },
+      {
+        "rank": 9,
+        "id": "hours_location",
+        "score": 0.04743196442723274
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.0827416405081749
+      }
+    ]
+  },
+  {
+    "case_id": "abdominal_006",
+    "query": "Tengo el estómago dado vuelta desde hace varias horas",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard",
+    "predicted_id": "abdominal",
+    "best_score": 0.5471556186676025,
+    "retrieved_id": "abdominal",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "abdominal",
+        "score": 0.5471556186676025
+      },
+      {
+        "rank": 2,
+        "id": "headache",
+        "score": 0.4425451457500458
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.39010369777679443
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.2553800046443939
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.21934625506401062
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.16074685752391815
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.14155225455760956
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.14046862721443176
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.000924152322113514
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.06492961198091507
+      }
+    ]
+  },
+  {
+    "case_id": "abdominal_007",
+    "query": "No puedo comer tranquilo porque todo me cae pesado y estoy con ganas de devolver",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard",
+    "predicted_id": "abdominal",
+    "best_score": 0.3352702260017395,
+    "retrieved_id": "abdominal",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "abdominal",
+        "score": 0.3352702260017395
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.2568979263305664
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.2521766126155853
+      },
+      {
+        "rank": 4,
+        "id": "headache",
+        "score": 0.23740631341934204
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.12338092923164368
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.1188165545463562
+      },
+      {
+        "rank": 7,
+        "id": "out_of_domain",
+        "score": 0.04272255674004555
+      },
+      {
+        "rank": 8,
+        "id": "hours_location",
+        "score": -0.02429567277431488
+      },
+      {
+        "rank": 9,
+        "id": "appointments",
+        "score": -0.02642291970551014
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.06528797745704651
+      }
+    ]
+  },
+  {
+    "case_id": "abdominal_008",
+    "query": "Desde ayer estoy medio descompuesto, fui varias veces al baño y me molesta el estómago",
+    "expected_id": "abdominal",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard",
+    "predicted_id": "abdominal",
+    "best_score": 0.5554367303848267,
+    "retrieved_id": "abdominal",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "abdominal",
+        "score": 0.5554367303848267
+      },
+      {
+        "rank": 2,
+        "id": "headache",
+        "score": 0.41135650873184204
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.3902265429496765
+      },
+      {
+        "rank": 4,
+        "id": "trauma",
+        "score": 0.3360353112220764
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.2803516387939453
+      },
+      {
+        "rank": 6,
+        "id": "hours_location",
+        "score": 0.1248311698436737
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.11994906514883041
+      },
+      {
+        "rank": 8,
+        "id": "greeting",
+        "score": 0.08107508718967438
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.02020363137125969
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.026349270716309547
+      }
+    ]
+  },
+  {
+    "case_id": "trauma_001",
+    "query": "Me golpeé la rodilla",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "trauma",
+    "best_score": 0.4839853048324585,
+    "retrieved_id": "trauma",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "trauma",
+        "score": 0.4839853048324585
+      },
+      {
+        "rank": 2,
+        "id": "headache",
+        "score": 0.2910652756690979
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.17291906476020813
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.10480064153671265
+      },
+      {
+        "rank": 5,
+        "id": "appointments",
+        "score": 0.09877683222293854
+      },
+      {
+        "rank": 6,
+        "id": "hours_location",
+        "score": 0.08380760252475739
+      },
+      {
+        "rank": 7,
+        "id": "greeting",
+        "score": 0.07033717632293701
+      },
+      {
+        "rank": 8,
+        "id": "fever",
+        "score": 0.05491241440176964
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.023614566773176193
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.04313115030527115
+      }
+    ]
+  },
+  {
+    "case_id": "trauma_002",
+    "query": "Me torcí el tobillo",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "trauma",
+    "best_score": 0.3069005310535431,
+    "retrieved_id": "trauma",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "trauma",
+        "score": 0.3069005310535431
+      },
+      {
+        "rank": 2,
+        "id": "headache",
+        "score": 0.23313212394714355
+      },
+      {
+        "rank": 3,
+        "id": "greeting",
+        "score": 0.21724344789981842
+      },
+      {
+        "rank": 4,
+        "id": "respiratory",
+        "score": 0.1390441358089447
+      },
+      {
+        "rank": 5,
+        "id": "appointments",
+        "score": 0.10743571817874908
+      },
+      {
+        "rank": 6,
+        "id": "fever",
+        "score": 0.08873315900564194
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.08412883430719376
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": 0.0653945580124855
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.05869216471910477
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.0643535852432251
+      }
+    ]
+  },
+  {
+    "case_id": "trauma_003",
+    "query": "Me caí y me quedó un moretón grande",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium",
+    "predicted_id": "trauma",
+    "best_score": 0.37761348485946655,
+    "retrieved_id": "trauma",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "trauma",
+        "score": 0.37761348485946655
+      },
+      {
+        "rank": 2,
+        "id": "headache",
+        "score": 0.2627362608909607
+      },
+      {
+        "rank": 3,
+        "id": "greeting",
+        "score": 0.17447032034397125
+      },
+      {
+        "rank": 4,
+        "id": "respiratory",
+        "score": 0.17372918128967285
+      },
+      {
+        "rank": 5,
+        "id": "abdominal",
+        "score": 0.13761165738105774
+      },
+      {
+        "rank": 6,
+        "id": "fever",
+        "score": 0.12190539389848709
+      },
+      {
+        "rank": 7,
+        "id": "out_of_domain",
+        "score": 0.08619564771652222
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.01545281708240509
+      },
+      {
+        "rank": 9,
+        "id": "hours_location",
+        "score": 0.012330595403909683
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.07638659328222275
+      }
+    ]
+  },
+  {
+    "case_id": "trauma_004",
+    "query": "Me di un golpe fuerte y tengo un chichón",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "symptom_description",
+    "difficulty": "medium",
+    "predicted_id": "headache",
+    "best_score": 0.35583803057670593,
+    "retrieved_id": "headache",
+    "expected_rank": 4,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.35583803057670593
+      },
+      {
+        "rank": 2,
+        "id": "greeting",
+        "score": 0.2971188426017761
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.26579955220222473
+      },
+      {
+        "rank": 4,
+        "id": "trauma",
+        "score": 0.2612531781196594
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.19696511328220367
+      },
+      {
+        "rank": 6,
+        "id": "abdominal",
+        "score": 0.17000040411949158
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.10679563879966736
+      },
+      {
+        "rank": 8,
+        "id": "hours_location",
+        "score": 0.07895426452159882
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.029359128326177597
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.12004314363002777
+      }
+    ]
+  },
+  {
+    "case_id": "trauma_005",
+    "query": "Pisando mal me doblé el tobillo y ahora me duele",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "headache",
+    "best_score": 0.4828728437423706,
+    "retrieved_id": "headache",
+    "expected_rank": 2,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.4828728437423706
+      },
+      {
+        "rank": 2,
+        "id": "trauma",
+        "score": 0.4601898193359375
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.2946557402610779
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.253237783908844
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.1674918234348297
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.042894765734672546
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.021730933338403702
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": -0.004317753482609987
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": -0.03138379752635956
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.03797338902950287
+      }
+    ]
+  },
+  {
+    "case_id": "trauma_006",
+    "query": "Ayer me fui al piso y hoy tengo toda la zona morada",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard",
+    "predicted_id": "greeting",
+    "best_score": 0.30138319730758667,
+    "retrieved_id": "greeting",
+    "expected_rank": 4,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.30138319730758667
+      },
+      {
+        "rank": 2,
+        "id": "out_of_domain",
+        "score": 0.20336249470710754
+      },
+      {
+        "rank": 3,
+        "id": "hours_location",
+        "score": 0.19295966625213623
+      },
+      {
+        "rank": 4,
+        "id": "trauma",
+        "score": 0.18845024704933167
+      },
+      {
+        "rank": 5,
+        "id": "appointments",
+        "score": 0.14210546016693115
+      },
+      {
+        "rank": 6,
+        "id": "headache",
+        "score": 0.10941293835639954
+      },
+      {
+        "rank": 7,
+        "id": "fever",
+        "score": 0.1022038385272026
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": 0.0794035792350769
+      },
+      {
+        "rank": 9,
+        "id": "respiratory",
+        "score": 0.07805384695529938
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.014701331034302711
+      }
+    ]
+  },
+  {
+    "case_id": "trauma_007",
+    "query": "Me lastimé haciendo ejercicio y desde entonces tengo la articulación dolorida",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard",
+    "predicted_id": "headache",
+    "best_score": 0.46710824966430664,
+    "retrieved_id": "headache",
+    "expected_rank": 2,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.46710824966430664
+      },
+      {
+        "rank": 2,
+        "id": "trauma",
+        "score": 0.4518235921859741
+      },
+      {
+        "rank": 3,
+        "id": "abdominal",
+        "score": 0.3034687638282776
+      },
+      {
+        "rank": 4,
+        "id": "respiratory",
+        "score": 0.2659447193145752
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.20198717713356018
+      },
+      {
+        "rank": 6,
+        "id": "appointments",
+        "score": 0.13777831196784973
+      },
+      {
+        "rank": 7,
+        "id": "insurance_payments",
+        "score": 0.08219670504331589
+      },
+      {
+        "rank": 8,
+        "id": "hours_location",
+        "score": 0.07738703489303589
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.04109670966863632
+      },
+      {
+        "rank": 10,
+        "id": "greeting",
+        "score": -0.01703047752380371
+      }
+    ]
+  },
+  {
+    "case_id": "trauma_008",
+    "query": "Tuve un accidente leve y ahora tengo una zona hinchada y con un moretón",
+    "expected_id": "trauma",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "hard",
+    "predicted_id": "trauma",
+    "best_score": 0.4287492632865906,
+    "retrieved_id": "trauma",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "trauma",
+        "score": 0.4287492632865906
+      },
+      {
+        "rank": 2,
+        "id": "headache",
+        "score": 0.3257940411567688
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.25297412276268005
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.19623301923274994
+      },
+      {
+        "rank": 5,
+        "id": "abdominal",
+        "score": 0.17149433493614197
+      },
+      {
+        "rank": 6,
+        "id": "appointments",
+        "score": 0.12951625883579254
+      },
+      {
+        "rank": 7,
+        "id": "greeting",
+        "score": 0.08282207697629929
+      },
+      {
+        "rank": 8,
+        "id": "hours_location",
+        "score": 0.08148615807294846
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.036156125366687775
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.03764352947473526
+      }
+    ]
+  },
+  {
+    "case_id": "appointments_001",
+    "query": "Quiero sacar un turno",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "greeting",
+    "best_score": 0.3878914713859558,
+    "retrieved_id": "greeting",
+    "expected_rank": 2,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.3878914713859558
+      },
+      {
+        "rank": 2,
+        "id": "appointments",
+        "score": 0.3603467345237732
+      },
+      {
+        "rank": 3,
+        "id": "hours_location",
+        "score": 0.24417826533317566
+      },
+      {
+        "rank": 4,
+        "id": "out_of_domain",
+        "score": 0.14833149313926697
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.12178216874599457
+      },
+      {
+        "rank": 6,
+        "id": "fever",
+        "score": 0.05567426607012749
+      },
+      {
+        "rank": 7,
+        "id": "headache",
+        "score": 0.04158256947994232
+      },
+      {
+        "rank": 8,
+        "id": "insurance_payments",
+        "score": 0.039429306983947754
+      },
+      {
+        "rank": 9,
+        "id": "respiratory",
+        "score": -0.02159859798848629
+      },
+      {
+        "rank": 10,
+        "id": "abdominal",
+        "score": -0.0304887555539608
+      }
+    ]
+  },
+  {
+    "case_id": "appointments_002",
+    "query": "Necesito pedir una cita con un médico",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "appointments",
+    "best_score": 0.38723331689834595,
+    "retrieved_id": "appointments",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "appointments",
+        "score": 0.38723331689834595
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.3480841815471649
+      },
+      {
+        "rank": 3,
+        "id": "hours_location",
+        "score": 0.3467629551887512
+      },
+      {
+        "rank": 4,
+        "id": "headache",
+        "score": 0.30410921573638916
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.2670847773551941
+      },
+      {
+        "rank": 6,
+        "id": "abdominal",
+        "score": 0.2666569948196411
+      },
+      {
+        "rank": 7,
+        "id": "trauma",
+        "score": 0.2447325587272644
+      },
+      {
+        "rank": 8,
+        "id": "insurance_payments",
+        "score": 0.15511125326156616
+      },
+      {
+        "rank": 9,
+        "id": "greeting",
+        "score": 0.1283910870552063
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": -0.1128818541765213
+      }
+    ]
+  },
+  {
+    "case_id": "appointments_003",
+    "query": "¿Cómo hago para reservar una consulta?",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "appointments",
+    "best_score": 0.4641193151473999,
+    "retrieved_id": "appointments",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "appointments",
+        "score": 0.4641193151473999
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.3396417498588562
+      },
+      {
+        "rank": 3,
+        "id": "insurance_payments",
+        "score": 0.19023236632347107
+      },
+      {
+        "rank": 4,
+        "id": "greeting",
+        "score": 0.13796015083789825
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.11037036031484604
+      },
+      {
+        "rank": 6,
+        "id": "respiratory",
+        "score": 0.051274389028549194
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": 0.046684980392456055
+      },
+      {
+        "rank": 8,
+        "id": "headache",
+        "score": 0.039838384836912155
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": -0.06510138511657715
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": -0.10792579501867294
+      }
+    ]
+  },
+  {
+    "case_id": "appointments_004",
+    "query": "Quisiera agendar una visita con un especialista",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "appointments",
+    "best_score": 0.5439805388450623,
+    "retrieved_id": "appointments",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "appointments",
+        "score": 0.5439805388450623
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.40487390756607056
+      },
+      {
+        "rank": 3,
+        "id": "insurance_payments",
+        "score": 0.3470137417316437
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.20598994195461273
+      },
+      {
+        "rank": 5,
+        "id": "headache",
+        "score": 0.14414188265800476
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.13422778248786926
+      },
+      {
+        "rank": 7,
+        "id": "respiratory",
+        "score": 0.13361860811710358
+      },
+      {
+        "rank": 8,
+        "id": "trauma",
+        "score": 0.11122823506593704
+      },
+      {
+        "rank": 9,
+        "id": "abdominal",
+        "score": 0.09816770255565643
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": -0.09350625425577164
+      }
+    ]
+  },
+  {
+    "case_id": "appointments_005",
+    "query": "¿Hay algún teléfono para pedir una consulta?",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "intent_description",
+    "difficulty": "medium",
+    "predicted_id": "appointments",
+    "best_score": 0.4379640817642212,
+    "retrieved_id": "appointments",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "appointments",
+        "score": 0.4379640817642212
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.31321704387664795
+      },
+      {
+        "rank": 3,
+        "id": "greeting",
+        "score": 0.23263758420944214
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.12643775343894958
+      },
+      {
+        "rank": 5,
+        "id": "insurance_payments",
+        "score": 0.12594038248062134
+      },
+      {
+        "rank": 6,
+        "id": "respiratory",
+        "score": 0.12110690772533417
+      },
+      {
+        "rank": 7,
+        "id": "trauma",
+        "score": 0.0770273357629776
+      },
+      {
+        "rank": 8,
+        "id": "headache",
+        "score": 0.0703805536031723
+      },
+      {
+        "rank": 9,
+        "id": "abdominal",
+        "score": 0.026046691462397575
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": -0.030830103904008865
+      }
+    ]
+  },
+  {
+    "case_id": "appointments_006",
+    "query": "Necesito que me vea un médico, ¿cómo coordino para ir?",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "hard",
+    "predicted_id": "appointments",
+    "best_score": 0.3445385694503784,
+    "retrieved_id": "appointments",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "appointments",
+        "score": 0.3445385694503784
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.331147700548172
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.27965712547302246
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.26684296131134033
+      },
+      {
+        "rank": 5,
+        "id": "headache",
+        "score": 0.2604203224182129
+      },
+      {
+        "rank": 6,
+        "id": "abdominal",
+        "score": 0.2436852902173996
+      },
+      {
+        "rank": 7,
+        "id": "insurance_payments",
+        "score": 0.14637748897075653
+      },
+      {
+        "rank": 8,
+        "id": "trauma",
+        "score": 0.13938336074352264
+      },
+      {
+        "rank": 9,
+        "id": "greeting",
+        "score": 0.12651650607585907
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": -0.12671545147895813
+      }
+    ]
+  },
+  {
+    "case_id": "appointments_007",
+    "query": "Quiero organizar una consulta para la semana que viene pero no sé por dónde empezar",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard",
+    "predicted_id": "appointments",
+    "best_score": 0.527920663356781,
+    "retrieved_id": "appointments",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "appointments",
+        "score": 0.527920663356781
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.41761377453804016
+      },
+      {
+        "rank": 3,
+        "id": "greeting",
+        "score": 0.18851950764656067
+      },
+      {
+        "rank": 4,
+        "id": "insurance_payments",
+        "score": 0.1831006109714508
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.1189422756433487
+      },
+      {
+        "rank": 6,
+        "id": "respiratory",
+        "score": 0.08774052560329437
+      },
+      {
+        "rank": 7,
+        "id": "out_of_domain",
+        "score": 0.049368973821401596
+      },
+      {
+        "rank": 8,
+        "id": "headache",
+        "score": 0.04763762652873993
+      },
+      {
+        "rank": 9,
+        "id": "abdominal",
+        "score": 0.02839081361889839
+      },
+      {
+        "rank": 10,
+        "id": "trauma",
+        "score": -0.06428544223308563
+      }
+    ]
+  },
+  {
+    "case_id": "appointments_008",
+    "query": "¿Qué tengo que hacer para que me atienda un especialista?",
+    "expected_id": "appointments",
+    "should_retrieve": true,
+    "query_type": "intent_description",
+    "difficulty": "hard",
+    "predicted_id": "appointments",
+    "best_score": 0.3744790256023407,
+    "retrieved_id": "appointments",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "appointments",
+        "score": 0.3744790256023407
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.24924547970294952
+      },
+      {
+        "rank": 3,
+        "id": "insurance_payments",
+        "score": 0.16667169332504272
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.15323714911937714
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.15255585312843323
+      },
+      {
+        "rank": 6,
+        "id": "respiratory",
+        "score": 0.14974507689476013
+      },
+      {
+        "rank": 7,
+        "id": "headache",
+        "score": 0.14777283370494843
+      },
+      {
+        "rank": 8,
+        "id": "trauma",
+        "score": 0.13640373945236206
+      },
+      {
+        "rank": 9,
+        "id": "greeting",
+        "score": -0.03269338980317116
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": -0.13741424679756165
+      }
+    ]
+  },
+  {
+    "case_id": "hours_location_001",
+    "query": "¿Cuál es la dirección de la clínica?",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "hours_location",
+    "best_score": 0.4865506887435913,
+    "retrieved_id": "hours_location",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "hours_location",
+        "score": 0.4865506887435913
+      },
+      {
+        "rank": 2,
+        "id": "appointments",
+        "score": 0.47951608896255493
+      },
+      {
+        "rank": 3,
+        "id": "insurance_payments",
+        "score": 0.27838394045829773
+      },
+      {
+        "rank": 4,
+        "id": "respiratory",
+        "score": 0.23868265748023987
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.22614124417304993
+      },
+      {
+        "rank": 6,
+        "id": "headache",
+        "score": 0.19399888813495636
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": 0.1425401121377945
+      },
+      {
+        "rank": 8,
+        "id": "greeting",
+        "score": 0.135009765625
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": 0.11227834224700928
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": -0.06430207192897797
+      }
+    ]
+  },
+  {
+    "case_id": "hours_location_002",
+    "query": "¿En qué horario atienden?",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "hours_location",
+    "best_score": 0.4560035765171051,
+    "retrieved_id": "hours_location",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "hours_location",
+        "score": 0.4560035765171051
+      },
+      {
+        "rank": 2,
+        "id": "appointments",
+        "score": 0.38513338565826416
+      },
+      {
+        "rank": 3,
+        "id": "greeting",
+        "score": 0.32406097650527954
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.1473657488822937
+      },
+      {
+        "rank": 5,
+        "id": "out_of_domain",
+        "score": 0.1243085265159607
+      },
+      {
+        "rank": 6,
+        "id": "respiratory",
+        "score": 0.08027274906635284
+      },
+      {
+        "rank": 7,
+        "id": "insurance_payments",
+        "score": 0.06646058708429337
+      },
+      {
+        "rank": 8,
+        "id": "headache",
+        "score": 0.031729258596897125
+      },
+      {
+        "rank": 9,
+        "id": "abdominal",
+        "score": 0.026397114619612694
+      },
+      {
+        "rank": 10,
+        "id": "trauma",
+        "score": 0.004412001930177212
+      }
+    ]
+  },
+  {
+    "case_id": "hours_location_003",
+    "query": "¿Dónde queda el centro médico?",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "hours_location",
+    "best_score": 0.44741159677505493,
+    "retrieved_id": "hours_location",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "hours_location",
+        "score": 0.44741159677505493
+      },
+      {
+        "rank": 2,
+        "id": "appointments",
+        "score": 0.380196213722229
+      },
+      {
+        "rank": 3,
+        "id": "insurance_payments",
+        "score": 0.24679329991340637
+      },
+      {
+        "rank": 4,
+        "id": "respiratory",
+        "score": 0.2460925430059433
+      },
+      {
+        "rank": 5,
+        "id": "headache",
+        "score": 0.18951669335365295
+      },
+      {
+        "rank": 6,
+        "id": "trauma",
+        "score": 0.18357251584529877
+      },
+      {
+        "rank": 7,
+        "id": "fever",
+        "score": 0.18334335088729858
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": 0.1421712338924408
+      },
+      {
+        "rank": 9,
+        "id": "greeting",
+        "score": 0.12333393096923828
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": 0.03929554671049118
+      }
+    ]
+  },
+  {
+    "case_id": "hours_location_004",
+    "query": "¿Hasta qué hora puedo ir durante la semana?",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "hours_location",
+    "best_score": 0.30565065145492554,
+    "retrieved_id": "hours_location",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "hours_location",
+        "score": 0.30565065145492554
+      },
+      {
+        "rank": 2,
+        "id": "greeting",
+        "score": 0.23067614436149597
+      },
+      {
+        "rank": 3,
+        "id": "appointments",
+        "score": 0.1735857129096985
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.16408050060272217
+      },
+      {
+        "rank": 5,
+        "id": "respiratory",
+        "score": 0.06239620968699455
+      },
+      {
+        "rank": 6,
+        "id": "out_of_domain",
+        "score": 0.033429838716983795
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": 0.030307069420814514
+      },
+      {
+        "rank": 8,
+        "id": "headache",
+        "score": 0.02041676640510559
+      },
+      {
+        "rank": 9,
+        "id": "insurance_payments",
+        "score": -0.0009057754650712013
+      },
+      {
+        "rank": 10,
+        "id": "trauma",
+        "score": -0.004116374999284744
+      }
+    ]
+  },
+  {
+    "case_id": "hours_location_005",
+    "query": "¿La guardia está abierta todo el día?",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "intent_description",
+    "difficulty": "medium",
+    "predicted_id": "hours_location",
+    "best_score": 0.2620510458946228,
+    "retrieved_id": null,
+    "expected_rank": 1,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "hours_location",
+        "score": 0.2620510458946228
+      },
+      {
+        "rank": 2,
+        "id": "greeting",
+        "score": 0.24712173640727997
+      },
+      {
+        "rank": 3,
+        "id": "appointments",
+        "score": 0.18328064680099487
+      },
+      {
+        "rank": 4,
+        "id": "headache",
+        "score": 0.11502814292907715
+      },
+      {
+        "rank": 5,
+        "id": "out_of_domain",
+        "score": 0.09642471373081207
+      },
+      {
+        "rank": 6,
+        "id": "insurance_payments",
+        "score": 0.09506117552518845
+      },
+      {
+        "rank": 7,
+        "id": "fever",
+        "score": 0.07392989099025726
+      },
+      {
+        "rank": 8,
+        "id": "respiratory",
+        "score": 0.032836295664310455
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": 0.0032033398747444153
+      },
+      {
+        "rank": 10,
+        "id": "abdominal",
+        "score": -0.012682024389505386
+      }
+    ]
+  },
+  {
+    "case_id": "hours_location_006",
+    "query": "Necesito ir personalmente pero no sé dónde están",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "hard",
+    "predicted_id": "hours_location",
+    "best_score": 0.2708628475666046,
+    "retrieved_id": null,
+    "expected_rank": 1,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "hours_location",
+        "score": 0.2708628475666046
+      },
+      {
+        "rank": 2,
+        "id": "appointments",
+        "score": 0.19163590669631958
+      },
+      {
+        "rank": 3,
+        "id": "greeting",
+        "score": 0.1915569007396698
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.06428101658821106
+      },
+      {
+        "rank": 5,
+        "id": "insurance_payments",
+        "score": 0.04233887046575546
+      },
+      {
+        "rank": 6,
+        "id": "headache",
+        "score": -0.0041722506284713745
+      },
+      {
+        "rank": 7,
+        "id": "out_of_domain",
+        "score": -0.017942089587450027
+      },
+      {
+        "rank": 8,
+        "id": "trauma",
+        "score": -0.02413449063897133
+      },
+      {
+        "rank": 9,
+        "id": "respiratory",
+        "score": -0.05292957276105881
+      },
+      {
+        "rank": 10,
+        "id": "abdominal",
+        "score": -0.07485394924879074
+      }
+    ]
+  },
+  {
+    "case_id": "hours_location_007",
+    "query": "Si salgo tarde del trabajo, ¿todavía llego a que me atiendan?",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "indirect",
+    "difficulty": "hard",
+    "predicted_id": "greeting",
+    "best_score": 0.2592935264110565,
+    "retrieved_id": null,
+    "expected_rank": 2,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.2592935264110565
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.17378275096416473
+      },
+      {
+        "rank": 3,
+        "id": "appointments",
+        "score": 0.12824197113513947
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.03293955698609352
+      },
+      {
+        "rank": 5,
+        "id": "headache",
+        "score": 0.008642958477139473
+      },
+      {
+        "rank": 6,
+        "id": "insurance_payments",
+        "score": 0.007597628980875015
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": -0.01754615269601345
+      },
+      {
+        "rank": 8,
+        "id": "respiratory",
+        "score": -0.02505895122885704
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": -0.0517977736890316
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": -0.08019955456256866
+      }
+    ]
+  },
+  {
+    "case_id": "hours_location_008",
+    "query": "Quería acercarme el sábado y no sé si estará abierto",
+    "expected_id": "hours_location",
+    "should_retrieve": true,
+    "query_type": "indirect",
+    "difficulty": "hard",
+    "predicted_id": "greeting",
+    "best_score": 0.30012047290802,
+    "retrieved_id": "greeting",
+    "expected_rank": 2,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.30012047290802
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.24190744757652283
+      },
+      {
+        "rank": 3,
+        "id": "appointments",
+        "score": 0.07733172178268433
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.022055111825466156
+      },
+      {
+        "rank": 5,
+        "id": "out_of_domain",
+        "score": -0.04302658513188362
+      },
+      {
+        "rank": 6,
+        "id": "headache",
+        "score": -0.07861962914466858
+      },
+      {
+        "rank": 7,
+        "id": "insurance_payments",
+        "score": -0.0950351133942604
+      },
+      {
+        "rank": 8,
+        "id": "respiratory",
+        "score": -0.09584329277276993
+      },
+      {
+        "rank": 9,
+        "id": "abdominal",
+        "score": -0.11229858547449112
+      },
+      {
+        "rank": 10,
+        "id": "trauma",
+        "score": -0.17330193519592285
+      }
+    ]
+  },
+  {
+    "case_id": "insurance_payments_001",
+    "query": "¿Atienden OSDE?",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "insurance_payments",
+    "best_score": 0.3171907067298889,
+    "retrieved_id": "insurance_payments",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "insurance_payments",
+        "score": 0.3171907067298889
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.2118878960609436
+      },
+      {
+        "rank": 3,
+        "id": "appointments",
+        "score": 0.200034499168396
+      },
+      {
+        "rank": 4,
+        "id": "greeting",
+        "score": 0.13040617108345032
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.00570119172334671
+      },
+      {
+        "rank": 6,
+        "id": "out_of_domain",
+        "score": -0.005957648158073425
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": -0.025001516565680504
+      },
+      {
+        "rank": 8,
+        "id": "fever",
+        "score": -0.03705207258462906
+      },
+      {
+        "rank": 9,
+        "id": "headache",
+        "score": -0.0798865258693695
+      },
+      {
+        "rank": 10,
+        "id": "respiratory",
+        "score": -0.10394328832626343
+      }
+    ]
+  },
+  {
+    "case_id": "insurance_payments_002",
+    "query": "¿Puedo pagar con tarjeta?",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "insurance_payments",
+    "best_score": 0.1899203658103943,
+    "retrieved_id": null,
+    "expected_rank": 1,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "insurance_payments",
+        "score": 0.1899203658103943
+      },
+      {
+        "rank": 2,
+        "id": "appointments",
+        "score": 0.07533477991819382
+      },
+      {
+        "rank": 3,
+        "id": "greeting",
+        "score": 0.02117224596440792
+      },
+      {
+        "rank": 4,
+        "id": "hours_location",
+        "score": -0.015842601656913757
+      },
+      {
+        "rank": 5,
+        "id": "abdominal",
+        "score": -0.048807933926582336
+      },
+      {
+        "rank": 6,
+        "id": "headache",
+        "score": -0.06200231611728668
+      },
+      {
+        "rank": 7,
+        "id": "fever",
+        "score": -0.07886882871389389
+      },
+      {
+        "rank": 8,
+        "id": "out_of_domain",
+        "score": -0.08212752640247345
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": -0.10235889256000519
+      },
+      {
+        "rank": 10,
+        "id": "respiratory",
+        "score": -0.11105453968048096
+      }
+    ]
+  },
+  {
+    "case_id": "insurance_payments_003",
+    "query": "Quería saber qué obras sociales reciben",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "insurance_payments",
+    "best_score": 0.5358400940895081,
+    "retrieved_id": "insurance_payments",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "insurance_payments",
+        "score": 0.5358400940895081
+      },
+      {
+        "rank": 2,
+        "id": "appointments",
+        "score": 0.28963297605514526
+      },
+      {
+        "rank": 3,
+        "id": "out_of_domain",
+        "score": 0.25272703170776367
+      },
+      {
+        "rank": 4,
+        "id": "hours_location",
+        "score": 0.15742617845535278
+      },
+      {
+        "rank": 5,
+        "id": "greeting",
+        "score": 0.13478156924247742
+      },
+      {
+        "rank": 6,
+        "id": "trauma",
+        "score": 0.12861615419387817
+      },
+      {
+        "rank": 7,
+        "id": "fever",
+        "score": 0.02591143734753132
+      },
+      {
+        "rank": 8,
+        "id": "headache",
+        "score": 0.014950131997466087
+      },
+      {
+        "rank": 9,
+        "id": "respiratory",
+        "score": -0.005329485982656479
+      },
+      {
+        "rank": 10,
+        "id": "abdominal",
+        "score": -0.01239574421197176
+      }
+    ]
+  },
+  {
+    "case_id": "insurance_payments_004",
+    "query": "Tengo Swiss Medical, ¿me puedo atender ahí?",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "intent_description",
+    "difficulty": "medium",
+    "predicted_id": "insurance_payments",
+    "best_score": 0.44838112592697144,
+    "retrieved_id": "insurance_payments",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "insurance_payments",
+        "score": 0.44838112592697144
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.29850906133651733
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.2723541855812073
+      },
+      {
+        "rank": 4,
+        "id": "respiratory",
+        "score": 0.24457435309886932
+      },
+      {
+        "rank": 5,
+        "id": "appointments",
+        "score": 0.23940961062908173
+      },
+      {
+        "rank": 6,
+        "id": "headache",
+        "score": 0.18597044050693512
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": 0.16687142848968506
+      },
+      {
+        "rank": 8,
+        "id": "greeting",
+        "score": 0.14924781024456024
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": 0.12431281805038452
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": -0.034614644944667816
+      }
+    ]
+  },
+  {
+    "case_id": "insurance_payments_005",
+    "query": "Si voy particular, ¿qué medios de pago aceptan?",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "insurance_payments",
+    "best_score": 0.4218715727329254,
+    "retrieved_id": "insurance_payments",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "insurance_payments",
+        "score": 0.4218715727329254
+      },
+      {
+        "rank": 2,
+        "id": "appointments",
+        "score": 0.25633126497268677
+      },
+      {
+        "rank": 3,
+        "id": "hours_location",
+        "score": 0.06780239194631577
+      },
+      {
+        "rank": 4,
+        "id": "out_of_domain",
+        "score": 0.056753262877464294
+      },
+      {
+        "rank": 5,
+        "id": "greeting",
+        "score": 0.008817099966108799
+      },
+      {
+        "rank": 6,
+        "id": "trauma",
+        "score": -0.004671640694141388
+      },
+      {
+        "rank": 7,
+        "id": "fever",
+        "score": -0.014056120067834854
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": -0.0388786680996418
+      },
+      {
+        "rank": 9,
+        "id": "respiratory",
+        "score": -0.05186351388692856
+      },
+      {
+        "rank": 10,
+        "id": "headache",
+        "score": -0.058906201273202896
+      }
+    ]
+  },
+  {
+    "case_id": "insurance_payments_006",
+    "query": "No sé si mi cobertura médica sirve para atenderme con ustedes",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "indirect",
+    "difficulty": "hard",
+    "predicted_id": "appointments",
+    "best_score": 0.30824291706085205,
+    "retrieved_id": "appointments",
+    "expected_rank": 3,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "appointments",
+        "score": 0.30824291706085205
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.24378655850887299
+      },
+      {
+        "rank": 3,
+        "id": "insurance_payments",
+        "score": 0.21358707547187805
+      },
+      {
+        "rank": 4,
+        "id": "respiratory",
+        "score": 0.21276608109474182
+      },
+      {
+        "rank": 5,
+        "id": "headache",
+        "score": 0.20199348032474518
+      },
+      {
+        "rank": 6,
+        "id": "fever",
+        "score": 0.19106125831604004
+      },
+      {
+        "rank": 7,
+        "id": "greeting",
+        "score": 0.15901699662208557
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": 0.10999065637588501
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": 0.1002819612622261
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": -0.06721732765436172
+      }
+    ]
+  },
+  {
+    "case_id": "insurance_payments_007",
+    "query": "¿Puedo ir sin obra social y pagar la consulta por mi cuenta?",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "hard",
+    "predicted_id": "insurance_payments",
+    "best_score": 0.4012041389942169,
+    "retrieved_id": "insurance_payments",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "insurance_payments",
+        "score": 0.4012041389942169
+      },
+      {
+        "rank": 2,
+        "id": "appointments",
+        "score": 0.23019039630889893
+      },
+      {
+        "rank": 3,
+        "id": "hours_location",
+        "score": 0.06202731281518936
+      },
+      {
+        "rank": 4,
+        "id": "headache",
+        "score": 0.0327259823679924
+      },
+      {
+        "rank": 5,
+        "id": "abdominal",
+        "score": 0.014304950833320618
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.003809753805398941
+      },
+      {
+        "rank": 7,
+        "id": "fever",
+        "score": -0.0005047153681516647
+      },
+      {
+        "rank": 8,
+        "id": "respiratory",
+        "score": -0.003201806917786598
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": -0.04581833258271217
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": -0.10384635627269745
+      }
+    ]
+  },
+  {
+    "case_id": "insurance_payments_008",
+    "query": "Quiero atenderme pero antes necesito saber cómo se abona y si aceptan mi cobertura",
+    "expected_id": "insurance_payments",
+    "should_retrieve": true,
+    "query_type": "noisy",
+    "difficulty": "hard",
+    "predicted_id": "appointments",
+    "best_score": 0.4124603271484375,
+    "retrieved_id": "appointments",
+    "expected_rank": 4,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "appointments",
+        "score": 0.4124603271484375
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.32464736700057983
+      },
+      {
+        "rank": 3,
+        "id": "greeting",
+        "score": 0.2132762372493744
+      },
+      {
+        "rank": 4,
+        "id": "insurance_payments",
+        "score": 0.20916402339935303
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.06288572400808334
+      },
+      {
+        "rank": 6,
+        "id": "respiratory",
+        "score": -0.02410561963915825
+      },
+      {
+        "rank": 7,
+        "id": "headache",
+        "score": -0.03862397372722626
+      },
+      {
+        "rank": 8,
+        "id": "out_of_domain",
+        "score": -0.052973002195358276
+      },
+      {
+        "rank": 9,
+        "id": "abdominal",
+        "score": -0.09165337681770325
+      },
+      {
+        "rank": 10,
+        "id": "trauma",
+        "score": -0.10581526160240173
+      }
+    ]
+  },
+  {
+    "case_id": "greeting_001",
+    "query": "Hola",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "greeting",
+    "best_score": 0.7934479117393494,
+    "retrieved_id": "greeting",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.7934479117393494
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.33290112018585205
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.22283416986465454
+      },
+      {
+        "rank": 4,
+        "id": "appointments",
+        "score": 0.1950913667678833
+      },
+      {
+        "rank": 5,
+        "id": "out_of_domain",
+        "score": 0.18892726302146912
+      },
+      {
+        "rank": 6,
+        "id": "respiratory",
+        "score": 0.08694393187761307
+      },
+      {
+        "rank": 7,
+        "id": "headache",
+        "score": 0.07949867099523544
+      },
+      {
+        "rank": 8,
+        "id": "trauma",
+        "score": 0.06650844216346741
+      },
+      {
+        "rank": 9,
+        "id": "abdominal",
+        "score": 0.049654990434646606
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": 0.03193952143192291
+      }
+    ]
+  },
+  {
+    "case_id": "greeting_002",
+    "query": "Buenas tardes",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "direct",
+    "difficulty": "easy",
+    "predicted_id": "greeting",
+    "best_score": 0.8278632164001465,
+    "retrieved_id": "greeting",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.8278632164001465
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.3112671375274658
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.2086898684501648
+      },
+      {
+        "rank": 4,
+        "id": "out_of_domain",
+        "score": 0.19714879989624023
+      },
+      {
+        "rank": 5,
+        "id": "appointments",
+        "score": 0.17754770815372467
+      },
+      {
+        "rank": 6,
+        "id": "headache",
+        "score": 0.10954047739505768
+      },
+      {
+        "rank": 7,
+        "id": "respiratory",
+        "score": 0.09086325764656067
+      },
+      {
+        "rank": 8,
+        "id": "trauma",
+        "score": 0.08976781368255615
+      },
+      {
+        "rank": 9,
+        "id": "abdominal",
+        "score": 0.07104136049747467
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": 0.04022805020213127
+      }
+    ]
+  },
+  {
+    "case_id": "greeting_003",
+    "query": "Hola, ¿cómo estás?",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "paraphrase",
+    "difficulty": "medium",
+    "predicted_id": "greeting",
+    "best_score": 0.7696748375892639,
+    "retrieved_id": "greeting",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.7696748375892639
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.2724268436431885
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.24290932714939117
+      },
+      {
+        "rank": 4,
+        "id": "appointments",
+        "score": 0.21488872170448303
+      },
+      {
+        "rank": 5,
+        "id": "out_of_domain",
+        "score": 0.2026517689228058
+      },
+      {
+        "rank": 6,
+        "id": "headache",
+        "score": 0.13351546227931976
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": 0.1267988532781601
+      },
+      {
+        "rank": 8,
+        "id": "respiratory",
+        "score": 0.1162792295217514
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": 0.05690848454833031
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.018290191888809204
+      }
+    ]
+  },
+  {
+    "case_id": "greeting_004",
+    "query": "Buen día, quería hacer una consulta",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "greeting_with_noise",
+    "difficulty": "medium",
+    "predicted_id": "greeting",
+    "best_score": 0.6589905619621277,
+    "retrieved_id": "greeting",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.6589905619621277
+      },
+      {
+        "rank": 2,
+        "id": "appointments",
+        "score": 0.4622218608856201
+      },
+      {
+        "rank": 3,
+        "id": "hours_location",
+        "score": 0.4223760962486267
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.2187691032886505
+      },
+      {
+        "rank": 5,
+        "id": "headache",
+        "score": 0.18738125264644623
+      },
+      {
+        "rank": 6,
+        "id": "insurance_payments",
+        "score": 0.15693530440330505
+      },
+      {
+        "rank": 7,
+        "id": "respiratory",
+        "score": 0.15414631366729736
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": 0.1191800907254219
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": 0.06544831395149231
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": 0.054383277893066406
+      }
+    ]
+  },
+  {
+    "case_id": "greeting_005",
+    "query": "Buenas noches, necesito hacerte una pregunta",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "greeting_with_noise",
+    "difficulty": "medium",
+    "predicted_id": "greeting",
+    "best_score": 0.6495136618614197,
+    "retrieved_id": "greeting",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.6495136618614197
+      },
+      {
+        "rank": 2,
+        "id": "out_of_domain",
+        "score": 0.19359740614891052
+      },
+      {
+        "rank": 3,
+        "id": "hours_location",
+        "score": 0.15135905146598816
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.12929126620292664
+      },
+      {
+        "rank": 5,
+        "id": "abdominal",
+        "score": 0.0778975635766983
+      },
+      {
+        "rank": 6,
+        "id": "headache",
+        "score": 0.06907100975513458
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.06515191495418549
+      },
+      {
+        "rank": 8,
+        "id": "respiratory",
+        "score": 0.055315520614385605
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": 0.0377599261701107
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.06278477609157562
+      }
+    ]
+  },
+  {
+    "case_id": "greeting_006",
+    "query": "Qué tal, ¿todo bien?",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard",
+    "predicted_id": "greeting",
+    "best_score": 0.5738153457641602,
+    "retrieved_id": "greeting",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.5738153457641602
+      },
+      {
+        "rank": 2,
+        "id": "out_of_domain",
+        "score": 0.1799125075340271
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.16057661175727844
+      },
+      {
+        "rank": 4,
+        "id": "appointments",
+        "score": 0.13149341940879822
+      },
+      {
+        "rank": 5,
+        "id": "hours_location",
+        "score": 0.11300798505544662
+      },
+      {
+        "rank": 6,
+        "id": "trauma",
+        "score": 0.07937154173851013
+      },
+      {
+        "rank": 7,
+        "id": "headache",
+        "score": 0.07059051096439362
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": 0.05709068104624748
+      },
+      {
+        "rank": 9,
+        "id": "respiratory",
+        "score": 0.05682847648859024
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.035045720636844635
+      }
+    ]
+  },
+  {
+    "case_id": "greeting_007",
+    "query": "Hola che, quería hablar con el asistente",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard",
+    "predicted_id": "greeting",
+    "best_score": 0.5713596940040588,
+    "retrieved_id": "greeting",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.5713596940040588
+      },
+      {
+        "rank": 2,
+        "id": "appointments",
+        "score": 0.4558789134025574
+      },
+      {
+        "rank": 3,
+        "id": "hours_location",
+        "score": 0.3598177433013916
+      },
+      {
+        "rank": 4,
+        "id": "insurance_payments",
+        "score": 0.13156048953533173
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.07919033616781235
+      },
+      {
+        "rank": 6,
+        "id": "abdominal",
+        "score": 0.0655575543642044
+      },
+      {
+        "rank": 7,
+        "id": "out_of_domain",
+        "score": 0.058162812143564224
+      },
+      {
+        "rank": 8,
+        "id": "headache",
+        "score": 0.046486493200063705
+      },
+      {
+        "rank": 9,
+        "id": "respiratory",
+        "score": 0.03985718637704849
+      },
+      {
+        "rank": 10,
+        "id": "trauma",
+        "score": 0.03449062258005142
+      }
+    ]
+  },
+  {
+    "case_id": "greeting_008",
+    "query": "Buenas, ¿hay alguien por acá?",
+    "expected_id": "greeting",
+    "should_retrieve": true,
+    "query_type": "colloquial",
+    "difficulty": "hard",
+    "predicted_id": "greeting",
+    "best_score": 0.6744556427001953,
+    "retrieved_id": "greeting",
+    "expected_rank": 1,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.6744556427001953
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.16992266476154327
+      },
+      {
+        "rank": 3,
+        "id": "fever",
+        "score": 0.16367502510547638
+      },
+      {
+        "rank": 4,
+        "id": "appointments",
+        "score": 0.12653851509094238
+      },
+      {
+        "rank": 5,
+        "id": "out_of_domain",
+        "score": 0.1215842142701149
+      },
+      {
+        "rank": 6,
+        "id": "respiratory",
+        "score": 0.08708903193473816
+      },
+      {
+        "rank": 7,
+        "id": "headache",
+        "score": 0.07417464256286621
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": 0.07150480896234512
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": 0.010017991065979004
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.08574457466602325
+      }
+    ]
+  },
+  {
+    "case_id": "out_of_domain_001",
+    "query": "¿Cómo hago una pizza casera?",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "easy",
+    "predicted_id": "out_of_domain",
+    "best_score": 0.1899241805076599,
+    "retrieved_id": null,
+    "expected_rank": 1,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "out_of_domain",
+        "score": 0.1899241805076599
+      },
+      {
+        "rank": 2,
+        "id": "greeting",
+        "score": 0.08628560602664948
+      },
+      {
+        "rank": 3,
+        "id": "appointments",
+        "score": 0.05089057609438896
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.03459464758634567
+      },
+      {
+        "rank": 5,
+        "id": "hours_location",
+        "score": 0.010613329708576202
+      },
+      {
+        "rank": 6,
+        "id": "insurance_payments",
+        "score": 0.004236411303281784
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": -0.01691039651632309
+      },
+      {
+        "rank": 8,
+        "id": "respiratory",
+        "score": -0.04581345617771149
+      },
+      {
+        "rank": 9,
+        "id": "headache",
+        "score": -0.10705633461475372
+      },
+      {
+        "rank": 10,
+        "id": "trauma",
+        "score": -0.16062681376934052
+      }
+    ]
+  },
+  {
+    "case_id": "out_of_domain_002",
+    "query": "¿Quién es mejor, Messi o Maradona?",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "easy",
+    "predicted_id": "out_of_domain",
+    "best_score": 0.13016340136528015,
+    "retrieved_id": null,
+    "expected_rank": 1,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "out_of_domain",
+        "score": 0.13016340136528015
+      },
+      {
+        "rank": 2,
+        "id": "insurance_payments",
+        "score": 0.09224109351634979
+      },
+      {
+        "rank": 3,
+        "id": "hours_location",
+        "score": 0.08236518502235413
+      },
+      {
+        "rank": 4,
+        "id": "greeting",
+        "score": 0.07379402220249176
+      },
+      {
+        "rank": 5,
+        "id": "respiratory",
+        "score": 0.06287676095962524
+      },
+      {
+        "rank": 6,
+        "id": "appointments",
+        "score": 0.05922425910830498
+      },
+      {
+        "rank": 7,
+        "id": "trauma",
+        "score": 0.041703443974256516
+      },
+      {
+        "rank": 8,
+        "id": "fever",
+        "score": 0.039117489010095596
+      },
+      {
+        "rank": 9,
+        "id": "headache",
+        "score": 0.03680846095085144
+      },
+      {
+        "rank": 10,
+        "id": "abdominal",
+        "score": -0.05853727459907532
+      }
+    ]
+  },
+  {
+    "case_id": "out_of_domain_003",
+    "query": "¿Va a llover mañana?",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "medium",
+    "predicted_id": "greeting",
+    "best_score": 0.3385445773601532,
+    "retrieved_id": "greeting",
+    "expected_rank": 4,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.3385445773601532
+      },
+      {
+        "rank": 2,
+        "id": "fever",
+        "score": 0.25830650329589844
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.20657679438591003
+      },
+      {
+        "rank": 4,
+        "id": "out_of_domain",
+        "score": 0.09457284212112427
+      },
+      {
+        "rank": 5,
+        "id": "hours_location",
+        "score": 0.08804626017808914
+      },
+      {
+        "rank": 6,
+        "id": "headache",
+        "score": 0.07782155275344849
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": 0.07398287951946259
+      },
+      {
+        "rank": 8,
+        "id": "trauma",
+        "score": -0.007881853729486465
+      },
+      {
+        "rank": 9,
+        "id": "appointments",
+        "score": -0.00996635016053915
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.17978844046592712
+      }
+    ]
+  },
+  {
+    "case_id": "out_of_domain_004",
+    "query": "Recomendame una película para ver esta noche",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "medium",
+    "predicted_id": "greeting",
+    "best_score": 0.21699923276901245,
+    "retrieved_id": null,
+    "expected_rank": 2,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.21699923276901245
+      },
+      {
+        "rank": 2,
+        "id": "out_of_domain",
+        "score": 0.11896573007106781
+      },
+      {
+        "rank": 3,
+        "id": "hours_location",
+        "score": 0.05315276235342026
+      },
+      {
+        "rank": 4,
+        "id": "trauma",
+        "score": 0.04952618107199669
+      },
+      {
+        "rank": 5,
+        "id": "appointments",
+        "score": 0.008339446038007736
+      },
+      {
+        "rank": 6,
+        "id": "fever",
+        "score": 0.0015433356165885925
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": -0.034830961376428604
+      },
+      {
+        "rank": 8,
+        "id": "headache",
+        "score": -0.04199185222387314
+      },
+      {
+        "rank": 9,
+        "id": "respiratory",
+        "score": -0.0605945847928524
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.08460953086614609
+      }
+    ]
+  },
+  {
+    "case_id": "out_of_domain_005",
+    "query": "¿Cómo puedo aprender Python desde cero?",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "medium",
+    "predicted_id": "out_of_domain",
+    "best_score": 0.1983584463596344,
+    "retrieved_id": null,
+    "expected_rank": 1,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "out_of_domain",
+        "score": 0.1983584463596344
+      },
+      {
+        "rank": 2,
+        "id": "abdominal",
+        "score": 0.11145639419555664
+      },
+      {
+        "rank": 3,
+        "id": "appointments",
+        "score": 0.10508251190185547
+      },
+      {
+        "rank": 4,
+        "id": "greeting",
+        "score": 0.061726637184619904
+      },
+      {
+        "rank": 5,
+        "id": "hours_location",
+        "score": 0.05382677912712097
+      },
+      {
+        "rank": 6,
+        "id": "fever",
+        "score": 0.02206866443157196
+      },
+      {
+        "rank": 7,
+        "id": "respiratory",
+        "score": 0.017514962702989578
+      },
+      {
+        "rank": 8,
+        "id": "headache",
+        "score": 0.013817097060382366
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": -0.03411639481782913
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.03428274020552635
+      }
+    ]
+  },
+  {
+    "case_id": "out_of_domain_006",
+    "query": "Tengo ganas de cocinar algo rico pero no sé qué preparar",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "hard",
+    "predicted_id": "out_of_domain",
+    "best_score": 0.16831301152706146,
+    "retrieved_id": null,
+    "expected_rank": 1,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "out_of_domain",
+        "score": 0.16831301152706146
+      },
+      {
+        "rank": 2,
+        "id": "fever",
+        "score": 0.16162994503974915
+      },
+      {
+        "rank": 3,
+        "id": "greeting",
+        "score": 0.14071118831634521
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.09180213510990143
+      },
+      {
+        "rank": 5,
+        "id": "headache",
+        "score": 0.05634124577045441
+      },
+      {
+        "rank": 6,
+        "id": "respiratory",
+        "score": 0.03832691162824631
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.01864778622984886
+      },
+      {
+        "rank": 8,
+        "id": "hours_location",
+        "score": -0.029002146795392036
+      },
+      {
+        "rank": 9,
+        "id": "insurance_payments",
+        "score": -0.046463921666145325
+      },
+      {
+        "rank": 10,
+        "id": "trauma",
+        "score": -0.1558195948600769
+      }
+    ]
+  },
+  {
+    "case_id": "out_of_domain_007",
+    "query": "Estoy aburrido, contame algo gracioso",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "hard",
+    "predicted_id": "greeting",
+    "best_score": 0.4765390157699585,
+    "retrieved_id": "greeting",
+    "expected_rank": 2,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.4765390157699585
+      },
+      {
+        "rank": 2,
+        "id": "out_of_domain",
+        "score": 0.26273345947265625
+      },
+      {
+        "rank": 3,
+        "id": "appointments",
+        "score": 0.13720758259296417
+      },
+      {
+        "rank": 4,
+        "id": "trauma",
+        "score": 0.13277211785316467
+      },
+      {
+        "rank": 5,
+        "id": "hours_location",
+        "score": 0.1273883730173111
+      },
+      {
+        "rank": 6,
+        "id": "respiratory",
+        "score": 0.12110105156898499
+      },
+      {
+        "rank": 7,
+        "id": "fever",
+        "score": 0.11883392184972763
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": 0.11865201592445374
+      },
+      {
+        "rank": 9,
+        "id": "headache",
+        "score": 0.11787433922290802
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.050189655274152756
+      }
+    ]
+  },
+  {
+    "case_id": "out_of_domain_008",
+    "query": "Quiero escuchar algo tranquilo mientras trabajo, ¿qué me recomendás?",
+    "expected_id": "out_of_domain",
+    "should_retrieve": true,
+    "query_type": "explicit_out_of_domain",
+    "difficulty": "hard",
+    "predicted_id": "greeting",
+    "best_score": 0.4451672434806824,
+    "retrieved_id": "greeting",
+    "expected_rank": 3,
+    "retrieval_correct": false,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.4451672434806824
+      },
+      {
+        "rank": 2,
+        "id": "appointments",
+        "score": 0.3018571436405182
+      },
+      {
+        "rank": 3,
+        "id": "out_of_domain",
+        "score": 0.2582319378852844
+      },
+      {
+        "rank": 4,
+        "id": "respiratory",
+        "score": 0.18948186933994293
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.1614081859588623
+      },
+      {
+        "rank": 6,
+        "id": "hours_location",
+        "score": 0.14224985241889954
+      },
+      {
+        "rank": 7,
+        "id": "headache",
+        "score": 0.13902001082897186
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": 0.12281887233257294
+      },
+      {
+        "rank": 9,
+        "id": "trauma",
+        "score": 0.07808534801006317
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": 0.07078345119953156
+      }
+    ]
+  },
+  {
+    "case_id": "unknown_ood_001",
+    "query": "¿Cuál es la capital de Mongolia?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "easy",
+    "predicted_id": "greeting",
+    "best_score": 0.22210976481437683,
+    "retrieved_id": null,
+    "expected_rank": null,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.22210976481437683
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.2205066978931427
+      },
+      {
+        "rank": 3,
+        "id": "out_of_domain",
+        "score": 0.1827460080385208
+      },
+      {
+        "rank": 4,
+        "id": "headache",
+        "score": 0.13062813878059387
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.11426529288291931
+      },
+      {
+        "rank": 6,
+        "id": "appointments",
+        "score": 0.1003226488828659
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": 0.08812201023101807
+      },
+      {
+        "rank": 8,
+        "id": "respiratory",
+        "score": 0.08612357079982758
+      },
+      {
+        "rank": 9,
+        "id": "insurance_payments",
+        "score": 0.033026762306690216
+      },
+      {
+        "rank": 10,
+        "id": "trauma",
+        "score": 0.02900395169854164
+      }
+    ]
+  },
+  {
+    "case_id": "unknown_ood_002",
+    "query": "¿Cuántas lunas tiene Júpiter?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "easy",
+    "predicted_id": "hours_location",
+    "best_score": 0.16113966703414917,
+    "retrieved_id": null,
+    "expected_rank": null,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "hours_location",
+        "score": 0.16113966703414917
+      },
+      {
+        "rank": 2,
+        "id": "out_of_domain",
+        "score": 0.14496588706970215
+      },
+      {
+        "rank": 3,
+        "id": "greeting",
+        "score": 0.13236385583877563
+      },
+      {
+        "rank": 4,
+        "id": "appointments",
+        "score": 0.08763304352760315
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.0762624740600586
+      },
+      {
+        "rank": 6,
+        "id": "insurance_payments",
+        "score": 0.04686836898326874
+      },
+      {
+        "rank": 7,
+        "id": "trauma",
+        "score": 0.04168632626533508
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": 0.017085647210478783
+      },
+      {
+        "rank": 9,
+        "id": "headache",
+        "score": 0.009150409139692783
+      },
+      {
+        "rank": 10,
+        "id": "respiratory",
+        "score": -0.028219522908329964
+      }
+    ]
+  },
+  {
+    "case_id": "unknown_ood_003",
+    "query": "¿Quién pintó el Guernica?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "easy",
+    "predicted_id": "greeting",
+    "best_score": 0.17551718652248383,
+    "retrieved_id": null,
+    "expected_rank": null,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.17551718652248383
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.15023750066757202
+      },
+      {
+        "rank": 3,
+        "id": "out_of_domain",
+        "score": 0.12339204549789429
+      },
+      {
+        "rank": 4,
+        "id": "trauma",
+        "score": 0.049054887145757675
+      },
+      {
+        "rank": 5,
+        "id": "headache",
+        "score": 0.02225879207253456
+      },
+      {
+        "rank": 6,
+        "id": "fever",
+        "score": 0.002848256379365921
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": -0.016238994896411896
+      },
+      {
+        "rank": 8,
+        "id": "respiratory",
+        "score": -0.03835662826895714
+      },
+      {
+        "rank": 9,
+        "id": "abdominal",
+        "score": -0.08964723348617554
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.093480184674263
+      }
+    ]
+  },
+  {
+    "case_id": "unknown_ood_004",
+    "query": "¿Qué significa la palabra entropía?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "medium",
+    "predicted_id": "out_of_domain",
+    "best_score": 0.18666872382164001,
+    "retrieved_id": null,
+    "expected_rank": null,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "out_of_domain",
+        "score": 0.18666872382164001
+      },
+      {
+        "rank": 2,
+        "id": "fever",
+        "score": 0.1524927020072937
+      },
+      {
+        "rank": 3,
+        "id": "abdominal",
+        "score": 0.12407927215099335
+      },
+      {
+        "rank": 4,
+        "id": "respiratory",
+        "score": 0.1082163155078888
+      },
+      {
+        "rank": 5,
+        "id": "headache",
+        "score": 0.10077735781669617
+      },
+      {
+        "rank": 6,
+        "id": "trauma",
+        "score": 0.08644232153892517
+      },
+      {
+        "rank": 7,
+        "id": "greeting",
+        "score": 0.08394448459148407
+      },
+      {
+        "rank": 8,
+        "id": "insurance_payments",
+        "score": 0.05285721272230148
+      },
+      {
+        "rank": 9,
+        "id": "hours_location",
+        "score": 0.032624728977680206
+      },
+      {
+        "rank": 10,
+        "id": "appointments",
+        "score": 0.02157757617533207
+      }
+    ]
+  },
+  {
+    "case_id": "unknown_ood_005",
+    "query": "¿Cómo cuido una orquídea para que no se seque?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "medium",
+    "predicted_id": "greeting",
+    "best_score": 0.043141983449459076,
+    "retrieved_id": null,
+    "expected_rank": null,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.043141983449459076
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.04235352948307991
+      },
+      {
+        "rank": 3,
+        "id": "headache",
+        "score": 0.03492056205868721
+      },
+      {
+        "rank": 4,
+        "id": "out_of_domain",
+        "score": 0.025902967900037766
+      },
+      {
+        "rank": 5,
+        "id": "appointments",
+        "score": 0.003409162163734436
+      },
+      {
+        "rank": 6,
+        "id": "trauma",
+        "score": -0.008849162608385086
+      },
+      {
+        "rank": 7,
+        "id": "fever",
+        "score": -0.025295136496424675
+      },
+      {
+        "rank": 8,
+        "id": "insurance_payments",
+        "score": -0.030633101239800453
+      },
+      {
+        "rank": 9,
+        "id": "respiratory",
+        "score": -0.03301404044032097
+      },
+      {
+        "rank": 10,
+        "id": "abdominal",
+        "score": -0.05000723898410797
+      }
+    ]
+  },
+  {
+    "case_id": "unknown_ood_006",
+    "query": "¿Cómo puedo mejorar mi pronunciación en inglés?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "medium",
+    "predicted_id": "greeting",
+    "best_score": 0.25483590364456177,
+    "retrieved_id": null,
+    "expected_rank": null,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.25483590364456177
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.13843733072280884
+      },
+      {
+        "rank": 3,
+        "id": "appointments",
+        "score": 0.09742102771997452
+      },
+      {
+        "rank": 4,
+        "id": "respiratory",
+        "score": 0.07975314557552338
+      },
+      {
+        "rank": 5,
+        "id": "out_of_domain",
+        "score": 0.024788105860352516
+      },
+      {
+        "rank": 6,
+        "id": "trauma",
+        "score": 0.01941976509988308
+      },
+      {
+        "rank": 7,
+        "id": "abdominal",
+        "score": 0.017882775515317917
+      },
+      {
+        "rank": 8,
+        "id": "headache",
+        "score": 0.0008330568671226501
+      },
+      {
+        "rank": 9,
+        "id": "fever",
+        "score": 0.0004971027374267578
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.05783453583717346
+      }
+    ]
+  },
+  {
+    "case_id": "unknown_ood_007",
+    "query": "Necesito organizar mejor mis gastos mensuales",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "hard",
+    "predicted_id": "appointments",
+    "best_score": 0.37040650844573975,
+    "retrieved_id": "appointments",
+    "expected_rank": null,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "appointments",
+        "score": 0.37040650844573975
+      },
+      {
+        "rank": 2,
+        "id": "insurance_payments",
+        "score": 0.30924832820892334
+      },
+      {
+        "rank": 3,
+        "id": "out_of_domain",
+        "score": 0.1983434557914734
+      },
+      {
+        "rank": 4,
+        "id": "hours_location",
+        "score": 0.17921435832977295
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.09893415123224258
+      },
+      {
+        "rank": 6,
+        "id": "abdominal",
+        "score": 0.09506656229496002
+      },
+      {
+        "rank": 7,
+        "id": "respiratory",
+        "score": 0.0895993709564209
+      },
+      {
+        "rank": 8,
+        "id": "headache",
+        "score": 0.04028438776731491
+      },
+      {
+        "rank": 9,
+        "id": "greeting",
+        "score": 0.02596377581357956
+      },
+      {
+        "rank": 10,
+        "id": "trauma",
+        "score": 0.023180266842246056
+      }
+    ]
+  },
+  {
+    "case_id": "unknown_ood_008",
+    "query": "Estoy pensando en aprender un idioma nuevo pero no sé cuál elegir",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "hard",
+    "predicted_id": "out_of_domain",
+    "best_score": 0.1759393960237503,
+    "retrieved_id": null,
+    "expected_rank": null,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "out_of_domain",
+        "score": 0.1759393960237503
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.1179177463054657
+      },
+      {
+        "rank": 3,
+        "id": "appointments",
+        "score": 0.08994317054748535
+      },
+      {
+        "rank": 4,
+        "id": "greeting",
+        "score": 0.0856960192322731
+      },
+      {
+        "rank": 5,
+        "id": "respiratory",
+        "score": 0.08070018887519836
+      },
+      {
+        "rank": 6,
+        "id": "insurance_payments",
+        "score": 0.049367472529411316
+      },
+      {
+        "rank": 7,
+        "id": "headache",
+        "score": 0.03631541132926941
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": 0.025816358625888824
+      },
+      {
+        "rank": 9,
+        "id": "fever",
+        "score": -0.007084434852004051
+      },
+      {
+        "rank": 10,
+        "id": "trauma",
+        "score": -0.019248878583312035
+      }
+    ]
+  },
+  {
+    "case_id": "unknown_ood_009",
+    "query": "¿Cómo hago para concentrarme mejor cuando estudio?",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "hard",
+    "predicted_id": "appointments",
+    "best_score": 0.20406705141067505,
+    "retrieved_id": null,
+    "expected_rank": null,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "appointments",
+        "score": 0.20406705141067505
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.16294041275978088
+      },
+      {
+        "rank": 3,
+        "id": "insurance_payments",
+        "score": 0.08119971305131912
+      },
+      {
+        "rank": 4,
+        "id": "greeting",
+        "score": 0.07763849198818207
+      },
+      {
+        "rank": 5,
+        "id": "out_of_domain",
+        "score": 0.04625365510582924
+      },
+      {
+        "rank": 6,
+        "id": "headache",
+        "score": 0.030484747141599655
+      },
+      {
+        "rank": 7,
+        "id": "fever",
+        "score": 0.010274320840835571
+      },
+      {
+        "rank": 8,
+        "id": "respiratory",
+        "score": -0.019523300230503082
+      },
+      {
+        "rank": 9,
+        "id": "abdominal",
+        "score": -0.02667192928493023
+      },
+      {
+        "rank": 10,
+        "id": "trauma",
+        "score": -0.035242341458797455
+      }
+    ]
+  },
+  {
+    "case_id": "unknown_ood_010",
+    "query": "Quiero saber qué necesito para viajar a otro país",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unknown_out_of_domain",
+    "difficulty": "hard",
+    "predicted_id": "insurance_payments",
+    "best_score": 0.184553325176239,
+    "retrieved_id": null,
+    "expected_rank": null,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "insurance_payments",
+        "score": 0.184553325176239
+      },
+      {
+        "rank": 2,
+        "id": "hours_location",
+        "score": 0.16095858812332153
+      },
+      {
+        "rank": 3,
+        "id": "appointments",
+        "score": 0.14652419090270996
+      },
+      {
+        "rank": 4,
+        "id": "out_of_domain",
+        "score": 0.10363789647817612
+      },
+      {
+        "rank": 5,
+        "id": "respiratory",
+        "score": 0.07517726719379425
+      },
+      {
+        "rank": 6,
+        "id": "fever",
+        "score": 0.06697379797697067
+      },
+      {
+        "rank": 7,
+        "id": "headache",
+        "score": 0.0637371838092804
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": 0.06358762085437775
+      },
+      {
+        "rank": 9,
+        "id": "greeting",
+        "score": 0.056060876697301865
+      },
+      {
+        "rank": 10,
+        "id": "trauma",
+        "score": 0.015873227268457413
+      }
+    ]
+  },
+  {
+    "case_id": "unsupported_medical_001",
+    "query": "Me salió un sarpullido rojo en los brazos",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "easy",
+    "predicted_id": "greeting",
+    "best_score": 0.26173847913742065,
+    "retrieved_id": null,
+    "expected_rank": null,
+    "retrieval_correct": true,
+    "decision_correct": true,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "greeting",
+        "score": 0.26173847913742065
+      },
+      {
+        "rank": 2,
+        "id": "trauma",
+        "score": 0.18739089369773865
+      },
+      {
+        "rank": 3,
+        "id": "headache",
+        "score": 0.17007088661193848
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.08221606910228729
+      },
+      {
+        "rank": 5,
+        "id": "respiratory",
+        "score": 0.06086678430438042
+      },
+      {
+        "rank": 6,
+        "id": "hours_location",
+        "score": 0.04231434315443039
+      },
+      {
+        "rank": 7,
+        "id": "out_of_domain",
+        "score": 0.011570237576961517
+      },
+      {
+        "rank": 8,
+        "id": "abdominal",
+        "score": 0.002103157341480255
+      },
+      {
+        "rank": 9,
+        "id": "appointments",
+        "score": -0.01599503681063652
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.0807306170463562
+      }
+    ]
+  },
+  {
+    "case_id": "unsupported_medical_002",
+    "query": "Me arde cuando orino",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "easy",
+    "predicted_id": "fever",
+    "best_score": 0.3387603759765625,
+    "retrieved_id": "fever",
+    "expected_rank": null,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "fever",
+        "score": 0.3387603759765625
+      },
+      {
+        "rank": 2,
+        "id": "greeting",
+        "score": 0.3216608762741089
+      },
+      {
+        "rank": 3,
+        "id": "headache",
+        "score": 0.24569261074066162
+      },
+      {
+        "rank": 4,
+        "id": "respiratory",
+        "score": 0.20937716960906982
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.1907537579536438
+      },
+      {
+        "rank": 6,
+        "id": "abdominal",
+        "score": 0.13764142990112305
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.10337358713150024
+      },
+      {
+        "rank": 8,
+        "id": "out_of_domain",
+        "score": 0.10198982059955597
+      },
+      {
+        "rank": 9,
+        "id": "appointments",
+        "score": 0.04449889063835144
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.11957544088363647
+      }
+    ]
+  },
+  {
+    "case_id": "unsupported_medical_003",
+    "query": "Me duele mucho una muela",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "medium",
+    "predicted_id": "headache",
+    "best_score": 0.5853217840194702,
+    "retrieved_id": "headache",
+    "expected_rank": null,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.5853217840194702
+      },
+      {
+        "rank": 2,
+        "id": "trauma",
+        "score": 0.43529221415519714
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.4218355417251587
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.39438486099243164
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.31410324573516846
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.14825895428657532
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.09856344014406204
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.03982675448060036
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.001694090198725462
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.025090452283620834
+      }
+    ]
+  },
+  {
+    "case_id": "unsupported_medical_004",
+    "query": "Tengo el ojo rojo y me pica",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "medium",
+    "predicted_id": "headache",
+    "best_score": 0.34393471479415894,
+    "retrieved_id": "headache",
+    "expected_rank": null,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.34393471479415894
+      },
+      {
+        "rank": 2,
+        "id": "greeting",
+        "score": 0.2108711302280426
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.16088451445102692
+      },
+      {
+        "rank": 4,
+        "id": "trauma",
+        "score": 0.1329272985458374
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.11311787366867065
+      },
+      {
+        "rank": 6,
+        "id": "abdominal",
+        "score": 0.07501229643821716
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.05254226177930832
+      },
+      {
+        "rank": 8,
+        "id": "out_of_domain",
+        "score": -0.0033278726041316986
+      },
+      {
+        "rank": 9,
+        "id": "appointments",
+        "score": -0.007596537470817566
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.0794457197189331
+      }
+    ]
+  },
+  {
+    "case_id": "unsupported_medical_005",
+    "query": "Me duele el oído desde ayer",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "medium",
+    "predicted_id": "headache",
+    "best_score": 0.5592973828315735,
+    "retrieved_id": "headache",
+    "expected_rank": null,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.5592973828315735
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.4270936846733093
+      },
+      {
+        "rank": 3,
+        "id": "trauma",
+        "score": 0.2722531259059906
+      },
+      {
+        "rank": 4,
+        "id": "abdominal",
+        "score": 0.22863462567329407
+      },
+      {
+        "rank": 5,
+        "id": "greeting",
+        "score": 0.19297197461128235
+      },
+      {
+        "rank": 6,
+        "id": "fever",
+        "score": 0.17581889033317566
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.11058595776557922
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.04974044859409332
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": -0.032134152948856354
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.0775037631392479
+      }
+    ]
+  },
+  {
+    "case_id": "unsupported_medical_006",
+    "query": "A veces siento que el corazón me late muy rápido",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "hard",
+    "predicted_id": "headache",
+    "best_score": 0.38309720158576965,
+    "retrieved_id": "headache",
+    "expected_rank": null,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.38309720158576965
+      },
+      {
+        "rank": 2,
+        "id": "fever",
+        "score": 0.34201109409332275
+      },
+      {
+        "rank": 3,
+        "id": "abdominal",
+        "score": 0.24037927389144897
+      },
+      {
+        "rank": 4,
+        "id": "respiratory",
+        "score": 0.22573639452457428
+      },
+      {
+        "rank": 5,
+        "id": "greeting",
+        "score": 0.1344715654850006
+      },
+      {
+        "rank": 6,
+        "id": "trauma",
+        "score": 0.13076134026050568
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.11792176216840744
+      },
+      {
+        "rank": 8,
+        "id": "hours_location",
+        "score": 0.09673181176185608
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.012775173410773277
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.03502597659826279
+      }
+    ]
+  },
+  {
+    "case_id": "unsupported_medical_007",
+    "query": "Me salió una mancha en la piel que me da mucha picazón",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "hard",
+    "predicted_id": "headache",
+    "best_score": 0.40744462609291077,
+    "retrieved_id": "headache",
+    "expected_rank": null,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.40744462609291077
+      },
+      {
+        "rank": 2,
+        "id": "trauma",
+        "score": 0.31781458854675293
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.29521167278289795
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.20346927642822266
+      },
+      {
+        "rank": 5,
+        "id": "abdominal",
+        "score": 0.16933412849903107
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.06470264494419098
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.034621600061655045
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.0006337501108646393
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": -0.028660399839282036
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.03395636007189751
+      }
+    ]
+  },
+  {
+    "case_id": "unsupported_medical_008",
+    "query": "Últimamente me cuesta mucho dormir y me despierto varias veces",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "hard",
+    "predicted_id": "headache",
+    "best_score": 0.34913522005081177,
+    "retrieved_id": "headache",
+    "expected_rank": null,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.34913522005081177
+      },
+      {
+        "rank": 2,
+        "id": "respiratory",
+        "score": 0.2744702994823456
+      },
+      {
+        "rank": 3,
+        "id": "abdominal",
+        "score": 0.22491225600242615
+      },
+      {
+        "rank": 4,
+        "id": "fever",
+        "score": 0.1902123987674713
+      },
+      {
+        "rank": 5,
+        "id": "trauma",
+        "score": 0.16907981038093567
+      },
+      {
+        "rank": 6,
+        "id": "greeting",
+        "score": 0.15653856098651886
+      },
+      {
+        "rank": 7,
+        "id": "appointments",
+        "score": 0.12445725500583649
+      },
+      {
+        "rank": 8,
+        "id": "out_of_domain",
+        "score": 0.1208401694893837
+      },
+      {
+        "rank": 9,
+        "id": "hours_location",
+        "score": 0.11433114856481552
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": 0.03798578679561615
+      }
+    ]
+  },
+  {
+    "case_id": "unsupported_medical_009",
+    "query": "Estoy muy ansioso y siento que no puedo relajarme",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "hard",
+    "predicted_id": "headache",
+    "best_score": 0.35773128271102905,
+    "retrieved_id": "headache",
+    "expected_rank": null,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.35773128271102905
+      },
+      {
+        "rank": 2,
+        "id": "fever",
+        "score": 0.33068281412124634
+      },
+      {
+        "rank": 3,
+        "id": "abdominal",
+        "score": 0.26142436265945435
+      },
+      {
+        "rank": 4,
+        "id": "greeting",
+        "score": 0.2326469123363495
+      },
+      {
+        "rank": 5,
+        "id": "respiratory",
+        "score": 0.22544512152671814
+      },
+      {
+        "rank": 6,
+        "id": "hours_location",
+        "score": 0.13757513463497162
+      },
+      {
+        "rank": 7,
+        "id": "trauma",
+        "score": 0.12439954280853271
+      },
+      {
+        "rank": 8,
+        "id": "appointments",
+        "score": 0.04817193001508713
+      },
+      {
+        "rank": 9,
+        "id": "out_of_domain",
+        "score": 0.013964960351586342
+      },
+      {
+        "rank": 10,
+        "id": "insurance_payments",
+        "score": -0.0766536146402359
+      }
+    ]
+  },
+  {
+    "case_id": "unsupported_medical_010",
+    "query": "Tengo un dolor fuerte en el pecho cuando hago esfuerzo",
+    "expected_id": null,
+    "should_retrieve": false,
+    "query_type": "unsupported_medical",
+    "difficulty": "hard",
+    "predicted_id": "headache",
+    "best_score": 0.6039807796478271,
+    "retrieved_id": "headache",
+    "expected_rank": null,
+    "retrieval_correct": false,
+    "decision_correct": false,
+    "ranking": [
+      {
+        "rank": 1,
+        "id": "headache",
+        "score": 0.6039807796478271
+      },
+      {
+        "rank": 2,
+        "id": "abdominal",
+        "score": 0.47361937165260315
+      },
+      {
+        "rank": 3,
+        "id": "respiratory",
+        "score": 0.46186181902885437
+      },
+      {
+        "rank": 4,
+        "id": "trauma",
+        "score": 0.34758585691452026
+      },
+      {
+        "rank": 5,
+        "id": "fever",
+        "score": 0.32385867834091187
+      },
+      {
+        "rank": 6,
+        "id": "appointments",
+        "score": 0.22584500908851624
+      },
+      {
+        "rank": 7,
+        "id": "hours_location",
+        "score": 0.17101885378360748
+      },
+      {
+        "rank": 8,
+        "id": "insurance_payments",
+        "score": 0.1049937978386879
+      },
+      {
+        "rank": 9,
+        "id": "greeting",
+        "score": 0.10323971509933472
+      },
+      {
+        "rank": 10,
+        "id": "out_of_domain",
+        "score": 0.00674245972186327
+      }
+    ]
+  }
+]
