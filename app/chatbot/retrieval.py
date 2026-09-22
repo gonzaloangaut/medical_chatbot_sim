@@ -105,7 +105,7 @@ class SemanticRetriever:
             The user's query.
         top_k : int | None
             The number of results to return.
-        
+
         Returns
         ----------
         results : list[dict]

@@ -85,6 +85,9 @@ def test_retrieve_returns_best_chunk(monkeypatch):
     retriever.ingest_context(context)
 
     def fake_semantic_search(query_embedding, embeddings, top_k=1):
+        """
+        Simulate the behavior of semantic_search by returning a fixed result.
+        """
         return [
             [
                 {
@@ -125,6 +128,10 @@ def test_retrieve_returns_none_when_score_is_below_threshold(monkeypatch):
     retriever.ingest_context(context)
 
     def fake_semantic_search(query_embedding, embeddings, top_k=1):
+        """
+        Simulate the behavior of semantic_search by returning a result
+        with a score below the threshold.
+        """
         return [
             [
                 {
@@ -144,6 +151,7 @@ def test_retrieve_returns_none_when_score_is_below_threshold(monkeypatch):
 
     assert result is None
 
+
 def test_search_returns_ranked_results(monkeypatch):
     """
     Test that the search method returns results ranked by similarity score.
@@ -153,8 +161,7 @@ def test_search_returns_ranked_results(monkeypatch):
     retriever = SemanticRetriever(embedder=embedder)
 
     # Ingest some context into the retriever
-    retriever.ingest_context(
-        """
+    retriever.ingest_context("""
         key zero
         @@@
         chunk zero
@@ -162,8 +169,7 @@ def test_search_returns_ranked_results(monkeypatch):
         key one
         @@@
         chunk one
-        """
-    )
+        """)
 
     # Monkeypatch the semantic_search function to return controlled results
     def fake_semantic_search(query_embedding, corpus_embeddings, top_k):
