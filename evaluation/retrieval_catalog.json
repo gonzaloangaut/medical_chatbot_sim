@@ -1,0 +1,42 @@
+[
+  {
+    "corpus_id": 0,
+    "id": "fever"
+  },
+  {
+    "corpus_id": 1,
+    "id": "headache"
+  },
+  {
+    "corpus_id": 2,
+    "id": "respiratory"
+  },
+  {
+    "corpus_id": 3,
+    "id": "abdominal"
+  },
+  {
+    "corpus_id": 4,
+    "id": "trauma"
+  },
+  {
+    "corpus_id": 5,
+    "id": "appointments"
+  },
+  {
+    "corpus_id": 6,
+    "id": "hours_location"
+  },
+  {
+    "corpus_id": 7,
+    "id": "insurance_payments"
+  },
+  {
+    "corpus_id": 8,
+    "id": "greeting"
+  },
+  {
+    "corpus_id": 9,
+    "id": "out_of_domain"
+  }
+]
