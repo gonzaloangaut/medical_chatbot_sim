@@ -143,3 +143,55 @@ def test_retrieve_returns_none_when_score_is_below_threshold(monkeypatch):
     result = retriever.retrieve("Tengo dolor de cabeza")
 
     assert result is None
+
+def test_search_returns_ranked_results(monkeypatch):
+    """
+    Test that the search method returns results ranked by similarity score.
+    """
+    # Create a fake embedder and retriever
+    embedder = FakeEmbedder()
+    retriever = SemanticRetriever(embedder=embedder)
+
+    # Ingest some context into the retriever
+    retriever.ingest_context(
+        """
+        key zero
+        @@@
+        chunk zero
+        ###
+        key one
+        @@@
+        chunk one
+        """
+    )
+
+    # Monkeypatch the semantic_search function to return controlled results
+    def fake_semantic_search(query_embedding, corpus_embeddings, top_k):
+        """
+        Simulate the behavior of semantic_search by returning a fixed set of results.
+        """
+        return [
+            [
+                {"corpus_id": 1, "score": 0.8},
+                {"corpus_id": 0, "score": 0.6},
+            ]
+        ]
+
+    monkeypatch.setattr(
+        retrieval_module.util,
+        "semantic_search",
+        fake_semantic_search,
+    )
+
+    # Call the search method and check the results
+    results = retriever.search("some query", top_k=2)
+
+    assert len(results) == 2
+
+    assert results[0]["corpus_id"] == 1
+    assert results[0]["score"] == 0.8
+    assert results[0]["chunk"] == "chunk one"
+
+    assert results[1]["corpus_id"] == 0
+    assert results[1]["score"] == 0.6
+    assert results[1]["chunk"] == "chunk zero"
