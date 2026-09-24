@@ -103,9 +103,14 @@ def main():
     dataset = load_json(DATASET_PATH)
     catalog_data = load_json(CATALOG_PATH)
 
-    catalog = {item["corpus_id"]: item["id"] for item in catalog_data}
+    catalog = {
+        item["corpus_id"]: item["id"]
+        for item in catalog_data
+    }
 
-    context_text = CONTEXT_PATH.read_text(encoding="utf-8")
+    context_text = CONTEXT_PATH.read_text(
+        encoding="utf-8"
+    )
 
     retriever = SemanticRetriever()
     retriever.ingest_context(context_text)
@@ -126,19 +131,6 @@ def main():
 
     print(f"Evaluated {len(results)} cases.")
     print(f"Results saved to: {RESULTS_PATH}")
-
-    # Store the results
-    with RESULTS_PATH.open("w", encoding="utf-8") as file:
-        json.dump(
-            results,
-            file,
-            ensure_ascii=False,
-            indent=2,
-        )
-
-    print(f"Evaluated {len(results)} cases.")
-    print(f"Results saved to: {RESULTS_PATH}")
-
 
 if __name__ == "__main__":
     main()
