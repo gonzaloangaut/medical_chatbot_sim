@@ -21,46 +21,43 @@ def load_json(path: Path):
         return json.load(file)
 
 
-def main():
+def evaluate_retriever(
+    retriever: SemanticRetriever,
+    dataset: list[dict],
+    catalog: dict[int, str],
+) -> list[dict]:
     """
-    Run the retrieval evaluation using the provided dataset and catalog.
+    Evaluate a configured retriever on the retrieval benchmark.
+
+    Parameters
+    ----------
+    retriever : SemanticRetriever
+        The retriever to evaluate. It must already contain the indexed
+        knowledge base.
+    dataset : list[dict]
+        Evaluation cases containing queries and expected results.
+    catalog : dict[int, str]
+        Mapping from corpus IDs to semantic document IDs.
+
+    Returns
+    -------
+    list[dict]
+        Per-query retrieval results, rankings, scores, and correctness metrics.
     """
-    # Load evaluation data
-    dataset = load_json(DATASET_PATH)
-    catalog_data = load_json(CATALOG_PATH)
-
-    # Convert catalog to a dictionary:
-    # {0: "fever", 1: "headache", ...}
-    catalog = {item["corpus_id"]: item["id"] for item in catalog_data}
-
-    # Load and index the knowledge base
-    context_text = CONTEXT_PATH.read_text(encoding="utf-8")
-
-    # Initialize the semantic retriever and ingest the context
-    retriever = SemanticRetriever()
-    retriever.ingest_context(context_text)
-
-    # Evaluate each case in the dataset
     results = []
 
     for case in dataset:
-        # Search for the most similar pieces of text to the query
         ranking = retriever.search(case["query"])
-        # Get the best result
-        best_result = ranking[0]
 
-        # Take the predicted id from the catalog
+        best_result = ranking[0]
         predicted_id = catalog[best_result["corpus_id"]]
-        # And the score
         best_score = best_result["score"]
 
-        # Apply the current retrieval policy
         if best_score >= retriever.threshold:
             retrieved_id = predicted_id
         else:
             retrieved_id = None
 
-        # Find the rank of the expected document
         expected_rank = None
 
         if case["expected_id"] is not None:
@@ -95,6 +92,40 @@ def main():
         }
 
         results.append(result)
+
+    return results
+
+
+def main():
+    """
+    Run the baseline retrieval evaluation and save the results.
+    """
+    dataset = load_json(DATASET_PATH)
+    catalog_data = load_json(CATALOG_PATH)
+
+    catalog = {item["corpus_id"]: item["id"] for item in catalog_data}
+
+    context_text = CONTEXT_PATH.read_text(encoding="utf-8")
+
+    retriever = SemanticRetriever()
+    retriever.ingest_context(context_text)
+
+    results = evaluate_retriever(
+        retriever=retriever,
+        dataset=dataset,
+        catalog=catalog,
+    )
+
+    with RESULTS_PATH.open("w", encoding="utf-8") as file:
+        json.dump(
+            results,
+            file,
+            ensure_ascii=False,
+            indent=2,
+        )
+
+    print(f"Evaluated {len(results)} cases.")
+    print(f"Results saved to: {RESULTS_PATH}")
 
     # Store the results
     with RESULTS_PATH.open("w", encoding="utf-8") as file:
