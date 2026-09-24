@@ -31,10 +31,7 @@ def main():
 
     # Convert catalog to a dictionary:
     # {0: "fever", 1: "headache", ...}
-    catalog = {
-        item["corpus_id"]: item["id"]
-        for item in catalog_data
-    }
+    catalog = {item["corpus_id"]: item["id"] for item in catalog_data}
 
     # Load and index the knowledge base
     context_text = CONTEXT_PATH.read_text(encoding="utf-8")
@@ -86,10 +83,7 @@ def main():
             "retrieved_id": retrieved_id,
             "expected_rank": expected_rank,
             "retrieval_correct": retrieved_id == case["expected_id"],
-            "decision_correct": (
-                (retrieved_id is not None)
-                == case["should_retrieve"]
-            ),
+            "decision_correct": ((retrieved_id is not None) == case["should_retrieve"]),
             "ranking": [
                 {
                     "rank": rank,

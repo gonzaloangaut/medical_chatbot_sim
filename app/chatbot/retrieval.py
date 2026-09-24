@@ -11,6 +11,7 @@ class SemanticRetriever:
         model_name: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
         embedder=None,
         threshold: float = 0.3,
+        representation: str = "search_keys",
     ):
         """
         Initialize a new retriever.
@@ -25,14 +26,17 @@ class SemanticRetriever:
             The embedder used.
         threshold : float
             The minimum cosine similarity threshold.
+        representation : str
+            The text used for embedding.
         chunks : list
             List to store the chunks of the context.
         embeddings : torch.Tensor
-            Vector representations of the indexed search keys.
+            Vector representations of the indexed document representations.
         """
         self.device = "cpu"
         self.model_name = model_name
         self.threshold = threshold
+        self.representation = representation
 
         # Load Embeddings Model
         if embedder is None:
@@ -43,38 +47,60 @@ class SemanticRetriever:
         else:
             self.embedder = embedder
 
-        # Variables to save the vectorial database
+        # Indexed retrieval data
         self.search_keys = []
         self.chunks = []
         self.embeddings = None
 
+    def _build_embedding_text(
+        self,
+        search_keys: str,
+        content: str,
+    ) -> str:
+        """
+        Build the document representation used for embedding.
+        """
+        if self.representation == "search_keys":
+            return search_keys
+
+        if self.representation == "content":
+            return content
+
+        if self.representation == "search_keys_and_content":
+            return f"{search_keys}\n{content}"
+
+        raise ValueError(f"Unknown document representation: {self.representation}")
+
     def ingest_context(self, context_text: str):
         """
-        Split the text and vectorize it. This is done only once.
+        Parse the knowledge base and compute document embeddings.
 
         Parameters
         ----------
         context_text : str
-            The text to be analized.
+            Raw knowledge-base text.
 
         Notes
         -----
-        The context text must follow this structure:
+        Blocks must be separated by '###'.
 
-        - Blocks separated by '###'
-        - Optional separation inside each block using '@@@':
-            <search keys> @@@ <official protocol text>
+        Each block may optionally follow:
 
-        Only the search keys are embedded, while the full protocol
-        text is passed to the LLM.
+            <search keys> @@@ <content>
+
+        The text used to compute each document embedding depends on
+        `self.representation`, while `content` is stored as the chunk
+        returned by the retriever.
         """
         # Separate the text
         raw_blocks = context_text.split("###")
 
-        # Vectorize the symptoms
+        # Store parsed search keys
         self.search_keys = []
         # Protocols given to the LLM
         self.chunks = []
+        # Embedding texts
+        embedding_texts = []
 
         for block in raw_blocks:
             block = block.strip()
@@ -85,15 +111,28 @@ class SemanticRetriever:
             if "@@@" in block:
                 # We look for the separation and add the chunk
                 keys, content = block.split("@@@", 1)
-                self.search_keys.append(keys.strip())
-                self.chunks.append(content.strip())
+                keys = keys.strip()
+                content = content.strip()
             else:
                 # If there is not separation, use everything
-                self.search_keys.append(block)
-                self.chunks.append(block)
+                keys = block
+                content = block
+            # Append keys and content
+            self.search_keys.append(keys)
+            self.chunks.append(content)
+            # Embedding text used
+            embedding_texts.append(
+                self._build_embedding_text(
+                    search_keys=keys,
+                    content=content,
+                )
+            )
 
-        # Vectorize only the symptoms
-        self.embeddings = self.embedder.encode(self.search_keys, convert_to_tensor=True)
+        # Encode the selected document representation
+        self.embeddings = self.embedder.encode(
+            embedding_texts,
+            convert_to_tensor=True,
+        )
 
     def search(self, query: str, top_k: int | None = None) -> list[dict]:
         """
@@ -159,8 +198,8 @@ class SemanticRetriever:
 
         Notes
         -----
-        A minimum cosine similarity threshold is applied to avoid
-        hallucinated responses when no relevant context is found.
+        A minimum similarity threshold is used to reject queries when
+        the Top-1 document does not reach the required retrieval score.
         """
         # Search for the best result
         results = self.search(query, top_k=1)

@@ -1,3 +1,5 @@
+import pytest
+
 from app.chatbot import retrieval as retrieval_module
 from app.chatbot.retrieval import SemanticRetriever
 
@@ -8,10 +10,14 @@ class FakeEmbedder:
     for testing purposes.
     """
 
+    def __init__(self):
+        self.last_input = None
+
     def encode(self, texts, convert_to_tensor=True):
         """
         Simulate the embedding process by returning a fixed string.
         """
+        self.last_input = texts
         return "EMBEDDINGS_FAKE"
 
 
@@ -201,3 +207,54 @@ def test_search_returns_ranked_results(monkeypatch):
     assert results[1]["corpus_id"] == 0
     assert results[1]["score"] == 0.6
     assert results[1]["chunk"] == "chunk zero"
+
+
+@pytest.mark.parametrize(
+    "representation, expected_input",
+    [
+        ("search_keys", ["fever keys"]),
+        ("content", ["fever protocol"]),
+        (
+            "search_keys_and_content",
+            ["fever keys\nfever protocol"],
+        ),
+    ],
+)
+def test_document_representation_is_used_for_embedding(
+    representation,
+    expected_input,
+):
+    """
+    Test that the selected document representation is passed to the embedder.
+
+    The test verifies the three supported representations:
+    search keys only, chunk content only, and search keys combined with content.
+    """
+    embedder = FakeEmbedder()
+
+    retriever = SemanticRetriever(
+        embedder=embedder,
+        representation=representation,
+    )
+
+    retriever.ingest_context("fever keys @@@ fever protocol")
+
+    assert embedder.last_input == expected_input
+
+
+def test_invalid_representation_raises_value_error():
+    """
+    Test that an unsupported document representation raises a ValueError.
+    """
+    embedder = FakeEmbedder()
+
+    retriever = SemanticRetriever(
+        embedder=embedder,
+        representation="invalid",
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="Unknown document representation",
+    ):
+        retriever.ingest_context("fever keys @@@ fever protocol")
