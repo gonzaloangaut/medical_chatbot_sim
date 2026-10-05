@@ -2,7 +2,7 @@ from textwrap import dedent
 
 import pytest
 
-from app.chatbot.knowledge import _load_document
+from app.chatbot.knowledge import _load_document, load_documents
 from app.chatbot.models import Document
 
 
@@ -88,3 +88,64 @@ def test_load_document_missing_required_metadata(tmp_path):
     # Verify that loading fails
     with pytest.raises(ValueError, match="Missing required metadata fields"):
         _load_document(doc_path)
+
+def test_load_documents_loads_markdown_files(tmp_path):
+    """
+    Test that load_documents loads all Markdown files in the specified directory.
+    """
+    # Create temporary Markdown documents
+    a_path = tmp_path / "a.md"
+    b_path = tmp_path / "b.md"
+    # Create a non-Markdown file that should be ignored
+    txt_path = tmp_path / "ignored.txt"
+
+    # Write content to the Markdown files
+    a_path.write_text(
+        dedent(
+            """
+            ---
+            document_id: document_a
+            title: Document A
+            source: Test Source
+            source_url: https://example.com/a
+            ---
+
+            # Document A
+
+            Some content.
+            """
+        ).strip(),
+        encoding="utf-8",
+    )
+
+    b_path.write_text(
+        dedent(
+            """
+            ---
+            document_id: document_b
+            title: Document B
+            source: Test Source
+            source_url: https://example.com/b
+            ---
+
+            # Document B
+
+            Some content.
+            """
+        ).strip(),
+        encoding="utf-8",
+    )
+
+    # Write content to the non-Markdown file
+    txt_path.write_text(
+        "This file should be ignored.",
+        encoding="utf-8",
+    )
+
+    # Load documents from the temporary directory
+    documents = load_documents(tmp_path)
+
+    # Verify that only the Markdown documents were loaded
+    assert len(documents) == 2
+    assert documents[0].document_id == "document_a"
+    assert documents[1].document_id == "document_b"

@@ -88,9 +88,15 @@ def _load_document(path: Path) -> Document:
         content=content,
     )
 
-def load_documents() -> list[Document]:
+def load_documents(documents_dir: Path | None = None) -> list[Document]:
     """
     Load all documents from the knowledge directory.
+
+    Parameters
+    ----------
+    documents_dir : Path | None, optional
+        The path to the knowledge directory. If None, the default location
+        is used.
 
     Returns
     -------
@@ -98,8 +104,9 @@ def load_documents() -> list[Document]:
         The parsed documents.
     """
     # Define the path to the knowledge directory
-    project_root = Path(__file__).resolve().parent.parent.parent
-    documents_dir = project_root / "data" / "knowledge"
+    if documents_dir is None:
+        project_root = Path(__file__).resolve().parent.parent.parent
+        documents_dir = project_root / "data" / "knowledge"
 
     # Load all Markdown documents in deterministic order
     documents = []
