@@ -59,3 +59,26 @@ def chunk_document(document: Document) -> list[Chunk]:
         )
 
     return chunks
+
+def chunk_documents(documents: list[Document]) -> list[Chunk]:
+    """
+    Chunk multiple documents into a flat list of chunks.
+
+    Parameters
+    ----------
+    documents : list[Document]
+        The documents to be chunked.
+
+    Returns
+    -------
+    list[Chunk]
+        The chunks generated from all documents.
+    """
+    # Initialize a list to hold all chunks
+    chunks = []
+
+    # Iterate over each document and chunk it
+    for document in documents:
+        chunks.extend(chunk_document(document))
+
+    return chunks

@@ -1,6 +1,6 @@
 from textwrap import dedent
 
-from app.chatbot.chunking import chunk_document
+from app.chatbot.chunking import chunk_document, chunk_documents
 from app.chatbot.models import Document
 
 def test_chunk_document_creates_chunks_from_sections():
@@ -125,3 +125,52 @@ def test_chunk_document_ignores_empty_sections():
     assert chunks[1].document_id == "test_document"
     assert chunks[1].section == "Symptoms"
     assert chunks[1].content == "Symptoms content."
+
+
+def test_chunk_documents_returns_flat_chunks():
+    """
+    Test that chunk_documents returns a flat list of chunks from multiple documents.
+    """
+    # Create two sample documents
+    document_a = Document(
+        document_id="document_a",
+        title="Document A",
+        source="Test Source",
+        source_url="https://example.com/a",
+        content=dedent(
+            """
+            # Document A
+
+            ## Overview
+
+            Content A.
+            """
+        ).strip(),
+    )
+
+    document_b = Document(
+        document_id="document_b",
+        title="Document B",
+        source="Test Source",
+        source_url="https://example.com/b",
+        content=dedent(
+            """
+            # Document B
+
+            ## Symptoms
+
+            Content B.
+            """
+        ).strip(),
+    )
+
+    # Chunk the documents
+    chunks = chunk_documents([document_a, document_b])
+
+    # Assert that the correct number of chunks were created
+    assert len(chunks) == 2
+    # Assert that the chunks have the expected content and metadata
+    assert chunks[0].document_id == "document_a"
+    assert chunks[0].section == "Overview"
+    assert chunks[1].document_id == "document_b"
+    assert chunks[1].section == "Symptoms"
