@@ -12,8 +12,7 @@ def test_load_document_returns_document(tmp_path):
     """
     # Create a temporary Markdown document
     doc_path = tmp_path / "test_doc.md"
-    doc_content = dedent(
-        """
+    doc_content = dedent("""
         ---
         document_id: test_document
         title: Test Document
@@ -26,8 +25,7 @@ def test_load_document_returns_document(tmp_path):
         ## Overview
 
         Some content.
-        """
-    ).strip()
+        """).strip()
 
     doc_path.write_text(doc_content, encoding="utf-8")
 
@@ -49,13 +47,11 @@ def test_load_document_missing_front_matter(tmp_path):
     """
     # Create a document without front matter
     doc_path = tmp_path / "test_doc.md"
-    doc_content = dedent(
-        """
+    doc_content = dedent("""
         # Test Document
 
         Some content.
-        """
-    ).strip()
+        """).strip()
 
     doc_path.write_text(doc_content, encoding="utf-8")
 
@@ -70,8 +66,7 @@ def test_load_document_missing_required_metadata(tmp_path):
     """
     # Create a document with incomplete metadata
     doc_path = tmp_path / "test_doc.md"
-    doc_content = dedent(
-        """
+    doc_content = dedent("""
         ---
         document_id: test_document
         title: Test Document
@@ -80,14 +75,14 @@ def test_load_document_missing_required_metadata(tmp_path):
         # Test Document
 
         Some content.
-        """
-    ).strip()
+        """).strip()
 
     doc_path.write_text(doc_content, encoding="utf-8")
 
     # Verify that loading fails
     with pytest.raises(ValueError, match="Missing required metadata fields"):
         _load_document(doc_path)
+
 
 def test_load_documents_loads_markdown_files(tmp_path):
     """
@@ -101,8 +96,7 @@ def test_load_documents_loads_markdown_files(tmp_path):
 
     # Write content to the Markdown files
     a_path.write_text(
-        dedent(
-            """
+        dedent("""
             ---
             document_id: document_a
             title: Document A
@@ -113,14 +107,12 @@ def test_load_documents_loads_markdown_files(tmp_path):
             # Document A
 
             Some content.
-            """
-        ).strip(),
+            """).strip(),
         encoding="utf-8",
     )
 
     b_path.write_text(
-        dedent(
-            """
+        dedent("""
             ---
             document_id: document_b
             title: Document B
@@ -131,8 +123,7 @@ def test_load_documents_loads_markdown_files(tmp_path):
             # Document B
 
             Some content.
-            """
-        ).strip(),
+            """).strip(),
         encoding="utf-8",
     )
 

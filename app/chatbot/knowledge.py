@@ -1,4 +1,5 @@
 from pathlib import Path
+
 from app.chatbot.models import Document
 
 
@@ -76,8 +77,7 @@ def _load_document(path: Path) -> Document:
 
     if missing_fields:
         raise ValueError(
-            f"Missing required metadata fields in {path}: "
-            f"{sorted(missing_fields)}"
+            f"Missing required metadata fields in {path}: " f"{sorted(missing_fields)}"
         )
 
     return Document(
@@ -87,6 +87,7 @@ def _load_document(path: Path) -> Document:
         source_url=metadata["source_url"],
         content=content,
     )
+
 
 def load_documents(documents_dir: Path | None = None) -> list[Document]:
     """

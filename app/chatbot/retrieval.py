@@ -1,5 +1,7 @@
 from sentence_transformers import SentenceTransformer, util
 
+from app.chatbot.models import Chunk
+
 
 class SemanticRetriever:
     """
@@ -52,13 +54,13 @@ class SemanticRetriever:
         self.chunks = []
         self.embeddings = None
 
-    def _build_embedding_text(
+    def _build_legacy_embedding_text(
         self,
         search_keys: str,
         content: str,
     ) -> str:
         """
-        Build the document representation used for embedding.
+        Build the legacy document representation used for embedding.
         """
         if self.representation == "search_keys":
             return search_keys
@@ -70,6 +72,43 @@ class SemanticRetriever:
             return f"{search_keys}\n{content}"
 
         raise ValueError(f"Unknown document representation: {self.representation}")
+
+    def _build_embedding_text(self, chunk: Chunk) -> str:
+        """
+        Build the text representation used to embed a chunk.
+
+        Parameters
+        ----------
+        chunk : Chunk
+            The chunk to represent.
+
+        Returns
+        -------
+        str
+            Text representation used by the embedding model.
+        """
+        return f"{chunk.title}\n\n{chunk.section}\n\n{chunk.content}"
+
+    def ingest_chunks(self, chunks: list[Chunk]) -> None:
+        """
+        Ingest chunks and compute their embeddings.
+
+        Parameters
+        ----------
+        chunks : list[Chunk]
+            The chunks to ingest.
+        """
+        # Store the chunks
+        self.chunks = chunks
+
+        # Build the embedding texts for each chunk
+        embedding_texts = [self._build_embedding_text(chunk) for chunk in chunks]
+
+        # Compute the embeddings for the chunks
+        self.embeddings = self.embedder.encode(
+            embedding_texts,
+            convert_to_tensor=True,
+        )
 
     def ingest_context(self, context_text: str):
         """
@@ -122,7 +161,7 @@ class SemanticRetriever:
             self.chunks.append(content)
             # Embedding text used
             embedding_texts.append(
-                self._build_embedding_text(
+                self._build_legacy_embedding_text(
                     search_keys=keys,
                     content=content,
                 )

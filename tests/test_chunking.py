@@ -3,6 +3,7 @@ from textwrap import dedent
 from app.chatbot.chunking import chunk_document, chunk_documents
 from app.chatbot.models import Document
 
+
 def test_chunk_document_creates_chunks_from_sections():
     """
     Test that chunk_document correctly creates chunks from document sections.
@@ -13,8 +14,7 @@ def test_chunk_document_creates_chunks_from_sections():
         title="Test Document",
         source="Test Source",
         source_url="https://example.com",
-        content=dedent(
-            """
+        content=dedent("""
             # Test Document
 
             ## Overview
@@ -24,8 +24,7 @@ def test_chunk_document_creates_chunks_from_sections():
             ## Symptoms
 
             Symptoms content.
-            """
-        ).strip(),
+            """).strip(),
     )
 
     # Chunk the document
@@ -59,8 +58,7 @@ def test_chunk_document_ignores_content_before_first_section():
         title="Test Document",
         source="Test Source",
         source_url="https://example.com",
-        content=dedent(
-            """
+        content=dedent("""
             # Test Document
 
             This content should be ignored.
@@ -68,8 +66,7 @@ def test_chunk_document_ignores_content_before_first_section():
             ## Overview
 
             Overview content.
-            """
-        ).strip(),
+            """).strip(),
     )
 
     # Chunk the document
@@ -95,8 +92,7 @@ def test_chunk_document_ignores_empty_sections():
         title="Test Document",
         source="Test Source",
         source_url="https://example.com",
-        content=dedent(
-            """
+        content=dedent("""
             # Test Document
 
             ## Overview
@@ -108,8 +104,7 @@ def test_chunk_document_ignores_empty_sections():
             ## Symptoms
 
             Symptoms content.
-            """
-        ).strip(),
+            """).strip(),
     )
 
     # Chunk the document
@@ -140,15 +135,13 @@ def test_chunk_documents_returns_flat_chunks():
         title="Document A",
         source="Test Source",
         source_url="https://example.com/a",
-        content=dedent(
-            """
+        content=dedent("""
             # Document A
 
             ## Overview
 
             Content A.
-            """
-        ).strip(),
+            """).strip(),
     )
 
     document_b = Document(
@@ -156,15 +149,13 @@ def test_chunk_documents_returns_flat_chunks():
         title="Document B",
         source="Test Source",
         source_url="https://example.com/b",
-        content=dedent(
-            """
+        content=dedent("""
             # Document B
 
             ## Symptoms
 
             Content B.
-            """
-        ).strip(),
+            """).strip(),
     )
 
     # Chunk the documents
