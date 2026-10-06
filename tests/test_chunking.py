@@ -37,6 +37,9 @@ def test_chunk_document_creates_chunks_from_sections():
     # Assert that the chunks have the expected content and metadata
     assert chunks[0].chunk_id == "test_document_000"
     assert chunks[0].document_id == "test_document"
+    assert chunks[0].title == "Test Document"
+    assert chunks[0].source == "Test Source"
+    assert chunks[0].source_url == "https://example.com"
     assert chunks[0].section == "Overview"
     assert chunks[0].content == "Overview content."
 

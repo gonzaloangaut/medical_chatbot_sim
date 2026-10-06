@@ -33,6 +33,9 @@ def chunk_document(document: Document) -> list[Chunk]:
                     Chunk(
                         chunk_id=f"{document.document_id}_{len(chunks):03d}",
                         document_id=document.document_id,
+                        title=document.title,
+                        source=document.source,
+                        source_url=document.source_url,
                         section=current_section,
                         content=content,
                     )
@@ -53,6 +56,9 @@ def chunk_document(document: Document) -> list[Chunk]:
             Chunk(
                 chunk_id=f"{document.document_id}_{len(chunks):03d}",
                 document_id=document.document_id,
+                title=document.title,
+                source=document.source,
+                source_url=document.source_url,
                 section=current_section,
                 content=content,
             )

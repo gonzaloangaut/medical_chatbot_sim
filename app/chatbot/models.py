@@ -46,6 +46,12 @@ class Chunk:
         Unique identifier of the chunk.
     document_id : str
         Identifier of the source document.
+    title : str
+        Title of the source document.
+    source : str
+        Name of the source that provides the document.
+    source_url : str
+        URL of the original source.
     section : str
         Section of the document represented by the chunk.
     content : str
@@ -54,5 +60,8 @@ class Chunk:
 
     chunk_id: str
     document_id: str
+    title: str
+    source: str
+    source_url: str
     section: str
     content: str
