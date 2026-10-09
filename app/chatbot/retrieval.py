@@ -1,6 +1,6 @@
 from sentence_transformers import SentenceTransformer, util
 
-from app.chatbot.models import Chunk
+from app.chatbot.models import Chunk, RetrievedChunk
 
 
 class SemanticRetriever:
@@ -173,9 +173,13 @@ class SemanticRetriever:
             convert_to_tensor=True,
         )
 
-    def search(self, query: str, top_k: int | None = None) -> list[dict]:
+    def search(
+        self,
+        query: str,
+        top_k: int | None = None,
+    ) -> list[RetrievedChunk]:
         """
-        Search for the most similar pieces of text to the query.
+        Search for the chunks most similar to the query.
 
         Parameters
         ----------
@@ -185,9 +189,9 @@ class SemanticRetriever:
             The number of results to return.
 
         Returns
-        ----------
-        results : list[dict]
-            A list of dictionaries containing the corpus_id, score, and chunk.
+        -------
+        list[RetrievedChunk]
+            The retrieved chunks and their similarity scores.
         """
         # If top_k is not specified, return all results
         if top_k is None:
@@ -212,46 +216,50 @@ class SemanticRetriever:
             corpus_id = hit["corpus_id"]
 
             results.append(
-                {
-                    "corpus_id": corpus_id,
-                    "score": float(hit["score"]),
-                    "chunk": self.chunks[corpus_id],
-                }
+                RetrievedChunk(
+                    chunk=self.chunks[corpus_id],
+                    score=float(hit["score"]),
+                )
             )
 
         return results
 
-    def retrieve(self, query: str) -> str | None:
+    def retrieve(
+        self,
+        query: str,
+        top_k: int = 3,
+    ) -> list[RetrievedChunk]:
         """
-        Search the piece of text more similar to the query.
+        Retrieve the most relevant chunks for a query.
 
         Parameters
         ----------
         query : str
             The user's query.
+        top_k : int, optional
+            The maximum number of chunks to retrieve.
 
         Returns
-        ----------
-        text : str | None
-            The text found or None if no relevant context is found.
+        -------
+        list[RetrievedChunk]
+            The ranked retrieved chunks. An empty list is returned if no
+            relevant context is found.
 
         Notes
         -----
-        A minimum similarity threshold is used to reject queries when
-        the Top-1 document does not reach the required retrieval score.
+        The similarity threshold is applied to the highest-ranked result
+        as a retrieve-or-reject decision.
         """
-        # Search for the best result
-        results = self.search(query, top_k=1)
+        # Search for the most relevant chunks
+        results = self.search(query, top_k=top_k)
 
-        # If no results are found or the score is below the threshold, return None
+        # If no results are found or the top result is below the threshold, 
+        # return an empty list
         if not results:
-            return None
+            return []
 
-        # Get the best result
-        best_result = results[0]
+        if results[0].score < self.threshold:
+            return []
 
-        # Check if the score is below the threshold
-        if best_result["score"] < self.threshold:
-            return None
-
-        return best_result["chunk"]
+        # Return the ranked results
+        return results

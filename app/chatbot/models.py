@@ -4,6 +4,7 @@ Domain models used by the chatbot.
 Classes:
     - Document: Represents a source document in the knowledge base.
     - Chunk: Represents a retrievable fragment of a document.
+    - RetrievedChunk: Represents a chunk returned by the retriever.
 """
 
 from dataclasses import dataclass
@@ -65,3 +66,20 @@ class Chunk:
     source_url: str
     section: str
     content: str
+
+
+@dataclass
+class RetrievedChunk:
+    """
+    Represent a chunk returned by the retriever.
+
+    Attributes
+    ----------
+    chunk : Chunk
+        The retrieved chunk.
+    score : float
+        Similarity score assigned to the chunk for the current query.
+    """
+
+    chunk: Chunk
+    score: float

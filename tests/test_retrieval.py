@@ -73,116 +73,49 @@ def test_ingest_context_uses_full_block_when_no_separator():
     assert retriever.chunks == ["fiebre temperatura alta"]
 
 
-def test_retrieve_returns_best_chunk(monkeypatch):
+def test_retrieve_returns_ranked_chunks(monkeypatch):
     """
-    Test that retrieve returns the chunk selected by semantic search.
-    """
-    embedder = FakeEmbedder()
-
-    retriever = SemanticRetriever(
-        embedder=embedder,
-    )
-
-    context = """
-    fiebre @@@ Protocolo para fiebre.
-    ###
-    dolor de cabeza @@@ Protocolo para cefalea.
-    """
-
-    retriever.ingest_context(context)
-
-    def fake_semantic_search(query_embedding, embeddings, top_k=1):
-        """
-        Simulate the behavior of semantic_search by returning a fixed result.
-        """
-        return [
-            [
-                {
-                    "score": 0.8,
-                    "corpus_id": 1,
-                }
-            ]
-        ]
-
-    monkeypatch.setattr(
-        retrieval_module.util,
-        "semantic_search",
-        fake_semantic_search,
-    )
-
-    result = retriever.retrieve("Tengo dolor de cabeza")
-
-    assert result == "Protocolo para cefalea."
-
-
-def test_retrieve_returns_none_when_score_is_below_threshold(monkeypatch):
-    """
-    Test that retrieve returns None when the similarity score
-    is below the minimum threshold.
-    """
-    embedder = FakeEmbedder()
-
-    retriever = SemanticRetriever(
-        embedder=embedder,
-    )
-
-    context = """
-    fiebre @@@ Protocolo para fiebre.
-    ###
-    dolor de cabeza @@@ Protocolo para cefalea.
-    """
-
-    retriever.ingest_context(context)
-
-    def fake_semantic_search(query_embedding, embeddings, top_k=1):
-        """
-        Simulate the behavior of semantic_search by returning a result
-        with a score below the threshold.
-        """
-        return [
-            [
-                {
-                    "score": 0.2,
-                    "corpus_id": 1,
-                }
-            ]
-        ]
-
-    monkeypatch.setattr(
-        retrieval_module.util,
-        "semantic_search",
-        fake_semantic_search,
-    )
-
-    result = retriever.retrieve("Tengo dolor de cabeza")
-
-    assert result is None
-
-
-def test_search_returns_ranked_results(monkeypatch):
-    """
-    Test that the search method returns results ranked by similarity score.
+    Test that retrieve returns ranked chunks when the top result
+    passes the similarity threshold.
     """
     # Create a fake embedder and retriever
     embedder = FakeEmbedder()
-    retriever = SemanticRetriever(embedder=embedder)
+    retriever = SemanticRetriever(
+        embedder=embedder,
+        threshold=0.3,
+    )
 
-    # Ingest some context into the retriever
-    retriever.ingest_context("""
-        key zero
-        @@@
-        chunk zero
-        ###
-        key one
-        @@@
-        chunk one
-        """)
+    # Ingest sample chunks into the retriever
+    chunks = [
+        Chunk(
+            chunk_id="document_000",
+            document_id="document",
+            title="Document",
+            source="Test Source",
+            source_url="https://example.com",
+            section="Section Zero",
+            content="Chunk zero.",
+        ),
+        Chunk(
+            chunk_id="document_001",
+            document_id="document",
+            title="Document",
+            source="Test Source",
+            source_url="https://example.com",
+            section="Section One",
+            content="Chunk one.",
+        ),
+    ]
 
-    # Monkeypatch the semantic_search function to return controlled results
-    def fake_semantic_search(query_embedding, corpus_embeddings, top_k):
-        """
-        Simulate the behavior of semantic_search by returning a fixed set of results.
-        """
+    # Ingest the chunks into the retriever
+    retriever.ingest_chunks(chunks)
+
+    # Monkeypatch the semantic_search function to return a fixed ranking of chunks
+    def fake_semantic_search(
+        query_embedding,
+        corpus_embeddings,
+        top_k,
+    ):
         return [
             [
                 {"corpus_id": 1, "score": 0.8},
@@ -196,18 +129,138 @@ def test_search_returns_ranked_results(monkeypatch):
         fake_semantic_search,
     )
 
-    # Call the search method and check the results
-    results = retriever.search("some query", top_k=2)
+    # Call the retrieve method with a query and top_k=2
+    results = retriever.retrieve("some query", top_k=2)
 
+    # Verify that the results are ranked by score and match the expected chunks
     assert len(results) == 2
 
-    assert results[0]["corpus_id"] == 1
-    assert results[0]["score"] == 0.8
-    assert results[0]["chunk"] == "chunk one"
+    assert results[0].chunk == chunks[1]
+    assert results[0].score == 0.8
 
-    assert results[1]["corpus_id"] == 0
-    assert results[1]["score"] == 0.6
-    assert results[1]["chunk"] == "chunk zero"
+    assert results[1].chunk == chunks[0]
+    assert results[1].score == 0.6
+
+
+def test_retrieve_returns_empty_list_when_score_is_below_threshold(
+    monkeypatch,
+):
+    """
+    Test that retrieve returns an empty list when the top similarity
+    score is below the threshold.
+    """
+    # Create a fake embedder and retriever with a threshold of 0.3
+    embedder = FakeEmbedder()
+    retriever = SemanticRetriever(
+        embedder=embedder,
+        threshold=0.3,
+    )
+
+    # Ingest a sample chunk into the retriever
+    chunks = [
+        Chunk(
+            chunk_id="document_000",
+            document_id="document",
+            title="Document",
+            source="Test Source",
+            source_url="https://example.com",
+            section="Overview",
+            content="Some content.",
+        )
+    ]
+
+    # Ingest the chunk into the retriever
+    retriever.ingest_chunks(chunks)
+
+    # Monkeypatch the semantic_search function to return a score 
+    # below the threshold
+    def fake_semantic_search(
+        query_embedding,
+        corpus_embeddings,
+        top_k,
+    ):
+        return [
+            [
+                {
+                    "corpus_id": 0,
+                    "score": 0.2,
+                }
+            ]
+        ]
+
+    monkeypatch.setattr(
+        retrieval_module.util,
+        "semantic_search",
+        fake_semantic_search,
+    )
+
+    # Call the retrieve method with a query
+    results = retriever.retrieve("some query")
+
+    # Verify that the results are an empty list since the score is 
+    # below the threshold
+    assert results == []
+
+
+def test_search_returns_ranked_results(monkeypatch):
+    """
+    Test that search returns chunks ranked by similarity score.
+    """
+    # Create a fake embedder and retriever
+    embedder = FakeEmbedder()
+    retriever = SemanticRetriever(embedder=embedder)
+
+    # Ingest sample chunks into the retriever
+    chunks = [
+        Chunk(
+            chunk_id="document_000",
+            document_id="document",
+            title="Document",
+            source="Test Source",
+            source_url="https://example.com",
+            section="Section Zero",
+            content="Chunk zero.",
+        ),
+        Chunk(
+            chunk_id="document_001",
+            document_id="document",
+            title="Document",
+            source="Test Source",
+            source_url="https://example.com",
+            section="Section One",
+            content="Chunk one.",
+        ),
+    ]
+
+    retriever.ingest_chunks(chunks)
+
+    # Monkeypatch the semantic_search function to return a fixed ranking of chunks
+    def fake_semantic_search(query_embedding, corpus_embeddings, top_k):
+        return [
+            [
+                {"corpus_id": 1, "score": 0.8},
+                {"corpus_id": 0, "score": 0.6},
+            ]
+        ]
+
+    monkeypatch.setattr(
+        retrieval_module.util,
+        "semantic_search",
+        fake_semantic_search,
+    )
+
+
+    # Call the search method with a query and top_k=2
+    results = retriever.search("some query", top_k=2)
+
+    # Verify that the results are ranked by score and match the expected chunks
+    assert len(results) == 2
+
+    assert results[0].score == 0.8
+    assert results[0].chunk == chunks[1]
+
+    assert results[1].score == 0.6
+    assert results[1].chunk == chunks[0]
 
 
 @pytest.mark.parametrize(
