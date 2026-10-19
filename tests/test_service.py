@@ -223,3 +223,57 @@ def test_build_context_formats_retrieved_chunks():
     assert "0.8" not in context
     assert "0.7" not in context
     assert "https://example.com/fever" not in context
+
+
+def test_build_sources_returns_provenance_from_retrieved_chunks():
+    """
+    Test that _build_sources extracts provenance information
+    from retrieved chunks.
+    """
+    # Create sample retrieved chunks
+    retrieved_chunks = [
+        RetrievedChunk(
+            chunk=Chunk(
+                chunk_id="fever_000",
+                document_id="fever",
+                title="Fever",
+                source="Test Medical Source",
+                source_url="https://example.com/fever",
+                section="Overview",
+                content="Fever overview content.",
+            ),
+            score=0.8,
+        ),
+        RetrievedChunk(
+            chunk=Chunk(
+                chunk_id="fever_001",
+                document_id="fever",
+                title="Fever",
+                source="Test Medical Source",
+                source_url="https://example.com/fever",
+                section="Common Causes",
+                content="Fever causes content.",
+            ),
+            score=0.7,
+        ),
+    ]
+
+    # Create the service without real dependencies
+    bot = MedicalAssistance(
+        llm=None,
+        retriever=None,
+    )
+
+    # Build the sources
+    sources = bot._build_sources(retrieved_chunks)
+
+    # Verify that the sources list has the correct length and content
+    assert len(sources) == 2
+
+    assert sources[0].title == "Fever"
+    assert sources[0].section == "Overview"
+    assert sources[0].source == "Test Medical Source"
+    assert sources[0].source_url == "https://example.com/fever"
+
+    assert sources[1].title == "Fever"
+    assert sources[1].section == "Common Causes"

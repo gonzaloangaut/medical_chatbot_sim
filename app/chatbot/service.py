@@ -6,7 +6,7 @@ Classes:
 """
 
 from app.chatbot.exceptions import GenerationError
-from app.chatbot.models import RetrievedChunk
+from app.chatbot.models import RetrievedChunk, Source
 
 
 class MedicalAssistance:
@@ -68,6 +68,39 @@ class MedicalAssistance:
 
         # Join the context blocks with double newlines for clarity
         return "\n\n".join(context_blocks)
+
+    def _build_sources(
+        self,
+        retrieved_chunks: list[RetrievedChunk],
+    ) -> list[Source]:
+        """
+        Build provenance information from retrieved chunks.
+
+        Parameters
+        ----------
+        retrieved_chunks : list[RetrievedChunk]
+            Ranked chunks returned by the retriever.
+
+        Returns
+        -------
+        list[Source]
+            Sources associated with the retrieved chunks.
+        """
+        sources = []
+
+        for result in retrieved_chunks:
+            chunk = result.chunk
+
+            sources.append(
+                Source(
+                    title=chunk.title,
+                    section=chunk.section,
+                    source=chunk.source,
+                    source_url=chunk.source_url,
+                )
+            )
+
+        return sources
 
     def generate_response(self, chat_history: list[dict[str, str]]):
         """
