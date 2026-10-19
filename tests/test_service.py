@@ -82,11 +82,19 @@ def test_service_returns_llm_response():
     # As it is a fake retriever, it does not matter the content
     # of the query, it will always return the same context, and
     # the fake LLM will always return the same response.
-    response = bot.generate_response([{"role": "user", "content": "Tengo fiebre"}])
+    result = bot.generate_response(
+        [{"role": "user", "content": "Tengo fiebre"}]
+    )
 
-    # Check that the response is the expected one (Assert)
-    assert response == "RESPUESTA_FAKE"
+    # Check that the generated response is returned
+    assert result.response == "RESPUESTA_FAKE"
 
+    # Check that provenance is preserved
+    assert len(result.sources) == 1
+    assert result.sources[0].title == "Fever"
+    assert result.sources[0].section == "Overview"
+    assert result.sources[0].source == "Test Medical Source"
+    assert result.sources[0].source_url == "https://example.com/fever"
 
 def test_service_uses_retrieved_context():
     """
@@ -120,8 +128,13 @@ def test_service_uses_fallback_when_no_context_is_found():
         retriever=retriever,
     )
 
-    bot.generate_response([{"role": "user", "content": "Tengo un síntoma desconocido"}])
+    result = bot.generate_response(
+        [{"role": "user", "content": "Tengo un síntoma desconocido"}]
+    )
 
+    # Check that the response is generated even when no context is found
+    assert result.sources == []
+    
     # Check that the fallback message is included in the messages sent to the LLM
     assert (
         "Lo siento, no hay información al respecto"
