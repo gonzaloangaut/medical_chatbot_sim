@@ -1,0 +1,16 @@
+file,document_id,kind,source_url,adaptation,reviewed_at,chunks
+fever.md,medlineplus_fever,MedlinePlus public-domain topic summary / medical test page,https://medlineplus.gov/fever.html,English paraphrase and section restructuring,2026-10-19,3
+common_cold.md,medlineplus_common_cold,MedlinePlus public-domain topic summary / medical test page,https://medlineplus.gov/commoncold.html,English paraphrase and section restructuring,2026-10-19,4
+influenza.md,medlineplus_influenza,MedlinePlus public-domain topic summary / medical test page,https://medlineplus.gov/flu.html,English paraphrase and section restructuring,2026-10-19,4
+rsv.md,medlineplus_rsv,MedlinePlus public-domain topic summary / medical test page,https://medlineplus.gov/respiratorysyncytialvirusinfections.html,English paraphrase and section restructuring,2026-10-19,4
+sore_throat.md,medlineplus_sore_throat,MedlinePlus public-domain topic summary / medical test page,https://medlineplus.gov/sorethroat.html,English paraphrase and section restructuring,2026-10-19,3
+allergy.md,medlineplus_allergy,MedlinePlus public-domain topic summary / medical test page,https://medlineplus.gov/allergy.html,English paraphrase and section restructuring,2026-10-19,3
+headache.md,medlineplus_headache,MedlinePlus public-domain topic summary / medical test page,https://medlineplus.gov/headache.html,English paraphrase and section restructuring,2026-10-19,3
+dehydration.md,medlineplus_dehydration,MedlinePlus public-domain topic summary / medical test page,https://medlineplus.gov/dehydration.html,English paraphrase and section restructuring,2026-10-19,5
+heat_illness.md,medlineplus_heat_illness,MedlinePlus public-domain topic summary / medical test page,https://medlineplus.gov/heatillness.html,English paraphrase and section restructuring,2026-10-19,4
+diarrhea.md,medlineplus_diarrhea,MedlinePlus public-domain topic summary / medical test page,https://medlineplus.gov/diarrhea.html,English paraphrase and section restructuring,2026-10-19,4
+complete_blood_count.md,medlineplus_complete_blood_count,MedlinePlus public-domain topic summary / medical test page,https://medlineplus.gov/lab-tests/complete-blood-count-cbc/,English paraphrase and section restructuring,2026-10-19,4
+strep_a_test.md,medlineplus_strep_a_test,MedlinePlus public-domain topic summary / medical test page,https://medlineplus.gov/lab-tests/strep-a-test/,English paraphrase and section restructuring,2026-10-19,4
+appointment_policy.md,demo_clinic_appointment_policy,Fictional clinic policy — synthetic content,urn:medical-chatbot-sim:demo-health-clinic:appointment-policy,Original fictional text for benchmark use,2026-10-19,3
+medical_records_policy.md,demo_clinic_medical_records_policy,Fictional clinic policy — synthetic content,urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy,Original fictional text for benchmark use,2026-10-19,3
+laboratory_results_policy.md,demo_clinic_laboratory_results_policy,Fictional clinic policy — synthetic content,urn:medical-chatbot-sim:demo-health-clinic:laboratory-results-policy,Original fictional text for benchmark use,2026-10-19,3
