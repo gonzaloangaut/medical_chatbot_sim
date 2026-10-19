@@ -28,11 +28,29 @@ def main():
 
             # Get the answer
             if response.status_code == 200:
-                bot_reply = response.json()["response"]
+                data = response.json()
+
+                bot_reply = data["response"]
+                sources = data["sources"]
+
                 print(f"BOT: {bot_reply}\n")
 
-                # Save the answer in the history
-                history.append({"role": "assistant", "content": bot_reply})
+                if sources:
+                    print("SOURCES:")
+                    for source in sources:
+                        print(
+                            f"- {source['source']} — "
+                            f"{source['title']} / {source['section']}"
+                        )
+                        print(f"  {source['source_url']}")
+                    print()
+
+                history.append(
+                    {
+                        "role": "assistant",
+                        "content": bot_reply,
+                    }
+                )
             else:
                 print(f"Error {response.status_code}: {response.text}")
 

@@ -1,14 +1,19 @@
 from pydantic import BaseModel, Field
 
 
-# Give structure to the API
 class Message(BaseModel):
     """
-    A single message in the chat history.
+    Represent a single message in the chat history.
     """
-    
-    role: str = Field(default="user", description="Quién envía el mensaje")
-    content: str = Field(..., examples=["Tengo fiebre."])
+
+    role: str = Field(
+        default="user",
+        description="Role of the message sender.",
+    )
+    content: str = Field(
+        ...,
+        examples=["Tengo fiebre."],
+    )
 
 
 class ChatRequest(BaseModel):
@@ -20,6 +25,7 @@ class ChatRequest(BaseModel):
         ...,
         min_length=1,
     )
+
 
 class SourceResponse(BaseModel):
     """

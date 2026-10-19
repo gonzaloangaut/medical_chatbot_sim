@@ -30,10 +30,7 @@ def create_app(bot):
         Predict endpoint that takes a chat request and returns a response generated
         by the bot.
         """
-        chat_history_dicts = [
-            message.model_dump()
-            for message in request.messages
-        ]
+        chat_history_dicts = [message.model_dump() for message in request.messages]
 
         try:
             result = bot.generate_response(chat_history_dicts)
