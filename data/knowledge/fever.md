@@ -2,7 +2,7 @@
 document_id: medlineplus_fever
 title: Fever
 source: MedlinePlus - National Library of Medicine
-source_url: <MedlinePlus Fever URL>
+source_url: https://medlineplus.gov/fever.html
 ---
 
 # Fever
