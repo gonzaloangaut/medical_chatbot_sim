@@ -5,6 +5,7 @@ from fastapi.testclient import TestClient
 
 from app.api import create_app
 from app.chatbot.exceptions import GenerationError
+from app.chatbot.models import AssistantResponse, Source
 
 
 class FakeBot:
@@ -18,7 +19,18 @@ class FakeBot:
 
     def generate_response(self, chat_history):
         self.received_history = chat_history
-        return "RESPUESTA_FAKE"
+
+        return AssistantResponse(
+            response="RESPUESTA_FAKE",
+            sources=[
+                Source(
+                    title="Fever",
+                    section="Overview",
+                    source="Test Medical Source",
+                    source_url="https://example.com/fever",
+                )
+            ],
+        )
 
 
 class FailingBot:
@@ -67,7 +79,17 @@ def test_predict_returns_bot_response(api_setup):
     )
 
     assert response.status_code == 200
-    assert response.json() == {"response": "RESPUESTA_FAKE"}
+    assert response.json() == {
+        "response": "RESPUESTA_FAKE",
+        "sources": [
+            {
+                "title": "Fever",
+                "section": "Overview",
+                "source": "Test Medical Source",
+                "source_url": "https://example.com/fever",
+            }
+        ],
+    }
 
 
 def test_predict_rejects_message_without_content(api_setup):
