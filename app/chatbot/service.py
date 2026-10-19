@@ -6,6 +6,7 @@ Classes:
 """
 
 from app.chatbot.exceptions import GenerationError
+from app.chatbot.models import RetrievedChunk
 
 
 class MedicalAssistance:
@@ -32,6 +33,41 @@ class MedicalAssistance:
         """
         self.llm = llm
         self.retriever = retriever
+
+    def _build_context(
+        self,
+        retrieved_chunks: list[RetrievedChunk],
+    ) -> str:
+        """
+        Build the context provided to the LLM from retrieved chunks.
+
+        Parameters
+        ----------
+        retrieved_chunks : list[RetrievedChunk]
+            Ranked chunks returned by the retriever.
+
+        Returns
+        -------
+        str
+            Structured context for the language model.
+        """
+        # Build a structured context from the retrieved chunks
+        context_blocks = []
+
+        # Iterate over the retrieved chunks and format them
+        for index, result in enumerate(retrieved_chunks, start=1):
+            block = (
+                f"[Context {index}]\n"
+                f"Title: {result.chunk.title}\n"
+                f"Section: {result.chunk.section}\n"
+                f"Source: {result.chunk.source}\n"
+                f"Content:\n"
+                f"{result.chunk.content}"
+            )
+            context_blocks.append(block)
+
+        # Join the context blocks with double newlines for clarity
+        return "\n\n".join(context_blocks)
 
     def generate_response(self, chat_history: list[dict[str, str]]):
         """
@@ -66,16 +102,16 @@ class MedicalAssistance:
         last_user_message = chat_history[-1]["content"]
 
         # RAG: Search only the relevant information
-        relevant_info = self.retriever.retrieve(last_user_message)
+        retrieved_chunks = self.retriever.retrieve(last_user_message)
 
-        if relevant_info:
-            context_to_use = relevant_info
+        if retrieved_chunks:
+            context_to_use = self._build_context(retrieved_chunks)
         else:
             context_to_use = (
                 "No hay información específica en la base de datos."
                 "Respuesta obligatoria: Lo siento, no hay información al respecto."
             )
-        # print("CONTEXTO: ", context_to_use)
+
         full_prompt = f"""
         Instrucciones: Eres un asistente médico.
         Responde DIRECTAMENTE al paciente (usa "usted") basándote SOLO en el 

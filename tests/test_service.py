@@ -2,6 +2,7 @@ import pytest
 
 from app.chatbot.exceptions import GenerationError
 from app.chatbot.service import MedicalAssistance
+from app.chatbot.models import Chunk, RetrievedChunk
 
 
 class FakeLLM:
@@ -19,8 +20,7 @@ class FakeLLM:
 
 class FakeRetriever:
     """
-    Fake Retriever class to simulate the behavior of the Retriever for
-    testing purposes.
+    Fake Retriever class to simulate successful retrieval.
     """
 
     def __init__(self):
@@ -28,8 +28,23 @@ class FakeRetriever:
 
     def retrieve(self, query):
         self.received_query = query
-        return "CONTEXTO_FAKE"
 
+        chunk = Chunk(
+            chunk_id="fever_000",
+            document_id="fever",
+            title="Fever",
+            source="Test Medical Source",
+            source_url="https://example.com/fever",
+            section="Overview",
+            content="CONTEXTO_FAKE",
+        )
+
+        return [
+            RetrievedChunk(
+                chunk=chunk,
+                score=0.8,
+            )
+        ]
 
 class FakeEmptyRetriever:
     """
@@ -37,7 +52,7 @@ class FakeEmptyRetriever:
     """
 
     def retrieve(self, query):
-        return None
+        return []
 
 
 class FailingLLM:
@@ -147,3 +162,63 @@ def test_service_translates_llm_error():
     # Check that the service raises a GenerationError when the LLM fails
     with pytest.raises(GenerationError):
         bot.generate_response([{"role": "user", "content": "Tengo fiebre"}])
+
+
+def test_build_context_formats_retrieved_chunks():
+    """
+    Test that _build_context formats retrieved chunks as structured
+    context for the LLM.
+    """
+    # Create sample retrieved chunks
+    retrieved_chunks = [
+        RetrievedChunk(
+            chunk=Chunk(
+                chunk_id="fever_000",
+                document_id="fever",
+                title="Fever",
+                source="Test Medical Source",
+                source_url="https://example.com/fever",
+                section="Overview",
+                content="Fever overview content.",
+            ),
+            score=0.8,
+        ),
+        RetrievedChunk(
+            chunk=Chunk(
+                chunk_id="fever_001",
+                document_id="fever",
+                title="Fever",
+                source="Test Medical Source",
+                source_url="https://example.com/fever",
+                section="Common Causes",
+                content="Fever causes content.",
+            ),
+            score=0.7,
+        ),
+    ]
+
+    # Create the service without real dependencies
+    bot = MedicalAssistance(
+        llm=None,
+        retriever=None,
+    )
+
+    # Build the context
+    context = bot._build_context(retrieved_chunks)
+
+    # Verify the first context block
+    assert "[Context 1]" in context
+    assert "Title: Fever" in context
+    assert "Section: Overview" in context
+    assert "Source: Test Medical Source" in context
+    assert "Fever overview content." in context
+
+    # Verify the second context block
+    assert "[Context 2]" in context
+    assert "Section: Common Causes" in context
+    assert "Fever causes content." in context
+
+    # Retrieval metadata that should not be exposed to the LLM
+    assert "0.8" not in context
+    assert "0.7" not in context
+    assert "https://example.com/fever" not in context
