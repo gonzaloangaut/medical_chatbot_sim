@@ -1,132 +1,426 @@
-# Medical Chatbot Simulation
+# Class 5 — RAG II: Documents, Chunking, Metadata & Provenance
 
-Este proyecto es una simulación de un Asistente Médico, cuya tarea es responder preguntas sobre síntomas y administración de turnos, basándose en una base de conocimiento en texto plano (`context.txt`).
+## Goal
 
----
+Replace the original toy RAG knowledge representation with a structured and traceable document pipeline.
 
-## Características Principales
-
-* **Local y liviano:** Utiliza el modelo liviano `Qwen 2.5 (0.5B)` corriendo en CPU (esto ayuda a que el Docker no sea tan pesado).
-* **RAG:** Busca por síntoma para encontrar similitudes con la pregunta del usuario y luego contesta con protocolo. El contexto está separado de la siguiente forma:
-  ```plaintext
-  Palabras Clave (Síntomas y Sinónimos) 
-  @@@ 
-  Protocolo Oficial (Respuesta Técnica del Bot)
-  ###
-  ```
-  para poder separar cada tema con "###" y los síntomas del protocolo mediante "@@@".
-* **Embedding:** Usa el embedding `paraphrase-multilingual-MiniLM-L12-v2` que es liviano y sirve para español. El embedding busca similitud entre la pregunta del usuario y los síntomas.
-* **Control:** Filtros de umbral de similitud para descartar preguntas que no tengan que ver con un tema médico.
-* **Arquitectura Dockerizada:** Listo para desplegar en cualquier entorno compatible con Docker.
-
-## Stack Tecnológico
-
-* **Lenguaje:** Python 3.9+
-* **LLM (Small Language Model):** Qwen/Qwen2.5-0.5B-Instruct
-* **Embeddings:** Sentence-Transformers
-* **Backend:** FastAPI / Uvicorn
-* **Container:** Docker
-
----
-
-## Estructura del repositorio
+The original system used a single `context.txt` file with custom separators:
 
 ```text
-app/
-├── main.py              # Ensambla los componentes de la aplicación
-├── api.py               # Define la API FastAPI
-├── schemas.py           # Modelos y validación de requests
-└── chatbot/
-    ├── service.py       # Coordina retrieval, prompt y generación
-    ├── llm.py           # Implementación del modelo Qwen
-    ├── retrieval.py     # Retrieval semántico
-    ├── knowledge.py     # Carga de la base de conocimiento
-    └── exceptions.py    # Excepciones propias de la aplicación
+search keys @@@ content
+###
+```
 
-data/
-└── context.txt          # Base de conocimiento
+This was useful for early retrieval experiments but mixed storage format, retrieval representation, and application logic.
 
-tests/
-├── test_api.py
-├── test_retrieval.py
-└── test_service.py
+The new architecture separates these responsibilities.
+
+## Final pipeline
+
+```text
+Markdown documents
+        ↓
+Document
+        ↓
+Chunk
+        ↓
+SemanticRetriever
+        ↓
+RetrievedChunk
+        ↓
+MedicalAssistance
+        ↓
+AssistantResponse
+        ↓
+FastAPI
+```
+
+## Document vs Chunk
+
+A **Document** represents the original source unit.
+
+It contains:
+
+```text
+document_id
+title
+source
+source_url
+content
+```
+
+A **Chunk** is the retrieval unit.
+
+It contains:
+
+```text
+chunk_id
+document_id
+title
+source
+source_url
+section
+content
+```
+
+This distinction is important because source documents and retrieval units are not necessarily the same thing.
+
+## Knowledge format
+
+Knowledge is stored as Markdown files with front matter.
+
+Example:
+
+```yaml
 ---
-
-## Instrucciones para la ejecución
-
-Primero que nada, se debe clonar el repositorio:
-
- ```bash
- git clone <repo_url>
- ```
-
-Luego, hay 2 opciones: con o sin Docker.
-
-### Opción 1: Usando Docker (Recomendado para aislar el entorno)
-
-**1. Requisitos**
-Tener instalado Docker.
-
-**2. Construir la imagen**
-La construcción puede tardar algunos minutos debido a la instalación de PyTorch y las dependencias del proyecto. La primera ejecución puede tardar más mientras se descargan los modelos necesarios.
-Para esto, correr en la terminal:
-
-```bash
-docker build -t medical_chatbot .
+document_id: medlineplus_fever
+title: Fever
+source: MedlinePlus - National Library of Medicine
+source_url: https://medlineplus.gov/fever.html
+---
 ```
 
+The Markdown body preserves document structure.
 
-**3. Correr el contenedor**
-Esto iniciará el servidor API en el puerto 8000.
+## Chunking
 
-```bash
-docker run -p 8000:8000 medical_chatbot
+The current strategy is structure-aware chunking.
+
+Each non-empty:
+
+```text
+## Section
 ```
 
+becomes one chunk.
 
-**4. Probar el Chatbot**
-En otra terminal, ejecuta el script cliente para iniciar el chat:
+Content before the first `##` is ignored.
 
-```bash
-python chat_test.py
+This strategy is intentionally simple.
+
+We did not introduce:
+
+```text
+semantic chunking
+recursive splitters
+token windows
+overlap
+LangChain
 ```
 
-### Opción 2: Ejecución Local (Sin Docker)
+because the current corpus does not yet justify the added complexity.
 
-También, se puede correr local con un entorno de Python.
+These alternatives can be evaluated later if larger documents expose limitations in section-based chunking.
 
-**1. Crear un entorno virtual**
-Hay muchas formas, en Linux la más común es desde la terminal con el comando:
+## Metadata and provenance
 
-```bash
-python -m venv venv
-source venv/bin/activate
+Metadata describes a document or chunk.
+
+Provenance answers:
+
+> Where did this information come from?
+
+Important provenance fields are propagated through the entire system:
+
+```text
+Markdown front matter
+→ Document
+→ Chunk
+→ RetrievedChunk
+→ Source
+→ API
 ```
 
+The source URL is never reconstructed or generated by the LLM.
 
-**2. Instalar dependencias**
+## Internal domain objects
 
-```bash
-pip install -r requirements.txt
+Internal application objects use Python `dataclass`.
+
+The main domain models are:
+
+```text
+Document
+Chunk
+RetrievedChunk
+Source
+AssistantResponse
 ```
 
+These models represent internal concepts rather than external API contracts.
 
-**3. Iniciar la API**
+## API schemas
 
-```bash
-uvicorn app.main:app --host 0.0.0.0 --port 8000
+The HTTP boundary uses Pydantic.
+
+Relevant schemas include:
+
+```text
+Message
+ChatRequest
+SourceResponse
+ChatResponse
 ```
 
-**4. Probar el Chatbot**
-En otra terminal, ejecuta el script cliente para iniciar el chat:
+This separates:
 
-```bash
-python chat_test.py
+```text
+internal domain representation
 ```
 
+from:
 
-## Ejemplo de interacción
+```text
+external HTTP contract
+```
 
-Debajo se encuentra un pequeño ejemplo de una conversación con el asistente usando `chat_test.py`:
-<img width="2731" height="1369" alt="Captura desde 2026-01-21 17-33-09" src="https://github.com/user-attachments/assets/e4e6f1fe-b64c-4bfb-9190-f1e412263de6" />
+Even when two models currently contain similar fields, they serve different architectural responsibilities.
 
+## Retrieval representation
+
+Chunk embeddings currently use:
+
+```text
+title + section + content
+```
+
+Metadata such as:
+
+```text
+chunk_id
+document_id
+source_url
+```
+
+is not embedded because it is identity/provenance information rather than useful semantic retrieval signal.
+
+## RetrievedChunk
+
+The similarity score does not belong to `Chunk`.
+
+The same chunk can receive different similarity scores for different queries.
+
+Therefore:
+
+```text
+Chunk
+→ persistent knowledge
+
+RetrievedChunk
+→ Chunk + query-dependent score
+```
+
+This avoids mixing knowledge representation with retrieval state.
+
+## Ranking vs retrieve/reject
+
+`search()` performs ranking.
+
+```text
+query
+→ embeddings
+→ cosine similarity
+→ ranked RetrievedChunk objects
+```
+
+`retrieve()` adds a retrieve-or-reject decision.
+
+The current behavior is:
+
+```text
+Top-1 below threshold
+→ []
+
+Top-1 above threshold
+→ return Top-k results
+```
+
+The similarity score is a ranking signal.
+
+It should not be interpreted as a probability or confidence percentage.
+
+Current defaults:
+
+```text
+top_k = 3
+threshold = 0.3
+```
+
+These are working settings, not yet validated parameters for the new knowledge base.
+
+## Top-k context
+
+The system no longer sends a single retrieved string to the LLM.
+
+The service converts multiple retrieved chunks into structured context:
+
+```text
+[Context 1]
+Title: ...
+Section: ...
+Source: ...
+Content:
+...
+
+[Context 2]
+...
+```
+
+The LLM receives:
+
+```text
+title
+section
+source
+content
+```
+
+but not:
+
+```text
+retrieval score
+chunk_id
+document_id
+source_url
+```
+
+## Provenance in the response
+
+The LLM generates only the answer.
+
+Sources are constructed independently from the retrieved chunks.
+
+Final domain response:
+
+```text
+AssistantResponse
+├── response
+└── sources
+```
+
+Final HTTP response:
+
+```json
+{
+  "response": "...",
+  "sources": [
+    {
+      "title": "...",
+      "section": "...",
+      "source": "...",
+      "source_url": "..."
+    }
+  ]
+}
+```
+
+This is safer and more reliable than asking the LLM to generate citations.
+
+## Composition root
+
+`main.py` wires the application together:
+
+```text
+load_documents()
+→ chunk_documents()
+→ SemanticRetriever.ingest_chunks()
+→ QwenLLM
+→ MedicalAssistance
+→ FastAPI
+```
+
+Components do not load each other's dependencies directly.
+
+This preserves separation of concerns and dependency injection.
+
+## Legacy cleanup
+
+The original production path was removed:
+
+```text
+context.txt
+load_knowledge()
+ingest_context()
+search_keys
+custom @@@ / ### parsing
+representation configuration
+```
+
+Historical retrieval results and analysis artifacts were preserved under `evaluation/`.
+
+Git history preserves the old implementation itself.
+
+## Important observation
+
+An end-to-end test with:
+
+```text
+Tengo 37 de fiebre
+```
+
+produced an unsupported / poor response.
+
+Another query:
+
+```text
+Tengo fiebre
+```
+
+returned correct provenance but a weak generated answer.
+
+This showed an important principle:
+
+```text
+successful retrieval
+≠
+grounded generation
+```
+
+A RAG system must evaluate retrieval and generation separately.
+
+We deliberately did not fix this during this class because the goal was architectural: structured documents, chunking, metadata, and provenance.
+
+## Current limitation
+
+The current v2 knowledge base contains only one document:
+
+```text
+Fever
+```
+
+with three chunks.
+
+Therefore the current system is useful for testing architecture but not for meaningfully evaluating retrieval performance.
+
+A corpus with competing documents is required before drawing conclusions about:
+
+```text
+Top-k
+threshold
+chunking quality
+retrieval accuracy
+out-of-domain rejection
+```
+
+## Next class
+
+The next stage will build a realistic multi-document knowledge base and a new evaluation benchmark.
+
+Main question:
+
+> Does the current RAG architecture retrieve the correct evidence when multiple documents and chunks compete for the query?
+
+Likely topics:
+
+```text
+multi-document KB
+retrieval dataset v2
+Recall@k
+MRR
+Top-1 accuracy
+failure analysis
+retrieve/reject evaluation
+OOD queries
+```
+
+Only after retrieval is evaluated should we systematically optimize grounded generation.
