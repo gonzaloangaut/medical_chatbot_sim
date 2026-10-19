@@ -1,0 +1,488 @@
+[
+  {
+    "chunk_id": "medlineplus_allergy_000",
+    "document_id": "medlineplus_allergy",
+    "title": "Allergies",
+    "section": "Overview and Triggers",
+    "content": "An allergy occurs when the immune system reacts to a substance that is harmless to most other people. Triggers can include pollen, dust mites, mold, pet dander, certain foods, insect stings, and medicines. A person may be sensitive to several different allergens.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/allergy.html"
+  },
+  {
+    "chunk_id": "medlineplus_allergy_001",
+    "document_id": "medlineplus_allergy",
+    "title": "Allergies",
+    "section": "Symptoms and Severe Reactions",
+    "content": "Allergic reactions may cause sneezing, a runny nose, itching, skin rashes, swelling, or asthma-related symptoms. Some symptoms overlap with those of a common cold. The severity of reactions varies. Anaphylaxis is a severe allergic reaction that can be life-threatening and requires immediate emergency care.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/allergy.html"
+  },
+  {
+    "chunk_id": "medlineplus_allergy_002",
+    "document_id": "medlineplus_allergy",
+    "title": "Allergies",
+    "section": "Diagnosis and Management",
+    "content": "Health care professionals use the history of reactions and, when appropriate, skin or blood tests to investigate allergies. Management may include reducing exposure to identified allergens, medicines, and allergen immunotherapy. The treatment choice depends on the allergen, symptoms, and severity.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/allergy.html"
+  },
+  {
+    "chunk_id": "demo_clinic_appointment_policy_000",
+    "document_id": "demo_clinic_appointment_policy",
+    "title": "Appointment Policy",
+    "section": "Booking and Rescheduling",
+    "content": "DEMO POLICY — This document describes a fictional clinic used only for software testing. Demo Health Clinic accepts appointment requests through its simulated patient portal or a simulated reception desk. A patient can request a new visit, ask to change its date, or request a different type of appointment. A request is not a confirmed booking until the clinic sends a confirmation.",
+    "source": "Demo Health Clinic (Synthetic)",
+    "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy"
+  },
+  {
+    "chunk_id": "demo_clinic_appointment_policy_001",
+    "document_id": "demo_clinic_appointment_policy",
+    "title": "Appointment Policy",
+    "section": "Cancellation Policy",
+    "content": "DEMO POLICY — In this simulation, patients are asked to cancel or reschedule at least 24 hours before the scheduled visit. Requests with less notice are handled by the fictional reception team and may require a new booking. No charges, penalties, or refunds are defined by this demonstration policy; questions about fees cannot be answered from this document.",
+    "source": "Demo Health Clinic (Synthetic)",
+    "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy"
+  },
+  {
+    "chunk_id": "demo_clinic_appointment_policy_002",
+    "document_id": "demo_clinic_appointment_policy",
+    "title": "Appointment Policy",
+    "section": "Availability and Emergencies",
+    "content": "DEMO POLICY — The simulated reception desk processes routine administrative requests on weekdays from 09:00 to 17:00. The document does not list live appointment availability or offer real booking functionality. Appointment requests must not be used for emergencies. Anyone experiencing a medical emergency should use local emergency services rather than the simulated clinic portal.",
+    "source": "Demo Health Clinic (Synthetic)",
+    "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy"
+  },
+  {
+    "chunk_id": "medlineplus_common_cold_000",
+    "document_id": "medlineplus_common_cold",
+    "title": "Common Cold",
+    "section": "Overview and Transmission",
+    "content": "The common cold is usually a mild viral infection of the upper respiratory tract, including the nose and throat. Many viruses can cause a cold, with rhinoviruses among the most common. Cold viruses spread through respiratory droplets, close contact, and contact with contaminated surfaces followed by touching the face.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/commoncold.html"
+  },
+  {
+    "chunk_id": "medlineplus_common_cold_001",
+    "document_id": "medlineplus_common_cold",
+    "title": "Common Cold",
+    "section": "Symptoms",
+    "content": "Typical symptoms include sneezing, a runny or blocked nose, sore throat, cough, and sometimes headache. Symptoms generally begin a few days after infection and may continue for one to two weeks. Similar complaints can also occur with influenza or allergies, so symptoms alone do not always identify the cause.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/commoncold.html"
+  },
+  {
+    "chunk_id": "medlineplus_common_cold_002",
+    "document_id": "medlineplus_common_cold",
+    "title": "Common Cold",
+    "section": "Care and Warning Signs",
+    "content": "A cold has no specific cure, and antibiotics do not treat cold viruses. Rest, fluids, saline nasal products, and other symptom-relief measures may help. Over-the-counter cold medicines require particular care in children; read labels to avoid taking duplicate ingredients. Medical advice is appropriate for breathing difficulty, dehydration, fever that persists, symptoms that fail to improve, or symptoms that improve and then worsen.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/commoncold.html"
+  },
+  {
+    "chunk_id": "medlineplus_common_cold_003",
+    "document_id": "medlineplus_common_cold",
+    "title": "Common Cold",
+    "section": "Prevention",
+    "content": "Frequent handwashing, covering coughs and sneezes, cleaning commonly touched surfaces, and limiting close contact when sick reduce opportunities for spread. Avoid touching the eyes, nose, and mouth with unwashed hands. There is no vaccine against the common cold.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/commoncold.html"
+  },
+  {
+    "chunk_id": "medlineplus_complete_blood_count_000",
+    "document_id": "medlineplus_complete_blood_count",
+    "title": "Complete Blood Count (CBC)",
+    "section": "Overview and Measurements",
+    "content": "A complete blood count (CBC), also called a full blood count or hemogram, is a set of blood measurements. It includes red blood cells, which carry oxygen; white blood cells, which help defend against infections; and platelets, which help blood clot. A CBC can also report hemoglobin, hematocrit, and average red blood cell size (MCV). A CBC with differential provides additional detail about types of white blood cells.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/lab-tests/complete-blood-count-cbc/"
+  },
+  {
+    "chunk_id": "medlineplus_complete_blood_count_001",
+    "document_id": "medlineplus_complete_blood_count",
+    "title": "Complete Blood Count (CBC)",
+    "section": "Purpose",
+    "content": "A CBC may be ordered during a routine checkup or to investigate symptoms. It can help clinicians evaluate conditions such as anemia, infection, immune system disorders, and blood diseases. It can also be used to monitor certain illnesses or treatments. The reason for ordering a CBC depends on the clinical situation.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/lab-tests/complete-blood-count-cbc/"
+  },
+  {
+    "chunk_id": "medlineplus_complete_blood_count_002",
+    "document_id": "medlineplus_complete_blood_count",
+    "title": "Complete Blood Count (CBC)",
+    "section": "Procedure and Preparation",
+    "content": "A clinician or laboratory professional usually collects a small blood sample from a vein in the arm. The collection typically takes only a few minutes and can cause a brief sting or minor bruising. A CBC by itself generally needs no special preparation. However, fasting may be required when other blood tests are ordered at the same time; patients should follow their provider's instructions.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/lab-tests/complete-blood-count-cbc/"
+  },
+  {
+    "chunk_id": "medlineplus_complete_blood_count_003",
+    "document_id": "medlineplus_complete_blood_count",
+    "title": "Complete Blood Count (CBC)",
+    "section": "Interpreting Results",
+    "content": "A CBC can show blood cell counts or related measurements outside a laboratory's reference range. Abnormal values may have many explanations, including health conditions, medicines, and changes in hydration. A CBC alone does not establish a diagnosis. A health care professional interprets the numbers together with symptoms, history, and possibly other tests.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/lab-tests/complete-blood-count-cbc/"
+  },
+  {
+    "chunk_id": "medlineplus_dehydration_000",
+    "document_id": "medlineplus_dehydration",
+    "title": "Dehydration",
+    "section": "Overview",
+    "content": "Dehydration occurs when the body loses more fluid than it takes in and no longer has enough fluid to function normally. It can range from mild to severe. Fluids and electrolytes, which are minerals involved in fluid balance and other body functions, may both need to be replaced.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/dehydration.html"
+  },
+  {
+    "chunk_id": "medlineplus_dehydration_001",
+    "document_id": "medlineplus_dehydration",
+    "title": "Dehydration",
+    "section": "Causes and Risk Factors",
+    "content": "Possible causes include diarrhea, vomiting, heavy sweating, fever, excessive urination, and not drinking enough fluids. Infants and young children, older adults, people with certain chronic illnesses, and people exercising or working in hot conditions can be more vulnerable. Some medicines and illnesses increase fluid losses.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/dehydration.html"
+  },
+  {
+    "chunk_id": "medlineplus_dehydration_002",
+    "document_id": "medlineplus_dehydration",
+    "title": "Dehydration",
+    "section": "Symptoms and Warning Signs",
+    "content": "In adults, signs may include thirst, dry mouth, dark urine, reduced urination, tiredness, and dizziness. In babies and young children, warning signs include a dry mouth, few or no tears, fewer wet diapers, unusual sleepiness, irritability, or sunken-looking eyes. Confusion, fainting, very little or no urination, rapid breathing, or a fast heartbeat may indicate severe dehydration and require urgent medical care.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/dehydration.html"
+  },
+  {
+    "chunk_id": "medlineplus_dehydration_003",
+    "document_id": "medlineplus_dehydration",
+    "title": "Dehydration",
+    "section": "Diagnosis",
+    "content": "A health care professional can assess dehydration by asking about symptoms and fluid losses, examining the patient, and checking vital signs. Blood tests may be used to assess electrolytes such as sodium and potassium and kidney function. Urine tests may help evaluate dehydration and possible causes.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/dehydration.html"
+  },
+  {
+    "chunk_id": "medlineplus_dehydration_004",
+    "document_id": "medlineplus_dehydration",
+    "title": "Dehydration",
+    "section": "Treatment and Prevention",
+    "content": "Mild dehydration can often be addressed by drinking fluids; oral rehydration solutions can help replace fluids and electrolytes, particularly in children with diarrhea or vomiting. Severe dehydration may require intravenous fluids in a hospital. Adequate fluid intake is especially important during illness, exercise, and hot weather; the amount needed varies by person and situation.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/dehydration.html"
+  },
+  {
+    "chunk_id": "medlineplus_diarrhea_000",
+    "document_id": "medlineplus_diarrhea",
+    "title": "Diarrhea",
+    "section": "Overview and Causes",
+    "content": "Diarrhea involves loose, watery bowel movements, often defined as three or more in one day. Acute diarrhea is usually short-lived, while diarrhea lasting at least four weeks is considered chronic. Possible causes include infections, contaminated food or water, medicines, food intolerances, and digestive diseases.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/diarrhea.html"
+  },
+  {
+    "chunk_id": "medlineplus_diarrhea_001",
+    "document_id": "medlineplus_diarrhea",
+    "title": "Diarrhea",
+    "section": "Associated Symptoms and Dehydration",
+    "content": "Diarrhea may occur with abdominal cramps, urgent bowel movements, fever, or chills. Fluid loss through diarrhea can lead to dehydration. This is particularly concerning for infants, older adults, and people with weakened immune systems. Symptoms shared with other illnesses do not by themselves establish the cause of diarrhea.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/diarrhea.html"
+  },
+  {
+    "chunk_id": "medlineplus_diarrhea_002",
+    "document_id": "medlineplus_diarrhea",
+    "title": "Diarrhea",
+    "section": "When to Seek Medical Care",
+    "content": "Medical assessment is appropriate for signs of dehydration, blood or pus in stools, black stools, severe abdominal or rectal pain, high fever, or diarrhea that continues longer than expected. Newborns and infants may become dehydrated quickly, so caregivers should contact a health care professional promptly when concerned. Prolonged diarrhea may require investigation of an underlying condition.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/diarrhea.html"
+  },
+  {
+    "chunk_id": "medlineplus_diarrhea_003",
+    "document_id": "medlineplus_diarrhea",
+    "title": "Diarrhea",
+    "section": "Treatment and Prevention",
+    "content": "Treatment focuses on replacing lost fluids and electrolytes and addressing the underlying cause when necessary. Oral rehydration solutions are especially relevant for children. A clinician may request stool or blood tests when symptoms suggest a particular infection or an ongoing disorder. Safe food and drinking water practices can reduce some causes of infectious diarrhea.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/diarrhea.html"
+  },
+  {
+    "chunk_id": "medlineplus_fever_000",
+    "document_id": "medlineplus_fever",
+    "title": "Fever",
+    "section": "Overview and Body Temperature",
+    "content": "A fever means that body temperature is above a person's usual range. A temperature close to 37 °C (98.6 °F) is often described as an average normal temperature, but normal temperature varies among people and throughout the day. A reading of 37 °C by itself does not establish that someone has a fever. Fever is a sign, not a disease; it often accompanies the body's response to an infection.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/fever.html"
+  },
+  {
+    "chunk_id": "medlineplus_fever_001",
+    "document_id": "medlineplus_fever",
+    "title": "Fever",
+    "section": "Common Causes",
+    "content": "Infections caused by viruses or bacteria account for many fevers. Other possible causes include certain medicines, heat-related illness, autoimmune diseases, some cancers, and some childhood vaccines. A temperature reading alone does not identify the cause of a person's symptoms.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/fever.html"
+  },
+  {
+    "chunk_id": "medlineplus_fever_002",
+    "document_id": "medlineplus_fever",
+    "title": "Fever",
+    "section": "General Care",
+    "content": "Care for fever depends on its underlying cause. Drinking enough liquids matters because fever can contribute to fluid loss and dehydration. A health care professional may recommend fever-reducing medicine when appropriate; children with fever should not be given aspirin. A very high fever or symptoms that are concerning warrant medical advice.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/fever.html"
+  },
+  {
+    "chunk_id": "medlineplus_headache_000",
+    "document_id": "medlineplus_headache",
+    "title": "Headache",
+    "section": "Overview",
+    "content": "A headache is pain in the head and is a common reason for missing work or school or seeking medical care. Most headaches are not signs of a serious disorder, but their causes and patterns vary. A description of pain alone cannot reliably determine its underlying cause.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/headache.html"
+  },
+  {
+    "chunk_id": "medlineplus_headache_001",
+    "document_id": "medlineplus_headache",
+    "title": "Headache",
+    "section": "Common Types and Triggers",
+    "content": "Tension-type headache is common and may involve tight muscles around the neck, shoulders, scalp, or jaw. Stress, lack of sleep, missed meals, and other lifestyle factors can contribute. Other headache types include migraine and cluster headache. Management may involve changes in habits, relaxation strategies, and suitable pain relief.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/headache.html"
+  },
+  {
+    "chunk_id": "medlineplus_headache_002",
+    "document_id": "medlineplus_headache",
+    "title": "Headache",
+    "section": "Warning Signs",
+    "content": "Some headache patterns require prompt medical assessment. A sudden, very severe headache should be discussed urgently with a health care professional. Seek immediate medical help for headache following a head injury or headache accompanied by a stiff neck, fever, confusion, loss of consciousness, or significant eye or ear pain.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/headache.html"
+  },
+  {
+    "chunk_id": "medlineplus_heat_illness_000",
+    "document_id": "medlineplus_heat_illness",
+    "title": "Heat Illness",
+    "section": "Overview and Risk Factors",
+    "content": "Heat illness can develop when the body cannot release heat effectively, particularly during hot or humid weather or strenuous work and exercise. Young children, older adults, and people with certain health conditions are more vulnerable. Some medicines and alcohol use can also increase risk.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/heatillness.html"
+  },
+  {
+    "chunk_id": "medlineplus_heat_illness_001",
+    "document_id": "medlineplus_heat_illness",
+    "title": "Heat Illness",
+    "section": "Heat Cramps and Heat Exhaustion",
+    "content": "Heat cramps are painful muscle spasms that may occur during heavy activity in hot conditions. Heat exhaustion can follow prolonged heat exposure and inadequate fluid intake. Possible features include heavy sweating, rapid breathing, and a rapid but weak pulse. Without appropriate attention, heat exhaustion may progress to heat stroke.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/heatillness.html"
+  },
+  {
+    "chunk_id": "medlineplus_heat_illness_002",
+    "document_id": "medlineplus_heat_illness",
+    "title": "Heat Illness",
+    "section": "Heat Stroke",
+    "content": "Heat stroke is a life-threatening heat-related emergency in which body temperature can rise dangerously. Warning signs may include confusion, dizziness, nausea, abnormal skin findings, and a rapid pulse. Suspected heat stroke requires immediate emergency medical help; it is not equivalent to an ordinary infectious fever.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/heatillness.html"
+  },
+  {
+    "chunk_id": "medlineplus_heat_illness_003",
+    "document_id": "medlineplus_heat_illness",
+    "title": "Heat Illness",
+    "section": "Prevention",
+    "content": "Reduce time spent in extreme heat, take breaks when exercising or working outdoors, and drink enough fluids to avoid dehydration. Replacing fluids and minerals lost through heavy sweating can be important. Risk is greater when heat and humidity interfere with normal cooling.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/heatillness.html"
+  },
+  {
+    "chunk_id": "medlineplus_influenza_000",
+    "document_id": "medlineplus_influenza",
+    "title": "Influenza (Flu)",
+    "section": "Overview and Spread",
+    "content": "Influenza, often called the flu, is a respiratory infection caused by influenza viruses. People can spread these viruses when coughing, sneezing, or talking. The illness ranges from mild to serious; influenza should not be confused with the digestive illness sometimes called \"stomach flu.\"",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/flu.html"
+  },
+  {
+    "chunk_id": "medlineplus_influenza_001",
+    "document_id": "medlineplus_influenza",
+    "title": "Influenza (Flu)",
+    "section": "Symptoms and Differences from a Cold",
+    "content": "Flu symptoms often start abruptly and may include fever or chills, cough, sore throat, headache, body aches, and marked tiredness. A runny or stuffy nose can also occur. Children sometimes experience vomiting or diarrhea. Compared with a common cold, influenza more often begins suddenly and causes substantial fever, aches, and fatigue; these patterns do not establish a diagnosis on their own.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/flu.html"
+  },
+  {
+    "chunk_id": "medlineplus_influenza_002",
+    "document_id": "medlineplus_influenza",
+    "title": "Influenza (Flu)",
+    "section": "Complications and Higher Risk",
+    "content": "Influenza can cause pneumonia and other complications or worsen existing medical conditions. Older adults, young children, pregnant people, and people with certain chronic diseases are at higher risk of serious complications. A person who is very ill, has significant concerns, or belongs to a high-risk group should contact a health care professional.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/flu.html"
+  },
+  {
+    "chunk_id": "medlineplus_influenza_003",
+    "document_id": "medlineplus_influenza",
+    "title": "Influenza (Flu)",
+    "section": "Treatment and Prevention",
+    "content": "Many people recover with rest and supportive care. A clinician may prescribe antiviral medicines, particularly for higher-risk patients; these medicines work best when started early in the illness. Annual influenza vaccination and habits such as handwashing and covering coughs help reduce infection and spread.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/flu.html"
+  },
+  {
+    "chunk_id": "demo_clinic_laboratory_results_policy_000",
+    "document_id": "demo_clinic_laboratory_results_policy",
+    "title": "Laboratory Results Policy",
+    "section": "Accessing Laboratory Results",
+    "content": "DEMO POLICY — This fictional clinic makes laboratory reports available through a simulated patient portal after they are received and released by the clinical team. Patients should sign in to the portal to view their reports. The clinic does not provide confidential laboratory results through an unverified chat conversation.",
+    "source": "Demo Health Clinic (Synthetic)",
+    "source_url": "urn:medical-chatbot-sim:demo-health-clinic:laboratory-results-policy"
+  },
+  {
+    "chunk_id": "demo_clinic_laboratory_results_policy_001",
+    "document_id": "demo_clinic_laboratory_results_policy",
+    "title": "Laboratory Results Policy",
+    "section": "Result Availability and Delays",
+    "content": "DEMO POLICY — In this simulation, released reports typically appear in the portal within two business days after the clinic receives a finalized laboratory report. This is a fictional administrative turnaround, not a statement about how long a complete blood count, throat culture, or any particular test takes in real practice. Some reports may require further review, and no exact release time is guaranteed.",
+    "source": "Demo Health Clinic (Synthetic)",
+    "source_url": "urn:medical-chatbot-sim:demo-health-clinic:laboratory-results-policy"
+  },
+  {
+    "chunk_id": "demo_clinic_laboratory_results_policy_002",
+    "document_id": "demo_clinic_laboratory_results_policy",
+    "title": "Laboratory Results Policy",
+    "section": "Understanding Results and Technical Problems",
+    "content": "DEMO POLICY — Laboratory reports may contain numerical values and laboratory reference ranges, but a report alone may not explain the patient's condition. Questions about an abnormal result should be directed to the clinical team. For a missing report or a portal-access problem, the patient can contact the simulated results desk; the document does not provide live test status or actual contact information.",
+    "source": "Demo Health Clinic (Synthetic)",
+    "source_url": "urn:medical-chatbot-sim:demo-health-clinic:laboratory-results-policy"
+  },
+  {
+    "chunk_id": "demo_clinic_medical_records_policy_000",
+    "document_id": "demo_clinic_medical_records_policy",
+    "title": "Medical Records Policy",
+    "section": "Requesting a Copy",
+    "content": "DEMO POLICY — This is a fictional administrative policy for testing retrieval. In the Demo Health Clinic simulation, a patient can request a copy of their own medical record through the simulated patient portal or by contacting the simulated records desk. Requests specify which documents or date range the patient needs.",
+    "source": "Demo Health Clinic (Synthetic)",
+    "source_url": "urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy"
+  },
+  {
+    "chunk_id": "demo_clinic_medical_records_policy_001",
+    "document_id": "demo_clinic_medical_records_policy",
+    "title": "Medical Records Policy",
+    "section": "Identity Verification and Privacy",
+    "content": "DEMO POLICY — Before records are released, the simulation requires the patient to complete an identity-verification step. Records are not sent to an unverified email address. Requests made on another person's behalf require an appropriate authorization workflow in the simulated system. This document does not claim to describe legal requirements in any real jurisdiction.",
+    "source": "Demo Health Clinic (Synthetic)",
+    "source_url": "urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy"
+  },
+  {
+    "chunk_id": "demo_clinic_medical_records_policy_002",
+    "document_id": "demo_clinic_medical_records_policy",
+    "title": "Medical Records Policy",
+    "section": "Processing and Delivery",
+    "content": "DEMO POLICY — The simulated records desk aims to process a complete, verified request within seven business days. Records are made available in the simulated secure portal rather than in ordinary email attachments. This is a fictional service target, not a legal deadline or a guarantee for any actual health care provider.",
+    "source": "Demo Health Clinic (Synthetic)",
+    "source_url": "urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy"
+  },
+  {
+    "chunk_id": "medlineplus_rsv_000",
+    "document_id": "medlineplus_rsv",
+    "title": "Respiratory Syncytial Virus (RSV) Infections",
+    "section": "Overview and Transmission",
+    "content": "Respiratory syncytial virus (RSV) is a common virus that infects the respiratory tract. Infection often resembles a cold, but RSV can also cause serious lower respiratory illness. It spreads through coughs or sneezes, close contact, and contact with contaminated objects followed by touching the eyes, nose, or mouth.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/respiratorysyncytialvirusinfections.html"
+  },
+  {
+    "chunk_id": "medlineplus_rsv_001",
+    "document_id": "medlineplus_rsv",
+    "title": "Respiratory Syncytial Virus (RSV) Infections",
+    "section": "Symptoms and Higher Risk",
+    "content": "RSV symptoms may include a runny nose, cough, sneezing, reduced appetite, fever, and wheezing. Symptoms do not always appear at the same time. Very young infants may instead show irritability, decreased activity, or breathing difficulties. Infants, older adults, people with certain heart or lung conditions, and people with weakened immune systems are more likely to develop severe infection, including bronchiolitis or pneumonia.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/respiratorysyncytialvirusinfections.html"
+  },
+  {
+    "chunk_id": "medlineplus_rsv_002",
+    "document_id": "medlineplus_rsv",
+    "title": "Respiratory Syncytial Virus (RSV) Infections",
+    "section": "Diagnosis",
+    "content": "A health care professional may evaluate RSV through symptoms, medical history, and physical examination. Testing a sample from the nose or another respiratory site can help identify RSV, especially in severe cases. Additional tests may be used to assess complications. Similar symptoms can be caused by other respiratory infections.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/respiratorysyncytialvirusinfections.html"
+  },
+  {
+    "chunk_id": "medlineplus_rsv_003",
+    "document_id": "medlineplus_rsv",
+    "title": "Respiratory Syncytial Virus (RSV) Infections",
+    "section": "Care and Prevention",
+    "content": "Many RSV infections resolve without specific antiviral treatment; supportive care and adequate fluids are important. Severe cases may require hospital care and breathing support. Handwashing, covering coughs, reducing close contact when ill, and cleaning surfaces help limit spread. Vaccines and preventive antibody medicines are available for certain groups; eligibility should be discussed with a health care professional because recommendations depend on age, pregnancy, and other factors.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/respiratorysyncytialvirusinfections.html"
+  },
+  {
+    "chunk_id": "medlineplus_sore_throat_000",
+    "document_id": "medlineplus_sore_throat",
+    "title": "Sore Throat",
+    "section": "Overview",
+    "content": "A sore throat is pain, irritation, or discomfort in the throat, also called the pharynx. It is a symptom with several possible causes rather than a diagnosis by itself. The throat is involved in swallowing and breathing, so irritation may be noticeable during either activity.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/sorethroat.html"
+  },
+  {
+    "chunk_id": "medlineplus_sore_throat_001",
+    "document_id": "medlineplus_sore_throat",
+    "title": "Sore Throat",
+    "section": "Common Causes",
+    "content": "Colds and influenza frequently cause sore throats. Other possible causes include allergies, mononucleosis, smoking, strep throat, and tonsillitis. Bacterial strep throat is different from a viral sore throat; a sore throat alone cannot determine which cause is responsible.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/sorethroat.html"
+  },
+  {
+    "chunk_id": "medlineplus_sore_throat_002",
+    "document_id": "medlineplus_sore_throat",
+    "title": "Sore Throat",
+    "section": "General Care",
+    "content": "Appropriate care depends on the cause. Fluids, gargling, and throat lozenges may provide symptom relief, and pain-relieving medicines may be considered when appropriate. Children should not take aspirin for this purpose. A health care professional can evaluate persistent or concerning symptoms and determine whether testing is needed.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/sorethroat.html"
+  },
+  {
+    "chunk_id": "medlineplus_strep_a_test_000",
+    "document_id": "medlineplus_strep_a_test",
+    "title": "Strep A Test",
+    "section": "Overview and Test Types",
+    "content": "A strep A test looks for group A Streptococcus bacteria, which can cause strep throat. Strep throat is a bacterial infection of the throat and tonsils. Rapid antigen tests provide results quickly, while throat cultures take longer and can detect some infections that a rapid test misses. These tests are different from blood tests such as a complete blood count.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/lab-tests/strep-a-test/"
+  },
+  {
+    "chunk_id": "medlineplus_strep_a_test_001",
+    "document_id": "medlineplus_strep_a_test",
+    "title": "Strep A Test",
+    "section": "When Testing May Be Needed",
+    "content": "Clinicians may consider strep testing for a sudden severe sore throat, pain with swallowing, fever, swollen neck lymph nodes, or inflamed tonsils. Cough and runny nose are more suggestive of a viral infection than strep throat. Symptoms alone do not reliably distinguish every viral sore throat from a strep infection.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/lab-tests/strep-a-test/"
+  },
+  {
+    "chunk_id": "medlineplus_strep_a_test_002",
+    "document_id": "medlineplus_strep_a_test",
+    "title": "Strep A Test",
+    "section": "Sample Collection and Preparation",
+    "content": "A health care professional collects a sample by swabbing the back of the throat and tonsils. This can cause brief discomfort or gagging. No special preparation is usually needed for a rapid strep test or throat culture. Rapid testing generally returns results in minutes, while cultures typically take one to two days.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/lab-tests/strep-a-test/"
+  },
+  {
+    "chunk_id": "medlineplus_strep_a_test_003",
+    "document_id": "medlineplus_strep_a_test",
+    "title": "Strep A Test",
+    "section": "Results and Follow-up",
+    "content": "A positive strep A test indicates that group A streptococcal bacteria were detected. When a rapid test is negative but clinical suspicion remains, the clinician may order a throat culture; follow-up testing is particularly important in children and teenagers. A confirmed symptomatic strep throat infection is generally treated with prescribed antibiotics. Patients should discuss their test results and treatment instructions with their clinician.",
+    "source": "MedlinePlus - National Library of Medicine",
+    "source_url": "https://medlineplus.gov/lab-tests/strep-a-test/"
+  }
+]
