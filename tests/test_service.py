@@ -1,8 +1,8 @@
 import pytest
 
 from app.chatbot.exceptions import GenerationError
-from app.chatbot.service import MedicalAssistance
 from app.chatbot.models import Chunk, RetrievedChunk
+from app.chatbot.service import MedicalAssistance
 
 
 class FakeLLM:
@@ -45,6 +45,7 @@ class FakeRetriever:
                 score=0.8,
             )
         ]
+
 
 class FakeEmptyRetriever:
     """

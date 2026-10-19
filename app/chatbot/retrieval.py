@@ -13,7 +13,6 @@ class SemanticRetriever:
         model_name: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
         embedder=None,
         threshold: float = 0.3,
-        representation: str = "search_keys",
     ):
         """
         Initialize a new retriever.
@@ -28,8 +27,6 @@ class SemanticRetriever:
             The embedder used.
         threshold : float
             The minimum cosine similarity threshold.
-        representation : str
-            The text used for embedding.
         chunks : list
             List to store the chunks of the context.
         embeddings : torch.Tensor
@@ -38,7 +35,6 @@ class SemanticRetriever:
         self.device = "cpu"
         self.model_name = model_name
         self.threshold = threshold
-        self.representation = representation
 
         # Load Embeddings Model
         if embedder is None:
@@ -50,28 +46,8 @@ class SemanticRetriever:
             self.embedder = embedder
 
         # Indexed retrieval data
-        self.search_keys = []
         self.chunks = []
         self.embeddings = None
-
-    def _build_legacy_embedding_text(
-        self,
-        search_keys: str,
-        content: str,
-    ) -> str:
-        """
-        Build the legacy document representation used for embedding.
-        """
-        if self.representation == "search_keys":
-            return search_keys
-
-        if self.representation == "content":
-            return content
-
-        if self.representation == "search_keys_and_content":
-            return f"{search_keys}\n{content}"
-
-        raise ValueError(f"Unknown document representation: {self.representation}")
 
     def _build_embedding_text(self, chunk: Chunk) -> str:
         """
@@ -105,69 +81,6 @@ class SemanticRetriever:
         embedding_texts = [self._build_embedding_text(chunk) for chunk in chunks]
 
         # Compute the embeddings for the chunks
-        self.embeddings = self.embedder.encode(
-            embedding_texts,
-            convert_to_tensor=True,
-        )
-
-    def ingest_context(self, context_text: str):
-        """
-        Parse the knowledge base and compute document embeddings.
-
-        Parameters
-        ----------
-        context_text : str
-            Raw knowledge-base text.
-
-        Notes
-        -----
-        Blocks must be separated by '###'.
-
-        Each block may optionally follow:
-
-            <search keys> @@@ <content>
-
-        The text used to compute each document embedding depends on
-        `self.representation`, while `content` is stored as the chunk
-        returned by the retriever.
-        """
-        # Separate the text
-        raw_blocks = context_text.split("###")
-
-        # Store parsed search keys
-        self.search_keys = []
-        # Protocols given to the LLM
-        self.chunks = []
-        # Embedding texts
-        embedding_texts = []
-
-        for block in raw_blocks:
-            block = block.strip()
-            if not block:
-                continue
-
-            # Search for the separation by @@@
-            if "@@@" in block:
-                # We look for the separation and add the chunk
-                keys, content = block.split("@@@", 1)
-                keys = keys.strip()
-                content = content.strip()
-            else:
-                # If there is not separation, use everything
-                keys = block
-                content = block
-            # Append keys and content
-            self.search_keys.append(keys)
-            self.chunks.append(content)
-            # Embedding text used
-            embedding_texts.append(
-                self._build_legacy_embedding_text(
-                    search_keys=keys,
-                    content=content,
-                )
-            )
-
-        # Encode the selected document representation
         self.embeddings = self.embedder.encode(
             embedding_texts,
             convert_to_tensor=True,
@@ -253,7 +166,7 @@ class SemanticRetriever:
         # Search for the most relevant chunks
         results = self.search(query, top_k=top_k)
 
-        # If no results are found or the top result is below the threshold, 
+        # If no results are found or the top result is below the threshold,
         # return an empty list
         if not results:
             return []

@@ -1,5 +1,3 @@
-import pytest
-
 from app.chatbot import retrieval as retrieval_module
 from app.chatbot.models import Chunk
 from app.chatbot.retrieval import SemanticRetriever
@@ -20,57 +18,6 @@ class FakeEmbedder:
         """
         self.last_input = texts
         return "EMBEDDINGS_FAKE"
-
-
-def test_ingest_context_splits_keys_and_chunks():
-    """
-    Test that the ingest_context method correctly splits the context into
-    search keys and chunks.
-    """
-    embedder = FakeEmbedder()
-
-    retriever = SemanticRetriever(
-        embedder=embedder,
-    )
-
-    context = """
-    fiebre temperatura alta @@@ Protocolo para fiebre.
-    ###
-    dolor de cabeza cefalea @@@ Protocolo para cefalea.
-    """
-
-    retriever.ingest_context(context)
-
-    assert retriever.search_keys == [
-        "fiebre temperatura alta",
-        "dolor de cabeza cefalea",
-    ]
-
-    assert retriever.chunks == [
-        "Protocolo para fiebre.",
-        "Protocolo para cefalea.",
-    ]
-
-
-def test_ingest_context_uses_full_block_when_no_separator():
-    """
-    Test that a block without @@@ is used both as search key and chunk.
-    """
-    embedder = FakeEmbedder()
-
-    retriever = SemanticRetriever(
-        embedder=embedder,
-    )
-
-    context = """
-    fiebre temperatura alta
-    """
-
-    retriever.ingest_context(context)
-
-    assert retriever.search_keys == ["fiebre temperatura alta"]
-
-    assert retriever.chunks == ["fiebre temperatura alta"]
 
 
 def test_retrieve_returns_ranked_chunks(monkeypatch):
@@ -172,7 +119,7 @@ def test_retrieve_returns_empty_list_when_score_is_below_threshold(
     # Ingest the chunk into the retriever
     retriever.ingest_chunks(chunks)
 
-    # Monkeypatch the semantic_search function to return a score 
+    # Monkeypatch the semantic_search function to return a score
     # below the threshold
     def fake_semantic_search(
         query_embedding,
@@ -197,7 +144,7 @@ def test_retrieve_returns_empty_list_when_score_is_below_threshold(
     # Call the retrieve method with a query
     results = retriever.retrieve("some query")
 
-    # Verify that the results are an empty list since the score is 
+    # Verify that the results are an empty list since the score is
     # below the threshold
     assert results == []
 
@@ -249,7 +196,6 @@ def test_search_returns_ranked_results(monkeypatch):
         fake_semantic_search,
     )
 
-
     # Call the search method with a query and top_k=2
     results = retriever.search("some query", top_k=2)
 
@@ -261,57 +207,6 @@ def test_search_returns_ranked_results(monkeypatch):
 
     assert results[1].score == 0.6
     assert results[1].chunk == chunks[0]
-
-
-@pytest.mark.parametrize(
-    "representation, expected_input",
-    [
-        ("search_keys", ["fever keys"]),
-        ("content", ["fever protocol"]),
-        (
-            "search_keys_and_content",
-            ["fever keys\nfever protocol"],
-        ),
-    ],
-)
-def test_document_representation_is_used_for_embedding(
-    representation,
-    expected_input,
-):
-    """
-    Test that the selected document representation is passed to the embedder.
-
-    The test verifies the three supported representations:
-    search keys only, chunk content only, and search keys combined with content.
-    """
-    embedder = FakeEmbedder()
-
-    retriever = SemanticRetriever(
-        embedder=embedder,
-        representation=representation,
-    )
-
-    retriever.ingest_context("fever keys @@@ fever protocol")
-
-    assert embedder.last_input == expected_input
-
-
-def test_invalid_representation_raises_value_error():
-    """
-    Test that an unsupported document representation raises a ValueError.
-    """
-    embedder = FakeEmbedder()
-
-    retriever = SemanticRetriever(
-        embedder=embedder,
-        representation="invalid",
-    )
-
-    with pytest.raises(
-        ValueError,
-        match="Unknown document representation",
-    ):
-        retriever.ingest_context("fever keys @@@ fever protocol")
 
 
 def test_build_embedding_text_uses_title_section_and_content():
