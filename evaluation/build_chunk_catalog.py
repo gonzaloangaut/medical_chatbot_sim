@@ -48,7 +48,7 @@ def main():
     document_count = len({item["document_id"] for item in catalog})
 
     # Define the output path
-    output_path = Path(__file__).resolve().parent / "chunk_catalog_v2.json"
+    output_path = Path(__file__).resolve().parent / "datasets" / "chunk_catalog.json"
 
     # Save the catalog as JSON
     with output_path.open("w", encoding="utf-8") as file:

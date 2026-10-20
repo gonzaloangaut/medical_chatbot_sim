@@ -1,3 +1,4 @@
+import argparse
 import json
 from pathlib import Path
 
@@ -37,14 +38,17 @@ def evaluate_threshold(results: list[dict], threshold: float) -> dict:
 
 
 def main():
-    """
-    Evaluate different retrieval thresholds on the development dataset.
-    """
+    """Compare thresholds on dev, or report the frozen 0.30 gate on test."""
+    parser = argparse.ArgumentParser(description="Evaluate retrieval threshold.")
+    parser.add_argument("--dataset", choices=("dev", "test"), required=True)
+    args = parser.parse_args()
     # Define file paths
     evaluation_dir = Path(__file__).resolve().parent
 
-    results_path = evaluation_dir / "retrieval_results_dev_v2.json"
-    output_path = evaluation_dir / "retrieval_threshold_dev_v2.json"
+    results_path = evaluation_dir / "results" / f"retrieval_{args.dataset}.json"
+    output_path = (
+        evaluation_dir / "results" / f"retrieval_threshold_{args.dataset}.json"
+    )
 
     # Load benchmark results
     with results_path.open("r", encoding="utf-8") as file:
@@ -53,7 +57,7 @@ def main():
     results = benchmark_data["results"]
 
     # Define candidate thresholds
-    thresholds = [0.3, 0.4, 0.45, 0.5, 0.55, 0.6]
+    thresholds = [0.3, 0.4, 0.45, 0.5, 0.55, 0.6] if args.dataset == "dev" else [0.3]
 
     threshold_results = []
 

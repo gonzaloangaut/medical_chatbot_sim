@@ -1,138 +1,83 @@
 # Medical Chatbot Simulation
 
-A lightweight medical-information chatbot built as an educational project to explore API design, software architecture, testing, and Retrieval-Augmented Generation (RAG).
+An **educational medical-information chatbot** built with FastAPI, a local language model, and a structured multilingual Retrieval-Augmented Generation (RAG) pipeline. The project focuses on modular software design, source provenance, reproducible evaluation, and understanding the difference between **retrieving related information** and **having sufficient evidence to answer**.
 
-The application retrieves relevant information from a structured knowledge base, provides the retrieved context to a local language model, and returns both the generated answer and the sources used during retrieval.
+> **Medical disclaimer:** This is a research/portfolio prototype, **not a medical device**. It is not clinically validated and must not be used for diagnosis, prescribing, emergency triage, or treatment decisions. The demo clinic and its operational policies are fictional.
 
-> **Disclaimer:** This project is an educational prototype. It is not a medical device and should not be used as a substitute for professional medical advice, diagnosis, or treatment.
+## What the project demonstrates
 
-## Current Architecture
+- **Structured knowledge ingestion:** English Markdown documents with source metadata, split into section-level chunks.
+- **Cross-lingual semantic retrieval:** Spanish-language questions are matched to English-language reference documents using pretrained multilingual sentence embeddings.
+- **Modular RAG pipeline:** knowledge loading, chunking, retrieval, prompt construction, generation, and API responses have separate responsibilities.
+- **Programmatic source provenance:** API responses include metadata for the chunks provided as context, rather than relying on the LLM to invent citations. These source lists are **not claim-level citation verification**.
+- **Evaluation-driven design:** a 120-query annotated benchmark with separate development and held-out test splits, ranking metrics, threshold analysis, and qualitative failure analysis.
+- **Unit testing:** test doubles cover application behavior without needing to initialize the real embedding or generation models in every test.
 
-The current RAG pipeline is:
-
-```text
-Markdown knowledge documents
-        ↓
-Document loading + metadata
-        ↓
-Structure-aware chunking
-        ↓
-Semantic embeddings
-        ↓
-Top-k retrieval
-        ↓
-Retrieved chunks
-        ↓
-Structured LLM context
-        ↓
-Generated answer + provenance
-        ↓
-FastAPI response
-```
-
-The application intentionally keeps each responsibility separate:
+## Architecture
 
 ```text
-knowledge.py
-    Markdown files → Document objects
-
-chunking.py
-    Documents → Chunk objects
-
-retrieval.py
-    Chunks → ranked RetrievedChunk objects
-
-service.py
-    Retrieval → context construction → generation → provenance
-
-api.py
-    Domain response → HTTP response
-
-main.py
-    Application composition root
+English Markdown knowledge base (15 documents)
+                │
+                ▼
+         Document loader
+                │
+                ▼
+      Section-based chunking
+          (54 chunks)
+                │
+                ▼
+        Multilingual MiniLM
+       (chunk/query embeddings)
+                │
+                ▼
+    Cosine-similarity retrieval
+              Top-5
+                │
+                ▼
+ Top-1 similarity gate (>= 0.30)
+                │
+                ▼
+     Structured LLM context
+                │
+                ▼
+    Local Qwen 2.5 0.5B Instruct
+                │
+                ▼
+  FastAPI response + source list
 ```
 
-## Main Features
+The current similarity gate is **not an evidence-sufficiency detector**. A query can pass it even when the KB lacks the requested fact. Explicit evidence sufficiency, reliable abstention, and response-level groundedness are future evaluation targets.
 
-### Structured knowledge base
+### Knowledge base and provenance
 
-Knowledge is stored as Markdown documents under:
+The KB lives in `data/knowledge/` and contains educational medical summaries adapted from MedlinePlus alongside **three fictional clinic-policy documents**. Every document has front matter identifying its document ID, title, source, and source URL. Non-empty `##` sections become chunks that retain their parent metadata.
+
+The fixed benchmark uses **15 documents and 54 chunks**. The chunk representation sent to the embedding model is:
 
 ```text
-data/knowledge/
+title + "\n\n" + section + "\n\n" + content
 ```
 
-Each document contains front matter with provenance metadata:
+### Retrieval
 
-```yaml
----
-document_id: medlineplus_fever
-title: Fever
-source: MedlinePlus - National Library of Medicine
-source_url: https://medlineplus.gov/fever.html
----
-```
+Embedding model: `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`. This is a **pretrained model**; the project does not train or fine-tune it. The retriever ranks chunks by cosine similarity.
 
-The Markdown body is divided into sections using level-two headings (`##`).
+The baseline settings were selected on the development split and frozen before held-out evaluation:
 
-### Structure-aware chunking
+- **Top-k:** 5
+- **Top-1 acceptance threshold:** 0.30
 
-Each non-empty `##` section becomes a retrievable `Chunk`.
+`search()` provides a ranked list for evaluation. `retrieve()` applies the initial acceptance gate before downstream generation. The similarity score is not a calibrated confidence value.
 
-A chunk preserves:
+### Generation and API
 
-- document identity;
-- title;
-- section;
-- source;
-- source URL;
-- textual content.
+Generation uses the local `Qwen/Qwen2.5-0.5B-Instruct` model on CPU. `MedicalAssistance` turns the retrieved chunks into a structured context and forwards it to the model. FastAPI exposes the assistant response along with source metadata.
 
-This keeps retrieval units separate from source documents while preserving provenance.
-
-### Semantic retrieval
-
-The project uses:
-
-```text
-sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
-```
-
-Each chunk is embedded using:
-
-```text
-title + section + content
-```
-
-Queries are ranked using cosine similarity.
-
-The retriever currently returns the top 3 candidates by default and applies a similarity threshold to the highest-ranked result as a simple retrieve-or-reject decision.
-
-These retrieval settings are working defaults and will be evaluated more systematically as the knowledge base grows.
-
-### Local language model
-
-Generation currently uses:
-
-```text
-Qwen/Qwen2.5-0.5B-Instruct
-```
-
-The model runs locally on CPU.
-
-Retrieved chunks are converted into structured context before being sent to the language model.
-
-### Provenance
-
-The API does not ask the language model to generate citations.
-
-Instead, provenance is propagated programmatically from the retrieved chunks to the final API response.
-
-A response has the form:
+Example response shape:
 
 ```json
 {
-  "response": "Generated response",
+  "response": "Generated answer",
   "sources": [
     {
       "title": "Fever",
@@ -144,163 +89,131 @@ A response has the form:
 }
 ```
 
-Retrieval scores are intentionally kept internal and are not exposed as confidence values.
+**Current limitation:** The generator has not yet been rigorously evaluated for unsupported claims, evidence-based abstention, or clinical safety. A returned source list only establishes which sources were retrieved and provided, **not** that every claim in the answer is supported.
 
-### Testing
+## Retrieval evaluation
 
-The project uses `pytest` and test doubles to validate the main application contracts without loading real ML models during unit tests.
+The benchmark contains **120 manually reviewed, mostly synthetic Spanish-language queries** against the fixed English-language KB: 60 development and 60 held-out test questions. Each split contains 35 single-evidence, 10 multi-evidence, and 15 unsupported queries. The test configuration was frozen at commit [`d29d9b9`](https://github.com/gonzaloangaut/medical_chatbot_sim/commit/d29d9b917ab4b3943aab6ef1c82cb7d6f833a9c2) **before** inspecting test retrieval results.
 
-Tests cover areas including:
+### Ranking: 45 answerable queries per split
 
-- API validation and error handling;
-- document loading;
-- Markdown chunking;
-- semantic retrieval orchestration;
-- retrieve-or-reject behavior;
-- context construction;
-- provenance propagation;
-- service-level generation behavior.
+| Metric | Development | Held-out test |
+| --- | ---: | ---: |
+| Hit@1 | 82.22% | 82.22% |
+| Recall@3 | 93.33% | 88.89% |
+| **Recall@5** | **100.00%** | **95.56%** |
+| Complete Evidence@3 | 88.89% | 82.22% |
+| **Complete Evidence@5** | **100.00% (45/45)** | **93.33% (42/45)** |
+| MRR@5 | 0.8970 | 0.8907 |
 
-## Technology Stack
+For the **10 multi-evidence queries** in each split, Complete Evidence@5 falls from **100% (development)** to **80% (test)**. Top-5 therefore improves evidence coverage over Top-3 but does **not** guarantee complete context.
 
-- **Python 3.12**
-- **FastAPI**
-- **Pydantic**
-- **Uvicorn**
-- **Sentence Transformers**
-- **Transformers**
-- **PyTorch**
-- **Qwen2.5-0.5B-Instruct**
-- **pytest**
-- **Docker**
+### Acceptance gate: all 60 queries per split
 
-## Repository Structure
+With the fixed threshold `0.30`, the held-out test gate accepted all **45/45 answerable** queries but also incorrectly accepted **9/15 unsupported** queries (60% false acceptance rate). All **7/7 in-domain unsupported** test queries passed the gate; 6/8 out-of-domain queries were correctly rejected.
+
+**Main finding:** Semantic similarity finds **related** text; it does not establish that the retrieved text contains the **specific evidence required** to answer a question. The next stage will investigate grounded generation, evidence sufficiency, and abstention as distinct measurable behaviors.
+
+**Interpretation limits:** The KB is small; the questions are mostly curated from the source material rather than sampled from clinical interactions; and development/test share documents, topics, and some underlying facts. This is a held-out **question-level retrieval benchmark**, not proof of real-world multilingual robustness, diagnostic correctness, or patient safety. Only one gold evidence set is annotated per question.
+
+**Explore the analysis:** [`evaluation/retrieval_analysis.ipynb`](evaluation/retrieval_analysis.ipynb)  
+**Methodology and full results:** [`evaluation/RETRIEVAL_BENCHMARK_PROTOCOL.md`](evaluation/RETRIEVAL_BENCHMARK_PROTOCOL.md)
+
+## Repository layout
 
 ```text
 .
 ├── app/
-│   ├── main.py
-│   ├── api.py
-│   ├── schemas.py
+│   ├── main.py                  # Composition root
+│   ├── api.py                   # FastAPI integration
+│   ├── schemas.py               # API models
 │   └── chatbot/
-│       ├── chunking.py
-│       ├── exceptions.py
-│       ├── knowledge.py
-│       ├── llm.py
-│       ├── models.py
-│       ├── retrieval.py
-│       └── service.py
-│
-├── data/
-│   └── knowledge/
-│       └── fever.md
-│
+│       ├── knowledge.py         # Markdown loading
+│       ├── chunking.py          # Section chunks
+│       ├── retrieval.py         # MiniLM and semantic search
+│       ├── service.py           # Context, generation, provenance
+│       ├── llm.py               # Local Qwen interface
+│       └── models.py            # Domain models
+├── data/knowledge/             # English-language source documents
 ├── evaluation/
-│   ├── analyze_retrieval_results.ipynb
-│   ├── representation_experiment_results.json
-│   ├── retrieval_catalog.json
-│   ├── retrieval_dataset.json
-│   └── retrieval_results.json
-│
+│   ├── RETRIEVAL_BENCHMARK_PROTOCOL.md
+│   ├── retrieval_analysis.ipynb
+│   ├── build_chunk_catalog.py
+│   ├── validate_retrieval_dataset.py
+│   ├── retrieval_metrics.py
+│   ├── run_retrieval_benchmark.py
+│   ├── summarize_retrieval_results.py
+│   ├── evaluate_retrieval_threshold.py
+│   ├── datasets/
+│   │   ├── chunk_catalog.json
+│   │   ├── retrieval_dev.json
+│   │   └── retrieval_test.json
+│   └── results/
+│       ├── retrieval_dev.json
+│       ├── retrieval_test.json
+│       ├── retrieval_summary_dev.json
+│       ├── retrieval_summary_test.json
+│       ├── retrieval_threshold_dev.json
+│       └── retrieval_threshold_test.json
 ├── tests/
-│   ├── test_api.py
-│   ├── test_chunking.py
-│   ├── test_knowledge.py
-│   ├── test_retrieval.py
-│   └── test_service.py
-│
 ├── chat_test.py
-├── Dockerfile
 ├── requirements.txt
+├── Dockerfile
 └── README.md
 ```
 
-The files under `evaluation/` preserve experiments performed during an earlier retrieval iteration. They provide historical evidence for retrieval-design decisions but should not be interpreted as validation of the current multi-document RAG architecture.
+## Run locally
 
-## Running Locally
-
-Clone the repository:
+Python 3.12 was used during development.
 
 ```bash
 git clone https://github.com/gonzaloangaut/medical_chatbot_sim.git
 cd medical_chatbot_sim
-```
-
-Create and activate a virtual environment:
-
-```bash
-python -m venv venv
-source venv/bin/activate
-```
-
-Install the dependencies:
-
-```bash
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
-```
-
-Start the API:
-
-```bash
 uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
-The API will be available at:
+API endpoint: `http://127.0.0.1:8000`  
+Interactive API docs: `http://127.0.0.1:8000/docs`
 
-```text
-http://127.0.0.1:8000
-```
-
-FastAPI documentation is available at:
-
-```text
-http://127.0.0.1:8000/docs
-```
-
-To run the terminal client:
+Terminal client:
 
 ```bash
 python chat_test.py
 ```
 
-## Running with Docker
-
-Build the image:
+### Docker
 
 ```bash
 docker build -t medical-chatbot .
-```
-
-Run the container:
-
-```bash
 docker run -p 8000:8000 medical-chatbot
 ```
 
-Then use the API at:
+### Tests and benchmark
 
-```text
-http://127.0.0.1:8000
-```
-
-## Running the Tests
+Install test and notebook tooling separately from the application dependencies if needed:
 
 ```bash
-pytest
+pip install pytest pandas numpy matplotlib jupyter
+pytest -q
 ```
 
-## Current Scope and Next Steps
+To reproduce the saved retrieval experiments **without retraining models**:
 
-The current knowledge base is intentionally small. Its purpose is to validate the structured RAG architecture before scaling the corpus.
+```bash
+python -m evaluation.run_retrieval_benchmark --dataset dev
+python -m evaluation.summarize_retrieval_results --dataset dev
+python -m evaluation.evaluate_retrieval_threshold --dataset dev
 
-The next development stage will focus on:
+python -m evaluation.run_retrieval_benchmark --dataset test
+python -m evaluation.summarize_retrieval_results --dataset test
+python -m evaluation.evaluate_retrieval_threshold --dataset test
+```
 
-- expanding the knowledge base with multiple traceable documents;
-- building a new retrieval evaluation dataset for the current architecture;
-- evaluating Top-k retrieval and retrieve-or-reject behavior;
-- analyzing out-of-domain queries;
-- measuring grounded generation and unsupported claims;
-- improving the prompt and generation behavior based on observed failures;
-- evaluating whether more advanced retrieval techniques are actually necessary.
+The `test` threshold command evaluates **only the previously selected value, 0.30**; do not retune on its results. The corpus is validated against the saved catalog before running the benchmark. The notebook works with the saved JSON outputs without loading MiniLM again.
 
-The project is being developed incrementally: additional infrastructure is introduced only when evaluation results provide a clear reason for it.
+## Next steps
+
+The next phase focuses on **grounded answer generation and end-to-end evaluation**: explicit evidence-sufficiency checks, supported vs. unsupported answer behavior, abstention, claim-to-source faithfulness, and testing of the local LLM's actual outputs. No clinically safe behavior is assumed without separate evidence.

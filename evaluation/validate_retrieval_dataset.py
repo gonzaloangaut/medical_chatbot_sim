@@ -1,3 +1,4 @@
+import argparse
 import json
 from pathlib import Path
 
@@ -122,11 +123,15 @@ def validate_dataset(dataset: list[dict], catalog: list[dict]) -> None:
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Validate retrieval dataset.")
+    parser.add_argument("--dataset", choices=("dev", "test"), required=True)
+    args = parser.parse_args()
+
     # Define input file paths
     evaluation_dir = Path(__file__).resolve().parent
 
-    catalog_path = evaluation_dir / "chunk_catalog_v2.json"
-    dataset_path = evaluation_dir / "retrieval_dataset_pilot_v2.json"
+    catalog_path = evaluation_dir / "datasets" / "chunk_catalog.json"
+    dataset_path = evaluation_dir / "datasets" / f"retrieval_{args.dataset}.json"
 
     # Load the chunk catalog
     with catalog_path.open("r", encoding="utf-8") as file:

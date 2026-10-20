@@ -99,9 +99,9 @@ def main():
     # Define input and output paths
     evaluation_dir = Path(__file__).resolve().parent
 
-    results_path = evaluation_dir / f"retrieval_results_{args.dataset}_v2.json"
+    results_path = evaluation_dir / "results" / f"retrieval_{args.dataset}.json"
 
-    output_path = evaluation_dir / f"retrieval_summary_{args.dataset}_v2.json"
+    output_path = evaluation_dir / "results" / f"retrieval_summary_{args.dataset}.json"
 
     # Load benchmark results
     with results_path.open("r", encoding="utf-8") as file:

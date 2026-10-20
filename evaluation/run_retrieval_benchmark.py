@@ -27,8 +27,8 @@ def main():
     # Define evaluation file paths
     evaluation_dir = Path(__file__).resolve().parent
 
-    catalog_path = evaluation_dir / "chunk_catalog_v2.json"
-    dataset_path = evaluation_dir / f"retrieval_dataset_{args.dataset}_v2.json"
+    catalog_path = evaluation_dir / "datasets" / "chunk_catalog.json"
+    dataset_path = evaluation_dir / "datasets" / f"retrieval_{args.dataset}.json"
 
     # Load evaluation data
     with catalog_path.open("r", encoding="utf-8") as file:
@@ -92,7 +92,7 @@ def main():
         print(f"Processed {item['query_id']}: {query}")
 
     # Define the output path
-    output_path = evaluation_dir / f"retrieval_results_{args.dataset}_v2.json"
+    output_path = evaluation_dir / "results" / f"retrieval_{args.dataset}.json"
 
     # Store benchmark metadata and results
     benchmark_data = {
