@@ -1,0 +1,523 @@
+[
+  {
+    "query_id": "q_001",
+    "query": "¿Tener 37 grados de temperatura significa que tengo fiebre?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_fever_000"
+    ]
+  },
+  {
+    "query_id": "q_002",
+    "query": "¿Qué síntomas pueden indicar una deshidratación grave?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_dehydration_002"
+    ]
+  },
+  {
+    "query_id": "q_003",
+    "query": "¿Tengo que estar en ayunas para hacerme un hemograma?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_complete_blood_count_002"
+    ]
+  },
+  {
+    "query_id": "q_004",
+    "query": "¿Qué es la anafilaxia y qué tipo de atención requiere?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_allergy_001"
+    ]
+  },
+  {
+    "query_id": "q_005",
+    "query": "¿Qué personas tienen mayor riesgo de desarrollar una infección grave por RSV?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_rsv_001"
+    ]
+  },
+  {
+    "query_id": "q_006",
+    "query": "¿Con cuánta anticipación debo cancelar un turno en Demo Health Clinic?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "demo_clinic_appointment_policy_001"
+    ]
+  },
+  {
+    "query_id": "q_007",
+    "query": "¿Tengo que verificar mi identidad para solicitar mi historia clínica?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "demo_clinic_medical_records_policy_001"
+    ]
+  },
+  {
+    "query_id": "q_008",
+    "query": "¿Cuánto tarda Demo Health Clinic en publicar un informe de laboratorio una vez que recibe el resultado finalizado?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "demo_clinic_laboratory_results_policy_001"
+    ]
+  },
+  {
+    "query_id": "q_009",
+    "query": "Según la información disponible, ¿qué síntomas presenta la gripe y cuáles presenta el resfriado común?",
+    "category": "multi_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_influenza_001",
+      "medlineplus_common_cold_001"
+    ]
+  },
+  {
+    "query_id": "q_010",
+    "query": "¿Qué mide un hemograma y para qué se utiliza?",
+    "category": "multi_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_complete_blood_count_000",
+      "medlineplus_complete_blood_count_001"
+    ]
+  },
+  {
+    "query_id": "q_011",
+    "query": "¿Cómo se toma la muestra para un test de estreptococo y qué establece Demo Health Clinic sobre la publicación de resultados finalizados?",
+    "category": "multi_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_strep_a_test_002",
+      "demo_clinic_laboratory_results_policy_001"
+    ]
+  },
+  {
+    "query_id": "q_012",
+    "query": "¿Cuánto cuesta hacerse un hemograma en Demo Health Clinic?",
+    "category": "in_domain_unsupported",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_013",
+    "query": "¿Cuál es mi nivel de sodio según mis últimos análisis?",
+    "category": "in_domain_unsupported",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_014",
+    "query": "¿Cómo puedo renovar mi licencia de conducir?",
+    "category": "out_of_domain",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_015",
+    "query": "¿Cómo se calcula el determinante de una matriz de 3×3?",
+    "category": "out_of_domain",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_016",
+    "query": "¿Qué sustancias pueden desencadenar una reacción alérgica?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_allergy_000"
+    ]
+  },
+  {
+    "query_id": "q_017",
+    "query": "Si un profesional sospecha una alergia, ¿qué pruebas puede utilizar para investigarla?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_allergy_002"
+    ]
+  },
+  {
+    "query_id": "q_018",
+    "query": "¿Un turno solicitado por el portal de Demo Health Clinic ya cuenta como confirmado?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "demo_clinic_appointment_policy_000"
+    ]
+  },
+  {
+    "query_id": "q_019",
+    "query": "¿En qué horario de los días hábiles procesa trámites la recepción simulada de la clínica?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "demo_clinic_appointment_policy_002"
+    ]
+  },
+  {
+    "query_id": "q_020",
+    "query": "¿De qué maneras puede transmitirse el resfrío común?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_common_cold_000"
+    ]
+  },
+  {
+    "query_id": "q_021",
+    "query": "¿Los antibióticos sirven para eliminar el virus de un resfrío?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_common_cold_002"
+    ]
+  },
+  {
+    "query_id": "q_022",
+    "query": "¿Hay una vacuna para prevenir el resfrío común?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_common_cold_003"
+    ]
+  },
+  {
+    "query_id": "q_023",
+    "query": "¿Qué tipos de células y otras mediciones aparecen en un hemograma completo?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_complete_blood_count_000"
+    ]
+  },
+  {
+    "query_id": "q_024",
+    "query": "¿Un resultado anormal del hemograma alcanza por sí solo para diagnosticar una enfermedad?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_complete_blood_count_003"
+    ]
+  },
+  {
+    "query_id": "q_025",
+    "query": "En términos de líquidos corporales, ¿qué significa estar deshidratado?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_dehydration_000"
+    ]
+  },
+  {
+    "query_id": "q_026",
+    "query": "¿Qué situaciones pueden causar pérdida de líquidos y favorecer la deshidratación?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_dehydration_001"
+    ]
+  },
+  {
+    "query_id": "q_027",
+    "query": "¿Cómo suele tratarse una deshidratación leve?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_dehydration_004"
+    ]
+  },
+  {
+    "query_id": "q_028",
+    "query": "¿A partir de cuánto tiempo de diarrea se habla de diarrea crónica?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_diarrhea_000"
+    ]
+  },
+  {
+    "query_id": "q_029",
+    "query": "¿Qué señales durante un episodio de diarrea justifican consultar al médico?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_diarrhea_002"
+    ]
+  },
+  {
+    "query_id": "q_030",
+    "query": "¿Qué prácticas reducen el riesgo de algunas diarreas infecciosas?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_diarrhea_003"
+    ]
+  },
+  {
+    "query_id": "q_031",
+    "query": "¿La fiebre puede tener causas no infecciosas?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_fever_001"
+    ]
+  },
+  {
+    "query_id": "q_032",
+    "query": "¿Por qué es importante mantener la hidratación si una persona tiene fiebre?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_fever_002"
+    ]
+  },
+  {
+    "query_id": "q_033",
+    "query": "¿Qué factores pueden desencadenar una cefalea de tipo tensional?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_headache_001"
+    ]
+  },
+  {
+    "query_id": "q_034",
+    "query": "¿En qué situaciones un dolor de cabeza puede requerir ayuda médica inmediata?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_headache_002"
+    ]
+  },
+  {
+    "query_id": "q_035",
+    "query": "¿Qué condiciones ambientales o actividades pueden provocar enfermedades por calor?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_heat_illness_000"
+    ]
+  },
+  {
+    "query_id": "q_036",
+    "query": "¿Qué síntomas puede presentar una persona con agotamiento por calor?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_heat_illness_001"
+    ]
+  },
+  {
+    "query_id": "q_037",
+    "query": "¿El golpe de calor es una urgencia médica y es lo mismo que la fiebre de una infección?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_heat_illness_002"
+    ]
+  },
+  {
+    "query_id": "q_038",
+    "query": "¿Cómo se transmite la influenza de una persona a otra?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_influenza_000"
+    ]
+  },
+  {
+    "query_id": "q_039",
+    "query": "¿Qué medidas generales ayudan a prevenir la influenza?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_influenza_003"
+    ]
+  },
+  {
+    "query_id": "q_040",
+    "query": "¿Dónde pueden consultar los pacientes los informes de laboratorio en Demo Health Clinic?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "demo_clinic_laboratory_results_policy_000"
+    ]
+  },
+  {
+    "query_id": "q_041",
+    "query": "¿Cuánto tarda normalmente la clínica ficticia en tramitar una solicitud completa y verificada de historia clínica?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "demo_clinic_medical_records_policy_002"
+    ]
+  },
+  {
+    "query_id": "q_042",
+    "query": "¿Qué indica un resultado positivo en la prueba de estreptococo del grupo A?",
+    "category": "single_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_strep_a_test_003"
+    ]
+  },
+  {
+    "query_id": "q_043",
+    "query": "¿Cuáles son algunos desencadenantes de alergia y cómo se investiga clínicamente una posible alergia?",
+    "category": "multi_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_allergy_000",
+      "medlineplus_allergy_002"
+    ]
+  },
+  {
+    "query_id": "q_044",
+    "query": "¿Cómo se transmite el resfrío común y qué medidas ayudan a prevenir ese contagio?",
+    "category": "multi_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_common_cold_000",
+      "medlineplus_common_cold_003"
+    ]
+  },
+  {
+    "query_id": "q_045",
+    "query": "¿Qué factores provocan deshidratación y cómo puede evaluarla un profesional de la salud?",
+    "category": "multi_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_dehydration_001",
+      "medlineplus_dehydration_003"
+    ]
+  },
+  {
+    "query_id": "q_046",
+    "query": "¿Qué puede causar diarrea, qué señales justifican una consulta médica y cómo se reponen los líquidos perdidos?",
+    "category": "multi_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_diarrhea_000",
+      "medlineplus_diarrhea_002",
+      "medlineplus_diarrhea_003"
+    ]
+  },
+  {
+    "query_id": "q_047",
+    "query": "¿Qué desencadenantes frecuentes se asocian a la cefalea y cuáles son sus señales de alarma?",
+    "category": "multi_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_headache_001",
+      "medlineplus_headache_002"
+    ]
+  },
+  {
+    "query_id": "q_048",
+    "query": "¿Cuáles son las señales de golpe de calor y qué hábitos pueden prevenir problemas de salud por altas temperaturas?",
+    "category": "multi_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "medlineplus_heat_illness_002",
+      "medlineplus_heat_illness_003"
+    ]
+  },
+  {
+    "query_id": "q_049",
+    "query": "En Demo Health Clinic, ¿con cuánto aviso se cancela un turno y cuánto lleva procesar una solicitud verificada de historia clínica?",
+    "category": "multi_evidence",
+    "answerable": true,
+    "relevant_chunk_ids": [
+      "demo_clinic_appointment_policy_001",
+      "demo_clinic_medical_records_policy_002"
+    ]
+  },
+  {
+    "query_id": "q_050",
+    "query": "¿Cuál es el número de teléfono real para pedir turnos en Demo Health Clinic?",
+    "category": "in_domain_unsupported",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_051",
+    "query": "¿Hay turnos libres este sábado por la mañana en Demo Health Clinic?",
+    "category": "in_domain_unsupported",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_052",
+    "query": "Según mi historia clínica, ¿a qué sustancias soy alérgico?",
+    "category": "in_domain_unsupported",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_053",
+    "query": "¿Qué valor de hemoglobina me dio el análisis que me hice ayer?",
+    "category": "in_domain_unsupported",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_054",
+    "query": "¿Qué dosis exacta de paracetamol corresponde darle a un niño de cuatro años?",
+    "category": "in_domain_unsupported",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_055",
+    "query": "¿Ya está listo en este momento el cultivo de garganta que me hicieron en la clínica?",
+    "category": "in_domain_unsupported",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_056",
+    "query": "¿Cómo reservo una mesa en un restaurante para el viernes?",
+    "category": "out_of_domain",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_057",
+    "query": "¿Cuál es la capital de Islandia?",
+    "category": "out_of_domain",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_058",
+    "query": "¿Qué significa estar en posición adelantada en fútbol?",
+    "category": "out_of_domain",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_059",
+    "query": "¿Cómo cambio la contraseña de mi red Wi-Fi?",
+    "category": "out_of_domain",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  },
+  {
+    "query_id": "q_060",
+    "query": "¿Cuáles son los pasos para hacer pan de masa madre?",
+    "category": "out_of_domain",
+    "answerable": false,
+    "relevant_chunk_ids": []
+  }
+]
