@@ -1,0 +1,19 @@
+{
+  "model_name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "dataset": "retrieval_dataset_test_v2.json",
+  "decision_rule": "Accept if top-1 score >= threshold",
+  "n_queries": 60,
+  "threshold_results": [
+    {
+      "threshold": 0.3,
+      "tp": 45,
+      "tn": 6,
+      "fp": 9,
+      "fn": 0,
+      "sensitivity": 1.0,
+      "specificity": 0.4,
+      "false_acceptance_rate": 0.6,
+      "false_rejection_rate": 0.0
+    }
+  ]
+}
