@@ -1,0 +1,74 @@
+{
+  "model_name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "dataset": "retrieval_dataset_dev_v2.json",
+  "decision_rule": "Accept if top-1 score >= threshold",
+  "n_queries": 60,
+  "threshold_results": [
+    {
+      "threshold": 0.3,
+      "tp": 45,
+      "tn": 6,
+      "fp": 9,
+      "fn": 0,
+      "sensitivity": 1.0,
+      "specificity": 0.4,
+      "false_acceptance_rate": 0.6,
+      "false_rejection_rate": 0.0
+    },
+    {
+      "threshold": 0.4,
+      "tp": 43,
+      "tn": 8,
+      "fp": 7,
+      "fn": 2,
+      "sensitivity": 0.9555555555555556,
+      "specificity": 0.5333333333333333,
+      "false_acceptance_rate": 0.4666666666666667,
+      "false_rejection_rate": 0.044444444444444446
+    },
+    {
+      "threshold": 0.45,
+      "tp": 43,
+      "tn": 10,
+      "fp": 5,
+      "fn": 2,
+      "sensitivity": 0.9555555555555556,
+      "specificity": 0.6666666666666666,
+      "false_acceptance_rate": 0.3333333333333333,
+      "false_rejection_rate": 0.044444444444444446
+    },
+    {
+      "threshold": 0.5,
+      "tp": 42,
+      "tn": 10,
+      "fp": 5,
+      "fn": 3,
+      "sensitivity": 0.9333333333333333,
+      "specificity": 0.6666666666666666,
+      "false_acceptance_rate": 0.3333333333333333,
+      "false_rejection_rate": 0.06666666666666667
+    },
+    {
+      "threshold": 0.55,
+      "tp": 38,
+      "tn": 13,
+      "fp": 2,
+      "fn": 7,
+      "sensitivity": 0.8444444444444444,
+      "specificity": 0.8666666666666667,
+      "false_acceptance_rate": 0.13333333333333333,
+      "false_rejection_rate": 0.15555555555555556
+    },
+    {
+      "threshold": 0.6,
+      "tp": 38,
+      "tn": 15,
+      "fp": 0,
+      "fn": 7,
+      "sensitivity": 0.8444444444444444,
+      "specificity": 1.0,
+      "false_acceptance_rate": 0.0,
+      "false_rejection_rate": 0.15555555555555556
+    }
+  ]
+}

@@ -1,0 +1,2148 @@
+{
+  "model_name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "top_k": 5,
+  "dataset": "retrieval_dataset_dev_v2.json",
+  "results": [
+    {
+      "query_id": "q_001",
+      "query": "¿Tener 37 grados de temperatura significa que tengo fiebre?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_fever_000"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_fever_000",
+          "score": 0.8140202760696411
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_common_cold_001",
+          "score": 0.5944247245788574
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_fever_001",
+          "score": 0.5677735805511475
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_influenza_001",
+          "score": 0.5443598031997681
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_common_cold_002",
+          "score": 0.48362818360328674
+        }
+      ]
+    },
+    {
+      "query_id": "q_002",
+      "query": "¿Qué síntomas pueden indicar una deshidratación grave?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_dehydration_002"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_dehydration_002",
+          "score": 0.7920236587524414
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_diarrhea_001",
+          "score": 0.7273603677749634
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_dehydration_001",
+          "score": 0.6997754573822021
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_dehydration_000",
+          "score": 0.6897757053375244
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_dehydration_003",
+          "score": 0.6520036458969116
+        }
+      ]
+    },
+    {
+      "query_id": "q_003",
+      "query": "¿Tengo que estar en ayunas para hacerme un hemograma?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_complete_blood_count_002"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_complete_blood_count_002",
+          "score": 0.365381121635437
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_complete_blood_count_000",
+          "score": 0.3104138970375061
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_diarrhea_002",
+          "score": 0.3039870858192444
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_complete_blood_count_003",
+          "score": 0.26695960760116577
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_sore_throat_002",
+          "score": 0.2655510902404785
+        }
+      ]
+    },
+    {
+      "query_id": "q_004",
+      "query": "¿Qué es la anafilaxia y qué tipo de atención requiere?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_allergy_001"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_allergy_001",
+          "score": 0.3648170828819275
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_allergy_000",
+          "score": 0.30208006501197815
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_diarrhea_002",
+          "score": 0.29660436511039734
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_sore_throat_002",
+          "score": 0.27583447098731995
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_dehydration_000",
+          "score": 0.2715262472629547
+        }
+      ]
+    },
+    {
+      "query_id": "q_005",
+      "query": "¿Qué personas tienen mayor riesgo de desarrollar una infección grave por RSV?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_rsv_001"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_rsv_003",
+          "score": 0.7342708110809326
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_rsv_000",
+          "score": 0.730737566947937
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_rsv_001",
+          "score": 0.7176320552825928
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_rsv_002",
+          "score": 0.7095495462417603
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_influenza_002",
+          "score": 0.5032545328140259
+        }
+      ]
+    },
+    {
+      "query_id": "q_006",
+      "query": "¿Con cuánta anticipación debo cancelar un turno en Demo Health Clinic?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "demo_clinic_appointment_policy_001"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_appointment_policy_001",
+          "score": 0.6908310651779175
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_appointment_policy_000",
+          "score": 0.6154799461364746
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.5449092388153076
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_appointment_policy_002",
+          "score": 0.4097284972667694
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_medical_records_policy_002",
+          "score": 0.38414573669433594
+        }
+      ]
+    },
+    {
+      "query_id": "q_007",
+      "query": "¿Tengo que verificar mi identidad para solicitar mi historia clínica?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "demo_clinic_medical_records_policy_001"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_medical_records_policy_001",
+          "score": 0.5470019578933716
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_medical_records_policy_000",
+          "score": 0.40243542194366455
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_medical_records_policy_002",
+          "score": 0.3420068323612213
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_laboratory_results_policy_000",
+          "score": 0.31954681873321533
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_complete_blood_count_002",
+          "score": 0.30067819356918335
+        }
+      ]
+    },
+    {
+      "query_id": "q_008",
+      "query": "¿Cuánto tarda Demo Health Clinic en publicar un informe de laboratorio una vez que recibe el resultado finalizado?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "demo_clinic_laboratory_results_policy_001"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.7981842756271362
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_laboratory_results_policy_002",
+          "score": 0.557996392250061
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_laboratory_results_policy_000",
+          "score": 0.5330942869186401
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_appointment_policy_001",
+          "score": 0.5327707529067993
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_appointment_policy_000",
+          "score": 0.530903697013855
+        }
+      ]
+    },
+    {
+      "query_id": "q_009",
+      "query": "Según la información disponible, ¿qué síntomas presenta la gripe y cuáles presenta el resfriado común?",
+      "category": "multi_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_influenza_001",
+        "medlineplus_common_cold_001"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_influenza_001",
+          "score": 0.7474864721298218
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_common_cold_001",
+          "score": 0.7335875630378723
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_common_cold_000",
+          "score": 0.6755151748657227
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_sore_throat_001",
+          "score": 0.657621443271637
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_common_cold_002",
+          "score": 0.6466116905212402
+        }
+      ]
+    },
+    {
+      "query_id": "q_010",
+      "query": "¿Qué mide un hemograma y para qué se utiliza?",
+      "category": "multi_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_complete_blood_count_000",
+        "medlineplus_complete_blood_count_001"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_complete_blood_count_000",
+          "score": 0.5162419080734253
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_complete_blood_count_003",
+          "score": 0.45964714884757996
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_complete_blood_count_002",
+          "score": 0.409440279006958
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_complete_blood_count_001",
+          "score": 0.35545748472213745
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_dehydration_003",
+          "score": 0.3361930847167969
+        }
+      ]
+    },
+    {
+      "query_id": "q_011",
+      "query": "¿Cómo se toma la muestra para un test de estreptococo y qué establece Demo Health Clinic sobre la publicación de resultados finalizados?",
+      "category": "multi_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_strep_a_test_002",
+        "demo_clinic_laboratory_results_policy_001"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_strep_a_test_003",
+          "score": 0.6280204057693481
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_strep_a_test_002",
+          "score": 0.511730432510376
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.4977080821990967
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_laboratory_results_policy_002",
+          "score": 0.44595229625701904
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_strep_a_test_000",
+          "score": 0.44147539138793945
+        }
+      ]
+    },
+    {
+      "query_id": "q_012",
+      "query": "¿Cuánto cuesta hacerse un hemograma en Demo Health Clinic?",
+      "category": "in_domain_unsupported",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_complete_blood_count_002",
+          "score": 0.4250149130821228
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.39287084341049194
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_appointment_policy_000",
+          "score": 0.3807566165924072
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_complete_blood_count_000",
+          "score": 0.3806946277618408
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_medical_records_policy_000",
+          "score": 0.3605831563472748
+        }
+      ]
+    },
+    {
+      "query_id": "q_013",
+      "query": "¿Cuál es mi nivel de sodio según mis últimos análisis?",
+      "category": "in_domain_unsupported",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_complete_blood_count_003",
+          "score": 0.3584336042404175
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_dehydration_002",
+          "score": 0.3291406035423279
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_dehydration_003",
+          "score": 0.2853758931159973
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_complete_blood_count_000",
+          "score": 0.2674224376678467
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_complete_blood_count_001",
+          "score": 0.2321842908859253
+        }
+      ]
+    },
+    {
+      "query_id": "q_014",
+      "query": "¿Cómo puedo renovar mi licencia de conducir?",
+      "category": "out_of_domain",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_medical_records_policy_000",
+          "score": 0.16452282667160034
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_medical_records_policy_001",
+          "score": 0.14152009785175323
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_allergy_002",
+          "score": 0.09797917306423187
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_medical_records_policy_002",
+          "score": 0.08030281960964203
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_appointment_policy_000",
+          "score": 0.06056264042854309
+        }
+      ]
+    },
+    {
+      "query_id": "q_015",
+      "query": "¿Cómo se calcula el determinante de una matriz de 3×3?",
+      "category": "out_of_domain",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_complete_blood_count_003",
+          "score": 0.22811177372932434
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_complete_blood_count_001",
+          "score": 0.2013242095708847
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_complete_blood_count_000",
+          "score": 0.18014144897460938
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_complete_blood_count_002",
+          "score": 0.14564396440982819
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_laboratory_results_policy_002",
+          "score": 0.12828972935676575
+        }
+      ]
+    },
+    {
+      "query_id": "q_016",
+      "query": "¿Qué sustancias pueden desencadenar una reacción alérgica?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_allergy_000"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_allergy_000",
+          "score": 0.6947540640830994
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_allergy_001",
+          "score": 0.671539843082428
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_allergy_002",
+          "score": 0.47172385454177856
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_sore_throat_001",
+          "score": 0.3738380968570709
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_fever_001",
+          "score": 0.3657504916191101
+        }
+      ]
+    },
+    {
+      "query_id": "q_017",
+      "query": "Si un profesional sospecha una alergia, ¿qué pruebas puede utilizar para investigarla?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_allergy_002"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_allergy_002",
+          "score": 0.6948913335800171
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_allergy_000",
+          "score": 0.6211427450180054
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_allergy_001",
+          "score": 0.4868418276309967
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_strep_a_test_001",
+          "score": 0.44425350427627563
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_rsv_002",
+          "score": 0.4320598840713501
+        }
+      ]
+    },
+    {
+      "query_id": "q_018",
+      "query": "¿Un turno solicitado por el portal de Demo Health Clinic ya cuenta como confirmado?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "demo_clinic_appointment_policy_000"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_appointment_policy_000",
+          "score": 0.600450336933136
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.5931573510169983
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_appointment_policy_001",
+          "score": 0.48399078845977783
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_laboratory_results_policy_000",
+          "score": 0.4789838194847107
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_medical_records_policy_002",
+          "score": 0.47201961278915405
+        }
+      ]
+    },
+    {
+      "query_id": "q_019",
+      "query": "¿En qué horario de los días hábiles procesa trámites la recepción simulada de la clínica?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "demo_clinic_appointment_policy_002"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.6610904932022095
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_appointment_policy_002",
+          "score": 0.656004011631012
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_appointment_policy_000",
+          "score": 0.6355397701263428
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_appointment_policy_001",
+          "score": 0.5999845862388611
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_medical_records_policy_002",
+          "score": 0.5758063793182373
+        }
+      ]
+    },
+    {
+      "query_id": "q_020",
+      "query": "¿De qué maneras puede transmitirse el resfrío común?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_common_cold_000"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_common_cold_000",
+          "score": 0.7995798587799072
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_common_cold_002",
+          "score": 0.702782154083252
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_common_cold_001",
+          "score": 0.6750445365905762
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_common_cold_003",
+          "score": 0.6589257121086121
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_influenza_001",
+          "score": 0.5567004084587097
+        }
+      ]
+    },
+    {
+      "query_id": "q_021",
+      "query": "¿Los antibióticos sirven para eliminar el virus de un resfrío?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_common_cold_002"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_common_cold_002",
+          "score": 0.7010812759399414
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_common_cold_003",
+          "score": 0.648554801940918
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_common_cold_000",
+          "score": 0.5907439589500427
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_influenza_003",
+          "score": 0.5277754068374634
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_fever_001",
+          "score": 0.5072925090789795
+        }
+      ]
+    },
+    {
+      "query_id": "q_022",
+      "query": "¿Hay una vacuna para prevenir el resfrío común?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_common_cold_003"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_common_cold_003",
+          "score": 0.7713210582733154
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_common_cold_002",
+          "score": 0.6980224847793579
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_common_cold_000",
+          "score": 0.6519489288330078
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_influenza_003",
+          "score": 0.5082562565803528
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_sore_throat_001",
+          "score": 0.49394306540489197
+        }
+      ]
+    },
+    {
+      "query_id": "q_023",
+      "query": "¿Qué tipos de células y otras mediciones aparecen en un hemograma completo?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_complete_blood_count_000"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_complete_blood_count_000",
+          "score": 0.5385119318962097
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_complete_blood_count_003",
+          "score": 0.5008498430252075
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_complete_blood_count_002",
+          "score": 0.36105459928512573
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_complete_blood_count_001",
+          "score": 0.2955058515071869
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.23964130878448486
+        }
+      ]
+    },
+    {
+      "query_id": "q_024",
+      "query": "¿Un resultado anormal del hemograma alcanza por sí solo para diagnosticar una enfermedad?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_complete_blood_count_003"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_complete_blood_count_003",
+          "score": 0.4681221842765808
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_diarrhea_002",
+          "score": 0.40659376978874207
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_rsv_002",
+          "score": 0.379016637802124
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_laboratory_results_policy_002",
+          "score": 0.3787994086742401
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_dehydration_003",
+          "score": 0.36765360832214355
+        }
+      ]
+    },
+    {
+      "query_id": "q_025",
+      "query": "En términos de líquidos corporales, ¿qué significa estar deshidratado?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_dehydration_000"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_dehydration_000",
+          "score": 0.7871307134628296
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_dehydration_004",
+          "score": 0.65459144115448
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_dehydration_001",
+          "score": 0.6185056567192078
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_dehydration_003",
+          "score": 0.6038919687271118
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_dehydration_002",
+          "score": 0.5630241632461548
+        }
+      ]
+    },
+    {
+      "query_id": "q_026",
+      "query": "¿Qué situaciones pueden causar pérdida de líquidos y favorecer la deshidratación?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_dehydration_001"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_dehydration_000",
+          "score": 0.7772284746170044
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_dehydration_001",
+          "score": 0.7610551714897156
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_dehydration_004",
+          "score": 0.7343774437904358
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_dehydration_002",
+          "score": 0.6044464111328125
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_diarrhea_001",
+          "score": 0.5995588302612305
+        }
+      ]
+    },
+    {
+      "query_id": "q_027",
+      "query": "¿Cómo suele tratarse una deshidratación leve?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_dehydration_004"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_dehydration_004",
+          "score": 0.7089790105819702
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_dehydration_000",
+          "score": 0.6863749027252197
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_dehydration_003",
+          "score": 0.6128551959991455
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_dehydration_002",
+          "score": 0.5991588234901428
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_diarrhea_001",
+          "score": 0.508138120174408
+        }
+      ]
+    },
+    {
+      "query_id": "q_028",
+      "query": "¿A partir de cuánto tiempo de diarrea se habla de diarrea crónica?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_diarrhea_000"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_diarrhea_000",
+          "score": 0.7189754247665405
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_diarrhea_002",
+          "score": 0.5254416465759277
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_diarrhea_001",
+          "score": 0.48067113757133484
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_diarrhea_003",
+          "score": 0.45016855001449585
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.351684033870697
+        }
+      ]
+    },
+    {
+      "query_id": "q_029",
+      "query": "¿Qué señales durante un episodio de diarrea justifican consultar al médico?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_diarrhea_002"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_diarrhea_002",
+          "score": 0.712145984172821
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_diarrhea_000",
+          "score": 0.6519659757614136
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_diarrhea_001",
+          "score": 0.5952785015106201
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_diarrhea_003",
+          "score": 0.5526094436645508
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_sore_throat_002",
+          "score": 0.4757916331291199
+        }
+      ]
+    },
+    {
+      "query_id": "q_030",
+      "query": "¿Qué prácticas reducen el riesgo de algunas diarreas infecciosas?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_diarrhea_003"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_diarrhea_003",
+          "score": 0.6735374927520752
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_diarrhea_002",
+          "score": 0.5439752340316772
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_common_cold_003",
+          "score": 0.5173617601394653
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_influenza_003",
+          "score": 0.516380250453949
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_rsv_003",
+          "score": 0.5074478387832642
+        }
+      ]
+    },
+    {
+      "query_id": "q_031",
+      "query": "¿La fiebre puede tener causas no infecciosas?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_fever_001"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_fever_001",
+          "score": 0.7775906920433044
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_fever_000",
+          "score": 0.6078702211380005
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_sore_throat_001",
+          "score": 0.5908243060112
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_fever_002",
+          "score": 0.5827533006668091
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_influenza_001",
+          "score": 0.5652216672897339
+        }
+      ]
+    },
+    {
+      "query_id": "q_032",
+      "query": "¿Por qué es importante mantener la hidratación si una persona tiene fiebre?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_fever_002"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_fever_002",
+          "score": 0.7107642292976379
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_heat_illness_000",
+          "score": 0.5895372629165649
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_heat_illness_003",
+          "score": 0.5769559144973755
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_fever_000",
+          "score": 0.576745867729187
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_fever_001",
+          "score": 0.5513612031936646
+        }
+      ]
+    },
+    {
+      "query_id": "q_033",
+      "query": "¿Qué factores pueden desencadenar una cefalea de tipo tensional?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_headache_001"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_headache_001",
+          "score": 0.6033427715301514
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_heat_illness_001",
+          "score": 0.5115633010864258
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_headache_002",
+          "score": 0.4353700876235962
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_sore_throat_001",
+          "score": 0.42017099261283875
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_diarrhea_001",
+          "score": 0.4103182852268219
+        }
+      ]
+    },
+    {
+      "query_id": "q_034",
+      "query": "¿En qué situaciones un dolor de cabeza puede requerir ayuda médica inmediata?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_headache_002"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_headache_002",
+          "score": 0.787743866443634
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_headache_001",
+          "score": 0.7249088287353516
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_headache_000",
+          "score": 0.6775482296943665
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_sore_throat_002",
+          "score": 0.45547306537628174
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_fever_002",
+          "score": 0.4113733768463135
+        }
+      ]
+    },
+    {
+      "query_id": "q_035",
+      "query": "¿Qué condiciones ambientales o actividades pueden provocar enfermedades por calor?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_heat_illness_000"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_heat_illness_000",
+          "score": 0.8212060332298279
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_heat_illness_003",
+          "score": 0.6859630942344666
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_fever_001",
+          "score": 0.6625301837921143
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_heat_illness_001",
+          "score": 0.6155380010604858
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_dehydration_001",
+          "score": 0.5504080653190613
+        }
+      ]
+    },
+    {
+      "query_id": "q_036",
+      "query": "¿Qué síntomas puede presentar una persona con agotamiento por calor?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_heat_illness_001"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_heat_illness_001",
+          "score": 0.7421178817749023
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_heat_illness_000",
+          "score": 0.7398967742919922
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_heat_illness_002",
+          "score": 0.6324464082717896
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_heat_illness_003",
+          "score": 0.6070913076400757
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_dehydration_002",
+          "score": 0.5976330637931824
+        }
+      ]
+    },
+    {
+      "query_id": "q_037",
+      "query": "¿El golpe de calor es una urgencia médica y es lo mismo que la fiebre de una infección?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_heat_illness_002"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_heat_illness_000",
+          "score": 0.6684502959251404
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_fever_001",
+          "score": 0.6377503871917725
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_fever_000",
+          "score": 0.613749086856842
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_heat_illness_001",
+          "score": 0.5763105750083923
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_heat_illness_002",
+          "score": 0.5584813952445984
+        }
+      ]
+    },
+    {
+      "query_id": "q_038",
+      "query": "¿Cómo se transmite la influenza de una persona a otra?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_influenza_000"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_influenza_000",
+          "score": 0.6359220743179321
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_influenza_002",
+          "score": 0.5301939249038696
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_fever_001",
+          "score": 0.52128005027771
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_rsv_000",
+          "score": 0.5105699300765991
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_influenza_003",
+          "score": 0.5086261630058289
+        }
+      ]
+    },
+    {
+      "query_id": "q_039",
+      "query": "¿Qué medidas generales ayudan a prevenir la influenza?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_influenza_003"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_influenza_003",
+          "score": 0.6979538202285767
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_rsv_003",
+          "score": 0.5627607107162476
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_common_cold_003",
+          "score": 0.5626606941223145
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_influenza_002",
+          "score": 0.5228107571601868
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_influenza_000",
+          "score": 0.4861981272697449
+        }
+      ]
+    },
+    {
+      "query_id": "q_040",
+      "query": "¿Dónde pueden consultar los pacientes los informes de laboratorio en Demo Health Clinic?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "demo_clinic_laboratory_results_policy_000"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_laboratory_results_policy_000",
+          "score": 0.6389704942703247
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_laboratory_results_policy_002",
+          "score": 0.5971541404724121
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_appointment_policy_000",
+          "score": 0.5453245639801025
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.5192267894744873
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_medical_records_policy_000",
+          "score": 0.4885057806968689
+        }
+      ]
+    },
+    {
+      "query_id": "q_041",
+      "query": "¿Cuánto tarda normalmente la clínica ficticia en tramitar una solicitud completa y verificada de historia clínica?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "demo_clinic_medical_records_policy_002"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.6397777795791626
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_medical_records_policy_002",
+          "score": 0.5277443528175354
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_complete_blood_count_002",
+          "score": 0.527514636516571
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_strep_a_test_002",
+          "score": 0.5073851346969604
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_medical_records_policy_000",
+          "score": 0.4666036367416382
+        }
+      ]
+    },
+    {
+      "query_id": "q_042",
+      "query": "¿Qué indica un resultado positivo en la prueba de estreptococo del grupo A?",
+      "category": "single_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_strep_a_test_003"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_strep_a_test_003",
+          "score": 0.6939334273338318
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_strep_a_test_000",
+          "score": 0.5246390104293823
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_strep_a_test_001",
+          "score": 0.4057433605194092
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_strep_a_test_002",
+          "score": 0.40284445881843567
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_complete_blood_count_003",
+          "score": 0.3292752206325531
+        }
+      ]
+    },
+    {
+      "query_id": "q_043",
+      "query": "¿Cuáles son algunos desencadenantes de alergia y cómo se investiga clínicamente una posible alergia?",
+      "category": "multi_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_allergy_000",
+        "medlineplus_allergy_002"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_allergy_000",
+          "score": 0.7432040572166443
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_allergy_002",
+          "score": 0.6728448271751404
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_allergy_001",
+          "score": 0.5995968580245972
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_common_cold_003",
+          "score": 0.40460067987442017
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_common_cold_001",
+          "score": 0.3777586817741394
+        }
+      ]
+    },
+    {
+      "query_id": "q_044",
+      "query": "¿Cómo se transmite el resfrío común y qué medidas ayudan a prevenir ese contagio?",
+      "category": "multi_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_common_cold_000",
+        "medlineplus_common_cold_003"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_common_cold_000",
+          "score": 0.7913076877593994
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_common_cold_003",
+          "score": 0.7466496229171753
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_common_cold_002",
+          "score": 0.7160462141036987
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_common_cold_001",
+          "score": 0.6004997491836548
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_fever_001",
+          "score": 0.5895000696182251
+        }
+      ]
+    },
+    {
+      "query_id": "q_045",
+      "query": "¿Qué factores provocan deshidratación y cómo puede evaluarla un profesional de la salud?",
+      "category": "multi_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_dehydration_001",
+        "medlineplus_dehydration_003"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_dehydration_003",
+          "score": 0.7416888475418091
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_dehydration_000",
+          "score": 0.7081652879714966
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_dehydration_001",
+          "score": 0.6855242848396301
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_dehydration_004",
+          "score": 0.6712239384651184
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_dehydration_002",
+          "score": 0.5224832892417908
+        }
+      ]
+    },
+    {
+      "query_id": "q_046",
+      "query": "¿Qué puede causar diarrea, qué señales justifican una consulta médica y cómo se reponen los líquidos perdidos?",
+      "category": "multi_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_diarrhea_000",
+        "medlineplus_diarrhea_002",
+        "medlineplus_diarrhea_003"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_diarrhea_000",
+          "score": 0.6849460601806641
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_diarrhea_002",
+          "score": 0.6747599840164185
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_diarrhea_003",
+          "score": 0.6303561329841614
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_diarrhea_001",
+          "score": 0.6139752864837646
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_dehydration_001",
+          "score": 0.5803521871566772
+        }
+      ]
+    },
+    {
+      "query_id": "q_047",
+      "query": "¿Qué desencadenantes frecuentes se asocian a la cefalea y cuáles son sus señales de alarma?",
+      "category": "multi_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_headache_001",
+        "medlineplus_headache_002"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_allergy_001",
+          "score": 0.5351494550704956
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_allergy_000",
+          "score": 0.5073210597038269
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_headache_002",
+          "score": 0.4785108268260956
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_headache_001",
+          "score": 0.4638911187648773
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_dehydration_002",
+          "score": 0.4332614541053772
+        }
+      ]
+    },
+    {
+      "query_id": "q_048",
+      "query": "¿Cuáles son las señales de golpe de calor y qué hábitos pueden prevenir problemas de salud por altas temperaturas?",
+      "category": "multi_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "medlineplus_heat_illness_002",
+        "medlineplus_heat_illness_003"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_heat_illness_000",
+          "score": 0.7755333185195923
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_heat_illness_003",
+          "score": 0.7303350567817688
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_heat_illness_001",
+          "score": 0.6314177513122559
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_heat_illness_002",
+          "score": 0.5903687477111816
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_fever_001",
+          "score": 0.5744560360908508
+        }
+      ]
+    },
+    {
+      "query_id": "q_049",
+      "query": "En Demo Health Clinic, ¿con cuánto aviso se cancela un turno y cuánto lleva procesar una solicitud verificada de historia clínica?",
+      "category": "multi_evidence",
+      "answerable": true,
+      "relevant_chunk_ids": [
+        "demo_clinic_appointment_policy_001",
+        "demo_clinic_medical_records_policy_002"
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_appointment_policy_001",
+          "score": 0.6943350434303284
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.6933302283287048
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_appointment_policy_000",
+          "score": 0.6868394613265991
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_medical_records_policy_002",
+          "score": 0.5879771709442139
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_medical_records_policy_000",
+          "score": 0.5658743977546692
+        }
+      ]
+    },
+    {
+      "query_id": "q_050",
+      "query": "¿Cuál es el número de teléfono real para pedir turnos en Demo Health Clinic?",
+      "category": "in_domain_unsupported",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_appointment_policy_000",
+          "score": 0.5564858913421631
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_appointment_policy_002",
+          "score": 0.4222939610481262
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_appointment_policy_001",
+          "score": 0.4035370647907257
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_medical_records_policy_002",
+          "score": 0.4005829989910126
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_medical_records_policy_000",
+          "score": 0.39580073952674866
+        }
+      ]
+    },
+    {
+      "query_id": "q_051",
+      "query": "¿Hay turnos libres este sábado por la mañana en Demo Health Clinic?",
+      "category": "in_domain_unsupported",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_appointment_policy_000",
+          "score": 0.5308706760406494
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_appointment_policy_002",
+          "score": 0.511513352394104
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_appointment_policy_001",
+          "score": 0.4995945394039154
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.45081692934036255
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_laboratory_results_policy_000",
+          "score": 0.40507233142852783
+        }
+      ]
+    },
+    {
+      "query_id": "q_052",
+      "query": "Según mi historia clínica, ¿a qué sustancias soy alérgico?",
+      "category": "in_domain_unsupported",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_allergy_000",
+          "score": 0.5834411382675171
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_allergy_001",
+          "score": 0.5459108352661133
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_allergy_002",
+          "score": 0.4764394164085388
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_common_cold_003",
+          "score": 0.35884979367256165
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_common_cold_001",
+          "score": 0.31822046637535095
+        }
+      ]
+    },
+    {
+      "query_id": "q_053",
+      "query": "¿Qué valor de hemoglobina me dio el análisis que me hice ayer?",
+      "category": "in_domain_unsupported",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_complete_blood_count_003",
+          "score": 0.5003721117973328
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_complete_blood_count_000",
+          "score": 0.4818245470523834
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_complete_blood_count_002",
+          "score": 0.3481985926628113
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_complete_blood_count_001",
+          "score": 0.32684963941574097
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_dehydration_003",
+          "score": 0.32079389691352844
+        }
+      ]
+    },
+    {
+      "query_id": "q_054",
+      "query": "¿Qué dosis exacta de paracetamol corresponde darle a un niño de cuatro años?",
+      "category": "in_domain_unsupported",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_sore_throat_002",
+          "score": 0.3767741918563843
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_dehydration_002",
+          "score": 0.31302353739738464
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_dehydration_004",
+          "score": 0.2809750437736511
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_diarrhea_003",
+          "score": 0.2678227424621582
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_fever_002",
+          "score": 0.24899595975875854
+        }
+      ]
+    },
+    {
+      "query_id": "q_055",
+      "query": "¿Ya está listo en este momento el cultivo de garganta que me hicieron en la clínica?",
+      "category": "in_domain_unsupported",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_strep_a_test_002",
+          "score": 0.5051276683807373
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_strep_a_test_003",
+          "score": 0.45060285925865173
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_sore_throat_002",
+          "score": 0.43952441215515137
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_strep_a_test_001",
+          "score": 0.42964449524879456
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.38778620958328247
+        }
+      ]
+    },
+    {
+      "query_id": "q_056",
+      "query": "¿Cómo reservo una mesa en un restaurante para el viernes?",
+      "category": "out_of_domain",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_appointment_policy_002",
+          "score": 0.4253798723220825
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_appointment_policy_001",
+          "score": 0.32872599363327026
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_medical_records_policy_002",
+          "score": 0.27256011962890625
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.2551678717136383
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_appointment_policy_000",
+          "score": 0.24637626111507416
+        }
+      ]
+    },
+    {
+      "query_id": "q_057",
+      "query": "¿Cuál es la capital de Islandia?",
+      "category": "out_of_domain",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_fever_000",
+          "score": 0.09438721090555191
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_diarrhea_002",
+          "score": 0.08635618537664413
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_appointment_policy_002",
+          "score": 0.0853753387928009
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_sore_throat_000",
+          "score": 0.07741186767816544
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_headache_000",
+          "score": 0.0772552639245987
+        }
+      ]
+    },
+    {
+      "query_id": "q_058",
+      "query": "¿Qué significa estar en posición adelantada en fútbol?",
+      "category": "out_of_domain",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_complete_blood_count_001",
+          "score": 0.14718055725097656
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_laboratory_results_policy_002",
+          "score": 0.14524948596954346
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_appointment_policy_000",
+          "score": 0.13228386640548706
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_diarrhea_002",
+          "score": 0.1284126341342926
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_sore_throat_000",
+          "score": 0.12543746829032898
+        }
+      ]
+    },
+    {
+      "query_id": "q_059",
+      "query": "¿Cómo cambio la contraseña de mi red Wi-Fi?",
+      "category": "out_of_domain",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_medical_records_policy_001",
+          "score": 0.11602537333965302
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_allergy_001",
+          "score": 0.06813646852970123
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_allergy_002",
+          "score": 0.05072715878486633
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_allergy_000",
+          "score": 0.036665961146354675
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_medical_records_policy_000",
+          "score": 0.027669169008731842
+        }
+      ]
+    },
+    {
+      "query_id": "q_060",
+      "query": "¿Cuáles son los pasos para hacer pan de masa madre?",
+      "category": "out_of_domain",
+      "answerable": false,
+      "relevant_chunk_ids": [],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_strep_a_test_002",
+          "score": 0.1716238409280777
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_common_cold_003",
+          "score": 0.1634533405303955
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_common_cold_002",
+          "score": 0.11932438611984253
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_diarrhea_003",
+          "score": 0.11255016922950745
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_allergy_002",
+          "score": 0.11053231358528137
+        }
+      ]
+    }
+  ]
+}

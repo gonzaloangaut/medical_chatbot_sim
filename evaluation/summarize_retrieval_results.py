@@ -1,3 +1,4 @@
+import argparse
 import json
 from pathlib import Path
 from statistics import mean
@@ -81,11 +82,26 @@ def main():
     """
     Load retrieval results, calculate metrics, and save a summary.
     """
+    # Set up argument parser
+    parser = argparse.ArgumentParser(
+        description="Summarize retrieval benchmark results."
+    )
+
+    parser.add_argument(
+        "--dataset",
+        choices=("dev", "test"),
+        required=True,
+        help="Dataset split to summarize.",
+    )
+
+    args = parser.parse_args()
+
     # Define input and output paths
     evaluation_dir = Path(__file__).resolve().parent
 
-    results_path = evaluation_dir / "retrieval_results_pilot_v2.json"
-    output_path = evaluation_dir / "retrieval_summary_pilot_v2.json"
+    results_path = evaluation_dir / f"retrieval_results_{args.dataset}_v2.json"
+
+    output_path = evaluation_dir / f"retrieval_summary_{args.dataset}_v2.json"
 
     # Load benchmark results
     with results_path.open("r", encoding="utf-8") as file:

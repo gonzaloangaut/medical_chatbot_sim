@@ -1,4 +1,6 @@
+import argparse
 import json
+from dataclasses import asdict
 from pathlib import Path
 
 from app.chatbot.chunking import chunk_documents
@@ -8,11 +10,25 @@ from evaluation.validate_retrieval_dataset import validate_dataset
 
 
 def main():
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(
+        description="Run the semantic retrieval benchmark."
+    )
+
+    parser.add_argument(
+        "--dataset",
+        choices=("dev", "test"),
+        required=True,
+        help="Dataset split to evaluate.",
+    )
+
+    args = parser.parse_args()
+
     # Define evaluation file paths
     evaluation_dir = Path(__file__).resolve().parent
 
     catalog_path = evaluation_dir / "chunk_catalog_v2.json"
-    dataset_path = evaluation_dir / "retrieval_dataset_pilot_v2.json"
+    dataset_path = evaluation_dir / f"retrieval_dataset_{args.dataset}_v2.json"
 
     # Load evaluation data
     with catalog_path.open("r", encoding="utf-8") as file:
@@ -29,11 +45,12 @@ def main():
     chunks = chunk_documents(documents)
 
     # Verify that the catalog matches the current knowledge base
-    catalog_ids = {item["chunk_id"] for item in catalog}
-    current_ids = {chunk.chunk_id for chunk in chunks}
+    current_catalog = [asdict(chunk) for chunk in chunks]
 
-    if catalog_ids != current_ids:
-        raise ValueError("Chunk catalog does not match the knowledge base.")
+    if current_catalog != catalog:
+        raise ValueError(
+            "Chunk catalog content does not match the current knowledge base."
+        )
 
     # Initialize and populate the retriever
     retriever = SemanticRetriever()
@@ -75,7 +92,7 @@ def main():
         print(f"Processed {item['query_id']}: {query}")
 
     # Define the output path
-    output_path = evaluation_dir / "retrieval_results_pilot_v2.json"
+    output_path = evaluation_dir / f"retrieval_results_{args.dataset}_v2.json"
 
     # Store benchmark metadata and results
     benchmark_data = {
