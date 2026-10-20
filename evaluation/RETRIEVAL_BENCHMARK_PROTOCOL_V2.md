@@ -91,3 +91,53 @@ The 60 test entries were inspected against the 54 KB chunks, checking factual su
 **Remaining limits:** The same medical topics/chunks recur across splits, and some multi-evidence test cases contain individual information needs previously seen in development. This is a held-out question benchmark, not an independent clinical-intent benchmark. Many questions are directly derived from the KB rather than actual patient utterances. Alternative valid evidence sets may still be missed; a second independent annotation pass would increase confidence. No embedding model was run on the new candidate test questions during this review.
 
 **Do not tune on test.** Once the annotated datasets are frozen, develop settings solely using the development split. Record the final corpus/content fingerprint and embedding model revision, then evaluate test once.
+
+
+## Frozen retrieval baseline
+
+The following configuration was selected using the development
+dataset before evaluating the held-out test split.
+
+| Component | Configuration |
+| --- | --- |
+| Embedding model | paraphrase-multilingual-MiniLM-L12-v2 |
+| Knowledge base | KB v2, 15 documents, 54 chunks |
+| Query language | Spanish |
+| Document language | English |
+| Chunking | Section-based |
+| Embedding representation | Title + section + content |
+| Similarity metric | Cosine similarity |
+| Top-k | 5 |
+| Acceptance threshold | 0.30 |
+
+### Selection rationale
+
+Top-5 achieved Complete Evidence@5 = 1.00 on the
+45 answerable development queries.
+
+The threshold of 0.30 was retained as a permissive
+low-similarity filter rather than an evidence sufficiency
+classifier.
+
+On development, this threshold accepted all answerable
+queries but also accepted 9 of the 15 unsupported queries.
+
+Increasing the threshold reduced false acceptances but
+introduced false rejections.
+
+These findings motivate an explicit evidence sufficiency
+check in a later stage of the RAG pipeline.
+
+### Limitations
+
+The dataset is small and consists primarily of synthetic
+queries derived from a limited knowledge base.
+
+Development and test share documents and some factual
+content. Therefore, the held-out evaluation measures
+generalization to new queries over a known corpus, not
+generalization to new medical topics or real clinical
+interactions.
+
+Retrieval performance does not establish the factual
+correctness or clinical safety of generated responses.

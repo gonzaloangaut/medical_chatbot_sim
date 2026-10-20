@@ -285,3 +285,24 @@ def test_ingest_chunks_embeds_chunk_representations():
 
     # Verify that the returned embeddings are stored
     assert retriever.embeddings == "EMBEDDINGS_FAKE"
+
+
+def test_retrieve_uses_top_five_by_default(monkeypatch):
+    """
+    Test that retrieve requests five chunks by default.
+    """
+    retriever = SemanticRetriever.__new__(SemanticRetriever)
+    retriever.threshold = 0.3
+
+    received_top_k = None
+
+    def fake_search(query, top_k=None):
+        nonlocal received_top_k
+        received_top_k = top_k
+        return []
+
+    monkeypatch.setattr(retriever, "search", fake_search)
+
+    retriever.retrieve("test query")
+
+    assert received_top_k == 5

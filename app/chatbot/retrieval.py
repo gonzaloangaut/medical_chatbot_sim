@@ -140,7 +140,7 @@ class SemanticRetriever:
     def retrieve(
         self,
         query: str,
-        top_k: int = 3,
+        top_k: int = 5,
     ) -> list[RetrievedChunk]:
         """
         Retrieve the most relevant chunks for a query.
