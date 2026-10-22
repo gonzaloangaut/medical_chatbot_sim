@@ -95,9 +95,10 @@ def test_service_returns_llm_response():
     assert result.sources[0].source_url == "https://example.com/fever"
 
 
-def test_service_uses_retrieved_context():
+def test_service_builds_structured_messages():
     """
-    Check that the service uses the retrieved context.
+    Test that the service separates system instructions,
+    retrieved evidence, and the user question.
     """
     llm = FakeLLM()
     retriever = FakeRetriever()
@@ -107,17 +108,48 @@ def test_service_uses_retrieved_context():
         retriever=retriever,
     )
 
-    bot.generate_response([{"role": "user", "content": "Tengo fiebre"}])
+    bot.generate_response([
+        {"role": "user", "content": "Tengo fiebre"}
+    ])
 
-    # Check that the retrieved context is included in the messages sent to the LLM
-    assert "CONTEXTO_FAKE" in llm.received_messages[1]["content"]
-    # Check that the original user message is also included in the messages sent to the LLM
-    assert "Tengo fiebre" in llm.received_messages[1]["content"]
+    messages = llm.received_messages
+
+    # Verify the message structure
+    assert len(messages) == 2
+
+    assert messages[0]["role"] == "system"
+    assert messages[1]["role"] == "user"
+
+    # Verify system instructions
+    system_content = messages[0]["content"]
+
+    assert "Spanish" in system_content
+    assert "retrieved evidence" in system_content
+
+    # Retrieved data should not appear in system instructions
+    assert "CONTEXTO_FAKE" not in system_content
+
+    # Verify the user prompt
+    user_content = messages[1]["content"]
+
+    assert "<retrieved_evidence>" in user_content
+    assert "</retrieved_evidence>" in user_content
+
+    assert "<question>" in user_content
+    assert "</question>" in user_content
+
+    # Verify evidence and question content
+    assert "CONTEXTO_FAKE" in user_content
+    assert "Tengo fiebre" in user_content
+
+    # Verify chunk identification
+    assert "Chunk ID: fever_000" in user_content
 
 
-def test_service_uses_fallback_when_no_context_is_found():
+def test_service_returns_fallback_without_context():
     """
-    Check that the service uses a fallback when no relevant context is found.
+    Test that the service returns a deterministic fallback
+    without invoking the LLM when no evidence is retrieved.
     """
     llm = FakeLLM()
     retriever = FakeEmptyRetriever()
@@ -127,20 +159,24 @@ def test_service_uses_fallback_when_no_context_is_found():
         retriever=retriever,
     )
 
-    result = bot.generate_response(
-        [{"role": "user", "content": "Tengo un síntoma desconocido"}]
+    result = bot.generate_response([
+        {
+            "role": "user",
+            "content": "Tengo un síntoma desconocido",
+        }
+    ])
+
+    # Verify the fallback response
+    assert result.response == (
+        "No dispongo de información suficiente en la base "
+        "de conocimientos para responder esa pregunta."
     )
 
-    # Check that the response is generated even when no context is found
+    # No sources should be returned
     assert result.sources == []
 
-    # Check that the fallback message is included in the messages sent to the LLM
-    assert (
-        "Lo siento, no hay información al respecto"
-        in llm.received_messages[1]["content"]
-    )
-    # Check that the original user message is included in the messages sent to the LLM
-    assert "Tengo un síntoma desconocido" in llm.received_messages[1]["content"]
+    # The LLM must not be invoked
+    assert llm.received_messages is None
 
 
 def test_service_sends_user_query_to_retriever():
@@ -235,6 +271,13 @@ def test_build_context_formats_retrieved_chunks():
     assert "0.8" not in context
     assert "0.7" not in context
     assert "https://example.com/fever" not in context
+
+    # Verify chunk identifiers
+    assert "Chunk ID: fever_000" in context
+    assert "Chunk ID: fever_001" in context
+
+    # Verify that retrieval order is preserved
+    assert context.index("[Context 1]") < context.index("[Context 2]")
 
 
 def test_build_sources_returns_provenance_from_retrieved_chunks():
