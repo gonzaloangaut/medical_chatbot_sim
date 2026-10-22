@@ -212,9 +212,7 @@ class MedicalAssistance:
         try:
             response = self.llm.generate(messages)
         except Exception as error:
-            raise GenerationError(
-                "Failed to generate LLM response."
-            ) from error
+            raise GenerationError("Failed to generate LLM response.") from error
 
         # Return response and provenance
         return AssistantResponse(

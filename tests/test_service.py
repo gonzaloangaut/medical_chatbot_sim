@@ -108,9 +108,7 @@ def test_service_builds_structured_messages():
         retriever=retriever,
     )
 
-    bot.generate_response([
-        {"role": "user", "content": "Tengo fiebre"}
-    ])
+    bot.generate_response([{"role": "user", "content": "Tengo fiebre"}])
 
     messages = llm.received_messages
 
@@ -159,12 +157,14 @@ def test_service_returns_fallback_without_context():
         retriever=retriever,
     )
 
-    result = bot.generate_response([
-        {
-            "role": "user",
-            "content": "Tengo un síntoma desconocido",
-        }
-    ])
+    result = bot.generate_response(
+        [
+            {
+                "role": "user",
+                "content": "Tengo un síntoma desconocido",
+            }
+        ]
+    )
 
     # Verify the fallback response
     assert result.response == (
@@ -277,7 +277,7 @@ def test_build_context_formats_retrieved_chunks():
     assert "Chunk ID: fever_001" in context
 
     # Verify that retrieval order is preserved
-    assert context.index("[Context 1]") < context.index("[Context 2]")
+    assert context.index("Chunk ID: fever_000") < context.index("Chunk ID: fever_001")
 
 
 def test_build_sources_returns_provenance_from_retrieved_chunks():
