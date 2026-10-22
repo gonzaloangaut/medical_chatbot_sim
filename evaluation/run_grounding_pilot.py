@@ -1,15 +1,11 @@
-"""Exploratory, paired generation pilot using fixed development retrieval results.
+"""Compare historical and structured RAG generation using frozen development rankings.
 
-Run from the repository root::
-
-    python -m evaluation.run_grounding_pilot
-
-Requires QwenLLM to support ``do_sample=False`` in its constructor.
-This script does NOT load an embedding model, rerun retrieval, or use the
-held-out retrieval test set. It is a qualitative development pilot, not a
-formal end-to-end benchmark.
+Run ``python -m evaluation.run_grounding_pilot --help`` from the repository root.
+Neither embeddings nor retrieval are recomputed; this is an exploratory
+development diagnostic, not a held-out or clinical evaluation.
 """
 
+import argparse
 import hashlib
 import json
 from dataclasses import asdict
@@ -25,20 +21,14 @@ EVALUATION_DIR = Path(__file__).resolve().parent
 CATALOG_PATH = EVALUATION_DIR / "datasets" / "chunk_catalog.json"
 DEV_PATH = EVALUATION_DIR / "datasets" / "retrieval_dev.json"
 RANKINGS_PATH = EVALUATION_DIR / "results" / "retrieval_dev.json"
-# OUTPUT_PATH = EVALUATION_DIR / "results" / "grounding_pilot_dev.json"
-OUTPUT_PATH = (
-    EVALUATION_DIR
-    / "results"
-    / "grounding_pilot_qwen1_5b_unsupported_dev.json"
+DEFAULT_OUTPUT_PATH = (
+    EVALUATION_DIR / "results" / "generation" / "grounding_pilot_dev.json"
 )
-
-# MODEL_NAME = "Qwen/Qwen2.5-0.5B-Instruct"
-MODEL_NAME = "Qwen/Qwen2.5-1.5B-Instruct"
+DEFAULT_MODEL_NAME = "Qwen/Qwen2.5-0.5B-Instruct"
 RETRIEVAL_THRESHOLD = 0.30  # Frozen retrieval baseline; not retuned here.
 
 # Previously inspected development examples; NOT an independent test set.
-# DEVELOPMENT_CASE_IDS = ("q_001", "q_047", "q_049", "q_052", "q_057")
-DEVELOPMENT_CASE_IDS = ("q_052",)
+DEFAULT_CASE_IDS = ("q_001", "q_047", "q_049", "q_052", "q_057")
 
 PARTIAL_CASE = {
     "query_id": "pilot_partial_001",
@@ -51,7 +41,7 @@ PARTIAL_CASE = {
     "relevant_chunk_ids": ["demo_clinic_appointment_policy_001"],
 }
 
-# Original prompts from service.py before the Class 7 refactor.
+# Historical service prompts before the structured-grounding refactor.
 BASELINE_SYSTEM_PROMPT = "Eres un asistente médico útil y preciso."
 BASELINE_NO_CONTEXT = (
     "No hay información específica en la base de datos."
@@ -78,7 +68,7 @@ def load_json(path: Path):
 
 
 def build_baseline_context(results: list[RetrievedChunk]) -> str:
-    """Reproduce the pre-Class-7 context format (without chunk IDs)."""
+    """Reproduce the historical context format (without chunk IDs)."""
     blocks = []
     for index, result in enumerate(results, start=1):
         chunk = result.chunk
@@ -147,13 +137,49 @@ def frozen_results(
     ]
 
 
-def save_output(data: dict) -> None:
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with OUTPUT_PATH.open("w", encoding="utf-8") as file:
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--model-name", default=DEFAULT_MODEL_NAME)
+    parser.add_argument(
+        "--case-ids",
+        nargs="+",
+        default=list(DEFAULT_CASE_IDS),
+        help="Development query IDs to run (the synthetic partial case is separate).",
+    )
+    parser.add_argument(
+        "--no-partial",
+        action="store_true",
+        help="Omit the manually selected partial-evidence case.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=DEFAULT_OUTPUT_PATH,
+        help="JSON output path (defaults to evaluation/results/generation/).",
+    )
+    parser.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Allow replacing an existing output file.",
+    )
+    return parser.parse_args()
+
+
+def save_output(data: dict, output_path: Path) -> None:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", encoding="utf-8") as file:
         json.dump(data, file, ensure_ascii=False, indent=2)
 
 
 def main() -> None:
+    args = parse_args()
+    output_path = args.output
+    if output_path.exists() and not args.overwrite:
+        raise FileExistsError(
+            f"Output already exists: {output_path}. "
+            "Choose --output or pass --overwrite explicitly."
+        )
+
     catalog = load_json(CATALOG_PATH)
     dev_records = load_json(DEV_PATH)
     ranked_data = load_json(RANKINGS_PATH)
@@ -169,30 +195,29 @@ def main() -> None:
     }
 
     cases = []
-    for query_id in DEVELOPMENT_CASE_IDS:
+    for query_id in args.case_ids:
         case = dev_by_id[query_id]
         results = frozen_results(case, rank_by_id[query_id], chunk_by_id)
         cases.append((case, results, "saved_dev_retrieval"))
 
-    # This pedagogical partial-answer case uses one fixed clinic-policy chunk.
-    # Its retrieved evidence is not produced by or attributed to semantic search.
-    partial_results = [
-        RetrievedChunk(
-            chunk=chunk_by_id["demo_clinic_appointment_policy_001"],
-            score=0.0,  # Placeholder only; no similarity score was computed.
-        )
-    ]
-    cases.append((PARTIAL_CASE, partial_results, "manually_selected_evidence"))
+    # The synthetic partial-answer case is diagnostic, not a retrieval result.
+    if not args.no_partial:
+        partial_results = [
+            RetrievedChunk(
+                chunk=chunk_by_id["demo_clinic_appointment_policy_001"],
+                score=0.0,  # Placeholder only; no similarity score was computed.
+            )
+        ]
+        cases.append((PARTIAL_CASE, partial_results, "manually_selected_evidence"))
 
     # One model instance for both variants, with identical greedy decoding.
-    # First add optional `do_sample` to QwenLLM as discussed in Class 7.
-    llm = QwenLLM(model_name=MODEL_NAME, do_sample=False)
+    llm = QwenLLM(model_name=args.model_name, do_sample=False)
 
     output = {
-        "study": "class_7_grounded_generation_exploratory_pilot",
+        "study": "grounded_generation_prompt_comparison",
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "development_only": True,
-        "model_name": MODEL_NAME,
+        "model_name": args.model_name,
         "decoding": {"do_sample": False, "max_new_tokens": 256},
         "retrieval": {
             "source": str(RANKINGS_PATH.relative_to(EVALUATION_DIR)),
@@ -204,8 +229,8 @@ def main() -> None:
         },
         "comparison": (
             "Old service prompt/context versus new service prompt/context. "
-            "Q057 additionally compares old LLM fallback with new deterministic "
-            "service fallback; it is NOT a prompt-only comparison."
+            "If retrieval is empty, the old LLM fallback is compared with the "
+            "deterministic service fallback; that case is NOT prompt-only."
         ),
         "cases": [],
     }
@@ -257,10 +282,10 @@ def main() -> None:
             }
         )
         # Save each completed case to retain partial results if the run is interrupted.
-        save_output(output)
+        save_output(output, output_path)
 
     print(f"\nCompleted {len(output['cases'])} cases.")
-    print(f"Saved to: {OUTPUT_PATH}")
+    print(f"Saved to: {output_path}")
     print("Review faithfulness, completeness and abstention manually;")
     print("this pilot does not estimate generalization performance.")
 

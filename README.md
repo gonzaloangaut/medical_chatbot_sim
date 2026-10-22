@@ -11,6 +11,7 @@ An **educational medical-information chatbot** built with FastAPI, a local langu
 - **Modular RAG pipeline:** knowledge loading, chunking, retrieval, prompt construction, generation, and API responses have separate responsibilities.
 - **Programmatic source provenance:** API responses include metadata for the chunks provided as context, rather than relying on the LLM to invent citations. These source lists are **not claim-level citation verification**.
 - **Evaluation-driven design:** a 120-query annotated benchmark with separate development and held-out test splits, ranking metrics, threshold analysis, and qualitative failure analysis.
+- **Exploratory generator diagnostics:** controlled prompt, evidence-selection, and model-size comparisons, with preserved failure cases and an explicit limitation analysis.
 - **Unit testing:** test doubles cover application behavior without needing to initialize the real embedding or generation models in every test.
 
 ## Architecture
@@ -71,7 +72,7 @@ The baseline settings were selected on the development split and frozen before h
 
 ### Generation and API
 
-Generation uses the local `Qwen/Qwen2.5-0.5B-Instruct` model on CPU. `MedicalAssistance` turns the retrieved chunks into a structured context and forwards it to the model. FastAPI exposes the assistant response along with source metadata.
+Generation defaults to the local `Qwen/Qwen2.5-0.5B-Instruct` model on CPU; `QwenLLM` also accepts an alternative model name. `MedicalAssistance` places the retrieved chunks in a structured evidence block and supplies grounding instructions to the model. When no chunks pass retrieval acceptance, the service returns a deterministic fallback without invoking the LLM. FastAPI exposes the response together with retrieved-context provenance.
 
 Example response shape:
 
@@ -119,6 +120,25 @@ With the fixed threshold `0.30`, the held-out test gate accepted all **45/45 ans
 **Explore the analysis:** [`evaluation/retrieval_analysis.ipynb`](evaluation/retrieval_analysis.ipynb)  
 **Methodology and full results:** [`evaluation/RETRIEVAL_BENCHMARK_PROTOCOL.md`](evaluation/RETRIEVAL_BENCHMARK_PROTOCOL.md)
 
+## Exploratory generation evaluation
+
+A **development-only qualitative pilot** compares the historical and structured
+RAG prompts, retrieved Top-5 versus annotated *oracle* evidence, and local
+Qwen2.5 0.5B versus 1.5B. Both models used greedy decoding and frozen
+retrieval results; the held-out retrieval test queries were **not** used.
+The experiments are diagnostic examples, **not representative accuracy scores**.
+
+The larger model generally handled some supported facts better, but still
+omitted parts of multi-evidence questions and made unsupported assertions
+about individual allergies and unspecified cancellation fees. Restricting
+context to gold chunks improved some answers but did not guarantee grounding.
+The no-context fallback improved through deterministic application logic,
+not prompt wording. Neither model has been validated for clinical use.
+
+**Methodology, observed responses, limitations, and reproduction commands:**
+[`evaluation/GENERATION_PILOT_REPORT.md`](evaluation/GENERATION_PILOT_REPORT.md).
+Saved development outputs are in [`evaluation/results/generation/`](evaluation/results/generation/).
+
 ## Repository layout
 
 ```text
@@ -137,11 +157,14 @@ With the fixed threshold `0.30`, the held-out test gate accepted all **45/45 ans
 ├── data/knowledge/             # English-language source documents
 ├── evaluation/
 │   ├── RETRIEVAL_BENCHMARK_PROTOCOL.md
+│   ├── GENERATION_PILOT_REPORT.md
 │   ├── retrieval_analysis.ipynb
 │   ├── build_chunk_catalog.py
 │   ├── validate_retrieval_dataset.py
 │   ├── retrieval_metrics.py
 │   ├── run_retrieval_benchmark.py
+│   ├── run_grounding_pilot.py
+│   ├── run_oracle_context_pilot.py
 │   ├── summarize_retrieval_results.py
 │   ├── evaluate_retrieval_threshold.py
 │   ├── datasets/
@@ -154,7 +177,8 @@ With the fixed threshold `0.30`, the held-out test gate accepted all **45/45 ans
 │       ├── retrieval_summary_dev.json
 │       ├── retrieval_summary_test.json
 │       ├── retrieval_threshold_dev.json
-│       └── retrieval_threshold_test.json
+│       ├── retrieval_threshold_test.json
+│       └── generation/          # Exploratory generation pilot outputs
 ├── tests/
 ├── chat_test.py
 ├── requirements.txt
@@ -216,4 +240,4 @@ The `test` threshold command evaluates **only the previously selected value, 0.3
 
 ## Next steps
 
-The next phase focuses on **grounded answer generation and end-to-end evaluation**: explicit evidence-sufficiency checks, supported vs. unsupported answer behavior, abstention, claim-to-source faithfulness, and testing of the local LLM's actual outputs. No clinically safe behavior is assumed without separate evidence.
+Next priorities are **evidence-sufficiency and abstention controls**, followed by independent end-to-end evaluation of generated claims, answer completeness, and provenance. The present generation pilots are diagnostic development results; clinical safety is neither claimed nor established.

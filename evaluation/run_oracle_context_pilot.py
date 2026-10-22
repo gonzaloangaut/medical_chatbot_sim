@@ -1,8 +1,7 @@
 """Compare fixed Top-5 evidence with oracle evidence for three development queries.
 
-Run from the repository root:
-
-    python -m evaluation.run_oracle_context_pilot
+Run ``python -m evaluation.run_oracle_context_pilot --help`` from the
+repository root.
 
 This is a qualitative diagnostic, NOT a held-out evaluation. It does not
 recompute embeddings or rerun retrieval. Both conditions use the same
@@ -10,6 +9,7 @@ MedicalAssistance prompt, Qwen model, and greedy decoding. Oracle evidence
 is selected using gold chunk IDs, which are unavailable in production.
 """
 
+import argparse
 import hashlib
 import json
 from dataclasses import asdict
@@ -26,14 +26,11 @@ PROJECT_ROOT = EVALUATION_DIR.parent
 CATALOG_PATH = EVALUATION_DIR / "datasets" / "chunk_catalog.json"
 DEV_PATH = EVALUATION_DIR / "datasets" / "retrieval_dev.json"
 RANKINGS_PATH = EVALUATION_DIR / "results" / "retrieval_dev.json"
-OUTPUT_PATH = (
-    EVALUATION_DIR
-    / "results"
-    / "oracle_context_pilot_qwen1_5b_dev.json"
+DEFAULT_OUTPUT_PATH = (
+    EVALUATION_DIR / "results" / "generation" / "oracle_context_pilot_dev.json"
 )
-
-MODEL_NAME = "Qwen/Qwen2.5-1.5B-Instruct"
-CASE_IDS = ("q_001", "q_047", "q_049")
+DEFAULT_MODEL_NAME = "Qwen/Qwen2.5-0.5B-Instruct"
+DEFAULT_CASE_IDS = ("q_001", "q_047", "q_049")
 TOP_K = 5
 THRESHOLD = 0.30  # Frozen baseline; not tuned in this experiment.
 
@@ -71,7 +68,38 @@ def describe_evidence(chunks: list[RetrievedChunk], original_ranks: dict) -> lis
     ]
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--model-name", default=DEFAULT_MODEL_NAME)
+    parser.add_argument(
+        "--case-ids",
+        nargs="+",
+        default=list(DEFAULT_CASE_IDS),
+        help="Answerable development query IDs with all gold evidence in Top-5.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=DEFAULT_OUTPUT_PATH,
+        help="JSON output path (defaults to evaluation/results/generation/).",
+    )
+    parser.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Allow replacing an existing output file.",
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
+    args = parse_args()
+    output_path = args.output
+    if output_path.exists() and not args.overwrite:
+        raise FileExistsError(
+            f"Output already exists: {output_path}. "
+            "Choose --output or pass --overwrite explicitly."
+        )
+
     catalog = load_json(CATALOG_PATH)
     development = load_json(DEV_PATH)
     saved_retrieval = load_json(RANKINGS_PATH)
@@ -86,7 +114,7 @@ def main() -> None:
     }
 
     prepared_cases = []
-    for query_id in CASE_IDS:
+    for query_id in args.case_ids:
         case = dev_by_id[query_id]
         ranking = ranked_by_id[query_id]
         if case["query"] != ranking["query"]:
@@ -120,12 +148,12 @@ def main() -> None:
         prepared_cases.append((case, top5, oracle, original_ranks))
 
     # Load the model only once; both conditions use greedy decoding.
-    llm = QwenLLM(model_name=MODEL_NAME, do_sample=False)
+    llm = QwenLLM(model_name=args.model_name, do_sample=False)
     output = {
-        "study": "class_7_oracle_context_diagnostic",
+        "study": "oracle_evidence_diagnostic",
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "development_only": True,
-        "model_name": MODEL_NAME,
+        "model_name": args.model_name,
         "decoding": {"do_sample": False, "max_new_tokens": 256},
         "same_service_prompt_for_both_conditions": True,
         "retrieval": {
@@ -178,12 +206,12 @@ def main() -> None:
             }
         )
         # Preserve completed cases if the run is interrupted.
-        OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-        with OUTPUT_PATH.open("w", encoding="utf-8") as file:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        with output_path.open("w", encoding="utf-8") as file:
             json.dump(output, file, ensure_ascii=False, indent=2)
 
     print(f"\nCompleted {len(output['cases'])} cases.")
-    print(f"Saved results to: {OUTPUT_PATH}")
+    print(f"Saved results to: {output_path}")
     print("Inspect answers against evidence; do not treat this pilot as a test score.")
 
 
