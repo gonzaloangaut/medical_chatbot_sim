@@ -1,0 +1,480 @@
+{
+  "study": "class_7_oracle_context_diagnostic",
+  "created_at_utc": "2026-10-22T13:32:15.390541+00:00",
+  "development_only": true,
+  "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": 256
+  },
+  "same_service_prompt_for_both_conditions": true,
+  "retrieval": {
+    "source": "results/retrieval_dev.json",
+    "top_k": 5,
+    "frozen_top1_threshold": 0.3,
+    "notes": "Read saved rankings; did not recompute embeddings or rerun retrieval."
+  },
+  "sha256": {
+    "catalog": "f31d335bdf454373ff93212e52bdecf20a05b98d097baeeaccaa15318d0b71d8",
+    "development_queries": "42dc5201fb8ff6b3c96a93d23adfcc915e9d398f6c406bfc6546dc3609639cdf",
+    "saved_retrieval": "f11dd5d5be8b74bef055839462c4e3f71afcadf2a199d698f6a431d684677d0e",
+    "service_py": "84ed6e3d2def01f61415d7e5cd299334bed938891b035e52adab1123cf110822",
+    "llm_py": "4f77857418fbe2c3e1d0899abc5bd4fe2ad6124e33cf8eb42a26fd3ff03fcc42"
+  },
+  "cases": [
+    {
+      "query_id": "q_001",
+      "query": "¿Tener 37 grados de temperatura significa que tengo fiebre?",
+      "category": "single_evidence",
+      "gold_relevant_chunk_ids": [
+        "medlineplus_fever_000"
+      ],
+      "conditions": {
+        "top5": {
+          "response": "No, tener 37 grados de temperatura solo significa que está por encima del rango normal para la persona en cuestión y puede ser un indicador de una fiebre, pero no es suficiente para confirmarla sin más información. La fiebre se define como una temperatura superior al rango normal para el individuo, pero también hay otros factores que pueden influir en esta medida. Por lo tanto, aunque 37 grados son elevados, no necesariamente indica una fiebre.",
+          "sources": [
+            {
+              "title": "Fever",
+              "section": "Overview and Body Temperature",
+              "source": "MedlinePlus - National Library of Medicine",
+              "source_url": "https://medlineplus.gov/fever.html"
+            },
+            {
+              "title": "Common Cold",
+              "section": "Symptoms",
+              "source": "MedlinePlus - National Library of Medicine",
+              "source_url": "https://medlineplus.gov/commoncold.html"
+            },
+            {
+              "title": "Fever",
+              "section": "Common Causes",
+              "source": "MedlinePlus - National Library of Medicine",
+              "source_url": "https://medlineplus.gov/fever.html"
+            },
+            {
+              "title": "Influenza (Flu)",
+              "section": "Symptoms and Differences from a Cold",
+              "source": "MedlinePlus - National Library of Medicine",
+              "source_url": "https://medlineplus.gov/flu.html"
+            },
+            {
+              "title": "Common Cold",
+              "section": "Care and Warning Signs",
+              "source": "MedlinePlus - National Library of Medicine",
+              "source_url": "https://medlineplus.gov/commoncold.html"
+            }
+          ],
+          "evidence": [
+            {
+              "original_top5_rank": 1,
+              "score": 0.8140202760696411,
+              "chunk": {
+                "chunk_id": "medlineplus_fever_000",
+                "document_id": "medlineplus_fever",
+                "title": "Fever",
+                "source": "MedlinePlus - National Library of Medicine",
+                "source_url": "https://medlineplus.gov/fever.html",
+                "section": "Overview and Body Temperature",
+                "content": "A fever means that body temperature is above a person's usual range. A temperature close to 37 °C (98.6 °F) is often described as an average normal temperature, but normal temperature varies among people and throughout the day. A reading of 37 °C by itself does not establish that someone has a fever. Fever is a sign, not a disease; it often accompanies the body's response to an infection."
+              }
+            },
+            {
+              "original_top5_rank": 2,
+              "score": 0.5944247245788574,
+              "chunk": {
+                "chunk_id": "medlineplus_common_cold_001",
+                "document_id": "medlineplus_common_cold",
+                "title": "Common Cold",
+                "source": "MedlinePlus - National Library of Medicine",
+                "source_url": "https://medlineplus.gov/commoncold.html",
+                "section": "Symptoms",
+                "content": "Typical symptoms include sneezing, a runny or blocked nose, sore throat, cough, and sometimes headache. Symptoms generally begin a few days after infection and may continue for one to two weeks. Similar complaints can also occur with influenza or allergies, so symptoms alone do not always identify the cause."
+              }
+            },
+            {
+              "original_top5_rank": 3,
+              "score": 0.5677735805511475,
+              "chunk": {
+                "chunk_id": "medlineplus_fever_001",
+                "document_id": "medlineplus_fever",
+                "title": "Fever",
+                "source": "MedlinePlus - National Library of Medicine",
+                "source_url": "https://medlineplus.gov/fever.html",
+                "section": "Common Causes",
+                "content": "Infections caused by viruses or bacteria account for many fevers. Other possible causes include certain medicines, heat-related illness, autoimmune diseases, some cancers, and some childhood vaccines. A temperature reading alone does not identify the cause of a person's symptoms."
+              }
+            },
+            {
+              "original_top5_rank": 4,
+              "score": 0.5443598031997681,
+              "chunk": {
+                "chunk_id": "medlineplus_influenza_001",
+                "document_id": "medlineplus_influenza",
+                "title": "Influenza (Flu)",
+                "source": "MedlinePlus - National Library of Medicine",
+                "source_url": "https://medlineplus.gov/flu.html",
+                "section": "Symptoms and Differences from a Cold",
+                "content": "Flu symptoms often start abruptly and may include fever or chills, cough, sore throat, headache, body aches, and marked tiredness. A runny or stuffy nose can also occur. Children sometimes experience vomiting or diarrhea. Compared with a common cold, influenza more often begins suddenly and causes substantial fever, aches, and fatigue; these patterns do not establish a diagnosis on their own."
+              }
+            },
+            {
+              "original_top5_rank": 5,
+              "score": 0.48362818360328674,
+              "chunk": {
+                "chunk_id": "medlineplus_common_cold_002",
+                "document_id": "medlineplus_common_cold",
+                "title": "Common Cold",
+                "source": "MedlinePlus - National Library of Medicine",
+                "source_url": "https://medlineplus.gov/commoncold.html",
+                "section": "Care and Warning Signs",
+                "content": "A cold has no specific cure, and antibiotics do not treat cold viruses. Rest, fluids, saline nasal products, and other symptom-relief measures may help. Over-the-counter cold medicines require particular care in children; read labels to avoid taking duplicate ingredients. Medical advice is appropriate for breathing difficulty, dehydration, fever that persists, symptoms that fail to improve, or symptoms that improve and then worsen."
+              }
+            }
+          ]
+        },
+        "oracle": {
+          "response": "No, tener 37 grados de temperatura no significa necesariamente que tengas fiebre. Un valor de 37 grados puede ser considerado como una temperatura estándar para la mayoría de las personas y puede variar con el tiempo. La fiebre es un síntoma, no un trastorno en sí mismo, y generalmente se acompaña del cuerpo respondiendo a una infección o enfermedad.",
+          "sources": [
+            {
+              "title": "Fever",
+              "section": "Overview and Body Temperature",
+              "source": "MedlinePlus - National Library of Medicine",
+              "source_url": "https://medlineplus.gov/fever.html"
+            }
+          ],
+          "evidence": [
+            {
+              "original_top5_rank": 1,
+              "score": 0.8140202760696411,
+              "chunk": {
+                "chunk_id": "medlineplus_fever_000",
+                "document_id": "medlineplus_fever",
+                "title": "Fever",
+                "source": "MedlinePlus - National Library of Medicine",
+                "source_url": "https://medlineplus.gov/fever.html",
+                "section": "Overview and Body Temperature",
+                "content": "A fever means that body temperature is above a person's usual range. A temperature close to 37 °C (98.6 °F) is often described as an average normal temperature, but normal temperature varies among people and throughout the day. A reading of 37 °C by itself does not establish that someone has a fever. Fever is a sign, not a disease; it often accompanies the body's response to an infection."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "query_id": "q_047",
+      "query": "¿Qué desencadenantes frecuentes se asocian a la cefalea y cuáles son sus señales de alarma?",
+      "category": "multi_evidence",
+      "gold_relevant_chunk_ids": [
+        "medlineplus_headache_001",
+        "medlineplus_headache_002"
+      ],
+      "conditions": {
+        "top5": {
+          "response": "Las señales de alarma para una cefalalgia pueden incluir un dolor severo o muy fuerte que requiera atención médica urgente. También puede haber signos más graves como confusión, falta de conciencia, poco o ningún flujo urinario, respiración rápida o ritmo cardíaco acelerado. Si estos síntomas ocurren después de un accidente cerebrovascular o si hay dolor en los ojos o orejas, es importante buscar atención médica inmediata.",
+          "sources": [
+            {
+              "title": "Allergies",
+              "section": "Symptoms and Severe Reactions",
+              "source": "MedlinePlus - National Library of Medicine",
+              "source_url": "https://medlineplus.gov/allergy.html"
+            },
+            {
+              "title": "Allergies",
+              "section": "Overview and Triggers",
+              "source": "MedlinePlus - National Library of Medicine",
+              "source_url": "https://medlineplus.gov/allergy.html"
+            },
+            {
+              "title": "Headache",
+              "section": "Warning Signs",
+              "source": "MedlinePlus - National Library of Medicine",
+              "source_url": "https://medlineplus.gov/headache.html"
+            },
+            {
+              "title": "Headache",
+              "section": "Common Types and Triggers",
+              "source": "MedlinePlus - National Library of Medicine",
+              "source_url": "https://medlineplus.gov/headache.html"
+            },
+            {
+              "title": "Dehydration",
+              "section": "Symptoms and Warning Signs",
+              "source": "MedlinePlus - National Library of Medicine",
+              "source_url": "https://medlineplus.gov/dehydration.html"
+            }
+          ],
+          "evidence": [
+            {
+              "original_top5_rank": 1,
+              "score": 0.5351494550704956,
+              "chunk": {
+                "chunk_id": "medlineplus_allergy_001",
+                "document_id": "medlineplus_allergy",
+                "title": "Allergies",
+                "source": "MedlinePlus - National Library of Medicine",
+                "source_url": "https://medlineplus.gov/allergy.html",
+                "section": "Symptoms and Severe Reactions",
+                "content": "Allergic reactions may cause sneezing, a runny nose, itching, skin rashes, swelling, or asthma-related symptoms. Some symptoms overlap with those of a common cold. The severity of reactions varies. Anaphylaxis is a severe allergic reaction that can be life-threatening and requires immediate emergency care."
+              }
+            },
+            {
+              "original_top5_rank": 2,
+              "score": 0.5073210597038269,
+              "chunk": {
+                "chunk_id": "medlineplus_allergy_000",
+                "document_id": "medlineplus_allergy",
+                "title": "Allergies",
+                "source": "MedlinePlus - National Library of Medicine",
+                "source_url": "https://medlineplus.gov/allergy.html",
+                "section": "Overview and Triggers",
+                "content": "An allergy occurs when the immune system reacts to a substance that is harmless to most other people. Triggers can include pollen, dust mites, mold, pet dander, certain foods, insect stings, and medicines. A person may be sensitive to several different allergens."
+              }
+            },
+            {
+              "original_top5_rank": 3,
+              "score": 0.4785108268260956,
+              "chunk": {
+                "chunk_id": "medlineplus_headache_002",
+                "document_id": "medlineplus_headache",
+                "title": "Headache",
+                "source": "MedlinePlus - National Library of Medicine",
+                "source_url": "https://medlineplus.gov/headache.html",
+                "section": "Warning Signs",
+                "content": "Some headache patterns require prompt medical assessment. A sudden, very severe headache should be discussed urgently with a health care professional. Seek immediate medical help for headache following a head injury or headache accompanied by a stiff neck, fever, confusion, loss of consciousness, or significant eye or ear pain."
+              }
+            },
+            {
+              "original_top5_rank": 4,
+              "score": 0.4638911187648773,
+              "chunk": {
+                "chunk_id": "medlineplus_headache_001",
+                "document_id": "medlineplus_headache",
+                "title": "Headache",
+                "source": "MedlinePlus - National Library of Medicine",
+                "source_url": "https://medlineplus.gov/headache.html",
+                "section": "Common Types and Triggers",
+                "content": "Tension-type headache is common and may involve tight muscles around the neck, shoulders, scalp, or jaw. Stress, lack of sleep, missed meals, and other lifestyle factors can contribute. Other headache types include migraine and cluster headache. Management may involve changes in habits, relaxation strategies, and suitable pain relief."
+              }
+            },
+            {
+              "original_top5_rank": 5,
+              "score": 0.4332614541053772,
+              "chunk": {
+                "chunk_id": "medlineplus_dehydration_002",
+                "document_id": "medlineplus_dehydration",
+                "title": "Dehydration",
+                "source": "MedlinePlus - National Library of Medicine",
+                "source_url": "https://medlineplus.gov/dehydration.html",
+                "section": "Symptoms and Warning Signs",
+                "content": "In adults, signs may include thirst, dry mouth, dark urine, reduced urination, tiredness, and dizziness. In babies and young children, warning signs include a dry mouth, few or no tears, fewer wet diapers, unusual sleepiness, irritability, or sunken-looking eyes. Confusion, fainting, very little or no urination, rapid breathing, or a fast heartbeat may indicate severe dehydration and require urgent medical care."
+              }
+            }
+          ]
+        },
+        "oracle": {
+          "response": "Las señales de alarma para una cefalea pueden incluir un dolor muy severo que surge de manera súbita, un dolor después de un golpe en la cabeza o un dolor acompañado de una rigidez en el cuello, fiebre, confusión, pérdida de conciencia significativa o dolor agudo en los ojos o orejas.",
+          "sources": [
+            {
+              "title": "Headache",
+              "section": "Warning Signs",
+              "source": "MedlinePlus - National Library of Medicine",
+              "source_url": "https://medlineplus.gov/headache.html"
+            },
+            {
+              "title": "Headache",
+              "section": "Common Types and Triggers",
+              "source": "MedlinePlus - National Library of Medicine",
+              "source_url": "https://medlineplus.gov/headache.html"
+            }
+          ],
+          "evidence": [
+            {
+              "original_top5_rank": 3,
+              "score": 0.4785108268260956,
+              "chunk": {
+                "chunk_id": "medlineplus_headache_002",
+                "document_id": "medlineplus_headache",
+                "title": "Headache",
+                "source": "MedlinePlus - National Library of Medicine",
+                "source_url": "https://medlineplus.gov/headache.html",
+                "section": "Warning Signs",
+                "content": "Some headache patterns require prompt medical assessment. A sudden, very severe headache should be discussed urgently with a health care professional. Seek immediate medical help for headache following a head injury or headache accompanied by a stiff neck, fever, confusion, loss of consciousness, or significant eye or ear pain."
+              }
+            },
+            {
+              "original_top5_rank": 4,
+              "score": 0.4638911187648773,
+              "chunk": {
+                "chunk_id": "medlineplus_headache_001",
+                "document_id": "medlineplus_headache",
+                "title": "Headache",
+                "source": "MedlinePlus - National Library of Medicine",
+                "source_url": "https://medlineplus.gov/headache.html",
+                "section": "Common Types and Triggers",
+                "content": "Tension-type headache is common and may involve tight muscles around the neck, shoulders, scalp, or jaw. Stress, lack of sleep, missed meals, and other lifestyle factors can contribute. Other headache types include migraine and cluster headache. Management may involve changes in habits, relaxation strategies, and suitable pain relief."
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "query_id": "q_049",
+      "query": "En Demo Health Clinic, ¿con cuánto aviso se cancela un turno y cuánto lleva procesar una solicitud verificada de historia clínica?",
+      "category": "multi_evidence",
+      "gold_relevant_chunk_ids": [
+        "demo_clinic_appointment_policy_001",
+        "demo_clinic_medical_records_policy_002"
+      ],
+      "conditions": {
+        "top5": {
+          "response": "Según el contexto proporcionado, en Demo Health Clinic:\n\n- Para cancelar un turno, se debe hacer al menos 24 horas antes del día previsto.\n- La solicitud de historial médico verificado se procesará dentro de los siguientes plazos:\n  - En la simulación, se espera que se complete dentro de 7 días laborables.\n  - El proceso completo incluye verificar y procesar la solicitud, lo cual puede llevar más tiempo dependiendo de las necesidades específicas del sistema o la disponibilidad de recursos.",
+          "sources": [
+            {
+              "title": "Appointment Policy",
+              "section": "Cancellation Policy",
+              "source": "Demo Health Clinic (Synthetic)",
+              "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy"
+            },
+            {
+              "title": "Laboratory Results Policy",
+              "section": "Result Availability and Delays",
+              "source": "Demo Health Clinic (Synthetic)",
+              "source_url": "urn:medical-chatbot-sim:demo-health-clinic:laboratory-results-policy"
+            },
+            {
+              "title": "Appointment Policy",
+              "section": "Booking and Rescheduling",
+              "source": "Demo Health Clinic (Synthetic)",
+              "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy"
+            },
+            {
+              "title": "Medical Records Policy",
+              "section": "Processing and Delivery",
+              "source": "Demo Health Clinic (Synthetic)",
+              "source_url": "urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy"
+            },
+            {
+              "title": "Medical Records Policy",
+              "section": "Requesting a Copy",
+              "source": "Demo Health Clinic (Synthetic)",
+              "source_url": "urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy"
+            }
+          ],
+          "evidence": [
+            {
+              "original_top5_rank": 1,
+              "score": 0.6943350434303284,
+              "chunk": {
+                "chunk_id": "demo_clinic_appointment_policy_001",
+                "document_id": "demo_clinic_appointment_policy",
+                "title": "Appointment Policy",
+                "source": "Demo Health Clinic (Synthetic)",
+                "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy",
+                "section": "Cancellation Policy",
+                "content": "DEMO POLICY — In this simulation, patients are asked to cancel or reschedule at least 24 hours before the scheduled visit. Requests with less notice are handled by the fictional reception team and may require a new booking. No charges, penalties, or refunds are defined by this demonstration policy; questions about fees cannot be answered from this document."
+              }
+            },
+            {
+              "original_top5_rank": 2,
+              "score": 0.6933302283287048,
+              "chunk": {
+                "chunk_id": "demo_clinic_laboratory_results_policy_001",
+                "document_id": "demo_clinic_laboratory_results_policy",
+                "title": "Laboratory Results Policy",
+                "source": "Demo Health Clinic (Synthetic)",
+                "source_url": "urn:medical-chatbot-sim:demo-health-clinic:laboratory-results-policy",
+                "section": "Result Availability and Delays",
+                "content": "DEMO POLICY — In this simulation, released reports typically appear in the portal within two business days after the clinic receives a finalized laboratory report. This is a fictional administrative turnaround, not a statement about how long a complete blood count, throat culture, or any particular test takes in real practice. Some reports may require further review, and no exact release time is guaranteed."
+              }
+            },
+            {
+              "original_top5_rank": 3,
+              "score": 0.6868394613265991,
+              "chunk": {
+                "chunk_id": "demo_clinic_appointment_policy_000",
+                "document_id": "demo_clinic_appointment_policy",
+                "title": "Appointment Policy",
+                "source": "Demo Health Clinic (Synthetic)",
+                "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy",
+                "section": "Booking and Rescheduling",
+                "content": "DEMO POLICY — This document describes a fictional clinic used only for software testing. Demo Health Clinic accepts appointment requests through its simulated patient portal or a simulated reception desk. A patient can request a new visit, ask to change its date, or request a different type of appointment. A request is not a confirmed booking until the clinic sends a confirmation."
+              }
+            },
+            {
+              "original_top5_rank": 4,
+              "score": 0.5879771709442139,
+              "chunk": {
+                "chunk_id": "demo_clinic_medical_records_policy_002",
+                "document_id": "demo_clinic_medical_records_policy",
+                "title": "Medical Records Policy",
+                "source": "Demo Health Clinic (Synthetic)",
+                "source_url": "urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy",
+                "section": "Processing and Delivery",
+                "content": "DEMO POLICY — The simulated records desk aims to process a complete, verified request within seven business days. Records are made available in the simulated secure portal rather than in ordinary email attachments. This is a fictional service target, not a legal deadline or a guarantee for any actual health care provider."
+              }
+            },
+            {
+              "original_top5_rank": 5,
+              "score": 0.5658743977546692,
+              "chunk": {
+                "chunk_id": "demo_clinic_medical_records_policy_000",
+                "document_id": "demo_clinic_medical_records_policy",
+                "title": "Medical Records Policy",
+                "source": "Demo Health Clinic (Synthetic)",
+                "source_url": "urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy",
+                "section": "Requesting a Copy",
+                "content": "DEMO POLICY — This is a fictional administrative policy for testing retrieval. In the Demo Health Clinic simulation, a patient can request a copy of their own medical record through the simulated patient portal or by contacting the simulated records desk. Requests specify which documents or date range the patient needs."
+              }
+            }
+          ]
+        },
+        "oracle": {
+          "response": "En Demo Health Clinic, los pacientes deben cancelar o reprogramar su cita al menos 24 horas antes del horario programado. Las solicitudes con menor antelación pueden ser gestionadas por el equipo ficticio de recepción y requieren una nueva reserva. No se definen cargos, penalizaciones ni devoluciones en este documento de demostración. El servicio de registros médicos simula la procesamiento de una solicitud completa y verificada dentro de siete días laborables, almacenando las historias clínicas en el portátil seguro simulado en lugar de adjuntarlas como archivos adicionales en correo electrónico.",
+          "sources": [
+            {
+              "title": "Appointment Policy",
+              "section": "Cancellation Policy",
+              "source": "Demo Health Clinic (Synthetic)",
+              "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy"
+            },
+            {
+              "title": "Medical Records Policy",
+              "section": "Processing and Delivery",
+              "source": "Demo Health Clinic (Synthetic)",
+              "source_url": "urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy"
+            }
+          ],
+          "evidence": [
+            {
+              "original_top5_rank": 1,
+              "score": 0.6943350434303284,
+              "chunk": {
+                "chunk_id": "demo_clinic_appointment_policy_001",
+                "document_id": "demo_clinic_appointment_policy",
+                "title": "Appointment Policy",
+                "source": "Demo Health Clinic (Synthetic)",
+                "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy",
+                "section": "Cancellation Policy",
+                "content": "DEMO POLICY — In this simulation, patients are asked to cancel or reschedule at least 24 hours before the scheduled visit. Requests with less notice are handled by the fictional reception team and may require a new booking. No charges, penalties, or refunds are defined by this demonstration policy; questions about fees cannot be answered from this document."
+              }
+            },
+            {
+              "original_top5_rank": 4,
+              "score": 0.5879771709442139,
+              "chunk": {
+                "chunk_id": "demo_clinic_medical_records_policy_002",
+                "document_id": "demo_clinic_medical_records_policy",
+                "title": "Medical Records Policy",
+                "source": "Demo Health Clinic (Synthetic)",
+                "source_url": "urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy",
+                "section": "Processing and Delivery",
+                "content": "DEMO POLICY — The simulated records desk aims to process a complete, verified request within seven business days. Records are made available in the simulated secure portal rather than in ordinary email attachments. This is a fictional service target, not a legal deadline or a guarantee for any actual health care provider."
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

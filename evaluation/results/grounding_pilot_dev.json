@@ -1,0 +1,605 @@
+{
+  "study": "class_7_grounded_generation_exploratory_pilot",
+  "created_at_utc": "2026-10-22T13:13:28.546401+00:00",
+  "development_only": true,
+  "model_name": "Qwen/Qwen2.5-0.5B-Instruct",
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": 256
+  },
+  "retrieval": {
+    "source": "results/retrieval_dev.json",
+    "catalog": "datasets/chunk_catalog.json",
+    "top_k": 5,
+    "frozen_top1_threshold": 0.3,
+    "catalog_sha256": "f31d335bdf454373ff93212e52bdecf20a05b98d097baeeaccaa15318d0b71d8",
+    "notes": "No embedding inference or retrieval reruns performed."
+  },
+  "comparison": "Old service prompt/context versus new service prompt/context. Q057 additionally compares old LLM fallback with new deterministic service fallback; it is NOT a prompt-only comparison.",
+  "cases": [
+    {
+      "query_id": "q_001",
+      "query": "¿Tener 37 grados de temperatura significa que tengo fiebre?",
+      "category": "single_evidence",
+      "answerable": true,
+      "gold_relevant_chunk_ids": [
+        "medlineplus_fever_000"
+      ],
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_fever_000",
+          "score": 0.8140202760696411,
+          "chunk": {
+            "chunk_id": "medlineplus_fever_000",
+            "document_id": "medlineplus_fever",
+            "title": "Fever",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/fever.html",
+            "section": "Overview and Body Temperature",
+            "content": "A fever means that body temperature is above a person's usual range. A temperature close to 37 °C (98.6 °F) is often described as an average normal temperature, but normal temperature varies among people and throughout the day. A reading of 37 °C by itself does not establish that someone has a fever. Fever is a sign, not a disease; it often accompanies the body's response to an infection."
+          }
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_common_cold_001",
+          "score": 0.5944247245788574,
+          "chunk": {
+            "chunk_id": "medlineplus_common_cold_001",
+            "document_id": "medlineplus_common_cold",
+            "title": "Common Cold",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/commoncold.html",
+            "section": "Symptoms",
+            "content": "Typical symptoms include sneezing, a runny or blocked nose, sore throat, cough, and sometimes headache. Symptoms generally begin a few days after infection and may continue for one to two weeks. Similar complaints can also occur with influenza or allergies, so symptoms alone do not always identify the cause."
+          }
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_fever_001",
+          "score": 0.5677735805511475,
+          "chunk": {
+            "chunk_id": "medlineplus_fever_001",
+            "document_id": "medlineplus_fever",
+            "title": "Fever",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/fever.html",
+            "section": "Common Causes",
+            "content": "Infections caused by viruses or bacteria account for many fevers. Other possible causes include certain medicines, heat-related illness, autoimmune diseases, some cancers, and some childhood vaccines. A temperature reading alone does not identify the cause of a person's symptoms."
+          }
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_influenza_001",
+          "score": 0.5443598031997681,
+          "chunk": {
+            "chunk_id": "medlineplus_influenza_001",
+            "document_id": "medlineplus_influenza",
+            "title": "Influenza (Flu)",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/flu.html",
+            "section": "Symptoms and Differences from a Cold",
+            "content": "Flu symptoms often start abruptly and may include fever or chills, cough, sore throat, headache, body aches, and marked tiredness. A runny or stuffy nose can also occur. Children sometimes experience vomiting or diarrhea. Compared with a common cold, influenza more often begins suddenly and causes substantial fever, aches, and fatigue; these patterns do not establish a diagnosis on their own."
+          }
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_common_cold_002",
+          "score": 0.48362818360328674,
+          "chunk": {
+            "chunk_id": "medlineplus_common_cold_002",
+            "document_id": "medlineplus_common_cold",
+            "title": "Common Cold",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/commoncold.html",
+            "section": "Care and Warning Signs",
+            "content": "A cold has no specific cure, and antibiotics do not treat cold viruses. Rest, fluids, saline nasal products, and other symptom-relief measures may help. Over-the-counter cold medicines require particular care in children; read labels to avoid taking duplicate ingredients. Medical advice is appropriate for breathing difficulty, dehydration, fever that persists, symptoms that fail to improve, or symptoms that improve and then worsen."
+          }
+        }
+      ],
+      "baseline_messages": [
+        {
+          "role": "system",
+          "content": "Eres un asistente médico útil y preciso."
+        },
+        {
+          "role": "user",
+          "content": "\n        Instrucciones: Eres un asistente médico.\n        Responde DIRECTAMENTE al paciente (usa \"usted\") basándote SOLO en el \n        TEXTO OFICIAL.\n        Usa oraciones completas.\n        Sé empático con el paciente.\n\n        TEXTO OFICIAL:\n        [Context 1]\nTitle: Fever\nSection: Overview and Body Temperature\nSource: MedlinePlus - National Library of Medicine\nContent:\nA fever means that body temperature is above a person's usual range. A temperature close to 37 °C (98.6 °F) is often described as an average normal temperature, but normal temperature varies among people and throughout the day. A reading of 37 °C by itself does not establish that someone has a fever. Fever is a sign, not a disease; it often accompanies the body's response to an infection.\n\n[Context 2]\nTitle: Common Cold\nSection: Symptoms\nSource: MedlinePlus - National Library of Medicine\nContent:\nTypical symptoms include sneezing, a runny or blocked nose, sore throat, cough, and sometimes headache. Symptoms generally begin a few days after infection and may continue for one to two weeks. Similar complaints can also occur with influenza or allergies, so symptoms alone do not always identify the cause.\n\n[Context 3]\nTitle: Fever\nSection: Common Causes\nSource: MedlinePlus - National Library of Medicine\nContent:\nInfections caused by viruses or bacteria account for many fevers. Other possible causes include certain medicines, heat-related illness, autoimmune diseases, some cancers, and some childhood vaccines. A temperature reading alone does not identify the cause of a person's symptoms.\n\n[Context 4]\nTitle: Influenza (Flu)\nSection: Symptoms and Differences from a Cold\nSource: MedlinePlus - National Library of Medicine\nContent:\nFlu symptoms often start abruptly and may include fever or chills, cough, sore throat, headache, body aches, and marked tiredness. A runny or stuffy nose can also occur. Children sometimes experience vomiting or diarrhea. Compared with a common cold, influenza more often begins suddenly and causes substantial fever, aches, and fatigue; these patterns do not establish a diagnosis on their own.\n\n[Context 5]\nTitle: Common Cold\nSection: Care and Warning Signs\nSource: MedlinePlus - National Library of Medicine\nContent:\nA cold has no specific cure, and antibiotics do not treat cold viruses. Rest, fluids, saline nasal products, and other symptom-relief measures may help. Over-the-counter cold medicines require particular care in children; read labels to avoid taking duplicate ingredients. Medical advice is appropriate for breathing difficulty, dehydration, fever that persists, symptoms that fail to improve, or symptoms that improve and then worsen.\n\n        ---\n        PREGUNTA DEL PACIENTE: ¿Tener 37 grados de temperatura significa que tengo fiebre?\n        \n        TU RESPUESTA AL PACIENTE:\n        "
+        }
+      ],
+      "baseline_response": "Usted tiene fiebre.",
+      "grounded_response": "Sí, tener una temperatura de 37 grados Celsius puede indicar que tienes fiebre.",
+      "grounded_sources": [
+        {
+          "title": "Fever",
+          "section": "Overview and Body Temperature",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/fever.html"
+        },
+        {
+          "title": "Common Cold",
+          "section": "Symptoms",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/commoncold.html"
+        },
+        {
+          "title": "Fever",
+          "section": "Common Causes",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/fever.html"
+        },
+        {
+          "title": "Influenza (Flu)",
+          "section": "Symptoms and Differences from a Cold",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/flu.html"
+        },
+        {
+          "title": "Common Cold",
+          "section": "Care and Warning Signs",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/commoncold.html"
+        }
+      ],
+      "grounded_llm_invoked": true,
+      "comparison_scope": "generation_prompts"
+    },
+    {
+      "query_id": "q_047",
+      "query": "¿Qué desencadenantes frecuentes se asocian a la cefalea y cuáles son sus señales de alarma?",
+      "category": "multi_evidence",
+      "answerable": true,
+      "gold_relevant_chunk_ids": [
+        "medlineplus_headache_001",
+        "medlineplus_headache_002"
+      ],
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_allergy_001",
+          "score": 0.5351494550704956,
+          "chunk": {
+            "chunk_id": "medlineplus_allergy_001",
+            "document_id": "medlineplus_allergy",
+            "title": "Allergies",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/allergy.html",
+            "section": "Symptoms and Severe Reactions",
+            "content": "Allergic reactions may cause sneezing, a runny nose, itching, skin rashes, swelling, or asthma-related symptoms. Some symptoms overlap with those of a common cold. The severity of reactions varies. Anaphylaxis is a severe allergic reaction that can be life-threatening and requires immediate emergency care."
+          }
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_allergy_000",
+          "score": 0.5073210597038269,
+          "chunk": {
+            "chunk_id": "medlineplus_allergy_000",
+            "document_id": "medlineplus_allergy",
+            "title": "Allergies",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/allergy.html",
+            "section": "Overview and Triggers",
+            "content": "An allergy occurs when the immune system reacts to a substance that is harmless to most other people. Triggers can include pollen, dust mites, mold, pet dander, certain foods, insect stings, and medicines. A person may be sensitive to several different allergens."
+          }
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_headache_002",
+          "score": 0.4785108268260956,
+          "chunk": {
+            "chunk_id": "medlineplus_headache_002",
+            "document_id": "medlineplus_headache",
+            "title": "Headache",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/headache.html",
+            "section": "Warning Signs",
+            "content": "Some headache patterns require prompt medical assessment. A sudden, very severe headache should be discussed urgently with a health care professional. Seek immediate medical help for headache following a head injury or headache accompanied by a stiff neck, fever, confusion, loss of consciousness, or significant eye or ear pain."
+          }
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_headache_001",
+          "score": 0.4638911187648773,
+          "chunk": {
+            "chunk_id": "medlineplus_headache_001",
+            "document_id": "medlineplus_headache",
+            "title": "Headache",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/headache.html",
+            "section": "Common Types and Triggers",
+            "content": "Tension-type headache is common and may involve tight muscles around the neck, shoulders, scalp, or jaw. Stress, lack of sleep, missed meals, and other lifestyle factors can contribute. Other headache types include migraine and cluster headache. Management may involve changes in habits, relaxation strategies, and suitable pain relief."
+          }
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_dehydration_002",
+          "score": 0.4332614541053772,
+          "chunk": {
+            "chunk_id": "medlineplus_dehydration_002",
+            "document_id": "medlineplus_dehydration",
+            "title": "Dehydration",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/dehydration.html",
+            "section": "Symptoms and Warning Signs",
+            "content": "In adults, signs may include thirst, dry mouth, dark urine, reduced urination, tiredness, and dizziness. In babies and young children, warning signs include a dry mouth, few or no tears, fewer wet diapers, unusual sleepiness, irritability, or sunken-looking eyes. Confusion, fainting, very little or no urination, rapid breathing, or a fast heartbeat may indicate severe dehydration and require urgent medical care."
+          }
+        }
+      ],
+      "baseline_messages": [
+        {
+          "role": "system",
+          "content": "Eres un asistente médico útil y preciso."
+        },
+        {
+          "role": "user",
+          "content": "\n        Instrucciones: Eres un asistente médico.\n        Responde DIRECTAMENTE al paciente (usa \"usted\") basándote SOLO en el \n        TEXTO OFICIAL.\n        Usa oraciones completas.\n        Sé empático con el paciente.\n\n        TEXTO OFICIAL:\n        [Context 1]\nTitle: Allergies\nSection: Symptoms and Severe Reactions\nSource: MedlinePlus - National Library of Medicine\nContent:\nAllergic reactions may cause sneezing, a runny nose, itching, skin rashes, swelling, or asthma-related symptoms. Some symptoms overlap with those of a common cold. The severity of reactions varies. Anaphylaxis is a severe allergic reaction that can be life-threatening and requires immediate emergency care.\n\n[Context 2]\nTitle: Allergies\nSection: Overview and Triggers\nSource: MedlinePlus - National Library of Medicine\nContent:\nAn allergy occurs when the immune system reacts to a substance that is harmless to most other people. Triggers can include pollen, dust mites, mold, pet dander, certain foods, insect stings, and medicines. A person may be sensitive to several different allergens.\n\n[Context 3]\nTitle: Headache\nSection: Warning Signs\nSource: MedlinePlus - National Library of Medicine\nContent:\nSome headache patterns require prompt medical assessment. A sudden, very severe headache should be discussed urgently with a health care professional. Seek immediate medical help for headache following a head injury or headache accompanied by a stiff neck, fever, confusion, loss of consciousness, or significant eye or ear pain.\n\n[Context 4]\nTitle: Headache\nSection: Common Types and Triggers\nSource: MedlinePlus - National Library of Medicine\nContent:\nTension-type headache is common and may involve tight muscles around the neck, shoulders, scalp, or jaw. Stress, lack of sleep, missed meals, and other lifestyle factors can contribute. Other headache types include migraine and cluster headache. Management may involve changes in habits, relaxation strategies, and suitable pain relief.\n\n[Context 5]\nTitle: Dehydration\nSection: Symptoms and Warning Signs\nSource: MedlinePlus - National Library of Medicine\nContent:\nIn adults, signs may include thirst, dry mouth, dark urine, reduced urination, tiredness, and dizziness. In babies and young children, warning signs include a dry mouth, few or no tears, fewer wet diapers, unusual sleepiness, irritability, or sunken-looking eyes. Confusion, fainting, very little or no urination, rapid breathing, or a fast heartbeat may indicate severe dehydration and require urgent medical care.\n\n        ---\n        PREGUNTA DEL PACIENTE: ¿Qué desencadenantes frecuentes se asocian a la cefalea y cuáles son sus señales de alarma?\n        \n        TU RESPUESTA AL PACIENTE:\n        "
+        }
+      ],
+      "baseline_response": "La cefalea puede ser causada por varias cosas frecuentes, como:\n\n- La exposición a sol o a fuma de tabaco\n- El uso de medicamentos tóxicos\n- La exposición a sustancias químicas industriales\n- La exposición a los alimentos que contienen proteínas\n- La exposición a las aguas contaminadas\n- La exposición a los agentes de polvo y dióxido de carbono\n- La exposición a los gases de escape de vehículos\n- La exposición a los productos de limpieza y mantenimiento\n- La exposición a los productos de alimentación\n- La exposición a los productos de cuidado personal\n- La exposición a los productos de higiene y seguridad\n- La exposición a los productos de protección contra enfermedades\n- La exposición a los productos de protección contra la muerte\n- La exposición a los productos de protección contra la pérdida\n- La exposición a los productos de protección contra el estrés\n- La exposición a los productos de protección contra el sueño\n- La exposición a los productos de protección contra el dolor\n- La exposición a los productos de protección",
+      "grounded_response": "Las principales causas frecuentes de la cegue (cerebrovascular accident) incluyen el estrés, la falta de sueño, el consumo excesivo de alcohol o medicamentos, y los cambios en la rutina diaria. Además, las personas pueden tener problemas con la memoria, la concentración, la percepción visual, la sensibilidad a la luz, y la sensibilidad a la temperatura. Si una persona experimenta un dolor de cabeza que proviene de una causa desconocida, es importante consultar a un profesional de la salud para determinar su causa y obtener tratamiento adecuado.",
+      "grounded_sources": [
+        {
+          "title": "Allergies",
+          "section": "Symptoms and Severe Reactions",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/allergy.html"
+        },
+        {
+          "title": "Allergies",
+          "section": "Overview and Triggers",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/allergy.html"
+        },
+        {
+          "title": "Headache",
+          "section": "Warning Signs",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/headache.html"
+        },
+        {
+          "title": "Headache",
+          "section": "Common Types and Triggers",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/headache.html"
+        },
+        {
+          "title": "Dehydration",
+          "section": "Symptoms and Warning Signs",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/dehydration.html"
+        }
+      ],
+      "grounded_llm_invoked": true,
+      "comparison_scope": "generation_prompts"
+    },
+    {
+      "query_id": "q_049",
+      "query": "En Demo Health Clinic, ¿con cuánto aviso se cancela un turno y cuánto lleva procesar una solicitud verificada de historia clínica?",
+      "category": "multi_evidence",
+      "answerable": true,
+      "gold_relevant_chunk_ids": [
+        "demo_clinic_appointment_policy_001",
+        "demo_clinic_medical_records_policy_002"
+      ],
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_appointment_policy_001",
+          "score": 0.6943350434303284,
+          "chunk": {
+            "chunk_id": "demo_clinic_appointment_policy_001",
+            "document_id": "demo_clinic_appointment_policy",
+            "title": "Appointment Policy",
+            "source": "Demo Health Clinic (Synthetic)",
+            "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy",
+            "section": "Cancellation Policy",
+            "content": "DEMO POLICY — In this simulation, patients are asked to cancel or reschedule at least 24 hours before the scheduled visit. Requests with less notice are handled by the fictional reception team and may require a new booking. No charges, penalties, or refunds are defined by this demonstration policy; questions about fees cannot be answered from this document."
+          }
+        },
+        {
+          "rank": 2,
+          "chunk_id": "demo_clinic_laboratory_results_policy_001",
+          "score": 0.6933302283287048,
+          "chunk": {
+            "chunk_id": "demo_clinic_laboratory_results_policy_001",
+            "document_id": "demo_clinic_laboratory_results_policy",
+            "title": "Laboratory Results Policy",
+            "source": "Demo Health Clinic (Synthetic)",
+            "source_url": "urn:medical-chatbot-sim:demo-health-clinic:laboratory-results-policy",
+            "section": "Result Availability and Delays",
+            "content": "DEMO POLICY — In this simulation, released reports typically appear in the portal within two business days after the clinic receives a finalized laboratory report. This is a fictional administrative turnaround, not a statement about how long a complete blood count, throat culture, or any particular test takes in real practice. Some reports may require further review, and no exact release time is guaranteed."
+          }
+        },
+        {
+          "rank": 3,
+          "chunk_id": "demo_clinic_appointment_policy_000",
+          "score": 0.6868394613265991,
+          "chunk": {
+            "chunk_id": "demo_clinic_appointment_policy_000",
+            "document_id": "demo_clinic_appointment_policy",
+            "title": "Appointment Policy",
+            "source": "Demo Health Clinic (Synthetic)",
+            "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy",
+            "section": "Booking and Rescheduling",
+            "content": "DEMO POLICY — This document describes a fictional clinic used only for software testing. Demo Health Clinic accepts appointment requests through its simulated patient portal or a simulated reception desk. A patient can request a new visit, ask to change its date, or request a different type of appointment. A request is not a confirmed booking until the clinic sends a confirmation."
+          }
+        },
+        {
+          "rank": 4,
+          "chunk_id": "demo_clinic_medical_records_policy_002",
+          "score": 0.5879771709442139,
+          "chunk": {
+            "chunk_id": "demo_clinic_medical_records_policy_002",
+            "document_id": "demo_clinic_medical_records_policy",
+            "title": "Medical Records Policy",
+            "source": "Demo Health Clinic (Synthetic)",
+            "source_url": "urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy",
+            "section": "Processing and Delivery",
+            "content": "DEMO POLICY — The simulated records desk aims to process a complete, verified request within seven business days. Records are made available in the simulated secure portal rather than in ordinary email attachments. This is a fictional service target, not a legal deadline or a guarantee for any actual health care provider."
+          }
+        },
+        {
+          "rank": 5,
+          "chunk_id": "demo_clinic_medical_records_policy_000",
+          "score": 0.5658743977546692,
+          "chunk": {
+            "chunk_id": "demo_clinic_medical_records_policy_000",
+            "document_id": "demo_clinic_medical_records_policy",
+            "title": "Medical Records Policy",
+            "source": "Demo Health Clinic (Synthetic)",
+            "source_url": "urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy",
+            "section": "Requesting a Copy",
+            "content": "DEMO POLICY — This is a fictional administrative policy for testing retrieval. In the Demo Health Clinic simulation, a patient can request a copy of their own medical record through the simulated patient portal or by contacting the simulated records desk. Requests specify which documents or date range the patient needs."
+          }
+        }
+      ],
+      "baseline_messages": [
+        {
+          "role": "system",
+          "content": "Eres un asistente médico útil y preciso."
+        },
+        {
+          "role": "user",
+          "content": "\n        Instrucciones: Eres un asistente médico.\n        Responde DIRECTAMENTE al paciente (usa \"usted\") basándote SOLO en el \n        TEXTO OFICIAL.\n        Usa oraciones completas.\n        Sé empático con el paciente.\n\n        TEXTO OFICIAL:\n        [Context 1]\nTitle: Appointment Policy\nSection: Cancellation Policy\nSource: Demo Health Clinic (Synthetic)\nContent:\nDEMO POLICY — In this simulation, patients are asked to cancel or reschedule at least 24 hours before the scheduled visit. Requests with less notice are handled by the fictional reception team and may require a new booking. No charges, penalties, or refunds are defined by this demonstration policy; questions about fees cannot be answered from this document.\n\n[Context 2]\nTitle: Laboratory Results Policy\nSection: Result Availability and Delays\nSource: Demo Health Clinic (Synthetic)\nContent:\nDEMO POLICY — In this simulation, released reports typically appear in the portal within two business days after the clinic receives a finalized laboratory report. This is a fictional administrative turnaround, not a statement about how long a complete blood count, throat culture, or any particular test takes in real practice. Some reports may require further review, and no exact release time is guaranteed.\n\n[Context 3]\nTitle: Appointment Policy\nSection: Booking and Rescheduling\nSource: Demo Health Clinic (Synthetic)\nContent:\nDEMO POLICY — This document describes a fictional clinic used only for software testing. Demo Health Clinic accepts appointment requests through its simulated patient portal or a simulated reception desk. A patient can request a new visit, ask to change its date, or request a different type of appointment. A request is not a confirmed booking until the clinic sends a confirmation.\n\n[Context 4]\nTitle: Medical Records Policy\nSection: Processing and Delivery\nSource: Demo Health Clinic (Synthetic)\nContent:\nDEMO POLICY — The simulated records desk aims to process a complete, verified request within seven business days. Records are made available in the simulated secure portal rather than in ordinary email attachments. This is a fictional service target, not a legal deadline or a guarantee for any actual health care provider.\n\n[Context 5]\nTitle: Medical Records Policy\nSection: Requesting a Copy\nSource: Demo Health Clinic (Synthetic)\nContent:\nDEMO POLICY — This is a fictional administrative policy for testing retrieval. In the Demo Health Clinic simulation, a patient can request a copy of their own medical record through the simulated patient portal or by contacting the simulated records desk. Requests specify which documents or date range the patient needs.\n\n        ---\n        PREGUNTA DEL PACIENTE: En Demo Health Clinic, ¿con cuánto aviso se cancela un turno y cuánto lleva procesar una solicitud verificada de historia clínica?\n        \n        TU RESPUESTA AL PACIENTE:\n        "
+        }
+      ],
+      "baseline_response": "Usted puede cancelar su visita en demoHealthClinic antes de 24 horas y la atención médica se procesará dentro de los 7 días siguientes.",
+      "grounded_response": "El tiempo que se le pide para cancelar un turno en Demo Health Clinic es de al menos 24 horas antes del evento. En cuanto a la procesamiento de una solicitud verificada de historia clínica, el tiempo que se le pide para hacerlo es de aproximadamente 7 días desde la fecha de la solicitud.",
+      "grounded_sources": [
+        {
+          "title": "Appointment Policy",
+          "section": "Cancellation Policy",
+          "source": "Demo Health Clinic (Synthetic)",
+          "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy"
+        },
+        {
+          "title": "Laboratory Results Policy",
+          "section": "Result Availability and Delays",
+          "source": "Demo Health Clinic (Synthetic)",
+          "source_url": "urn:medical-chatbot-sim:demo-health-clinic:laboratory-results-policy"
+        },
+        {
+          "title": "Appointment Policy",
+          "section": "Booking and Rescheduling",
+          "source": "Demo Health Clinic (Synthetic)",
+          "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy"
+        },
+        {
+          "title": "Medical Records Policy",
+          "section": "Processing and Delivery",
+          "source": "Demo Health Clinic (Synthetic)",
+          "source_url": "urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy"
+        },
+        {
+          "title": "Medical Records Policy",
+          "section": "Requesting a Copy",
+          "source": "Demo Health Clinic (Synthetic)",
+          "source_url": "urn:medical-chatbot-sim:demo-health-clinic:medical-records-policy"
+        }
+      ],
+      "grounded_llm_invoked": true,
+      "comparison_scope": "generation_prompts"
+    },
+    {
+      "query_id": "q_052",
+      "query": "Según mi historia clínica, ¿a qué sustancias soy alérgico?",
+      "category": "in_domain_unsupported",
+      "answerable": false,
+      "gold_relevant_chunk_ids": [],
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_allergy_000",
+          "score": 0.5834411382675171,
+          "chunk": {
+            "chunk_id": "medlineplus_allergy_000",
+            "document_id": "medlineplus_allergy",
+            "title": "Allergies",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/allergy.html",
+            "section": "Overview and Triggers",
+            "content": "An allergy occurs when the immune system reacts to a substance that is harmless to most other people. Triggers can include pollen, dust mites, mold, pet dander, certain foods, insect stings, and medicines. A person may be sensitive to several different allergens."
+          }
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_allergy_001",
+          "score": 0.5459108352661133,
+          "chunk": {
+            "chunk_id": "medlineplus_allergy_001",
+            "document_id": "medlineplus_allergy",
+            "title": "Allergies",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/allergy.html",
+            "section": "Symptoms and Severe Reactions",
+            "content": "Allergic reactions may cause sneezing, a runny nose, itching, skin rashes, swelling, or asthma-related symptoms. Some symptoms overlap with those of a common cold. The severity of reactions varies. Anaphylaxis is a severe allergic reaction that can be life-threatening and requires immediate emergency care."
+          }
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_allergy_002",
+          "score": 0.4764394164085388,
+          "chunk": {
+            "chunk_id": "medlineplus_allergy_002",
+            "document_id": "medlineplus_allergy",
+            "title": "Allergies",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/allergy.html",
+            "section": "Diagnosis and Management",
+            "content": "Health care professionals use the history of reactions and, when appropriate, skin or blood tests to investigate allergies. Management may include reducing exposure to identified allergens, medicines, and allergen immunotherapy. The treatment choice depends on the allergen, symptoms, and severity."
+          }
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_common_cold_003",
+          "score": 0.35884979367256165,
+          "chunk": {
+            "chunk_id": "medlineplus_common_cold_003",
+            "document_id": "medlineplus_common_cold",
+            "title": "Common Cold",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/commoncold.html",
+            "section": "Prevention",
+            "content": "Frequent handwashing, covering coughs and sneezes, cleaning commonly touched surfaces, and limiting close contact when sick reduce opportunities for spread. Avoid touching the eyes, nose, and mouth with unwashed hands. There is no vaccine against the common cold."
+          }
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_common_cold_001",
+          "score": 0.31822046637535095,
+          "chunk": {
+            "chunk_id": "medlineplus_common_cold_001",
+            "document_id": "medlineplus_common_cold",
+            "title": "Common Cold",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/commoncold.html",
+            "section": "Symptoms",
+            "content": "Typical symptoms include sneezing, a runny or blocked nose, sore throat, cough, and sometimes headache. Symptoms generally begin a few days after infection and may continue for one to two weeks. Similar complaints can also occur with influenza or allergies, so symptoms alone do not always identify the cause."
+          }
+        }
+      ],
+      "baseline_messages": [
+        {
+          "role": "system",
+          "content": "Eres un asistente médico útil y preciso."
+        },
+        {
+          "role": "user",
+          "content": "\n        Instrucciones: Eres un asistente médico.\n        Responde DIRECTAMENTE al paciente (usa \"usted\") basándote SOLO en el \n        TEXTO OFICIAL.\n        Usa oraciones completas.\n        Sé empático con el paciente.\n\n        TEXTO OFICIAL:\n        [Context 1]\nTitle: Allergies\nSection: Overview and Triggers\nSource: MedlinePlus - National Library of Medicine\nContent:\nAn allergy occurs when the immune system reacts to a substance that is harmless to most other people. Triggers can include pollen, dust mites, mold, pet dander, certain foods, insect stings, and medicines. A person may be sensitive to several different allergens.\n\n[Context 2]\nTitle: Allergies\nSection: Symptoms and Severe Reactions\nSource: MedlinePlus - National Library of Medicine\nContent:\nAllergic reactions may cause sneezing, a runny nose, itching, skin rashes, swelling, or asthma-related symptoms. Some symptoms overlap with those of a common cold. The severity of reactions varies. Anaphylaxis is a severe allergic reaction that can be life-threatening and requires immediate emergency care.\n\n[Context 3]\nTitle: Allergies\nSection: Diagnosis and Management\nSource: MedlinePlus - National Library of Medicine\nContent:\nHealth care professionals use the history of reactions and, when appropriate, skin or blood tests to investigate allergies. Management may include reducing exposure to identified allergens, medicines, and allergen immunotherapy. The treatment choice depends on the allergen, symptoms, and severity.\n\n[Context 4]\nTitle: Common Cold\nSection: Prevention\nSource: MedlinePlus - National Library of Medicine\nContent:\nFrequent handwashing, covering coughs and sneezes, cleaning commonly touched surfaces, and limiting close contact when sick reduce opportunities for spread. Avoid touching the eyes, nose, and mouth with unwashed hands. There is no vaccine against the common cold.\n\n[Context 5]\nTitle: Common Cold\nSection: Symptoms\nSource: MedlinePlus - National Library of Medicine\nContent:\nTypical symptoms include sneezing, a runny or blocked nose, sore throat, cough, and sometimes headache. Symptoms generally begin a few days after infection and may continue for one to two weeks. Similar complaints can also occur with influenza or allergies, so symptoms alone do not always identify the cause.\n\n        ---\n        PREGUNTA DEL PACIENTE: Según mi historia clínica, ¿a qué sustancias soy alérgico?\n        \n        TU RESPUESTA AL PACIENTE:\n        "
+        }
+      ],
+      "baseline_response": "Usted es alérgico a la pollenización.",
+      "grounded_response": "Según mi historia clínica, soy alérgico a varios factores como la pollen, el delfin, los mosquitos y las bacterias.",
+      "grounded_sources": [
+        {
+          "title": "Allergies",
+          "section": "Overview and Triggers",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/allergy.html"
+        },
+        {
+          "title": "Allergies",
+          "section": "Symptoms and Severe Reactions",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/allergy.html"
+        },
+        {
+          "title": "Allergies",
+          "section": "Diagnosis and Management",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/allergy.html"
+        },
+        {
+          "title": "Common Cold",
+          "section": "Prevention",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/commoncold.html"
+        },
+        {
+          "title": "Common Cold",
+          "section": "Symptoms",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/commoncold.html"
+        }
+      ],
+      "grounded_llm_invoked": true,
+      "comparison_scope": "generation_prompts"
+    },
+    {
+      "query_id": "q_057",
+      "query": "¿Cuál es la capital de Islandia?",
+      "category": "out_of_domain",
+      "answerable": false,
+      "gold_relevant_chunk_ids": [],
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence": [],
+      "baseline_messages": [
+        {
+          "role": "system",
+          "content": "Eres un asistente médico útil y preciso."
+        },
+        {
+          "role": "user",
+          "content": "\n        Instrucciones: Eres un asistente médico.\n        Responde DIRECTAMENTE al paciente (usa \"usted\") basándote SOLO en el \n        TEXTO OFICIAL.\n        Usa oraciones completas.\n        Sé empático con el paciente.\n\n        TEXTO OFICIAL:\n        No hay información específica en la base de datos.Respuesta obligatoria: Lo siento, no hay información al respecto.\n\n        ---\n        PREGUNTA DEL PACIENTE: ¿Cuál es la capital de Islandia?\n        \n        TU RESPUESTA AL PACIENTE:\n        "
+        }
+      ],
+      "baseline_response": "La capital de Islandia es Tartu.",
+      "grounded_response": "No dispongo de información suficiente en la base de conocimientos para responder esa pregunta.",
+      "grounded_sources": [],
+      "grounded_llm_invoked": false,
+      "comparison_scope": "service_fallback"
+    },
+    {
+      "query_id": "pilot_partial_001",
+      "query": "En Demo Health Clinic, ¿con cuánta anticipación debo cancelar un turno y cuánto me cobran si cancelo tarde?",
+      "category": "synthetic_partial_evidence",
+      "answerable": false,
+      "gold_relevant_chunk_ids": [
+        "demo_clinic_appointment_policy_001"
+      ],
+      "evidence_origin": "manually_selected_evidence",
+      "evidence": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_appointment_policy_001",
+          "score": null,
+          "chunk": {
+            "chunk_id": "demo_clinic_appointment_policy_001",
+            "document_id": "demo_clinic_appointment_policy",
+            "title": "Appointment Policy",
+            "source": "Demo Health Clinic (Synthetic)",
+            "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy",
+            "section": "Cancellation Policy",
+            "content": "DEMO POLICY — In this simulation, patients are asked to cancel or reschedule at least 24 hours before the scheduled visit. Requests with less notice are handled by the fictional reception team and may require a new booking. No charges, penalties, or refunds are defined by this demonstration policy; questions about fees cannot be answered from this document."
+          }
+        }
+      ],
+      "baseline_messages": [
+        {
+          "role": "system",
+          "content": "Eres un asistente médico útil y preciso."
+        },
+        {
+          "role": "user",
+          "content": "\n        Instrucciones: Eres un asistente médico.\n        Responde DIRECTAMENTE al paciente (usa \"usted\") basándote SOLO en el \n        TEXTO OFICIAL.\n        Usa oraciones completas.\n        Sé empático con el paciente.\n\n        TEXTO OFICIAL:\n        [Context 1]\nTitle: Appointment Policy\nSection: Cancellation Policy\nSource: Demo Health Clinic (Synthetic)\nContent:\nDEMO POLICY — In this simulation, patients are asked to cancel or reschedule at least 24 hours before the scheduled visit. Requests with less notice are handled by the fictional reception team and may require a new booking. No charges, penalties, or refunds are defined by this demonstration policy; questions about fees cannot be answered from this document.\n\n        ---\n        PREGUNTA DEL PACIENTE: En Demo Health Clinic, ¿con cuánta anticipación debo cancelar un turno y cuánto me cobran si cancelo tarde?\n        \n        TU RESPUESTA AL PACIENTE:\n        "
+        }
+      ],
+      "baseline_response": "Usted debe cancelar su turno 24 horas antes del evento. Si cancela tarde, usted tendrá que pagar una multa de $50 por hora.",
+      "grounded_response": "Para cancelar un turno en Demo Health Clinic, debes cancelarlo al menos 24 horas antes del evento. Si cancelas tarde, te cobraremos una multa de $10 por hora.",
+      "grounded_sources": [
+        {
+          "title": "Appointment Policy",
+          "section": "Cancellation Policy",
+          "source": "Demo Health Clinic (Synthetic)",
+          "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy"
+        }
+      ],
+      "grounded_llm_invoked": true,
+      "comparison_scope": "generation_prompts"
+    }
+  ]
+}

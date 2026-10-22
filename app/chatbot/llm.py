@@ -12,6 +12,7 @@ class QwenLLM:
     def __init__(
         self,
         model_name: str = "Qwen/Qwen2.5-0.5B-Instruct",
+        do_sample: bool = True,
     ):
         """
         Initialize a new llm.
@@ -49,6 +50,9 @@ class QwenLLM:
         )
         self.model.eval()
 
+        # Set the sampling strategy
+        self.do_sample = do_sample
+
     def generate(self, messages: list[dict[str, str]]) -> str:
         """
         Performs the llm work: Generates a response given the messages.
@@ -77,15 +81,24 @@ class QwenLLM:
             return_tensors="pt",
         ).to(self.device)
 
-        # Generate the output
+        # Define the generation parameters
+        generation_kwargs = {
+            "max_new_tokens": 256,
+            "do_sample": self.do_sample,
+        }
+
+        # If sampling is enabled, set temperature and top_p for diversity
+        if self.do_sample:
+            generation_kwargs.update(
+                temperature=0.1,
+                top_p=0.9,
+            )
+
+        # Generate the response using the model
         outputs = self.model.generate(
             **inputs,
-            max_new_tokens=256,
-            do_sample=True,
-            temperature=0.1,
-            top_p=0.9,
+            **generation_kwargs,
         )
-
         # Decode the new response
         response = self.tokenizer.decode(
             outputs[0][inputs.input_ids.shape[1] :],

@@ -1,0 +1,195 @@
+{
+  "study": "class_7_grounded_generation_exploratory_pilot",
+  "created_at_utc": "2026-10-22T13:45:34.088295+00:00",
+  "development_only": true,
+  "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": 256
+  },
+  "retrieval": {
+    "source": "results/retrieval_dev.json",
+    "catalog": "datasets/chunk_catalog.json",
+    "top_k": 5,
+    "frozen_top1_threshold": 0.3,
+    "catalog_sha256": "f31d335bdf454373ff93212e52bdecf20a05b98d097baeeaccaa15318d0b71d8",
+    "notes": "No embedding inference or retrieval reruns performed."
+  },
+  "comparison": "Old service prompt/context versus new service prompt/context. Q057 additionally compares old LLM fallback with new deterministic service fallback; it is NOT a prompt-only comparison.",
+  "cases": [
+    {
+      "query_id": "q_052",
+      "query": "Según mi historia clínica, ¿a qué sustancias soy alérgico?",
+      "category": "in_domain_unsupported",
+      "answerable": false,
+      "gold_relevant_chunk_ids": [],
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence": [
+        {
+          "rank": 1,
+          "chunk_id": "medlineplus_allergy_000",
+          "score": 0.5834411382675171,
+          "chunk": {
+            "chunk_id": "medlineplus_allergy_000",
+            "document_id": "medlineplus_allergy",
+            "title": "Allergies",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/allergy.html",
+            "section": "Overview and Triggers",
+            "content": "An allergy occurs when the immune system reacts to a substance that is harmless to most other people. Triggers can include pollen, dust mites, mold, pet dander, certain foods, insect stings, and medicines. A person may be sensitive to several different allergens."
+          }
+        },
+        {
+          "rank": 2,
+          "chunk_id": "medlineplus_allergy_001",
+          "score": 0.5459108352661133,
+          "chunk": {
+            "chunk_id": "medlineplus_allergy_001",
+            "document_id": "medlineplus_allergy",
+            "title": "Allergies",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/allergy.html",
+            "section": "Symptoms and Severe Reactions",
+            "content": "Allergic reactions may cause sneezing, a runny nose, itching, skin rashes, swelling, or asthma-related symptoms. Some symptoms overlap with those of a common cold. The severity of reactions varies. Anaphylaxis is a severe allergic reaction that can be life-threatening and requires immediate emergency care."
+          }
+        },
+        {
+          "rank": 3,
+          "chunk_id": "medlineplus_allergy_002",
+          "score": 0.4764394164085388,
+          "chunk": {
+            "chunk_id": "medlineplus_allergy_002",
+            "document_id": "medlineplus_allergy",
+            "title": "Allergies",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/allergy.html",
+            "section": "Diagnosis and Management",
+            "content": "Health care professionals use the history of reactions and, when appropriate, skin or blood tests to investigate allergies. Management may include reducing exposure to identified allergens, medicines, and allergen immunotherapy. The treatment choice depends on the allergen, symptoms, and severity."
+          }
+        },
+        {
+          "rank": 4,
+          "chunk_id": "medlineplus_common_cold_003",
+          "score": 0.35884979367256165,
+          "chunk": {
+            "chunk_id": "medlineplus_common_cold_003",
+            "document_id": "medlineplus_common_cold",
+            "title": "Common Cold",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/commoncold.html",
+            "section": "Prevention",
+            "content": "Frequent handwashing, covering coughs and sneezes, cleaning commonly touched surfaces, and limiting close contact when sick reduce opportunities for spread. Avoid touching the eyes, nose, and mouth with unwashed hands. There is no vaccine against the common cold."
+          }
+        },
+        {
+          "rank": 5,
+          "chunk_id": "medlineplus_common_cold_001",
+          "score": 0.31822046637535095,
+          "chunk": {
+            "chunk_id": "medlineplus_common_cold_001",
+            "document_id": "medlineplus_common_cold",
+            "title": "Common Cold",
+            "source": "MedlinePlus - National Library of Medicine",
+            "source_url": "https://medlineplus.gov/commoncold.html",
+            "section": "Symptoms",
+            "content": "Typical symptoms include sneezing, a runny or blocked nose, sore throat, cough, and sometimes headache. Symptoms generally begin a few days after infection and may continue for one to two weeks. Similar complaints can also occur with influenza or allergies, so symptoms alone do not always identify the cause."
+          }
+        }
+      ],
+      "baseline_messages": [
+        {
+          "role": "system",
+          "content": "Eres un asistente médico útil y preciso."
+        },
+        {
+          "role": "user",
+          "content": "\n        Instrucciones: Eres un asistente médico.\n        Responde DIRECTAMENTE al paciente (usa \"usted\") basándote SOLO en el \n        TEXTO OFICIAL.\n        Usa oraciones completas.\n        Sé empático con el paciente.\n\n        TEXTO OFICIAL:\n        [Context 1]\nTitle: Allergies\nSection: Overview and Triggers\nSource: MedlinePlus - National Library of Medicine\nContent:\nAn allergy occurs when the immune system reacts to a substance that is harmless to most other people. Triggers can include pollen, dust mites, mold, pet dander, certain foods, insect stings, and medicines. A person may be sensitive to several different allergens.\n\n[Context 2]\nTitle: Allergies\nSection: Symptoms and Severe Reactions\nSource: MedlinePlus - National Library of Medicine\nContent:\nAllergic reactions may cause sneezing, a runny nose, itching, skin rashes, swelling, or asthma-related symptoms. Some symptoms overlap with those of a common cold. The severity of reactions varies. Anaphylaxis is a severe allergic reaction that can be life-threatening and requires immediate emergency care.\n\n[Context 3]\nTitle: Allergies\nSection: Diagnosis and Management\nSource: MedlinePlus - National Library of Medicine\nContent:\nHealth care professionals use the history of reactions and, when appropriate, skin or blood tests to investigate allergies. Management may include reducing exposure to identified allergens, medicines, and allergen immunotherapy. The treatment choice depends on the allergen, symptoms, and severity.\n\n[Context 4]\nTitle: Common Cold\nSection: Prevention\nSource: MedlinePlus - National Library of Medicine\nContent:\nFrequent handwashing, covering coughs and sneezes, cleaning commonly touched surfaces, and limiting close contact when sick reduce opportunities for spread. Avoid touching the eyes, nose, and mouth with unwashed hands. There is no vaccine against the common cold.\n\n[Context 5]\nTitle: Common Cold\nSection: Symptoms\nSource: MedlinePlus - National Library of Medicine\nContent:\nTypical symptoms include sneezing, a runny or blocked nose, sore throat, cough, and sometimes headache. Symptoms generally begin a few days after infection and may continue for one to two weeks. Similar complaints can also occur with influenza or allergies, so symptoms alone do not always identify the cause.\n\n        ---\n        PREGUNTA DEL PACIENTE: Según mi historia clínica, ¿a qué sustancias soy alérgico?\n        \n        TU RESPUESTA AL PACIENTE:\n        "
+        }
+      ],
+      "baseline_response": "Según la información proporcionada en los contextos anteriores, parece que usted es alérgico a varios tipos de sustancias. Estas incluyen:\n\n- Pollen\n- Dust mites\n- Mold\n- Pet dander\n- Algunos alimentos\n- Insectos como mosquitos o pulgas\n- Medicamentos\n\nEs importante recordar que cada persona puede ser alérgica a diferentes sustancias. Si tiene alguna duda sobre sus síntomas o necesitas más detalles sobre cómo manejar su alergia, sería beneficioso consultar con un profesional de la salud para obtener una evaluación personalizada.",
+      "grounded_response": "Basado en el contexto proporcionado, parece que la persona es alérgica a varios tipos de sustancias. Según los contextos disponibles, las sustancias más comunes incluyen:\n\n- Piel (dust mites)\n- Alimentos (alérgenos alimentarios)\n- Medicamentos (medicines)\n\nSin embargo, no se menciona específicamente cuáles son sus sustancias alérgicas en cada caso. Para obtener una lista completa y precisa de sus sustancias alérgicas, sería necesario consultar con un profesional de la salud o realizar pruebas médicas adecuadas.",
+      "grounded_sources": [
+        {
+          "title": "Allergies",
+          "section": "Overview and Triggers",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/allergy.html"
+        },
+        {
+          "title": "Allergies",
+          "section": "Symptoms and Severe Reactions",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/allergy.html"
+        },
+        {
+          "title": "Allergies",
+          "section": "Diagnosis and Management",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/allergy.html"
+        },
+        {
+          "title": "Common Cold",
+          "section": "Prevention",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/commoncold.html"
+        },
+        {
+          "title": "Common Cold",
+          "section": "Symptoms",
+          "source": "MedlinePlus - National Library of Medicine",
+          "source_url": "https://medlineplus.gov/commoncold.html"
+        }
+      ],
+      "grounded_llm_invoked": true,
+      "comparison_scope": "generation_prompts"
+    },
+    {
+      "query_id": "pilot_partial_001",
+      "query": "En Demo Health Clinic, ¿con cuánta anticipación debo cancelar un turno y cuánto me cobran si cancelo tarde?",
+      "category": "synthetic_partial_evidence",
+      "answerable": false,
+      "gold_relevant_chunk_ids": [
+        "demo_clinic_appointment_policy_001"
+      ],
+      "evidence_origin": "manually_selected_evidence",
+      "evidence": [
+        {
+          "rank": 1,
+          "chunk_id": "demo_clinic_appointment_policy_001",
+          "score": null,
+          "chunk": {
+            "chunk_id": "demo_clinic_appointment_policy_001",
+            "document_id": "demo_clinic_appointment_policy",
+            "title": "Appointment Policy",
+            "source": "Demo Health Clinic (Synthetic)",
+            "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy",
+            "section": "Cancellation Policy",
+            "content": "DEMO POLICY — In this simulation, patients are asked to cancel or reschedule at least 24 hours before the scheduled visit. Requests with less notice are handled by the fictional reception team and may require a new booking. No charges, penalties, or refunds are defined by this demonstration policy; questions about fees cannot be answered from this document."
+          }
+        }
+      ],
+      "baseline_messages": [
+        {
+          "role": "system",
+          "content": "Eres un asistente médico útil y preciso."
+        },
+        {
+          "role": "user",
+          "content": "\n        Instrucciones: Eres un asistente médico.\n        Responde DIRECTAMENTE al paciente (usa \"usted\") basándote SOLO en el \n        TEXTO OFICIAL.\n        Usa oraciones completas.\n        Sé empático con el paciente.\n\n        TEXTO OFICIAL:\n        [Context 1]\nTitle: Appointment Policy\nSection: Cancellation Policy\nSource: Demo Health Clinic (Synthetic)\nContent:\nDEMO POLICY — In this simulation, patients are asked to cancel or reschedule at least 24 hours before the scheduled visit. Requests with less notice are handled by the fictional reception team and may require a new booking. No charges, penalties, or refunds are defined by this demonstration policy; questions about fees cannot be answered from this document.\n\n        ---\n        PREGUNTA DEL PACIENTE: En Demo Health Clinic, ¿con cuánta anticipación debo cancelar un turno y cuánto me cobran si cancelo tarde?\n        \n        TU RESPUESTA AL PACIENTE:\n        "
+        }
+      ],
+      "baseline_response": "Usted debe cancelar su cita con al menos 24 horas de antelación para evitar gastos adicionales. Si decide cancelar la cita después del tiempo mínimo recomendado, deberá pagar una tarifa adicional por la interrupción del servicio. Por favor, consulte directamente con el personal de atención al cliente o con su médico para obtener más detalles específicos sobre las políticas de cancelación y sus costos.",
+      "grounded_response": "Según el documento proporcionado, en Demo Health Clinic, debes cancelar tu cita al menos 24 horas antes para evitar gastos adicionales. Si cancelas la cita tarde, no se te aplicará ningún costo adicional.",
+      "grounded_sources": [
+        {
+          "title": "Appointment Policy",
+          "section": "Cancellation Policy",
+          "source": "Demo Health Clinic (Synthetic)",
+          "source_url": "urn:medical-chatbot-sim:demo-health-clinic:appointment-policy"
+        }
+      ],
+      "grounded_llm_invoked": true,
+      "comparison_scope": "generation_prompts"
+    }
+  ]
+}
