@@ -28,7 +28,7 @@ def load_inputs():
         load_file(EVALUATION / "datasets" / "sufficiency_dev.json"),
         load_file(EVALUATION / "datasets" / "chunk_catalog.json"),
         load_file(EVALUATION / "datasets" / "retrieval_dev.json"),
-        load_file(EVALUATION / "results" / "retrieval_dev.json"),
+        load_file(EVALUATION / "results" / "retrieval" / "retrieval_dev.json"),
     )
 
 

@@ -118,7 +118,7 @@ With the fixed threshold `0.30`, the held-out test gate accepted all **45/45 ans
 **Interpretation limits:** The KB is small; the questions are mostly curated from the source material rather than sampled from clinical interactions; and development/test share documents, topics, and some underlying facts. This is a held-out **question-level retrieval benchmark**, not proof of real-world multilingual robustness, diagnostic correctness, or patient safety. Only one gold evidence set is annotated per question.
 
 **Explore the analysis:** [`evaluation/retrieval_analysis.ipynb`](evaluation/retrieval_analysis.ipynb)  
-**Methodology and full results:** [`evaluation/RETRIEVAL_BENCHMARK_PROTOCOL.md`](evaluation/RETRIEVAL_BENCHMARK_PROTOCOL.md)
+**Methodology and full results:** [`evaluation/retrieval_analysis.ipynb`](evaluation/retrieval_analysis.ipynb)
 
 ## Exploratory generation evaluation
 
@@ -136,7 +136,7 @@ The no-context fallback improved through deterministic application logic,
 not prompt wording. Neither model has been validated for clinical use.
 
 **Methodology, observed responses, limitations, and reproduction commands:**
-[`evaluation/GENERATION_PILOT_REPORT.md`](evaluation/GENERATION_PILOT_REPORT.md).
+[`evaluation/generation_analysis.ipynb`](evaluation/generation_analysis.ipynb).
 Saved development outputs are in [`evaluation/results/generation/`](evaluation/results/generation/).
 
 ## Experimental evidence-completeness assessment
@@ -181,48 +181,27 @@ The notebook opens and analyzes saved results without loading the LLM.
 ```text
 .
 ├── app/
-│   ├── main.py                  # Composition root
-│   ├── api.py                   # FastAPI integration
-│   ├── schemas.py               # API models
-│   └── chatbot/
-│       ├── knowledge.py         # Markdown loading
-│       ├── chunking.py          # Section chunks
-│       ├── retrieval.py         # MiniLM and semantic search
-│       ├── service.py           # Context, generation, provenance
-│       ├── llm.py               # Local Qwen interface
-│       └── models.py            # Domain models
-├── data/knowledge/             # English-language source documents
+│   ├── main.py                     # Composition root and opt-in gate flag
+│   ├── api.py                      # FastAPI endpoints
+│   └── chatbot/                    # Retrieval, grounded generation, evidence gate
+├── data/knowledge/                # Frozen English educational and demo-policy KB
 ├── evaluation/
-│   ├── RETRIEVAL_BENCHMARK_PROTOCOL.md
-│   ├── GENERATION_PILOT_REPORT.md
-│   ├── retrieval_analysis.ipynb
-│   ├── sufficiency_analysis.ipynb
-│   ├── build_chunk_catalog.py
-│   ├── validate_retrieval_dataset.py
-│   ├── retrieval_metrics.py
-│   ├── run_retrieval_benchmark.py
-│   ├── run_grounding_pilot.py
-│   ├── run_oracle_context_pilot.py
-│   ├── summarize_retrieval_results.py
-│   ├── evaluate_retrieval_threshold.py
-│   ├── datasets/
-│   │   ├── chunk_catalog.json
-│   │   ├── retrieval_dev.json
-│   │   └── retrieval_test.json
+│   ├── retrieval_analysis.ipynb    # Ranking, threshold and holdout evaluation
+│   ├── generation_analysis.ipynb   # Qualitative Qwen prompt / oracle pilots
+│   ├── sufficiency_analysis.ipynb  # Binary gate and counterfactual diagnostics
+│   ├── validate_sufficiency_dataset.py
+│   ├── datasets/                   # Frozen annotated queries / chunk snapshots
 │   └── results/
-│       ├── retrieval_dev.json
-│       ├── retrieval_test.json
-│       ├── retrieval_summary_dev.json
-│       ├── retrieval_summary_test.json
-│       ├── retrieval_threshold_dev.json
-│       ├── retrieval_threshold_test.json
-│       └── generation/          # Exploratory generation pilot outputs
-├── tests/
-├── chat_test.py
+│       ├── retrieval/              # Frozen Top-5 rankings (dev and test)
+│       ├── generation/             # Historical Qwen responses
+│       └── sufficiency/            # Full development and counterfactual outputs
+├── tests/                          # Unit tests for the running chatbot and validation
 ├── requirements.txt
 ├── Dockerfile
 └── README.md
 ```
+
+Each notebook contains its own experimental protocol, derived metrics, result visualizations, limitations and conclusions. Notebooks load saved JSON by default rather than repeatedly invoking language models. The sufficiency annotations are still **draft, pending author sign-off**.
 
 ## Run locally
 
@@ -253,28 +232,21 @@ docker build -t medical-chatbot .
 docker run -p 8000:8000 medical-chatbot
 ```
 
-### Tests and benchmark
-
-Install test and notebook tooling separately from the application dependencies if needed:
+### Tests and evaluation notebooks
 
 ```bash
-pip install pytest pandas numpy matplotlib jupyter
-pytest -q
+python -m pytest -q
+python -m evaluation.validate_sufficiency_dataset
+jupyter lab
 ```
 
-To reproduce the saved retrieval experiments **without retraining models**:
+Run the three notebooks from the repository root or `evaluation/`:
 
-```bash
-python -m evaluation.run_retrieval_benchmark --dataset dev
-python -m evaluation.summarize_retrieval_results --dataset dev
-python -m evaluation.evaluate_retrieval_threshold --dataset dev
+- [`retrieval_analysis.ipynb`](evaluation/retrieval_analysis.ipynb): ranking and threshold statistics are recalculated from `evaluation/results/retrieval/retrieval_dev.json` and `retrieval_test.json`. A disabled-by-default cell can recompute embeddings with MiniLM and save **new** ranking artifacts. Candidate thresholds are development-only; the held-out test remains frozen at 0.30.
+- [`generation_analysis.ipynb`](evaluation/generation_analysis.ipynb): qualitative prompt/oracle comparisons computed from archived Qwen responses.
+- [`sufficiency_analysis.ipynb`](evaluation/sufficiency_analysis.ipynb): the three-class and binary assessment comparison and evidence counterfactuals, with opt-in binary model replication.
 
-python -m evaluation.run_retrieval_benchmark --dataset test
-python -m evaluation.summarize_retrieval_results --dataset test
-python -m evaluation.evaluate_retrieval_threshold --dataset test
-```
-
-The `test` threshold command evaluates **only the previously selected value, 0.30**; do not retune on its results. The corpus is validated against the saved catalog before running the benchmark. The notebook works with the saved JSON outputs without loading MiniLM again.
+The analysis notebooks use Jupyter, pandas, numpy, matplotlib and IPython in addition to application dependencies. Historical model outputs are not guaranteed byte-reproducible because exact model revisions and dependency versions were not all pinned.
 
 ## Next steps
 

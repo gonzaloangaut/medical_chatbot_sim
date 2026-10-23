@@ -153,7 +153,7 @@ def main() -> None:
     parser.add_argument("--dataset", type=Path, default=EVALUATION_DIR / "datasets" / "sufficiency_dev.json")
     parser.add_argument("--catalog", type=Path, default=EVALUATION_DIR / "datasets" / "chunk_catalog.json")
     parser.add_argument("--dev-queries", type=Path, default=EVALUATION_DIR / "datasets" / "retrieval_dev.json")
-    parser.add_argument("--retrieval-results", type=Path, default=EVALUATION_DIR / "results" / "retrieval_dev.json")
+    parser.add_argument("--retrieval-results", type=Path, default=EVALUATION_DIR / "results" / "retrieval" / "retrieval_dev.json")
     args = parser.parse_args()
     try:
         dataset = read_json(args.dataset)
