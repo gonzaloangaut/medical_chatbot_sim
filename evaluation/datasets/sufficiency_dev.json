@@ -1,0 +1,847 @@
+{
+  "dataset_id": "sufficiency_dev_v1",
+  "purpose": "Development-only diagnostic benchmark for question-context evidence sufficiency; not a clinical or independent end-to-end evaluation.",
+  "annotation_status": "draft_pending_manual_review",
+  "reference_files": {
+    "catalog": "evaluation/datasets/chunk_catalog.json",
+    "development_queries": "evaluation/datasets/retrieval_dev.json",
+    "frozen_rankings": "evaluation/results/retrieval_dev.json"
+  },
+  "retrieval_configuration": {
+    "top_k": 5,
+    "top1_acceptance_threshold": 0.3,
+    "accepted_context": "All saved Top-5 when top1 >= threshold, otherwise empty."
+  },
+  "labels": [
+    "SUFFICIENT",
+    "PARTIAL",
+    "INSUFFICIENT"
+  ],
+  "cases": [
+    {
+      "case_id": "suff_dev_001",
+      "query": "¿Tener 37 grados de temperatura significa que tengo fiebre?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_fever_000",
+        "medlineplus_common_cold_001",
+        "medlineplus_fever_001",
+        "medlineplus_influenza_001",
+        "medlineplus_common_cold_002"
+      ],
+      "diagnostic_category": "direct_negative_answer",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Whether a reading of 37 °C alone establishes a fever",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_fever_000"
+          ]
+        }
+      ],
+      "expected_sufficiency": "SUFFICIENT",
+      "annotation_rationale": "Evidence explicitly says 37 °C alone does not establish fever.",
+      "source_query_id": "q_001"
+    },
+    {
+      "case_id": "suff_dev_002",
+      "query": "¿Qué síntomas pueden indicar una deshidratación grave?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_dehydration_002",
+        "medlineplus_diarrhea_001",
+        "medlineplus_dehydration_001",
+        "medlineplus_dehydration_000",
+        "medlineplus_dehydration_003"
+      ],
+      "diagnostic_category": "single_evidence_with_distractors",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Warning signs of severe dehydration",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_dehydration_002"
+          ]
+        }
+      ],
+      "expected_sufficiency": "SUFFICIENT",
+      "annotation_rationale": "The severe-dehydration warning signs are listed in the first retrieved chunk.",
+      "source_query_id": "q_002"
+    },
+    {
+      "case_id": "suff_dev_003",
+      "query": "¿Tengo que estar en ayunas para hacerme un hemograma?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_002",
+        "medlineplus_complete_blood_count_000",
+        "medlineplus_diarrhea_002",
+        "medlineplus_complete_blood_count_003",
+        "medlineplus_sore_throat_002"
+      ],
+      "diagnostic_category": "conditional_general_guidance",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Whether a CBC generally requires fasting, including the caveat for other tests",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_complete_blood_count_002"
+          ]
+        }
+      ],
+      "expected_sufficiency": "SUFFICIENT",
+      "annotation_rationale": "A CBC alone generally needs no preparation, but other accompanying tests may require fasting; this does not authorize individual instructions.",
+      "source_query_id": "q_003"
+    },
+    {
+      "case_id": "suff_dev_004",
+      "query": "¿Cuánto tarda Demo Health Clinic en publicar un informe de laboratorio una vez que recibe el resultado finalizado?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "demo_clinic_laboratory_results_policy_001",
+        "demo_clinic_laboratory_results_policy_002",
+        "demo_clinic_laboratory_results_policy_000",
+        "demo_clinic_appointment_policy_001",
+        "demo_clinic_appointment_policy_000"
+      ],
+      "diagnostic_category": "qualified_clinic_policy",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Typical laboratory report publication turnaround after receipt of a finalized report",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "demo_clinic_laboratory_results_policy_001"
+          ]
+        }
+      ],
+      "expected_sufficiency": "SUFFICIENT",
+      "annotation_rationale": "The fictional target is typically two business days; it is not a guarantee or a medical test-processing time.",
+      "source_query_id": "q_008"
+    },
+    {
+      "case_id": "suff_dev_005",
+      "query": "Según la información disponible, ¿qué síntomas presenta la gripe y cuáles presenta el resfriado común?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_influenza_001",
+        "medlineplus_common_cold_001",
+        "medlineplus_common_cold_000",
+        "medlineplus_sore_throat_001",
+        "medlineplus_common_cold_002"
+      ],
+      "diagnostic_category": "multi_evidence_two_topics",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Influenza symptoms",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_influenza_001"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "Common cold symptoms",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_common_cold_001"
+          ]
+        }
+      ],
+      "expected_sufficiency": "SUFFICIENT",
+      "annotation_rationale": "Both symptom lists appear in the saved retrieved context.",
+      "source_query_id": "q_009"
+    },
+    {
+      "case_id": "suff_dev_006",
+      "query": "¿Qué mide un hemograma y para qué se utiliza?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_000",
+        "medlineplus_complete_blood_count_003",
+        "medlineplus_complete_blood_count_002",
+        "medlineplus_complete_blood_count_001",
+        "medlineplus_dehydration_003"
+      ],
+      "diagnostic_category": "multi_evidence_single_document",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Measurements included in a CBC",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_complete_blood_count_000"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "Common clinical purposes of a CBC",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_complete_blood_count_001"
+          ]
+        }
+      ],
+      "expected_sufficiency": "SUFFICIENT",
+      "annotation_rationale": "The CBC measurements and purposes appear in separate sections of the same document.",
+      "source_query_id": "q_010"
+    },
+    {
+      "case_id": "suff_dev_007",
+      "query": "¿A partir de cuánto tiempo de diarrea se habla de diarrea crónica?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_diarrhea_000",
+        "medlineplus_diarrhea_002",
+        "medlineplus_diarrhea_001",
+        "medlineplus_diarrhea_003",
+        "demo_clinic_laboratory_results_policy_001"
+      ],
+      "diagnostic_category": "specific_duration",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Duration threshold for chronic diarrhea",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_diarrhea_000"
+          ]
+        }
+      ],
+      "expected_sufficiency": "SUFFICIENT",
+      "annotation_rationale": "The chunk explicitly defines chronic diarrhea as lasting at least four weeks.",
+      "source_query_id": "q_028"
+    },
+    {
+      "case_id": "suff_dev_008",
+      "query": "¿Qué puede causar diarrea, qué señales justifican una consulta médica y cómo se reponen los líquidos perdidos?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_diarrhea_000",
+        "medlineplus_diarrhea_002",
+        "medlineplus_diarrhea_003",
+        "medlineplus_diarrhea_001",
+        "medlineplus_dehydration_001"
+      ],
+      "diagnostic_category": "multi_evidence_three_requirements",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Possible causes of diarrhea",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_diarrhea_000"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "Diarrhea warning signs requiring medical assessment",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_diarrhea_002"
+          ]
+        },
+        {
+          "requirement_id": "r3",
+          "description": "General replacement of fluids and electrolytes lost with diarrhea",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_diarrhea_003"
+          ]
+        }
+      ],
+      "expected_sufficiency": "SUFFICIENT",
+      "annotation_rationale": "Three complementary sections provide the causes, warning signs, and general fluid-replacement approach.",
+      "source_query_id": "q_046"
+    },
+    {
+      "case_id": "suff_dev_009",
+      "query": "¿Qué desencadenantes frecuentes se asocian a la cefalea y cuáles son sus señales de alarma?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_allergy_001",
+        "medlineplus_allergy_000",
+        "medlineplus_headache_002",
+        "medlineplus_headache_001",
+        "medlineplus_dehydration_002"
+      ],
+      "diagnostic_category": "multi_evidence_with_top_rank_distractors",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Common tension-type headache triggers",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_headache_001"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "Headache red flags requiring prompt or immediate care",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_headache_002"
+          ]
+        }
+      ],
+      "expected_sufficiency": "SUFFICIENT",
+      "annotation_rationale": "Both headache sections are present at ranks 3 and 4 despite allergy chunks at ranks 1 and 2.",
+      "source_query_id": "q_047"
+    },
+    {
+      "case_id": "suff_dev_010",
+      "query": "En Demo Health Clinic, ¿con cuánto aviso se cancela un turno y cuánto lleva procesar una solicitud verificada de historia clínica?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "demo_clinic_appointment_policy_001",
+        "demo_clinic_laboratory_results_policy_001",
+        "demo_clinic_appointment_policy_000",
+        "demo_clinic_medical_records_policy_002",
+        "demo_clinic_medical_records_policy_000"
+      ],
+      "diagnostic_category": "multi_evidence_qualified_timelines",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Required appointment cancellation notice",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "demo_clinic_appointment_policy_001"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "Fictional processing target for complete and verified medical-record requests",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "demo_clinic_medical_records_policy_002"
+          ]
+        }
+      ],
+      "expected_sufficiency": "SUFFICIENT",
+      "annotation_rationale": "The evidence provides at least 24 hours notice and a target within seven business days for complete, verified requests.",
+      "source_query_id": "q_049"
+    },
+    {
+      "case_id": "suff_dev_011",
+      "query": "En Demo Health Clinic, ¿con cuánta anticipación debo cancelar un turno y cuánto me cobran si cancelo tarde?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "demo_clinic_appointment_policy_001"
+      ],
+      "diagnostic_category": "missing_fee_with_explicit_policy_gap",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Minimum cancellation notice in the fictional clinic",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "demo_clinic_appointment_policy_001"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "Exact amount charged for a late cancellation",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "PARTIAL",
+      "annotation_rationale": "The policy states at least 24 hours. It defines no amounts and does not justify either a fee or a zero-fee claim."
+    },
+    {
+      "case_id": "suff_dev_012",
+      "query": "En Demo Health Clinic, ¿con cuánto aviso se cancela un turno y cuánto lleva procesar una solicitud verificada de historia clínica?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "demo_clinic_appointment_policy_001"
+      ],
+      "diagnostic_category": "missing_second_document",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Minimum cancellation notice in the fictional clinic",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "demo_clinic_appointment_policy_001"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "Time target for processing a verified records request",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "PARTIAL",
+      "annotation_rationale": "The record-processing chunk is intentionally absent from this controlled subset, even though it exists elsewhere in the KB.",
+      "source_query_id": "q_049"
+    },
+    {
+      "case_id": "suff_dev_013",
+      "query": "¿Qué desencadenantes frecuentes se asocian a la cefalea y cuáles son sus señales de alarma?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_headache_002"
+      ],
+      "diagnostic_category": "missing_one_multi_evidence_chunk",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Common headache triggers",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        },
+        {
+          "requirement_id": "r2",
+          "description": "Headache warning signs",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_headache_002"
+          ]
+        }
+      ],
+      "expected_sufficiency": "PARTIAL",
+      "annotation_rationale": "Only the warning-signs section is supplied; common triggers are in a different, intentionally excluded section.",
+      "source_query_id": "q_047"
+    },
+    {
+      "case_id": "suff_dev_014",
+      "query": "Según la información disponible, ¿qué síntomas presenta la gripe y cuáles presenta el resfriado común?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_influenza_001"
+      ],
+      "diagnostic_category": "partial_two_topic_comparison",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Symptoms associated with influenza",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_influenza_001"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "Typical common-cold symptoms (not established by the brief flu-versus-cold comparison)",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "PARTIAL",
+      "annotation_rationale": "Only the influenza symptom section is provided. It cannot supply the full common-cold symptom list.",
+      "source_query_id": "q_009"
+    },
+    {
+      "case_id": "suff_dev_015",
+      "query": "¿Qué mide un hemograma y cuánto me dio la hemoglobina en el análisis de ayer?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_000"
+      ],
+      "diagnostic_category": "general_vs_personal_result",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "General measurements reported in a CBC",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_complete_blood_count_000"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "Actual hemoglobin value in the user’s blood test from yesterday",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "PARTIAL",
+      "annotation_rationale": "The CBC description supports general measurements but contains no personal laboratory result."
+    },
+    {
+      "case_id": "suff_dev_016",
+      "query": "¿Qué síntomas puede provocar el RSV y cuál fue el resultado de mi prueba de RSV?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_rsv_001"
+      ],
+      "diagnostic_category": "general_vs_personal_test",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Common symptoms of RSV infection",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_rsv_001"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "Actual result of the user’s RSV test",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "PARTIAL",
+      "annotation_rationale": "The RSV symptoms are given, but no personal test record is present."
+    },
+    {
+      "case_id": "suff_dev_017",
+      "query": "¿Cómo se toma una muestra para estreptococo A, cuánto suele tardar un cultivo y ya está listo el mío?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_strep_a_test_002"
+      ],
+      "diagnostic_category": "general_turnaround_vs_live_status",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "How a strep A sample is collected",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_strep_a_test_002"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "Typical throat-culture turnaround",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_strep_a_test_002"
+          ]
+        },
+        {
+          "requirement_id": "r3",
+          "description": "Whether the user’s own throat culture has been completed",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "PARTIAL",
+      "annotation_rationale": "The chunk describes swabbing and one-to-two-day culture turnaround, not a specific patient’s live test status."
+    },
+    {
+      "case_id": "suff_dev_018",
+      "query": "¿Qué síntomas pueden indicar deshidratación grave y cuántos litros debo tomar yo para tratarla?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_dehydration_002"
+      ],
+      "diagnostic_category": "general_warning_vs_personal_treatment",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Signs of severe dehydration",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_dehydration_002"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "The exact personally appropriate amount of fluid to drink for treatment",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "PARTIAL",
+      "annotation_rationale": "Severe warning signs are listed, but personal fluid volumes cannot be established from the context."
+    },
+    {
+      "case_id": "suff_dev_019",
+      "query": "¿Dónde puedo consultar mis informes de laboratorio en Demo Health Clinic y cuál fue mi valor de sodio?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "demo_clinic_laboratory_results_policy_000"
+      ],
+      "diagnostic_category": "access_policy_vs_private_result",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Where fictional clinic laboratory reports are made available",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "demo_clinic_laboratory_results_policy_000"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "The patient’s actual sodium measurement",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "PARTIAL",
+      "annotation_rationale": "The portal access workflow is described; the individual sodium result is absent."
+    },
+    {
+      "case_id": "suff_dev_020",
+      "query": "¿Qué puede causar diarrea, cuándo se considera crónica y qué dosis exacta de medicamento debo tomar para mi caso?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_diarrhea_000"
+      ],
+      "diagnostic_category": "two_supported_one_personalized",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Possible causes of diarrhea",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_diarrhea_000"
+          ]
+        },
+        {
+          "requirement_id": "r2",
+          "description": "When diarrhea is classified as chronic",
+          "status": "SUPPORTED",
+          "supporting_chunk_ids": [
+            "medlineplus_diarrhea_000"
+          ]
+        },
+        {
+          "requirement_id": "r3",
+          "description": "Exact personalized medicine dose for the user’s diarrhea",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "PARTIAL",
+      "annotation_rationale": "The chunk states causes and the four-week threshold, but gives no personalized dosing advice."
+    },
+    {
+      "case_id": "suff_dev_021",
+      "query": "¿Cuánto cuesta hacerse un hemograma en Demo Health Clinic?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_002",
+        "demo_clinic_laboratory_results_policy_001",
+        "demo_clinic_appointment_policy_000",
+        "medlineplus_complete_blood_count_000",
+        "demo_clinic_medical_records_policy_000"
+      ],
+      "diagnostic_category": "missing_clinic_price",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Price for a CBC in Demo Health Clinic",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "INSUFFICIENT",
+      "annotation_rationale": "Related procedure and clinic documents do not contain the requested CBC price.",
+      "source_query_id": "q_012"
+    },
+    {
+      "case_id": "suff_dev_022",
+      "query": "¿Cuál es mi nivel de sodio según mis últimos análisis?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_003",
+        "medlineplus_dehydration_002",
+        "medlineplus_dehydration_003",
+        "medlineplus_complete_blood_count_000",
+        "medlineplus_complete_blood_count_001"
+      ],
+      "diagnostic_category": "missing_personal_lab",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Patient-specific sodium value from their most recent laboratory records",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "INSUFFICIENT",
+      "annotation_rationale": "Medical reference text does not supply individual lab measurements.",
+      "source_query_id": "q_013"
+    },
+    {
+      "case_id": "suff_dev_023",
+      "query": "¿Qué dosis exacta de paracetamol corresponde darle a un niño de cuatro años?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_sore_throat_002",
+        "medlineplus_dehydration_002",
+        "medlineplus_dehydration_004",
+        "medlineplus_diarrhea_003",
+        "medlineplus_fever_002"
+      ],
+      "diagnostic_category": "unsupported_pediatric_dosing",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Exact pediatric paracetamol dose requested for a four-year-old child",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "INSUFFICIENT",
+      "annotation_rationale": "The frozen Top-5 contains general educational passages but no exact pediatric paracetamol dose. The requested dose is not established by this evidence.",
+      "source_query_id": "q_054"
+    },
+    {
+      "case_id": "suff_dev_024",
+      "query": "¿Hay turnos libres este sábado por la mañana en Demo Health Clinic?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "demo_clinic_appointment_policy_000",
+        "demo_clinic_appointment_policy_002",
+        "demo_clinic_appointment_policy_001",
+        "demo_clinic_laboratory_results_policy_001",
+        "demo_clinic_laboratory_results_policy_000"
+      ],
+      "diagnostic_category": "missing_live_availability",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Actual available appointments on the specified Saturday morning",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "INSUFFICIENT",
+      "annotation_rationale": "Static fictional appointment policies provide no live availability.",
+      "source_query_id": "q_051"
+    },
+    {
+      "case_id": "suff_dev_025",
+      "query": "Según mi historia clínica, ¿a qué sustancias soy alérgico?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_allergy_000",
+        "medlineplus_allergy_001",
+        "medlineplus_allergy_002",
+        "medlineplus_common_cold_003",
+        "medlineplus_common_cold_001"
+      ],
+      "diagnostic_category": "general_topic_vs_private_record",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "The patient’s documented personal allergens",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "INSUFFICIENT",
+      "annotation_rationale": "General allergen examples cannot establish an individual patient’s allergies.",
+      "source_query_id": "q_052"
+    },
+    {
+      "case_id": "suff_dev_026",
+      "query": "¿Qué valor de hemoglobina me dio el análisis que me hice ayer?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_003",
+        "medlineplus_complete_blood_count_000",
+        "medlineplus_complete_blood_count_002",
+        "medlineplus_complete_blood_count_001",
+        "medlineplus_dehydration_003"
+      ],
+      "diagnostic_category": "missing_private_recent_result",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Patient-specific hemoglobin result from yesterday",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "INSUFFICIENT",
+      "annotation_rationale": "CBC reference material has no individual, time-specific laboratory report.",
+      "source_query_id": "q_053"
+    },
+    {
+      "case_id": "suff_dev_027",
+      "query": "¿Ya está listo en este momento el cultivo de garganta que me hicieron en la clínica?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_strep_a_test_002",
+        "medlineplus_strep_a_test_003",
+        "medlineplus_sore_throat_002",
+        "medlineplus_strep_a_test_001",
+        "demo_clinic_laboratory_results_policy_001"
+      ],
+      "diagnostic_category": "general_turnaround_vs_live_status",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Whether the individual throat culture is ready at this moment",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "INSUFFICIENT",
+      "annotation_rationale": "General culture turnarounds and fictional clinic publication policies cannot establish this individual live status.",
+      "source_query_id": "q_055"
+    },
+    {
+      "case_id": "suff_dev_028",
+      "query": "¿Cuál es la capital de Islandia?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [],
+      "diagnostic_category": "out_of_domain_rejected",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Capital city of Iceland",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "INSUFFICIENT",
+      "annotation_rationale": "Frozen Top-1 similarity is below 0.30; no evidence is passed to the generation pipeline.",
+      "source_query_id": "q_057"
+    },
+    {
+      "case_id": "suff_dev_029",
+      "query": "¿Cómo cambio la contraseña de mi red Wi-Fi?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [],
+      "diagnostic_category": "out_of_domain_rejected",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Steps for changing a home Wi-Fi password",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "INSUFFICIENT",
+      "annotation_rationale": "Frozen Top-1 similarity is below 0.30; no evidence is passed to the generation pipeline.",
+      "source_query_id": "q_059"
+    },
+    {
+      "case_id": "suff_dev_030",
+      "query": "¿Cuánto cobran por cancelar tarde un turno en Demo Health Clinic?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "demo_clinic_appointment_policy_001"
+      ],
+      "diagnostic_category": "missing_amount_not_zero",
+      "requirements": [
+        {
+          "requirement_id": "r1",
+          "description": "Exact late-cancellation fee amount in the fictional clinic",
+          "status": "UNSUPPORTED",
+          "supporting_chunk_ids": []
+        }
+      ],
+      "expected_sufficiency": "INSUFFICIENT",
+      "annotation_rationale": "The document explicitly does not define fees. This supports the meta-statement “not specified in this policy” but not any numerical fee or a conclusion of zero cost."
+    }
+  ],
+  "reference_sha256": {
+    "catalog": "f31d335bdf454373ff93212e52bdecf20a05b98d097baeeaccaa15318d0b71d8",
+    "development_queries": "42dc5201fb8ff6b3c96a93d23adfcc915e9d398f6c406bfc6546dc3609639cdf",
+    "frozen_rankings": "f11dd5d5be8b74bef055839462c4e3f71afcadf2a199d698f6a431d684677d0e"
+  }
+}

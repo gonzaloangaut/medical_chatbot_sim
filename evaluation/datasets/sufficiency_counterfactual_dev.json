@@ -1,0 +1,132 @@
+{
+  "dataset_id": "sufficiency_counterfactual_dev_v1",
+  "purpose": "Controlled, development-only counterfactual evidence sufficiency diagnostic. Retrieval is not evaluated.",
+  "annotation_status": "draft_pending_manual_review",
+  "reference_sha256": {
+    "sufficiency_dev": "788038be713cd8f8a8e406cbbac5b37bf862a1c4e28d44dd255e4f97105158d1",
+    "catalog": "f31d335bdf454373ff93212e52bdecf20a05b98d097baeeaccaa15318d0b71d8"
+  },
+  "design": {
+    "fixed_question_within_group": true,
+    "equal_chunk_count_within_group": true,
+    "evidence_is_controlled": true,
+    "retrieval_scores_are_not_evaluated": true,
+    "method": "direct",
+    "all_contexts_nonempty": true,
+    "limitations": "Same number of chunks does not imply the same number of tokens or equally difficult evidence. These previously examined development questions are not a held-out test."
+  },
+  "groups": [
+    {
+      "group_id": "cf_001",
+      "source_case_id": "suff_dev_005",
+      "focus": "Influenza symptoms versus common cold symptoms",
+      "variants": [
+        {
+          "variant_id": "S",
+          "expected_sufficiency": "SUFFICIENT",
+          "supported_requirement_ids": ["r1", "r2"],
+          "evidence_chunk_ids": ["medlineplus_influenza_001", "medlineplus_common_cold_001"],
+          "annotation_rationale": "Contains explicit symptom lists for flu and common cold."
+        },
+        {
+          "variant_id": "P",
+          "expected_sufficiency": "PARTIAL",
+          "supported_requirement_ids": ["r1"],
+          "evidence_chunk_ids": ["medlineplus_influenza_001", "medlineplus_influenza_003"],
+          "annotation_rationale": "Describes flu symptoms, but not the common cold symptom list requested by the question. Flu/cold comparisons are not a full cold symptom description."
+        },
+        {
+          "variant_id": "I",
+          "expected_sufficiency": "INSUFFICIENT",
+          "supported_requirement_ids": [],
+          "evidence_chunk_ids": ["medlineplus_influenza_003", "medlineplus_common_cold_003"],
+          "annotation_rationale": "Contains treatment and prevention passages rather than either requested symptom list."
+        }
+      ]
+    },
+    {
+      "group_id": "cf_002",
+      "source_case_id": "suff_dev_006",
+      "focus": "Complete blood count measurements and purpose",
+      "variants": [
+        {
+          "variant_id": "S",
+          "expected_sufficiency": "SUFFICIENT",
+          "supported_requirement_ids": ["r1", "r2"],
+          "evidence_chunk_ids": ["medlineplus_complete_blood_count_000", "medlineplus_complete_blood_count_001"],
+          "annotation_rationale": "Directly covers CBC measurements and common clinical uses."
+        },
+        {
+          "variant_id": "P",
+          "expected_sufficiency": "PARTIAL",
+          "supported_requirement_ids": ["r1"],
+          "evidence_chunk_ids": ["medlineplus_complete_blood_count_000", "medlineplus_complete_blood_count_002"],
+          "annotation_rationale": "Measurements are explained, but sample collection and preparation are not the clinical purpose requested."
+        },
+        {
+          "variant_id": "I",
+          "expected_sufficiency": "INSUFFICIENT",
+          "supported_requirement_ids": [],
+          "evidence_chunk_ids": ["medlineplus_complete_blood_count_002", "medlineplus_strep_a_test_000"],
+          "annotation_rationale": "Procedure/preparation and strep-test comparison do not supply a CBC measurement list or its uses."
+        }
+      ]
+    },
+    {
+      "group_id": "cf_003",
+      "source_case_id": "suff_dev_010",
+      "focus": "Appointment cancellation notice and verified medical record processing time",
+      "variants": [
+        {
+          "variant_id": "S",
+          "expected_sufficiency": "SUFFICIENT",
+          "supported_requirement_ids": ["r1", "r2"],
+          "evidence_chunk_ids": ["demo_clinic_appointment_policy_001", "demo_clinic_medical_records_policy_002"],
+          "annotation_rationale": "Includes the 24-hour cancellation notice and the seven-business-day target for a complete verified record request."
+        },
+        {
+          "variant_id": "P",
+          "expected_sufficiency": "PARTIAL",
+          "supported_requirement_ids": ["r1"],
+          "evidence_chunk_ids": ["demo_clinic_appointment_policy_001", "demo_clinic_medical_records_policy_000"],
+          "annotation_rationale": "Cancellation notice is specified, but the record-request overview does not provide processing time."
+        },
+        {
+          "variant_id": "I",
+          "expected_sufficiency": "INSUFFICIENT",
+          "supported_requirement_ids": [],
+          "evidence_chunk_ids": ["demo_clinic_appointment_policy_000", "demo_clinic_medical_records_policy_000"],
+          "annotation_rationale": "General booking and records-request information includes neither requested administrative timing."
+        }
+      ]
+    },
+    {
+      "group_id": "cf_004",
+      "source_case_id": "suff_dev_008",
+      "focus": "Diarrhea causes, warning signs, and fluid replacement",
+      "variants": [
+        {
+          "variant_id": "S",
+          "expected_sufficiency": "SUFFICIENT",
+          "supported_requirement_ids": ["r1", "r2", "r3"],
+          "evidence_chunk_ids": ["medlineplus_diarrhea_000", "medlineplus_diarrhea_002", "medlineplus_diarrhea_003"],
+          "annotation_rationale": "All three required facts are covered by dedicated sections."
+        },
+        {
+          "variant_id": "P",
+          "expected_sufficiency": "PARTIAL",
+          "supported_requirement_ids": ["r1", "r2"],
+          "evidence_chunk_ids": ["medlineplus_diarrhea_000", "medlineplus_diarrhea_002", "medlineplus_diarrhea_001"],
+          "annotation_rationale": "Causes and warning signs are documented; associated symptoms and dehydration do not specify how to replace lost fluids."
+        },
+        {
+          "variant_id": "I",
+          "expected_sufficiency": "INSUFFICIENT",
+          "supported_requirement_ids": [],
+          "evidence_chunk_ids": ["medlineplus_diarrhea_001", "medlineplus_dehydration_003", "medlineplus_complete_blood_count_003"],
+          "annotation_rationale": "Associated symptoms, dehydration diagnosis, and CBC interpretation do not address causes, diarrhea care-seeking criteria, or fluid replacement."
+        }
+      ]
+    }
+  ]
+}

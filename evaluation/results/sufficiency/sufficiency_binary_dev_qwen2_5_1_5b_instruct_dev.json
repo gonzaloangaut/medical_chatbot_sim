@@ -1,0 +1,1165 @@
+{
+  "study": "sufficiency_binary_dev_development",
+  "development_only": true,
+  "annotation_status": "draft_pending_manual_review",
+  "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+  "generation": {
+    "do_sample": false,
+    "max_new_tokens": 256
+  },
+  "created_at_utc": "2026-10-22T23:46:21.922895+00:00",
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.9.1",
+    "transformers": "4.57.5"
+  },
+  "source_sha256": {
+    "dataset": "788038be713cd8f8a8e406cbbac5b37bf862a1c4e28d44dd255e4f97105158d1",
+    "catalog": "f31d335bdf454373ff93212e52bdecf20a05b98d097baeeaccaa15318d0b71d8",
+    "binary_runner": "6fc309da517609b5bb7d0a9fa4eb68c1c4c97da80bf0096be7c3f4d9881a9e2a",
+    "passage_renderer": "2bf95983669d5c38e1377befcc5bae05fa02286d7d5e556200a618786f259157",
+    "development_queries": "42dc5201fb8ff6b3c96a93d23adfcc915e9d398f6c406bfc6546dc3609639cdf",
+    "frozen_rankings": "f11dd5d5be8b74bef055839462c4e3f71afcadf2a199d698f6a431d684677d0e",
+    "binary_prompt": "5182769eb6bf9212bfca3791c85669119f947c499ec0f8df807ff50e5d3e8597"
+  },
+  "binary_policy": "Accept only if ALL essential requested facts are supported; otherwise abstain.",
+  "limitations": [
+    "Development-only diagnostic, with draft annotations; not clinical validation.",
+    "The original PARTIAL class is mapped to binary INSUFFICIENT, never removed.",
+    "Gold metadata never enters the model prompt.",
+    "Controlled contexts bypass the retrieval score gate; report separately.",
+    "Invalid JSON counts as an evaluation error, not a correct refusal.",
+    "The binary prompt was designed after inspecting prior development results."
+  ],
+  "cases": [
+    {
+      "case_key": "suff_dev_001",
+      "query": "¿Tener 37 grados de temperatura significa que tengo fiebre?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_fever_000",
+        "medlineplus_common_cold_001",
+        "medlineplus_fever_001",
+        "medlineplus_influenza_001",
+        "medlineplus_common_cold_002"
+      ],
+      "gold_original": "SUFFICIENT",
+      "gold_binary": "SUFFICIENT",
+      "case_id": "suff_dev_001",
+      "prior_pilot_exposure": true,
+      "assessment": {
+        "raw_response": "{\"status\": \"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 12.178,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_002",
+      "query": "¿Qué síntomas pueden indicar una deshidratación grave?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_dehydration_002",
+        "medlineplus_diarrhea_001",
+        "medlineplus_dehydration_001",
+        "medlineplus_dehydration_000",
+        "medlineplus_dehydration_003"
+      ],
+      "gold_original": "SUFFICIENT",
+      "gold_binary": "SUFFICIENT",
+      "case_id": "suff_dev_002",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 9.992,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_003",
+      "query": "¿Tengo que estar en ayunas para hacerme un hemograma?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_002",
+        "medlineplus_complete_blood_count_000",
+        "medlineplus_diarrhea_002",
+        "medlineplus_complete_blood_count_003",
+        "medlineplus_sore_throat_002"
+      ],
+      "gold_original": "SUFFICIENT",
+      "gold_binary": "SUFFICIENT",
+      "case_id": "suff_dev_003",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 10.359,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_004",
+      "query": "¿Cuánto tarda Demo Health Clinic en publicar un informe de laboratorio una vez que recibe el resultado finalizado?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "demo_clinic_laboratory_results_policy_001",
+        "demo_clinic_laboratory_results_policy_002",
+        "demo_clinic_laboratory_results_policy_000",
+        "demo_clinic_appointment_policy_001",
+        "demo_clinic_appointment_policy_000"
+      ],
+      "gold_original": "SUFFICIENT",
+      "gold_binary": "SUFFICIENT",
+      "case_id": "suff_dev_004",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 12.586,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_005",
+      "query": "Según la información disponible, ¿qué síntomas presenta la gripe y cuáles presenta el resfriado común?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_influenza_001",
+        "medlineplus_common_cold_001",
+        "medlineplus_common_cold_000",
+        "medlineplus_sore_throat_001",
+        "medlineplus_common_cold_002"
+      ],
+      "gold_original": "SUFFICIENT",
+      "gold_binary": "SUFFICIENT",
+      "case_id": "suff_dev_005",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 18.085,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_006",
+      "query": "¿Qué mide un hemograma y para qué se utiliza?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_000",
+        "medlineplus_complete_blood_count_003",
+        "medlineplus_complete_blood_count_002",
+        "medlineplus_complete_blood_count_001",
+        "medlineplus_dehydration_003"
+      ],
+      "gold_original": "SUFFICIENT",
+      "gold_binary": "SUFFICIENT",
+      "case_id": "suff_dev_006",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 18.446,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_007",
+      "query": "¿A partir de cuánto tiempo de diarrea se habla de diarrea crónica?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_diarrhea_000",
+        "medlineplus_diarrhea_002",
+        "medlineplus_diarrhea_001",
+        "medlineplus_diarrhea_003",
+        "demo_clinic_laboratory_results_policy_001"
+      ],
+      "gold_original": "SUFFICIENT",
+      "gold_binary": "SUFFICIENT",
+      "case_id": "suff_dev_007",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 17.087,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_008",
+      "query": "¿Qué puede causar diarrea, qué señales justifican una consulta médica y cómo se reponen los líquidos perdidos?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_diarrhea_000",
+        "medlineplus_diarrhea_002",
+        "medlineplus_diarrhea_003",
+        "medlineplus_diarrhea_001",
+        "medlineplus_dehydration_001"
+      ],
+      "gold_original": "SUFFICIENT",
+      "gold_binary": "SUFFICIENT",
+      "case_id": "suff_dev_008",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 16.45,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_009",
+      "query": "¿Qué desencadenantes frecuentes se asocian a la cefalea y cuáles son sus señales de alarma?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_allergy_001",
+        "medlineplus_allergy_000",
+        "medlineplus_headache_002",
+        "medlineplus_headache_001",
+        "medlineplus_dehydration_002"
+      ],
+      "gold_original": "SUFFICIENT",
+      "gold_binary": "SUFFICIENT",
+      "case_id": "suff_dev_009",
+      "prior_pilot_exposure": true,
+      "assessment": {
+        "raw_response": "{\"status\": \"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 17.817,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_010",
+      "query": "En Demo Health Clinic, ¿con cuánto aviso se cancela un turno y cuánto lleva procesar una solicitud verificada de historia clínica?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "demo_clinic_appointment_policy_001",
+        "demo_clinic_laboratory_results_policy_001",
+        "demo_clinic_appointment_policy_000",
+        "demo_clinic_medical_records_policy_002",
+        "demo_clinic_medical_records_policy_000"
+      ],
+      "gold_original": "SUFFICIENT",
+      "gold_binary": "SUFFICIENT",
+      "case_id": "suff_dev_010",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 15.997,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_011",
+      "query": "En Demo Health Clinic, ¿con cuánta anticipación debo cancelar un turno y cuánto me cobran si cancelo tarde?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "demo_clinic_appointment_policy_001"
+      ],
+      "gold_original": "PARTIAL",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_011",
+      "prior_pilot_exposure": true,
+      "assessment": {
+        "raw_response": "{\"status\":\"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 8.754,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_012",
+      "query": "En Demo Health Clinic, ¿con cuánto aviso se cancela un turno y cuánto lleva procesar una solicitud verificada de historia clínica?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "demo_clinic_appointment_policy_001"
+      ],
+      "gold_original": "PARTIAL",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_012",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\":\"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 9.712,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_013",
+      "query": "¿Qué desencadenantes frecuentes se asocian a la cefalea y cuáles son sus señales de alarma?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_headache_002"
+      ],
+      "gold_original": "PARTIAL",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_013",
+      "prior_pilot_exposure": true,
+      "assessment": {
+        "raw_response": "{\"status\":\"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 9.592,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_014",
+      "query": "Según la información disponible, ¿qué síntomas presenta la gripe y cuáles presenta el resfriado común?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_influenza_001"
+      ],
+      "gold_original": "PARTIAL",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_014",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 9.673,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_015",
+      "query": "¿Qué mide un hemograma y cuánto me dio la hemoglobina en el análisis de ayer?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_000"
+      ],
+      "gold_original": "PARTIAL",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_015",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 9.876,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_016",
+      "query": "¿Qué síntomas puede provocar el RSV y cuál fue el resultado de mi prueba de RSV?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_rsv_001"
+      ],
+      "gold_original": "PARTIAL",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_016",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 10.618,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_017",
+      "query": "¿Cómo se toma una muestra para estreptococo A, cuánto suele tardar un cultivo y ya está listo el mío?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_strep_a_test_002"
+      ],
+      "gold_original": "PARTIAL",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_017",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 10.303,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_018",
+      "query": "¿Qué síntomas pueden indicar deshidratación grave y cuántos litros debo tomar yo para tratarla?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_dehydration_002"
+      ],
+      "gold_original": "PARTIAL",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_018",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 10.695,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_019",
+      "query": "¿Dónde puedo consultar mis informes de laboratorio en Demo Health Clinic y cuál fue mi valor de sodio?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "demo_clinic_laboratory_results_policy_000"
+      ],
+      "gold_original": "PARTIAL",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_019",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\":\"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 8.895,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_020",
+      "query": "¿Qué puede causar diarrea, cuándo se considera crónica y qué dosis exacta de medicamento debo tomar para mi caso?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "medlineplus_diarrhea_000"
+      ],
+      "gold_original": "PARTIAL",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_020",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\":\"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 9.034,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_021",
+      "query": "¿Cuánto cuesta hacerse un hemograma en Demo Health Clinic?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_002",
+        "demo_clinic_laboratory_results_policy_001",
+        "demo_clinic_appointment_policy_000",
+        "medlineplus_complete_blood_count_000",
+        "demo_clinic_medical_records_policy_000"
+      ],
+      "gold_original": "INSUFFICIENT",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_021",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 16.869,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_022",
+      "query": "¿Cuál es mi nivel de sodio según mis últimos análisis?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_003",
+        "medlineplus_dehydration_002",
+        "medlineplus_dehydration_003",
+        "medlineplus_complete_blood_count_000",
+        "medlineplus_complete_blood_count_001"
+      ],
+      "gold_original": "INSUFFICIENT",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_022",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 16.719,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_023",
+      "query": "¿Qué dosis exacta de paracetamol corresponde darle a un niño de cuatro años?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_sore_throat_002",
+        "medlineplus_dehydration_002",
+        "medlineplus_dehydration_004",
+        "medlineplus_diarrhea_003",
+        "medlineplus_fever_002"
+      ],
+      "gold_original": "INSUFFICIENT",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_023",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 16.443,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_024",
+      "query": "¿Hay turnos libres este sábado por la mañana en Demo Health Clinic?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "demo_clinic_appointment_policy_000",
+        "demo_clinic_appointment_policy_002",
+        "demo_clinic_appointment_policy_001",
+        "demo_clinic_laboratory_results_policy_001",
+        "demo_clinic_laboratory_results_policy_000"
+      ],
+      "gold_original": "INSUFFICIENT",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_024",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 16.335,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_025",
+      "query": "Según mi historia clínica, ¿a qué sustancias soy alérgico?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_allergy_000",
+        "medlineplus_allergy_001",
+        "medlineplus_allergy_002",
+        "medlineplus_common_cold_003",
+        "medlineplus_common_cold_001"
+      ],
+      "gold_original": "INSUFFICIENT",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_025",
+      "prior_pilot_exposure": true,
+      "assessment": {
+        "raw_response": "{\"status\": \"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 16.413,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_026",
+      "query": "¿Qué valor de hemoglobina me dio el análisis que me hice ayer?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_003",
+        "medlineplus_complete_blood_count_000",
+        "medlineplus_complete_blood_count_002",
+        "medlineplus_complete_blood_count_001",
+        "medlineplus_dehydration_003"
+      ],
+      "gold_original": "INSUFFICIENT",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_026",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 16.813,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_027",
+      "query": "¿Ya está listo en este momento el cultivo de garganta que me hicieron en la clínica?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [
+        "medlineplus_strep_a_test_002",
+        "medlineplus_strep_a_test_003",
+        "medlineplus_sore_throat_002",
+        "medlineplus_strep_a_test_001",
+        "demo_clinic_laboratory_results_policy_001"
+      ],
+      "gold_original": "INSUFFICIENT",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_027",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": "{\"status\": \"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 17.769,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    },
+    {
+      "case_key": "suff_dev_028",
+      "query": "¿Cuál es la capital de Islandia?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [],
+      "gold_original": "INSUFFICIENT",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_028",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": null,
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 0.0,
+        "model_invoked": false,
+        "decision_origin": "deterministic_no_context"
+      }
+    },
+    {
+      "case_key": "suff_dev_029",
+      "query": "¿Cómo cambio la contraseña de mi red Wi-Fi?",
+      "evidence_origin": "saved_dev_retrieval",
+      "evidence_chunk_ids": [],
+      "gold_original": "INSUFFICIENT",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_029",
+      "prior_pilot_exposure": false,
+      "assessment": {
+        "raw_response": null,
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 0.0,
+        "model_invoked": false,
+        "decision_origin": "deterministic_no_context"
+      }
+    },
+    {
+      "case_key": "suff_dev_030",
+      "query": "¿Cuánto cobran por cancelar tarde un turno en Demo Health Clinic?",
+      "evidence_origin": "controlled",
+      "evidence_chunk_ids": [
+        "demo_clinic_appointment_policy_001"
+      ],
+      "gold_original": "INSUFFICIENT",
+      "gold_binary": "INSUFFICIENT",
+      "case_id": "suff_dev_030",
+      "prior_pilot_exposure": true,
+      "assessment": {
+        "raw_response": "{\"status\":\"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 8.665,
+        "model_invoked": true,
+        "decision_origin": "llm_binary_assessment"
+      }
+    }
+  ],
+  "initialization_seconds": 3.723,
+  "summary": {
+    "all": {
+      "n": 30,
+      "gold_counts": {
+        "SUFFICIENT": 10,
+        "INSUFFICIENT": 20
+      },
+      "confusion": {
+        "SUFFICIENT": {
+          "SUFFICIENT": 7,
+          "INSUFFICIENT": 3,
+          "INVALID": 0
+        },
+        "INSUFFICIENT": {
+          "SUFFICIENT": 6,
+          "INSUFFICIENT": 14,
+          "INVALID": 0
+        }
+      },
+      "correct": 21,
+      "accuracy_including_invalid_as_errors": 0.7,
+      "false_accept_count": 6,
+      "false_accept_rate": 0.3,
+      "sufficient_acceptance_rate": 0.7,
+      "invalid_count": 0,
+      "per_label": {
+        "SUFFICIENT": {
+          "precision": 0.5384615384615384,
+          "recall": 0.7,
+          "f1": 0.608695652173913
+        },
+        "INSUFFICIENT": {
+          "precision": 0.8235294117647058,
+          "recall": 0.7,
+          "f1": 0.7567567567567567
+        }
+      },
+      "macro_f1": 0.6827262044653348,
+      "by_original_gold": {
+        "SUFFICIENT": {
+          "SUFFICIENT": 7,
+          "INSUFFICIENT": 3,
+          "INVALID": 0
+        },
+        "PARTIAL": {
+          "SUFFICIENT": 6,
+          "INSUFFICIENT": 4,
+          "INVALID": 0
+        },
+        "INSUFFICIENT": {
+          "SUFFICIENT": 0,
+          "INSUFFICIENT": 10,
+          "INVALID": 0
+        }
+      },
+      "raw_counts": {
+        "tp": 7,
+        "fp": 6,
+        "tn": 14,
+        "fn": 3,
+        "invalid": 0
+      }
+    },
+    "llm_invoked": {
+      "n": 28,
+      "gold_counts": {
+        "SUFFICIENT": 10,
+        "INSUFFICIENT": 18
+      },
+      "confusion": {
+        "SUFFICIENT": {
+          "SUFFICIENT": 7,
+          "INSUFFICIENT": 3,
+          "INVALID": 0
+        },
+        "INSUFFICIENT": {
+          "SUFFICIENT": 6,
+          "INSUFFICIENT": 12,
+          "INVALID": 0
+        }
+      },
+      "correct": 19,
+      "accuracy_including_invalid_as_errors": 0.6785714285714286,
+      "false_accept_count": 6,
+      "false_accept_rate": 0.3333333333333333,
+      "sufficient_acceptance_rate": 0.7,
+      "invalid_count": 0,
+      "per_label": {
+        "SUFFICIENT": {
+          "precision": 0.5384615384615384,
+          "recall": 0.7,
+          "f1": 0.608695652173913
+        },
+        "INSUFFICIENT": {
+          "precision": 0.8,
+          "recall": 0.6666666666666666,
+          "f1": 0.7272727272727272
+        }
+      },
+      "macro_f1": 0.6679841897233201,
+      "by_original_gold": {
+        "SUFFICIENT": {
+          "SUFFICIENT": 7,
+          "INSUFFICIENT": 3,
+          "INVALID": 0
+        },
+        "PARTIAL": {
+          "SUFFICIENT": 6,
+          "INSUFFICIENT": 4,
+          "INVALID": 0
+        },
+        "INSUFFICIENT": {
+          "SUFFICIENT": 0,
+          "INSUFFICIENT": 8,
+          "INVALID": 0
+        }
+      },
+      "raw_counts": {
+        "tp": 7,
+        "fp": 6,
+        "tn": 12,
+        "fn": 3,
+        "invalid": 0
+      }
+    },
+    "frozen_retrieval": {
+      "n": 19,
+      "gold_counts": {
+        "SUFFICIENT": 10,
+        "INSUFFICIENT": 9
+      },
+      "confusion": {
+        "SUFFICIENT": {
+          "SUFFICIENT": 7,
+          "INSUFFICIENT": 3,
+          "INVALID": 0
+        },
+        "INSUFFICIENT": {
+          "SUFFICIENT": 0,
+          "INSUFFICIENT": 9,
+          "INVALID": 0
+        }
+      },
+      "correct": 16,
+      "accuracy_including_invalid_as_errors": 0.8421052631578947,
+      "false_accept_count": 0,
+      "false_accept_rate": 0.0,
+      "sufficient_acceptance_rate": 0.7,
+      "invalid_count": 0,
+      "per_label": {
+        "SUFFICIENT": {
+          "precision": 1.0,
+          "recall": 0.7,
+          "f1": 0.8235294117647058
+        },
+        "INSUFFICIENT": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1": 0.8571428571428571
+        }
+      },
+      "macro_f1": 0.8403361344537814,
+      "by_original_gold": {
+        "SUFFICIENT": {
+          "SUFFICIENT": 7,
+          "INSUFFICIENT": 3,
+          "INVALID": 0
+        },
+        "PARTIAL": {
+          "SUFFICIENT": 0,
+          "INSUFFICIENT": 0,
+          "INVALID": 0
+        },
+        "INSUFFICIENT": {
+          "SUFFICIENT": 0,
+          "INSUFFICIENT": 9,
+          "INVALID": 0
+        }
+      },
+      "raw_counts": {
+        "tp": 7,
+        "fp": 0,
+        "tn": 9,
+        "fn": 3,
+        "invalid": 0
+      }
+    },
+    "controlled": {
+      "n": 11,
+      "gold_counts": {
+        "SUFFICIENT": 0,
+        "INSUFFICIENT": 11
+      },
+      "confusion": {
+        "SUFFICIENT": {
+          "SUFFICIENT": 0,
+          "INSUFFICIENT": 0,
+          "INVALID": 0
+        },
+        "INSUFFICIENT": {
+          "SUFFICIENT": 6,
+          "INSUFFICIENT": 5,
+          "INVALID": 0
+        }
+      },
+      "correct": 5,
+      "accuracy_including_invalid_as_errors": 0.45454545454545453,
+      "false_accept_count": 6,
+      "false_accept_rate": 0.5454545454545454,
+      "sufficient_acceptance_rate": null,
+      "invalid_count": 0,
+      "per_label": {
+        "SUFFICIENT": {
+          "precision": 0.0,
+          "recall": null,
+          "f1": 0.0
+        },
+        "INSUFFICIENT": {
+          "precision": 1.0,
+          "recall": 0.45454545454545453,
+          "f1": 0.625
+        }
+      },
+      "macro_f1": 0.3125,
+      "by_original_gold": {
+        "SUFFICIENT": {
+          "SUFFICIENT": 0,
+          "INSUFFICIENT": 0,
+          "INVALID": 0
+        },
+        "PARTIAL": {
+          "SUFFICIENT": 6,
+          "INSUFFICIENT": 4,
+          "INVALID": 0
+        },
+        "INSUFFICIENT": {
+          "SUFFICIENT": 0,
+          "INSUFFICIENT": 1,
+          "INVALID": 0
+        }
+      },
+      "raw_counts": {
+        "tp": 0,
+        "fp": 6,
+        "tn": 5,
+        "fn": 0,
+        "invalid": 0
+      }
+    },
+    "pre_inspected_six": {
+      "n": 6,
+      "gold_counts": {
+        "SUFFICIENT": 2,
+        "INSUFFICIENT": 4
+      },
+      "confusion": {
+        "SUFFICIENT": {
+          "SUFFICIENT": 2,
+          "INSUFFICIENT": 0,
+          "INVALID": 0
+        },
+        "INSUFFICIENT": {
+          "SUFFICIENT": 1,
+          "INSUFFICIENT": 3,
+          "INVALID": 0
+        }
+      },
+      "correct": 5,
+      "accuracy_including_invalid_as_errors": 0.8333333333333334,
+      "false_accept_count": 1,
+      "false_accept_rate": 0.25,
+      "sufficient_acceptance_rate": 1.0,
+      "invalid_count": 0,
+      "per_label": {
+        "SUFFICIENT": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1": 0.8
+        },
+        "INSUFFICIENT": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1": 0.8571428571428571
+        }
+      },
+      "macro_f1": 0.8285714285714285,
+      "by_original_gold": {
+        "SUFFICIENT": {
+          "SUFFICIENT": 2,
+          "INSUFFICIENT": 0,
+          "INVALID": 0
+        },
+        "PARTIAL": {
+          "SUFFICIENT": 1,
+          "INSUFFICIENT": 1,
+          "INVALID": 0
+        },
+        "INSUFFICIENT": {
+          "SUFFICIENT": 0,
+          "INSUFFICIENT": 2,
+          "INVALID": 0
+        }
+      },
+      "raw_counts": {
+        "tp": 2,
+        "fp": 1,
+        "tn": 3,
+        "fn": 0,
+        "invalid": 0
+      }
+    },
+    "remaining_24": {
+      "n": 24,
+      "gold_counts": {
+        "SUFFICIENT": 8,
+        "INSUFFICIENT": 16
+      },
+      "confusion": {
+        "SUFFICIENT": {
+          "SUFFICIENT": 5,
+          "INSUFFICIENT": 3,
+          "INVALID": 0
+        },
+        "INSUFFICIENT": {
+          "SUFFICIENT": 5,
+          "INSUFFICIENT": 11,
+          "INVALID": 0
+        }
+      },
+      "correct": 16,
+      "accuracy_including_invalid_as_errors": 0.6666666666666666,
+      "false_accept_count": 5,
+      "false_accept_rate": 0.3125,
+      "sufficient_acceptance_rate": 0.625,
+      "invalid_count": 0,
+      "per_label": {
+        "SUFFICIENT": {
+          "precision": 0.5,
+          "recall": 0.625,
+          "f1": 0.5555555555555556
+        },
+        "INSUFFICIENT": {
+          "precision": 0.7857142857142857,
+          "recall": 0.6875,
+          "f1": 0.7333333333333334
+        }
+      },
+      "macro_f1": 0.6444444444444445,
+      "by_original_gold": {
+        "SUFFICIENT": {
+          "SUFFICIENT": 5,
+          "INSUFFICIENT": 3,
+          "INVALID": 0
+        },
+        "PARTIAL": {
+          "SUFFICIENT": 5,
+          "INSUFFICIENT": 3,
+          "INVALID": 0
+        },
+        "INSUFFICIENT": {
+          "SUFFICIENT": 0,
+          "INSUFFICIENT": 8,
+          "INVALID": 0
+        }
+      },
+      "raw_counts": {
+        "tp": 5,
+        "fp": 5,
+        "tn": 11,
+        "fn": 3,
+        "invalid": 0
+      }
+    }
+  }
+}

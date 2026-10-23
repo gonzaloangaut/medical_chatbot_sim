@@ -1,0 +1,434 @@
+{
+  "study": "sufficiency_counterfactual_dev",
+  "development_only": true,
+  "annotation_status": "draft_pending_manual_review",
+  "model_name": "Qwen/Qwen2.5-1.5B-Instruct",
+  "created_at_utc": "2026-10-22T23:28:05.704517+00:00",
+  "generation": {
+    "do_sample": false,
+    "max_new_tokens": 256
+  },
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.9.1",
+    "transformers": "4.57.5"
+  },
+  "source_sha256": {
+    "manifest": "b5ed6ba0af5fa12755f0d567eb748eaf2b267b8e0343a66bb9d6f3d0fca5b1d4",
+    "sufficiency_dev": "788038be713cd8f8a8e406cbbac5b37bf862a1c4e28d44dd255e4f97105158d1",
+    "catalog": "f31d335bdf454373ff93212e52bdecf20a05b98d097baeeaccaa15318d0b71d8",
+    "runner": "11121ee12ce98f83d5657f2d963129e3f0b3021ca6d3cafad67cee82002b691b",
+    "prompt_runner": "2bf95983669d5c38e1377befcc5bae05fa02286d7d5e556200a618786f259157"
+  },
+  "limitations": [
+    "Fixed question and equal number of chunks within each group; passage lengths and contents differ.",
+    "Controlled passages bypass retrieval and the cosine threshold. This is NOT a retrieval score.",
+    "Previously studied development examples and draft gold annotations: NOT an independent test.",
+    "Invalid model generations are errors, not successful abstentions.",
+    "Structure and gold requirement sets do not prove semantic support without manual review.",
+    "Response differences suggest context sensitivity but do not prove faithful reasoning."
+  ],
+  "cases": [
+    {
+      "group_id": "cf_001",
+      "variant_id": "S",
+      "source_case_id": "suff_dev_005",
+      "query": "Según la información disponible, ¿qué síntomas presenta la gripe y cuáles presenta el resfriado común?",
+      "evidence_origin": "controlled_counterfactual",
+      "evidence_chunk_ids": [
+        "medlineplus_influenza_001",
+        "medlineplus_common_cold_001"
+      ],
+      "evidence_content_chars": 704,
+      "prompt_chars": 2133,
+      "gold_status": "SUFFICIENT",
+      "gold_supported_requirement_ids": [
+        "r1",
+        "r2"
+      ],
+      "assessment": {
+        "raw_response": "{\"status\":\"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 7.314
+      }
+    },
+    {
+      "group_id": "cf_001",
+      "variant_id": "P",
+      "source_case_id": "suff_dev_005",
+      "query": "Según la información disponible, ¿qué síntomas presenta la gripe y cuáles presenta el resfriado común?",
+      "evidence_origin": "controlled_counterfactual",
+      "evidence_chunk_ids": [
+        "medlineplus_influenza_001",
+        "medlineplus_influenza_003"
+      ],
+      "evidence_content_chars": 706,
+      "prompt_chars": 2153,
+      "gold_status": "PARTIAL",
+      "gold_supported_requirement_ids": [
+        "r1"
+      ],
+      "assessment": {
+        "raw_response": "{\"status\":\"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 7.224
+      }
+    },
+    {
+      "group_id": "cf_001",
+      "variant_id": "I",
+      "source_case_id": "suff_dev_005",
+      "query": "Según la información disponible, ¿qué síntomas presenta la gripe y cuáles presenta el resfriado común?",
+      "evidence_origin": "controlled_counterfactual",
+      "evidence_chunk_ids": [
+        "medlineplus_influenza_003",
+        "medlineplus_common_cold_003"
+      ],
+      "evidence_content_chars": 574,
+      "prompt_chars": 1993,
+      "gold_status": "INSUFFICIENT",
+      "gold_supported_requirement_ids": [],
+      "assessment": {
+        "raw_response": "{\"status\": \"PARTIAL\"}",
+        "parsed_response": {
+          "status": "PARTIAL"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 6.834
+      }
+    },
+    {
+      "group_id": "cf_002",
+      "variant_id": "S",
+      "source_case_id": "suff_dev_006",
+      "query": "¿Qué mide un hemograma y para qué se utiliza?",
+      "evidence_origin": "controlled_counterfactual",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_000",
+        "medlineplus_complete_blood_count_001"
+      ],
+      "evidence_content_chars": 736,
+      "prompt_chars": 2142,
+      "gold_status": "SUFFICIENT",
+      "gold_supported_requirement_ids": [
+        "r1",
+        "r2"
+      ],
+      "assessment": {
+        "raw_response": "{\"status\":\"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 7.227
+      }
+    },
+    {
+      "group_id": "cf_002",
+      "variant_id": "P",
+      "source_case_id": "suff_dev_006",
+      "query": "¿Qué mide un hemograma y para qué se utiliza?",
+      "evidence_origin": "controlled_counterfactual",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_000",
+        "medlineplus_complete_blood_count_002"
+      ],
+      "evidence_content_chars": 812,
+      "prompt_chars": 2236,
+      "gold_status": "PARTIAL",
+      "gold_supported_requirement_ids": [
+        "r1"
+      ],
+      "assessment": {
+        "raw_response": "{\"status\":\"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 7.096
+      }
+    },
+    {
+      "group_id": "cf_002",
+      "variant_id": "I",
+      "source_case_id": "suff_dev_006",
+      "query": "¿Qué mide un hemograma y para qué se utiliza?",
+      "evidence_origin": "controlled_counterfactual",
+      "evidence_chunk_ids": [
+        "medlineplus_complete_blood_count_002",
+        "medlineplus_strep_a_test_000"
+      ],
+      "evidence_content_chars": 755,
+      "prompt_chars": 2155,
+      "gold_status": "INSUFFICIENT",
+      "gold_supported_requirement_ids": [],
+      "assessment": {
+        "raw_response": "{\"status\":\"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 6.926
+      }
+    },
+    {
+      "group_id": "cf_003",
+      "variant_id": "S",
+      "source_case_id": "suff_dev_010",
+      "query": "En Demo Health Clinic, ¿con cuánto aviso se cancela un turno y cuánto lleva procesar una solicitud verificada de historia clínica?",
+      "evidence_origin": "controlled_counterfactual",
+      "evidence_chunk_ids": [
+        "demo_clinic_appointment_policy_001",
+        "demo_clinic_medical_records_policy_002"
+      ],
+      "evidence_content_chars": 682,
+      "prompt_chars": 2171,
+      "gold_status": "SUFFICIENT",
+      "gold_supported_requirement_ids": [
+        "r1",
+        "r2"
+      ],
+      "assessment": {
+        "raw_response": "{\"status\":\"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 8.631
+      }
+    },
+    {
+      "group_id": "cf_003",
+      "variant_id": "P",
+      "source_case_id": "suff_dev_010",
+      "query": "En Demo Health Clinic, ¿con cuánto aviso se cancela un turno y cuánto lleva procesar una solicitud verificada de historia clínica?",
+      "evidence_origin": "controlled_counterfactual",
+      "evidence_chunk_ids": [
+        "demo_clinic_appointment_policy_001",
+        "demo_clinic_medical_records_policy_000"
+      ],
+      "evidence_content_chars": 680,
+      "prompt_chars": 2163,
+      "gold_status": "PARTIAL",
+      "gold_supported_requirement_ids": [
+        "r1"
+      ],
+      "assessment": {
+        "raw_response": "{\"status\":\"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 10.45
+      }
+    },
+    {
+      "group_id": "cf_003",
+      "variant_id": "I",
+      "source_case_id": "suff_dev_010",
+      "query": "En Demo Health Clinic, ¿con cuánto aviso se cancela un turno y cuánto lleva procesar una solicitud verificada de historia clínica?",
+      "evidence_origin": "controlled_counterfactual",
+      "evidence_chunk_ids": [
+        "demo_clinic_appointment_policy_000",
+        "demo_clinic_medical_records_policy_000"
+      ],
+      "evidence_content_chars": 704,
+      "prompt_chars": 2192,
+      "gold_status": "INSUFFICIENT",
+      "gold_supported_requirement_ids": [],
+      "assessment": {
+        "raw_response": "{\"status\":\"INSUFFICIENT\"}",
+        "parsed_response": {
+          "status": "INSUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 10.252
+      }
+    },
+    {
+      "group_id": "cf_004",
+      "variant_id": "S",
+      "source_case_id": "suff_dev_008",
+      "query": "¿Qué puede causar diarrea, qué señales justifican una consulta médica y cómo se reponen los líquidos perdidos?",
+      "evidence_origin": "controlled_counterfactual",
+      "evidence_chunk_ids": [
+        "medlineplus_diarrhea_000",
+        "medlineplus_diarrhea_002",
+        "medlineplus_diarrhea_003"
+      ],
+      "evidence_content_chars": 1087,
+      "prompt_chars": 2608,
+      "gold_status": "SUFFICIENT",
+      "gold_supported_requirement_ids": [
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "assessment": {
+        "raw_response": "{\"status\":\"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 11.864
+      }
+    },
+    {
+      "group_id": "cf_004",
+      "variant_id": "P",
+      "source_case_id": "suff_dev_008",
+      "query": "¿Qué puede causar diarrea, qué señales justifican una consulta médica y cómo se reponen los líquidos perdidos?",
+      "evidence_origin": "controlled_counterfactual",
+      "evidence_chunk_ids": [
+        "medlineplus_diarrhea_000",
+        "medlineplus_diarrhea_002",
+        "medlineplus_diarrhea_001"
+      ],
+      "evidence_content_chars": 1038,
+      "prompt_chars": 2570,
+      "gold_status": "PARTIAL",
+      "gold_supported_requirement_ids": [
+        "r1",
+        "r2"
+      ],
+      "assessment": {
+        "raw_response": "{\"status\":\"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 11.592
+      }
+    },
+    {
+      "group_id": "cf_004",
+      "variant_id": "I",
+      "source_case_id": "suff_dev_008",
+      "query": "¿Qué puede causar diarrea, qué señales justifican una consulta médica y cómo se reponen los líquidos perdidos?",
+      "evidence_origin": "controlled_counterfactual",
+      "evidence_chunk_ids": [
+        "medlineplus_diarrhea_001",
+        "medlineplus_dehydration_003",
+        "medlineplus_complete_blood_count_003"
+      ],
+      "evidence_content_chars": 987,
+      "prompt_chars": 2540,
+      "gold_status": "INSUFFICIENT",
+      "gold_supported_requirement_ids": [],
+      "assessment": {
+        "raw_response": "{\"status\":\"SUFFICIENT\"}",
+        "parsed_response": {
+          "status": "SUFFICIENT"
+        },
+        "valid_structure": true,
+        "validation_error": null,
+        "latency_seconds": 11.341
+      }
+    }
+  ],
+  "initialization_seconds": 4.015,
+  "summary": {
+    "n_cases": 12,
+    "n_correct": 5,
+    "accuracy_including_invalid_as_errors": 0.4166666666666667,
+    "confusion": {
+      "INSUFFICIENT": {
+        "INSUFFICIENT": 2,
+        "PARTIAL": 1,
+        "SUFFICIENT": 1,
+        "INVALID": 0
+      },
+      "PARTIAL": {
+        "INSUFFICIENT": 1,
+        "PARTIAL": 0,
+        "SUFFICIENT": 3,
+        "INVALID": 0
+      },
+      "SUFFICIENT": {
+        "INSUFFICIENT": 1,
+        "PARTIAL": 0,
+        "SUFFICIENT": 3,
+        "INVALID": 0
+      }
+    },
+    "recall_per_label": {
+      "INSUFFICIENT": 0.5,
+      "PARTIAL": 0.0,
+      "SUFFICIENT": 0.75
+    },
+    "n_invalid": 0,
+    "false_sufficient_count": 4,
+    "false_sufficient_rate": 0.5,
+    "complete_triplets": 4,
+    "exact_triplet_count": 0,
+    "nonincreasing_triplet_count": 4,
+    "invariant_triplet_count": 2,
+    "by_group": {
+      "cf_001": {
+        "predictions_in_S_P_I_order": [
+          "SUFFICIENT",
+          "SUFFICIENT",
+          "PARTIAL"
+        ],
+        "exact_triplet": false,
+        "nonincreasing_sufficiency": true,
+        "same_prediction_all_three": false,
+        "S_to_P_changes": false,
+        "P_to_I_changes": true
+      },
+      "cf_002": {
+        "predictions_in_S_P_I_order": [
+          "SUFFICIENT",
+          "SUFFICIENT",
+          "INSUFFICIENT"
+        ],
+        "exact_triplet": false,
+        "nonincreasing_sufficiency": true,
+        "same_prediction_all_three": false,
+        "S_to_P_changes": false,
+        "P_to_I_changes": true
+      },
+      "cf_003": {
+        "predictions_in_S_P_I_order": [
+          "INSUFFICIENT",
+          "INSUFFICIENT",
+          "INSUFFICIENT"
+        ],
+        "exact_triplet": false,
+        "nonincreasing_sufficiency": true,
+        "same_prediction_all_three": true,
+        "S_to_P_changes": false,
+        "P_to_I_changes": false
+      },
+      "cf_004": {
+        "predictions_in_S_P_I_order": [
+          "SUFFICIENT",
+          "SUFFICIENT",
+          "SUFFICIENT"
+        ],
+        "exact_triplet": false,
+        "nonincreasing_sufficiency": true,
+        "same_prediction_all_three": true,
+        "S_to_P_changes": false,
+        "P_to_I_changes": false
+      }
+    }
+  }
+}

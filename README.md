@@ -47,7 +47,7 @@ English Markdown knowledge base (15 documents)
   FastAPI response + source list
 ```
 
-The current similarity gate is **not an evidence-sufficiency detector**. A query can pass it even when the KB lacks the requested fact. Explicit evidence sufficiency, reliable abstention, and response-level groundedness are future evaluation targets.
+The current similarity gate is **not an evidence-sufficiency detector**. A query can pass it even when the KB lacks the requested fact. An opt-in experimental LLM evidence gate is now available, but reliable complete-answer detection and response-level groundedness remain unvalidated.
 
 ### Knowledge base and provenance
 
@@ -113,7 +113,7 @@ For the **10 multi-evidence queries** in each split, Complete Evidence@5 falls f
 
 With the fixed threshold `0.30`, the held-out test gate accepted all **45/45 answerable** queries but also incorrectly accepted **9/15 unsupported** queries (60% false acceptance rate). All **7/7 in-domain unsupported** test queries passed the gate; 6/8 out-of-domain queries were correctly rejected.
 
-**Main finding:** Semantic similarity finds **related** text; it does not establish that the retrieved text contains the **specific evidence required** to answer a question. The next stage will investigate grounded generation, evidence sufficiency, and abstention as distinct measurable behaviors.
+**Main finding:** Semantic similarity finds **related** text; it does not establish that the retrieved text contains the **specific evidence required** to answer a question. Development sufficiency diagnostics and grounding pilots are documented below; end-to-end answer evaluation is still pending.
 
 **Interpretation limits:** The KB is small; the questions are mostly curated from the source material rather than sampled from clinical interactions; and development/test share documents, topics, and some underlying facts. This is a held-out **question-level retrieval benchmark**, not proof of real-world multilingual robustness, diagnostic correctness, or patient safety. Only one gold evidence set is annotated per question.
 
@@ -139,6 +139,43 @@ not prompt wording. Neither model has been validated for clinical use.
 [`evaluation/GENERATION_PILOT_REPORT.md`](evaluation/GENERATION_PILOT_REPORT.md).
 Saved development outputs are in [`evaluation/results/generation/`](evaluation/results/generation/).
 
+## Experimental evidence-completeness assessment
+
+An **optional, disabled-by-default** binary evidence gate is available between
+retrieval and generation (`app/chatbot/evidence.py`). It requires support for
+**every essential fact requested by the question** and returns only
+`SUFFICIENT` or `INSUFFICIENT`; a partially supported question must be rejected
+under this strict full-answer policy. Invalid evaluator output fails closed;
+model execution failures remain service errors.
+
+The gate was evaluated with Qwen2.5-1.5B, greedy decoding, on development-only,
+purposefully constructed evidence cases. On **19 selected saved-retrieval
+examples**, the binary gate rejected 9/9 insufficient contexts but rejected
+3/10 sufficient ones. On the **30-case diagnostic**, it incorrectly accepted
+6/20 questions without full support (all originally labeled `PARTIAL`). It
+also falsely accepted 4/8 negative variants in a small fixed-question study.
+The gold annotations remain pending author sign-off. These are **not**
+independent generalization, clinical-safety, or grounded-generation estimates.
+
+Enable the experimental gate with the same evaluated model settings:
+
+```bash
+MEDICAL_EVIDENCE_GATE_ENABLED=1 \
+MEDICAL_LLM_MODEL=Qwen/Qwen2.5-1.5B-Instruct \
+MEDICAL_LLM_DO_SAMPLE=0 \
+uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+For a valid end-to-end comparison, fix model/sampling/retrieval settings and
+change only the gate flag. The no-gate application behavior is still the
+default.
+
+**Evaluation, methodology, case-level audit, charts and architectural decision:**
+[`evaluation/sufficiency_analysis.ipynb`](evaluation/sufficiency_analysis.ipynb).
+The accompanying historical inference JSON files are in
+[`evaluation/results/sufficiency/`](evaluation/results/sufficiency/).
+The notebook opens and analyzes saved results without loading the LLM.
+
 ## Repository layout
 
 ```text
@@ -159,6 +196,7 @@ Saved development outputs are in [`evaluation/results/generation/`](evaluation/r
 │   ├── RETRIEVAL_BENCHMARK_PROTOCOL.md
 │   ├── GENERATION_PILOT_REPORT.md
 │   ├── retrieval_analysis.ipynb
+│   ├── sufficiency_analysis.ipynb
 │   ├── build_chunk_catalog.py
 │   ├── validate_retrieval_dataset.py
 │   ├── retrieval_metrics.py
@@ -240,4 +278,4 @@ The `test` threshold command evaluates **only the previously selected value, 0.3
 
 ## Next steps
 
-Next priorities are **evidence-sufficiency and abstention controls**, followed by independent end-to-end evaluation of generated claims, answer completeness, and provenance. The present generation pilots are diagnostic development results; clinical safety is neither claimed nor established.
+Next priorities are **independent end-to-end evaluation** of the base pipeline and opt-in evidence gate, assessing unsupported claims, answer completeness, abstention behavior, and provenance. The present generation pilots are diagnostic development results; clinical safety is neither claimed nor established.

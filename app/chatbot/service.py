@@ -5,8 +5,13 @@ Classes:
     - MedicalAssistance: Class that represents a chatbot for medical assistance.
 """
 
+import logging
+
+from app.chatbot.evidence import EvidenceOutputError
 from app.chatbot.exceptions import GenerationError
 from app.chatbot.models import AssistantResponse, RetrievedChunk, Source
+
+logger = logging.getLogger(__name__)
 
 # System prompt for the LLM to guide its behavior in generating responses.
 SYSTEM_PROMPT = """
@@ -58,6 +63,7 @@ class MedicalAssistance:
         self,
         llm,
         retriever,
+        evidence_gate=None,
     ):
         """
         Initialize a new bot.
@@ -71,6 +77,7 @@ class MedicalAssistance:
         """
         self.llm = llm
         self.retriever = retriever
+        self.evidence_gate = evidence_gate
 
     def _build_context(
         self,
@@ -180,6 +187,24 @@ class MedicalAssistance:
                 response=NO_CONTEXT_RESPONSE,
                 sources=[],
             )
+
+        # Optional, experimental sufficiency assessment. Retrieval itself is unchanged.
+        # Run the answer generator only if the gate predicts complete support.
+        if self.evidence_gate is not None:
+            try:
+                decision = self.evidence_gate.assess(
+                    last_user_message, retrieved_chunks
+                )
+            except EvidenceOutputError:
+                # Invalid evaluator output is a failure, not a successful
+                # classification. Fail closed and leave a diagnostic log.
+                logger.warning("Invalid evidence-gate output; abstaining.")
+                return AssistantResponse(response=NO_CONTEXT_RESPONSE, sources=[])
+            except Exception as error:
+                raise GenerationError("Evidence assessment failed.") from error
+
+            if decision != "SUFFICIENT":
+                return AssistantResponse(response=NO_CONTEXT_RESPONSE, sources=[])
 
         # Build context and provenance
         context_to_use = self._build_context(retrieved_chunks)
